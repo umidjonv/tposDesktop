@@ -1,8 +1,10 @@
 E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe
 E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\tposDesktop.pdb
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
-E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Form1.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
