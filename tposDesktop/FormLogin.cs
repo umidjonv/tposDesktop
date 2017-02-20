@@ -68,14 +68,15 @@ namespace tposDesktop
                 {
                     string role = dr["role"].ToString();
 
-                    Program.window_type = 1;
+                    Program.window_type = 2;
                     UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
                     UserValues.CurrentUser = dr["username"].ToString();
                     UserValues.role = role;
-                    MessageBox.Show(UserValues.CurrentUser+":"+role);
+                    //MessageBox.Show(UserValues.CurrentUser+":"+role);
                     
-                    Program.oldWindow_type = 3;
-                    Program.onClose = true;
+                    //Program.oldWindow_type = 3;
+                    //Program.onClose = true;
+                    this.Close();
                     return;
 
                 }
@@ -98,6 +99,11 @@ namespace tposDesktop
             if (lang.Value("Login") == tbx.Text || lang.Value("Pass") == tbx.Text)
             {
                 tbx.Text = "";
+                tbx.ForeColor = Color.Black;
+                if (lang.Value("Pass") == tbx.Text)
+                {
+                    tbx.PasswordChar = '0';
+                }
             }
         }
 
@@ -110,11 +116,28 @@ namespace tposDesktop
                 if (tbx.Name == "tbxLogin")
                 {
                     tbx.Text = lang.Value("Login");
+                    
                 }
                 else if (tbx.Name == "tbxPass")
                 {
                     tbx.Text = lang.Value("Pass");
+                    
                 }
+                tbx.ForeColor = Color.Silver;
+            }
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(Program.window_type!=2)
+            Program.window_type = 0;
+        }
+
+        private void tbxPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                buttonLogin_Click(null, null);
             }
         }
     }

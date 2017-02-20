@@ -45,11 +45,11 @@
             // 
             // tbxLogin
             // 
-            this.tbxLogin.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tbxLogin.ForeColor = System.Drawing.Color.Silver;
             this.tbxLogin.Location = new System.Drawing.Point(263, 119);
             this.tbxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxLogin.Name = "tbxLogin";
-            this.tbxLogin.Size = new System.Drawing.Size(180, 29);
+            this.tbxLogin.Size = new System.Drawing.Size(180, 34);
             this.tbxLogin.TabIndex = 0;
             this.tbxLogin.Text = "Логин";
             this.tbxLogin.Enter += new System.EventHandler(this.tbxEnter);
@@ -57,15 +57,16 @@
             // 
             // tbxPass
             // 
-            this.tbxPass.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tbxPass.ForeColor = System.Drawing.Color.Silver;
             this.tbxPass.Location = new System.Drawing.Point(263, 160);
             this.tbxPass.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxPass.Name = "tbxPass";
             this.tbxPass.PasswordChar = '*';
-            this.tbxPass.Size = new System.Drawing.Size(180, 29);
-            this.tbxPass.TabIndex = 0;
+            this.tbxPass.Size = new System.Drawing.Size(180, 34);
+            this.tbxPass.TabIndex = 1;
             this.tbxPass.Text = "Пароль";
             this.tbxPass.Enter += new System.EventHandler(this.tbxEnter);
+            this.tbxPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPass_KeyPress);
             this.tbxPass.Leave += new System.EventHandler(this.tbxLeave);
             // 
             // lblErr
@@ -75,7 +76,7 @@
             this.lblErr.ForeColor = System.Drawing.Color.Red;
             this.lblErr.Location = new System.Drawing.Point(260, 244);
             this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(40, 16);
+            this.lblErr.Size = new System.Drawing.Size(52, 20);
             this.lblErr.TabIndex = 1;
             this.lblErr.Text = "Error:";
             this.lblErr.Visible = false;
@@ -92,7 +93,7 @@
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 376);
             this.Controls.Add(this.btnLogin);
@@ -103,6 +104,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FormLogin";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm);
             this.ResumeLayout(false);
             this.PerformLayout();

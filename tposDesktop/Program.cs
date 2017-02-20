@@ -9,7 +9,7 @@ namespace tposDesktop
     {
         enum WorkType { Touch, Mouse };
         static WorkType wType = WorkType.Mouse;
-        public static int window_type;
+        public static int window_type = 2;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
@@ -22,7 +22,25 @@ namespace tposDesktop
             Lang = new Classes.Language(Classes.Language.lng.ru);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Form form;
+            while (window_type!=0)
+            {
+                
+                switch (window_type)
+                {
+                    case 1:
+                        Application.Run(new FormLogin());
+                        
+                        break;
+                    case 2:
+                        Application.Run(new MainForm());
+                        break;
+                    
+
+                }
+                
+                
+            }
         }
        
     } 

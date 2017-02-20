@@ -8,3 +8,14 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
 E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
