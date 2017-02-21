@@ -58,6 +58,7 @@
     <Compile Include="Classes\PanelExtend.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\ReadPort.cs" />
     <Compile Include="Classes\TablePanelDishes.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -90,6 +91,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scanner.cs" />
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

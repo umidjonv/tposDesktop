@@ -14,6 +14,7 @@ namespace tposDesktop
     public partial class MainForm : Form
     {
         DBclass db;
+        Scanner scan;
         public MainForm()
         {
             InitializeComponent();
@@ -22,8 +23,14 @@ namespace tposDesktop
             DataView dv = new DataView(DBclass.DS.product);
             dgvTovar.DataSource = dv;
             dv.RowFilter = tbxSearchTovar.Text;
-            
+            scan = new Scanner();
+            scan.ScannerEvent += scan_ScannerEvent;
 
+        }
+
+        void scan_ScannerEvent(object source, ScannerEventArgs e)
+        {
+            MessageBox.Show(e.GetInfo());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
