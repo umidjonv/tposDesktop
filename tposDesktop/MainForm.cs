@@ -29,8 +29,8 @@ namespace tposDesktop
             dgvExpense.DataSource = dvOr;
             
             dv.RowFilter = tbxSearchTovar.Text;
-            scan = new Scanner();
-            scan.ScannerEvent += scan_ScannerEvent;
+            //scan = new Scanner();
+            //scan.ScannerEvent += scan_ScannerEvent;
 
         }
 
@@ -74,12 +74,22 @@ namespace tposDesktop
             dgvExpense.Columns["count"].Visible = false;
             dgvExpense.Columns["packCount"].HeaderText = "Кол.";
             dgvExpense.Columns["productName"].Width = 200;
+            dgvExpense.Columns["packCount"].Width = 50;
+            dgvExpense.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             DataGridViewButtonColumn cellBtn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             cellBtn2.HeaderText = "";
-            cellBtn2.Name = "colBtn";
+            cellBtn2.Name = "colBtnMinus";
             cellBtn2.Width = 40;
+            cellBtn2.DisplayIndex = 3;
             dgvExpense.Columns.Add(cellBtn2);
+
+            DataGridViewButtonColumn cellBtn3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            cellBtn3.HeaderText = "";
+            cellBtn3.Name = "colBtnPlus";
+            cellBtn3.Width = 40;
+            //cellBtn3.DisplayIndex = 3;
+            dgvExpense.Columns.Add(cellBtn3);
         }
 
         private void tbxSearchTovar_TextChanged(object sender, EventArgs e)
@@ -94,32 +104,77 @@ namespace tposDesktop
             var grid = (DataGridView)sender;
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                AddToOrders((int)grid.Rows[e.RowIndex].Cells["productid"].Value);
                 
-                    DataSetTpos.ordersRow ordrow = DBclass.DS.orders.NewordersRow();
-                    DataRow[] dr = DBclass.DS.product.Select("productId = "+grid.Rows[e.RowIndex].Cells["productid"].Value.ToString());
-                    if (dr.Length != 0)
-                    {
-                        DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
-
-                        ordrow.prodId = drP.productId;
-                        ordrow.expenseId = -1;
-                        OrderForm oform = new OrderForm(drP.pack, drP.price.ToString());
-                        if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        {
-                            ordrow.packCount = oform.count;
-                        }
-                        else { return; }
-                        DBclass.DS.orders.AddordersRow(ordrow);
-
-                        if (isNewExpense)
-                        {
-                            //dgvExpense.Columns["productName"].Visible = true;
-                            //dgvExpense.Columns["productPrice"].Visible = true;
-                            isNewExpense = false;
-                        }
-                    }
                 
             }
+        }
+        private void dgvExpense_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnPlus")
+                {
+                    int i = Int32.Parse(dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value.ToString());
+                    i++;
+                    dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value = i;
+                }
+                else if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnMinus")
+                {
+                    if (Int32.Parse(dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value.ToString()) == 1)
+                    {
+                        dgvExpense.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    { 
+                        int i = Int32.Parse(dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value.ToString());
+                        i--;
+                        dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value = i;
+                    }
+                    
+                }
+
+
+            }
+        }
+        private void AddToOrders(int id)
+        {
+            DataRow[] dr = DBclass.DS.product.Select("productId = " + id);
+            if (dr.Length != 0)
+            {
+                DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
+                DataRow[] existRows = DBclass.DS.orders.Select("expenseId=-1 and prodId = " + drP.productId);
+                if (existRows.Length > 0)
+                {
+                    DataSetTpos.ordersRow ordrow = (DataSetTpos.ordersRow)existRows[0];
+                    ordrow.packCount = ordrow.packCount + (drP.pack == 0 ? 1 : drP.pack);
+                    //ordrow.AcceptChanges();
+                }
+                else
+                {
+                    DataSetTpos.ordersRow ordrow = DBclass.DS.orders.NewordersRow();
+
+
+
+                    ordrow.prodId = drP.productId;
+                    ordrow.expenseId = -1;
+                    OrderForm oform = new OrderForm(drP.pack, drP.price.ToString());
+                    if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        ordrow.packCount = oform.count;
+                    }
+                    else { return; }
+                    DBclass.DS.orders.AddordersRow(ordrow);
+                }
+                if (isNewExpense)
+                {
+                    //dgvExpense.Columns["productName"].Visible = true;
+                    //dgvExpense.Columns["productPrice"].Visible = true;
+                    isNewExpense = false;
+                }
+            }
+ 
         }
         private void dgvSchet_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -131,10 +186,19 @@ namespace tposDesktop
                     DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     dgvCell.Value = "+";
                 }
-                else
+                else 
                 {
-                    DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    dgvCell.Value = "-";
+                    DataGridViewButtonCell dgvCell;
+                    if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnPlus")
+                    {
+                        dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        dgvCell.Value = "+";
+                    }
+                    else if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnMinus")
+                    {
+                        dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        dgvCell.Value = "-";
+                    }
                 }
             }
             
@@ -143,6 +207,7 @@ namespace tposDesktop
         private void btnOplata_Click(object sender, EventArgs e)
         {
             expenseTableAdapter expDa = new expenseTableAdapter();
+            expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
             DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
             DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
             float sum = 0;
@@ -158,12 +223,12 @@ namespace tposDesktop
             expTable.Rows.Add(expRow);
             
             expDa.Update(expTable);
-            expDa.Fill(expTable);
+            expDa.FillLast(expTable);
             ordersTableAdapter prDa = new ordersTableAdapter();
             DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = -1");
             foreach (DataSetTpos.ordersRow oneRow in orRows)
             {
-                //oneRow.expenseId = 
+                oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId; 
             }
             prDa.Update(DBclass.DS.orders);
             DataView dv = dgvExpense.DataSource as DataView;

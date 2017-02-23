@@ -60,14 +60,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1071, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1071, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // администраторToolStripMenuItem
             // 
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
-            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
+            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(106, 19);
             this.администраторToolStripMenuItem.Text = "Администратор";
             // 
             // groupBox1
@@ -88,7 +88,7 @@
             // 
             this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
             this.tbxSearchTovar.Name = "tbxSearchTovar";
-            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 30);
+            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 26);
             this.tbxSearchTovar.TabIndex = 2;
             this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
             // 
@@ -120,7 +120,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(523, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(472, 474);
+            this.groupBox2.Size = new System.Drawing.Size(512, 474);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Счет";
@@ -138,9 +138,10 @@
             this.dgvExpense.Location = new System.Drawing.Point(3, 29);
             this.dgvExpense.Name = "dgvExpense";
             this.dgvExpense.RowHeadersVisible = false;
-            this.dgvExpense.RowTemplate.Height = 24;
-            this.dgvExpense.Size = new System.Drawing.Size(463, 433);
+            this.dgvExpense.RowTemplate.Height = 40;
+            this.dgvExpense.Size = new System.Drawing.Size(503, 433);
             this.dgvExpense.TabIndex = 1;
+            this.dgvExpense.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellContentClick);
             this.dgvExpense.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             this.dgvExpense.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvExpense_RowsAdded);
             // 
@@ -201,7 +202,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 608);
             this.Controls.Add(this.btnOplata);

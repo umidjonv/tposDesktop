@@ -21,3 +21,6 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
