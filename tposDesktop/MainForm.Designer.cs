@@ -28,20 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.администраторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvTovar = new System.Windows.Forms.DataGridView();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
+            this.dgvTovar = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvExpense = new System.Windows.Forms.DataGridView();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btn = new System.Windows.Forms.Button();
+            this.btnOplata = new System.Windows.Forms.Button();
+            this.dataSetTpos = new tposDesktop.DataSetTpos();
+            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpense)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetTpos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -51,7 +60,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1045, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1071, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,10 +79,18 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(411, 500);
+            this.groupBox1.Size = new System.Drawing.Size(411, 572);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Имена товаров";
+            // 
+            // tbxSearchTovar
+            // 
+            this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
+            this.tbxSearchTovar.Name = "tbxSearchTovar";
+            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 30);
+            this.tbxSearchTovar.TabIndex = 2;
+            this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
             // 
             // dgvTovar
             // 
@@ -90,40 +107,52 @@
             this.dgvTovar.RowHeadersWidth = 50;
             this.dgvTovar.RowTemplate.Height = 40;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(405, 418);
+            this.dgvTovar.Size = new System.Drawing.Size(405, 490);
             this.dgvTovar.TabIndex = 0;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             // 
-            // tbxSearchTovar
-            // 
-            this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
-            this.tbxSearchTovar.Name = "tbxSearchTovar";
-            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 30);
-            this.tbxSearchTovar.TabIndex = 2;
-            this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.dgvExpense);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(523, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(522, 503);
+            this.groupBox2.Size = new System.Drawing.Size(472, 474);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Счет";
             // 
-            // dataGridView2
+            // dgvExpense
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvExpense.AllowUserToAddRows = false;
+            this.dgvExpense.AllowUserToResizeRows = false;
+            this.dgvExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 29);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(405, 471);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvExpense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExpense.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductName,
+            this.productPrice});
+            this.dgvExpense.Location = new System.Drawing.Point(3, 29);
+            this.dgvExpense.Name = "dgvExpense";
+            this.dgvExpense.RowHeadersVisible = false;
+            this.dgvExpense.RowTemplate.Height = 24;
+            this.dgvExpense.Size = new System.Drawing.Size(463, 433);
+            this.dgvExpense.TabIndex = 1;
+            this.dgvExpense.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
+            this.dgvExpense.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvExpense_RowsAdded);
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Наименование";
+            this.ProductName.Name = "ProductName";
+            // 
+            // productPrice
+            // 
+            this.productPrice.HeaderText = "Цена";
+            this.productPrice.Name = "productPrice";
             // 
             // btnInsert
             // 
@@ -143,21 +172,52 @@
             this.btn.Text = "button1";
             this.btn.UseVisualStyleBackColor = true;
             // 
+            // btnOplata
+            // 
+            this.btnOplata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOplata.BackColor = System.Drawing.Color.Red;
+            this.btnOplata.ForeColor = System.Drawing.Color.White;
+            this.btnOplata.Location = new System.Drawing.Point(880, 519);
+            this.btnOplata.Name = "btnOplata";
+            this.btnOplata.Size = new System.Drawing.Size(115, 76);
+            this.btnOplata.TabIndex = 4;
+            this.btnOplata.Text = "Оплата";
+            this.btnOplata.UseVisualStyleBackColor = false;
+            this.btnOplata.Click += new System.EventHandler(this.btnOplata_Click);
+            // 
+            // dataSetTpos
+            // 
+            this.dataSetTpos.DataSetName = "DataSetTpos";
+            this.dataSetTpos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ordersBindingSource
+            // 
+            this.ordersBindingSource.DataMember = "orders";
+            this.ordersBindingSource.DataSource = this.dataSetTpos;
+            // 
+            // ordersTableAdapter
+            // 
+            this.ordersTableAdapter.ClearBeforeFill = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 538);
+            this.ClientSize = new System.Drawing.Size(1071, 608);
+            this.Controls.Add(this.btnOplata);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -166,7 +226,9 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpense)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetTpos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,8 +242,14 @@
         private System.Windows.Forms.TextBox tbxSearchTovar;
         private System.Windows.Forms.DataGridView dgvTovar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvExpense;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.Button btnOplata;
+        private DataSetTpos dataSetTpos;
+        private System.Windows.Forms.BindingSource ordersBindingSource;
+        private DataSetTposTableAdapters.ordersTableAdapter ordersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productPrice;
     }
 }
