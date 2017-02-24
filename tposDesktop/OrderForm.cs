@@ -18,14 +18,14 @@ namespace tposDesktop
             
             InitializeComponent();
             lblPrice.Text = price;
-            tbxCount.Text = (cnt != 0 ? cnt : 1).ToString();
+            tbxCount1.Text = (cnt != 0 ? cnt : 1).ToString();
         }
         public int count = 0;
         private void OrderForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                count = Int32.Parse(tbxCount.Text);
+                count = Int32.Parse(tbxCount1.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
@@ -38,9 +38,24 @@ namespace tposDesktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            count = Int32.Parse(tbxCount.Text);
+            count = Int32.Parse(tbxCount1.Text);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
+        }
+        string text="";
+        private void tbxCount1_TextChanged(object sender, EventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            int num;
+            if (Int32.TryParse(t.Text, out num))
+            {
+                text = t.Text;
+                t.SelectionStart = t.Text.Length;
+            }
+            else
+            {
+                t.Text = text;
+            }
         }
     }
 }

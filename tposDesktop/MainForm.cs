@@ -73,6 +73,7 @@ namespace tposDesktop
             dgvExpense.Columns["expenseId"].Visible = false;
             dgvExpense.Columns["count"].Visible = false;
             dgvExpense.Columns["packCount"].HeaderText = "Кол.";
+            dgvExpense.Columns["packCount"].ValueType = typeof(int);
             dgvExpense.Columns["productName"].Width = 200;
             dgvExpense.Columns["packCount"].Width = 50;
             dgvExpense.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -90,6 +91,15 @@ namespace tposDesktop
             cellBtn3.Width = 40;
             //cellBtn3.DisplayIndex = 3;
             dgvExpense.Columns.Add(cellBtn3);
+
+            DataGridViewTextBoxColumn cellTx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cellTx.HeaderText = "Сумма";
+            cellTx.Name = "sumProduct";
+            cellTx.Width = 80;
+            cellTx.ValueType = typeof(int);
+            cellTx.ReadOnly = true;
+            //cellTx.CellType = typeof(int);
+            dgvExpense.Columns.Add(cellTx);
         }
 
         private void tbxSearchTovar_TextChanged(object sender, EventArgs e)
@@ -251,6 +261,24 @@ namespace tposDesktop
                 grid.Rows[e.RowIndex].Cells["productPrice"].Value = prRow.price; 
 
             }
+        }
+
+        private void dgvExpense_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+             var grid = (DataGridView)sender;
+             if (grid.Columns[e.ColumnIndex].Name == "packCount"&&e.RowIndex>=0)
+             {
+                 
+                 grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
+                 //var sum = DBclass.DS.orders.Sum(x => x.);
+             }
+            
+             
+        }
+
+        private void dgvExpense_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
         }
 
         
