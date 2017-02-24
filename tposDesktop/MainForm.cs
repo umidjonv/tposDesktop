@@ -22,13 +22,16 @@ namespace tposDesktop
             InitializeComponent();
             db = new DBclass();
             db.FillProduct();
+            DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
             DataView dv = new DataView(DBclass.DS.product);
+            
             DataView dvOr = new DataView(DBclass.DS.orders);
             dvOr.RowFilter = "expenseId = -1";
             dgvTovar.DataSource = dv;
             dgvExpense.DataSource = dvOr;
             
             dv.RowFilter = tbxSearchTovar.Text;
+            dgvExpense.EditingControlShowing += dgv_EditingControlShowing;
             //scan = new Scanner();
             //scan.ScannerEvent += scan_ScannerEvent;
 
@@ -82,24 +85,25 @@ namespace tposDesktop
             cellBtn2.HeaderText = "";
             cellBtn2.Name = "colBtnMinus";
             cellBtn2.Width = 40;
-            cellBtn2.DisplayIndex = 3;
+            cellBtn2.DisplayIndex = 2;
             dgvExpense.Columns.Add(cellBtn2);
 
             DataGridViewButtonColumn cellBtn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             cellBtn3.HeaderText = "";
             cellBtn3.Name = "colBtnPlus";
             cellBtn3.Width = 40;
-            //cellBtn3.DisplayIndex = 3;
+            cellBtn3.DisplayIndex = 8;
             dgvExpense.Columns.Add(cellBtn3);
 
-            DataGridViewTextBoxColumn cellTx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
+            DataGridViewTextBoxColumn cellTx = (DataGridViewTextBoxColumn)dgvExpense.Columns["sumProduct"];
             cellTx.HeaderText = "Сумма";
-            cellTx.Name = "sumProduct";
+            //cellTx.Name = "sumProduct";
             cellTx.Width = 80;
             cellTx.ValueType = typeof(int);
             cellTx.ReadOnly = true;
             //cellTx.CellType = typeof(int);
-            dgvExpense.Columns.Add(cellTx);
+            //dgvExpense.Columns.Add(cellTx);
         }
 
         private void tbxSearchTovar_TextChanged(object sender, EventArgs e)
@@ -135,6 +139,7 @@ namespace tposDesktop
                     if (Int32.Parse(dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value.ToString()) == 1)
                     {
                         dgvExpense.Rows.RemoveAt(e.RowIndex);
+                        sumTable();
                     }
                     else
                     { 
@@ -173,6 +178,10 @@ namespace tposDesktop
                     if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         ordrow.packCount = oform.count;
+                        DataRow drOrder = ordrow;
+                        drOrder["sumProduct"] = ordrow.packCount*drP.price;
+                        
+                        //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                     }
                     else { return; }
                     DBclass.DS.orders.AddordersRow(ordrow);
@@ -183,6 +192,7 @@ namespace tposDesktop
                     //dgvExpense.Columns["productPrice"].Visible = true;
                     isNewExpense = false;
                 }
+                sumTable();
             }
  
         }
@@ -242,8 +252,8 @@ namespace tposDesktop
             }
             prDa.Update(DBclass.DS.orders);
             DataView dv = dgvExpense.DataSource as DataView;
-            
-            
+
+            lblSum.Text = "0";
             
             //dgvExpense.Columns["productName"].Visible = false;
             //dgvExpense.Columns["productPrice"].Visible = false;
@@ -266,21 +276,62 @@ namespace tposDesktop
         private void dgvExpense_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
              var grid = (DataGridView)sender;
-             if (grid.Columns[e.ColumnIndex].Name == "packCount"&&e.RowIndex>=0)
+             if ((grid.Columns[e.ColumnIndex].Name == "packCount" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["packCount"].Value!=DBNull.Value)
              {
-                 
-                 grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
-                 //var sum = DBclass.DS.orders.Sum(x => x.);
+                 int pck;
+                 if (Int32.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
+                 {
+                     grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
+                     sumTable();
+                 }
+                 else
+                 {
+                     grid.Rows[e.RowIndex].Cells["packCount"].Value = packCount;
+                 }
              }
             
              
         }
 
-        private void dgvExpense_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void sumTable()
         {
-
+            var sum = DBclass.DS.orders.AsEnumerable().Sum(x => x.Field<int>("sumProduct"));
+            lblSum.Text = sum.ToString(); 
+        }
+        object packCount = 0;
+        private void dgvExpense_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if ((grid.Columns[e.ColumnIndex].Name == "packCount" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["packCount"].Value!=DBNull.Value)
+            {
+                packCount = grid.Rows[e.RowIndex].Cells["packCount"].Value;
+            }
+        }
+        private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvExpense.CurrentCell.ColumnIndex == dgvExpense.Columns["packCount"].Index) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
+        private void exitMenu_Click(object sender, EventArgs e)
+        {
+            Program.window_type = 0;
+            this.Close();
+        }
         
         
     }

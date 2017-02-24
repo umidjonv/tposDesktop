@@ -44,6 +44,9 @@
             this.dataSetTpos = new tposDesktop.DataSetTpos();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
+            this.lblSum = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -56,18 +59,19 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.администраторToolStripMenuItem});
+            this.администраторToolStripMenuItem,
+            this.exitMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1081, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1081, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // администраторToolStripMenuItem
             // 
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
-            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(106, 19);
+            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
             this.администраторToolStripMenuItem.Text = "Администратор";
             // 
             // groupBox1
@@ -88,7 +92,7 @@
             // 
             this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
             this.tbxSearchTovar.Name = "tbxSearchTovar";
-            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 26);
+            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 30);
             this.tbxSearchTovar.TabIndex = 2;
             this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
             // 
@@ -135,15 +139,16 @@
             this.dgvExpense.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductName,
             this.productPrice});
+            this.dgvExpense.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvExpense.Location = new System.Drawing.Point(3, 29);
             this.dgvExpense.Name = "dgvExpense";
             this.dgvExpense.RowHeadersVisible = false;
             this.dgvExpense.RowTemplate.Height = 40;
             this.dgvExpense.Size = new System.Drawing.Size(554, 433);
             this.dgvExpense.TabIndex = 1;
+            this.dgvExpense.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvExpense_CellBeginEdit);
             this.dgvExpense.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellContentClick);
             this.dgvExpense.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
-            this.dgvExpense.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvExpense_CellValidating);
             this.dgvExpense.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellValueChanged);
             this.dgvExpense.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvExpense_RowsAdded);
             // 
@@ -182,7 +187,7 @@
             this.btnOplata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnOplata.BackColor = System.Drawing.Color.Red;
             this.btnOplata.ForeColor = System.Drawing.Color.White;
-            this.btnOplata.Location = new System.Drawing.Point(880, 519);
+            this.btnOplata.Location = new System.Drawing.Point(965, 520);
             this.btnOplata.Name = "btnOplata";
             this.btnOplata.Size = new System.Drawing.Size(115, 76);
             this.btnOplata.TabIndex = 4;
@@ -204,11 +209,41 @@
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
             // 
+            // lblSum
+            // 
+            this.lblSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSum.AutoSize = true;
+            this.lblSum.Location = new System.Drawing.Point(632, 566);
+            this.lblSum.Name = "lblSum";
+            this.lblSum.Size = new System.Drawing.Size(26, 29);
+            this.lblSum.TabIndex = 5;
+            this.lblSum.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(521, 566);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 29);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Итого:";
+            // 
+            // exitMenu
+            // 
+            this.exitMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitMenu.Name = "exitMenu";
+            this.exitMenu.Size = new System.Drawing.Size(65, 24);
+            this.exitMenu.Text = "Выход";
+            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 608);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSum);
             this.Controls.Add(this.btnOplata);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.btnInsert);
@@ -256,5 +291,8 @@
         private DataSetTposTableAdapters.ordersTableAdapter ordersTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn productPrice;
+        private System.Windows.Forms.Label lblSum;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem exitMenu;
     }
 }
