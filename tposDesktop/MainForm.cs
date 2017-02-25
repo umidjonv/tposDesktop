@@ -226,38 +226,43 @@ namespace tposDesktop
         bool isNewExpense = true;
         private void btnOplata_Click(object sender, EventArgs e)
         {
-            expenseTableAdapter expDa = new expenseTableAdapter();
-            expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
-            DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
-            DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
-            float sum = 0;
-            foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
+            if(MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
             {
-                sum += (float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value;
-            }
-            expRow.expenseDate = DateTime.Now;
-            expRow.debt = 0;
-            expRow.status = 0;
-            expRow.terminal = 0;
-            expRow.expSum = (int)sum;
-            expTable.Rows.Add(expRow);
-            
-            expDa.Update(expTable);
-            expDa.FillLast(expTable);
-            ordersTableAdapter prDa = new ordersTableAdapter();
-            DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = -1");
-            foreach (DataSetTpos.ordersRow oneRow in orRows)
-            {
-                oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId; 
-            }
-            prDa.Update(DBclass.DS.orders);
-            DataView dv = dgvExpense.DataSource as DataView;
+                expenseTableAdapter expDa = new expenseTableAdapter();
+                expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
+                DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
+                DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
+                float sum = 0;
+                foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
+                {
+                    sum += (float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value;
+                }
+                expRow.expenseDate = DateTime.Now;
+                expRow.debt = 0;
+                expRow.status = 0;
+                expRow.terminal = chbTerminal.Checked?1:0;
+                expRow.expSum = (int)sum;
+                expTable.Rows.Add(expRow);
 
-            lblSum.Text = "0";
+                expDa.Update(expTable);
+                expDa.FillLast(expTable);
+                ordersTableAdapter prDa = new ordersTableAdapter();
+                DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = -1");
+                foreach (DataSetTpos.ordersRow oneRow in orRows)
+                {
+                    oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId;
+                }
+                prDa.Update(DBclass.DS.orders);
+
+                DataView dv = dgvExpense.DataSource as DataView;
+
+                lblSum.Text = "0";
+
+                //dgvExpense.Columns["productName"].Visible = false;
+                //dgvExpense.Columns["productPrice"].Visible = false;
+                isNewExpense = true;
+            }
             
-            //dgvExpense.Columns["productName"].Visible = false;
-            //dgvExpense.Columns["productPrice"].Visible = false;
-            isNewExpense = true;
         }
 
         private void dgvExpense_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -332,7 +337,17 @@ namespace tposDesktop
             Program.window_type = 0;
             this.Close();
         }
-        
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+        string commentDebt=null;
+        private void chbDolg_CheckedChanged_1(object sender, EventArgs e)
+        {
+            commentForm commentf = new commentForm();
+            commentf.ShowDialog();                    
+        }
         
     }
 }

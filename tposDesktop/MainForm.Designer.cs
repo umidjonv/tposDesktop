@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.администраторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
             this.dgvTovar = new System.Windows.Forms.DataGridView();
@@ -46,7 +47,8 @@
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
             this.lblSum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.chbTerminal = new System.Windows.Forms.CheckBox();
+            this.chbDolg = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -73,6 +75,14 @@
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
             this.администраторToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
             this.администраторToolStripMenuItem.Text = "Администратор";
+            // 
+            // exitMenu
+            // 
+            this.exitMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exitMenu.Name = "exitMenu";
+            this.exitMenu.Size = new System.Drawing.Size(65, 24);
+            this.exitMenu.Text = "Выход";
+            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
             // 
             // groupBox1
             // 
@@ -166,20 +176,22 @@
             // 
             // btnInsert
             // 
+            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnInsert.Location = new System.Drawing.Point(429, 114);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(91, 85);
             this.btnInsert.TabIndex = 3;
-            this.btnInsert.Text = "button1";
+            this.btnInsert.Text = "Возврат";
             this.btnInsert.UseVisualStyleBackColor = true;
             // 
             // btn
             // 
+            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn.Location = new System.Drawing.Point(429, 205);
             this.btn.Name = "btn";
             this.btn.Size = new System.Drawing.Size(91, 85);
             this.btn.TabIndex = 3;
-            this.btn.Text = "button1";
+            this.btn.Text = "Долги";
             this.btn.UseVisualStyleBackColor = true;
             // 
             // btnOplata
@@ -229,19 +241,36 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Итого:";
             // 
-            // exitMenu
+            // chbTerminal
             // 
-            this.exitMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(65, 24);
-            this.exitMenu.Text = "Выход";
-            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            this.chbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chbTerminal.AutoSize = true;
+            this.chbTerminal.Location = new System.Drawing.Point(526, 515);
+            this.chbTerminal.Name = "chbTerminal";
+            this.chbTerminal.Size = new System.Drawing.Size(155, 33);
+            this.chbTerminal.TabIndex = 6;
+            this.chbTerminal.Text = "Терминал";
+            this.chbTerminal.UseVisualStyleBackColor = true;
+            // 
+            // chbDolg
+            // 
+            this.chbDolg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chbDolg.AutoSize = true;
+            this.chbDolg.Location = new System.Drawing.Point(754, 515);
+            this.chbDolg.Name = "chbDolg";
+            this.chbDolg.Size = new System.Drawing.Size(91, 33);
+            this.chbDolg.TabIndex = 6;
+            this.chbDolg.Text = "Долг";
+            this.chbDolg.UseVisualStyleBackColor = true;
+            this.chbDolg.CheckedChanged += new System.EventHandler(this.chbDolg_CheckedChanged_1);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 608);
+            this.Controls.Add(this.chbDolg);
+            this.Controls.Add(this.chbTerminal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSum);
             this.Controls.Add(this.btnOplata);
@@ -294,5 +323,7 @@
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem exitMenu;
+        private System.Windows.Forms.CheckBox chbTerminal;
+        private System.Windows.Forms.CheckBox chbDolg;
     }
 }
