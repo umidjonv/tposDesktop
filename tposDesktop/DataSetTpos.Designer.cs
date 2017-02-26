@@ -5983,8 +5983,8 @@ namespace tposDesktop.DataSetTposTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `expenseId`, `expenseDate`, `debt`, `comment`, `off`, `status`, `expType`," +
-                " `terminal`, `expSum` FROM `expense`";
+            this._commandCollection[0].CommandText = "SELECT        expenseId, expenseDate, debt, comment, off, status, expType, termin" +
+                "al, expSum\r\nFROM            expense\r\nWHERE        (status = 1)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;

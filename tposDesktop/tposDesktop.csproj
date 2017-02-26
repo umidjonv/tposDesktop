@@ -51,10 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForm.cs">
+    <Compile Include="DataSetTpos.cs">
+      <DependentUpon>DataSetTpos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm.Designer.cs">
+    <Compile Include="SubForms\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Authorize.cs" />
@@ -71,10 +74,10 @@
     <Compile Include="Classes\TablePanelDishes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="commentForm.cs">
+    <Compile Include="SubForms\commentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="commentForm.Designer.cs">
+    <Compile Include="SubForms\commentForm.Designer.cs">
       <DependentUpon>commentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSetTpos.Designer.cs">
@@ -100,22 +103,28 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderForm.cs">
+    <Compile Include="SubForms\FormDolgi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderForm.Designer.cs">
+    <Compile Include="SubForms\FormDolgi.Designer.cs">
+      <DependentUpon>FormDolgi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />
-    <EmbeddedResource Include="AddForm.resx">
+    <EmbeddedResource Include="SubForms\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\VirtualKeyboard.resx">
       <DependentUpon>VirtualKeyboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="commentForm.resx">
+    <EmbeddedResource Include="SubForms\commentForm.resx">
       <DependentUpon>commentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
@@ -127,7 +136,10 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderForm.resx">
+    <EmbeddedResource Include="SubForms\FormDolgi.resx">
+      <DependentUpon>FormDolgi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

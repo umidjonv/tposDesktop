@@ -21,6 +21,7 @@ namespace tposDesktop
         {
             InitializeComponent();
             db = new DBclass();
+            db.FillExpense();
             db.FillProduct();
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
             DataView dv = new DataView(DBclass.DS.product);
@@ -238,9 +239,14 @@ namespace tposDesktop
                     sum += (float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value;
                 }
                 expRow.expenseDate = DateTime.Now;
-                expRow.debt = 0;
-                expRow.status = 0;
-                expRow.terminal = chbTerminal.Checked?1:0;
+                expRow.debt = chbDolg.Checked ? 1 : 0;
+                expRow.status = chbDolg.Checked ? 1 : 0;
+                expRow.comment = chbDolg.Checked ? commentDebt : "";
+                if (chbTerminal.Checked)
+                {
+                    expRow.terminal = tbxTerminal.Text != "" ? Convert.ToInt32(tbxTerminal.Text) : 0;
+                }
+                else expRow.terminal = 0;
                 expRow.expSum = (int)sum;
                 expTable.Rows.Add(expRow);
 
@@ -261,6 +267,9 @@ namespace tposDesktop
                 //dgvExpense.Columns["productName"].Visible = false;
                 //dgvExpense.Columns["productPrice"].Visible = false;
                 isNewExpense = true;
+                chbDolg.Checked = false;
+                commentDebt = "";
+                chbTerminal.Checked = false;
             }
             
         }
@@ -314,17 +323,17 @@ namespace tposDesktop
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            e.Control.KeyPress -= new KeyPressEventHandler(Text_KeyPress);
             if (dgvExpense.CurrentCell.ColumnIndex == dgvExpense.Columns["packCount"].Index) //Desired Column
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
                 {
-                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                    tb.KeyPress += new KeyPressEventHandler(Text_KeyPress);
                 }
             }
         }
-        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        private void Text_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -338,15 +347,42 @@ namespace tposDesktop
             this.Close();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
         string commentDebt=null;
+        int terminalSum = 0;
         private void chbDolg_CheckedChanged_1(object sender, EventArgs e)
         {
-            commentForm commentf = new commentForm();
-            commentf.ShowDialog();                    
+            CheckBox chb = sender as CheckBox;
+            if (chb.Checked && DBclass.DS.orders.Select("expenseId = -1").Length > 0)
+            {
+                commentForm commentf = new commentForm();
+                if (commentf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    commentDebt = commentf.comment;
+                }
+                else chbDolg.Checked = false;
+            }
+            else if (chb.Checked)
+                chb.Checked = false;
+            
+        }
+
+        private void chbTerminal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbTerminal.Checked && DBclass.DS.orders.Select("expenseId = -1").Length > 0)
+            {
+                tbxTerminal.Visible = true;
+            }
+            else if (chbTerminal.Checked)
+            { chbTerminal.Checked = false; }
+            else
+            { tbxTerminal.Visible = false; }
+        }
+
+        private void btnDolg_Click(object sender, EventArgs e)
+        {
+            FormDolgi dolgi = new FormDolgi();
+            dolgi.ShowDialog();
         }
         
     }

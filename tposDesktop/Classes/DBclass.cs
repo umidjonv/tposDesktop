@@ -6,6 +6,7 @@ using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using tposDesktop;
+using tposDesktop.DataSetTposTableAdapters;
 
 namespace Classes.DB
 {
@@ -67,6 +68,12 @@ namespace Classes.DB
             //}
 
             
+        }
+        public void FillExpense()
+        {
+            expenseTableAdapter daEx = new expenseTableAdapter();
+            daEx.Fill(DS.expense);
+            //DS.expense
         }
          
 
