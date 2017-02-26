@@ -38,7 +38,7 @@ namespace tposDesktop
                 DataSetTpos.productRow prRow = DBclass.DS.product.NewproductRow();
                 prRow.name = tbxName.Text;
                 prRow.barcode = tbxShtrix.Text;
-                prRow.measureId = 0;
+                prRow.measureId = 2;
                 prRow.pack = 0;
                 prRow.status = 0;
                 prRow.price = Convert.ToInt32(tbxPrice.Text);

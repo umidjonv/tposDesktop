@@ -169,7 +169,7 @@ namespace tposDesktop
 
         private void AddToOrders(string barcode)
         {
-            DataRow[] dr = DBclass.DS.product.Select("barcode = " + barcode);
+            DataRow[] dr = DBclass.DS.product.Select("barcode = '" + barcode+"'");
             AddProduct(dr, true, barcode);
 
         }

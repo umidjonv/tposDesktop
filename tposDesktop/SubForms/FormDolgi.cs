@@ -77,15 +77,20 @@ namespace tposDesktop
                 debRow.expenseId = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["expenseId"].Value);
                 debRow.payDate = DateTime.Now;
                 debRow.terminal = 0;
-
+                
                 //debRow.
-                DBclass.DS.expense.Select("expenseId = " + grid.Rows[e.RowIndex].Cells["expenseId"].Value.ToString())[0]["status"] = 0;
+                DataRow[] drs = DBclass.DS.expense.Select("expenseId = " + grid.Rows[e.RowIndex].Cells["expenseId"].Value.ToString());
+                if (drs.Length != 0)
+                {
+                    drs[0]["terminal"] = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["terminal"].Value);
+                    drs[0]["status"] = 0;
+                }
                 DBclass.DS.debt.AdddebtRow(debRow);
                 DataSetTposTableAdapters.expenseTableAdapter daExp = new DataSetTposTableAdapters.expenseTableAdapter();
                 daExp.Update(DBclass.DS.expense);
                 DataSetTposTableAdapters.debtTableAdapter daDebt = new DataSetTposTableAdapters.debtTableAdapter();
                 daDebt.Update(DBclass.DS.debt);
-
+                dgvDolgi.Refresh();
             }else
             if (e.RowIndex >= 0)
             {
