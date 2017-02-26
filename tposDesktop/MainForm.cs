@@ -46,8 +46,8 @@ namespace tposDesktop
 
         void scan_ScannerEvent(object source, ScannerEventArgs e)
         {
-
-            AddToOrders(e.GetInfo());
+            this.Invoke(new SetLabel(AddToOrders), new object[] { e.GetInfo() });
+            
             
             
         }
