@@ -53,6 +53,7 @@
             this.dgvDolgi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDolgi_CellClick);
             this.dgvDolgi.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvDolgi_CellPainting);
             this.dgvDolgi.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDolgi_RowEnter);
+            this.dgvDolgi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDolgi_KeyPress);
             // 
             // FormDolgi
             // 

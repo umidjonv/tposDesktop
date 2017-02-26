@@ -18,8 +18,9 @@ namespace tposDesktop
         public Scanner()
         {
             rd = new Serial.ReadPort();
-            port = rd.OpenPort("COM3", 9600, 8, 1000, 300);
+            port = rd.OpenPort(Properties.Settings.Default.SerialPort, 9600, 8, 1000, 300);
             BackgroundWorker bg = new BackgroundWorker();
+            //ScannerEvent = new ScannerEventHandler(
             bg.DoWork += bg_DoWork;
             bg.RunWorkerAsync();
  
@@ -28,6 +29,7 @@ namespace tposDesktop
         void bg_DoWork(object sender, DoWorkEventArgs e)
         {
             //bool f = false;
+            string full = "";
             while (true)
             {
                 if (isWorked == false)
@@ -35,12 +37,29 @@ namespace tposDesktop
                     break;
                 }
                 string str = rd.ReadResponse(port, 100, "not found");
-                if (str != "" && str != null)
-                {
+                //if (str != "" && str != null)
+                //{
                     
-                    ScannerEvent(this, new ScannerEventArgs(str));
+                    
+                //}
+
+                if (str != null && (str != "" && str != "No data"))
+                {
+                    full += str.Replace("\r\n", "");
+                    
                 }
-                System.Threading.Thread.Sleep(500);
+                else if ((str == "" || str == "No data") && full != "")
+                {
+
+                    full = full.Replace("/r/n", "");
+                    ScannerEvent(this, new ScannerEventArgs(full));
+                    full = "";
+                    
+                }
+                
+
+
+                System.Threading.Thread.Sleep(100);
             }
         }
 

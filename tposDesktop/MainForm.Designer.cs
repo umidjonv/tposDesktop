@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.администраторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,8 +40,6 @@
             this.dgvExpense = new System.Windows.Forms.DataGridView();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.btnDolg = new System.Windows.Forms.Button();
             this.btnOplata = new System.Windows.Forms.Button();
             this.lblSum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +49,8 @@
             this.dataSetTpos = new tposDesktop.DataSetTpos();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
+            this.btnDolg = new System.Windows.Forms.Button();
+            this.btnVozvrat = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -138,7 +139,7 @@
             this.groupBox2.Size = new System.Drawing.Size(557, 474);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Счет";
+            this.groupBox2.Text = "Счёт на расход ";
             // 
             // dgvExpense
             // 
@@ -174,27 +175,6 @@
             this.productPrice.HeaderText = "Цена";
             this.productPrice.Name = "productPrice";
             this.productPrice.ReadOnly = true;
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnInsert.Location = new System.Drawing.Point(429, 114);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(91, 85);
-            this.btnInsert.TabIndex = 3;
-            this.btnInsert.Text = "Возврат";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            // 
-            // btnDolg
-            // 
-            this.btnDolg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnDolg.Location = new System.Drawing.Point(429, 205);
-            this.btnDolg.Name = "btnDolg";
-            this.btnDolg.Size = new System.Drawing.Size(91, 85);
-            this.btnDolg.TabIndex = 3;
-            this.btnDolg.Text = "Долги";
-            this.btnDolg.UseVisualStyleBackColor = true;
-            this.btnDolg.Click += new System.EventHandler(this.btnDolg_Click);
             // 
             // btnOplata
             // 
@@ -277,6 +257,32 @@
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
             // 
+            // btnDolg
+            // 
+            this.btnDolg.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnDolg.BackgroundImage = global::tposDesktop.Properties.Resources.qarz;
+            this.btnDolg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDolg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDolg.Location = new System.Drawing.Point(429, 205);
+            this.btnDolg.Name = "btnDolg";
+            this.btnDolg.Size = new System.Drawing.Size(91, 85);
+            this.btnDolg.TabIndex = 3;
+            this.btnDolg.UseVisualStyleBackColor = false;
+            this.btnDolg.Click += new System.EventHandler(this.btnDolg_Click);
+            // 
+            // btnVozvrat
+            // 
+            this.btnVozvrat.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnVozvrat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVozvrat.BackgroundImage")));
+            this.btnVozvrat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVozvrat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnVozvrat.Location = new System.Drawing.Point(429, 105);
+            this.btnVozvrat.Name = "btnVozvrat";
+            this.btnVozvrat.Size = new System.Drawing.Size(91, 94);
+            this.btnVozvrat.TabIndex = 3;
+            this.btnVozvrat.UseVisualStyleBackColor = false;
+            this.btnVozvrat.Click += new System.EventHandler(this.btnVozvrat_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -289,7 +295,7 @@
             this.Controls.Add(this.lblSum);
             this.Controls.Add(this.btnOplata);
             this.Controls.Add(this.btnDolg);
-            this.Controls.Add(this.btnInsert);
+            this.Controls.Add(this.btnVozvrat);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -326,7 +332,7 @@
         private System.Windows.Forms.DataGridView dgvTovar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvExpense;
-        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnVozvrat;
         private System.Windows.Forms.Button btnDolg;
         private System.Windows.Forms.Button btnOplata;
         private DataSetTpos dataSetTpos;

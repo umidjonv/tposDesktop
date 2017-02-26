@@ -17,6 +17,10 @@ namespace tposDesktop
         DBclass db;
         Scanner scan;
         DataSetTpos.ordersDataTable order;
+        string commentDebt = null;
+        int terminalSum = 0;
+        bool isNewExpense = true;
+        object packCount = 0;
         public MainForm()
         {
             InitializeComponent();
@@ -33,8 +37,8 @@ namespace tposDesktop
             
             dv.RowFilter = tbxSearchTovar.Text;
             dgvExpense.EditingControlShowing += dgv_EditingControlShowing;
-            //scan = new Scanner();
-            //scan.ScannerEvent += scan_ScannerEvent;
+            scan = new Scanner();
+            scan.ScannerEvent += scan_ScannerEvent;
 
         }
 
@@ -42,7 +46,10 @@ namespace tposDesktop
 
         void scan_ScannerEvent(object source, ScannerEventArgs e)
         {
-            MessageBox.Show(e.GetInfo());
+
+            AddToOrders(e.GetInfo());
+            
+            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -157,6 +164,17 @@ namespace tposDesktop
         private void AddToOrders(int id)
         {
             DataRow[] dr = DBclass.DS.product.Select("productId = " + id);
+            AddProduct(dr, false, null);
+        }
+
+        private void AddToOrders(string barcode)
+        {
+            DataRow[] dr = DBclass.DS.product.Select("barcode = " + barcode);
+            AddProduct(dr, true, barcode);
+
+        }
+        private void AddProduct(DataRow[] dr, bool isBarcode, string barcode)
+        {
             if (dr.Length != 0)
             {
                 DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
@@ -180,8 +198,8 @@ namespace tposDesktop
                     {
                         ordrow.packCount = oform.count;
                         DataRow drOrder = ordrow;
-                        drOrder["sumProduct"] = ordrow.packCount*drP.price;
-                        
+                        drOrder["sumProduct"] = ordrow.packCount * drP.price;
+
                         //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                     }
                     else { return; }
@@ -195,7 +213,18 @@ namespace tposDesktop
                 }
                 sumTable();
             }
+            else if (isBarcode&& UserValues.role=="admin")
+            {
+                AddForm addForm = new AddForm(true, barcode);
+                if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    productTableAdapter daProduct = new productTableAdapter();
+                    daProduct.Fill(DBclass.DS.product);
+
+                     
+                }
  
+            }
         }
         private void dgvSchet_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -224,7 +253,7 @@ namespace tposDesktop
             }
             
         }
-        bool isNewExpense = true;
+        
         private void btnOplata_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
@@ -242,6 +271,7 @@ namespace tposDesktop
                 expRow.debt = chbDolg.Checked ? 1 : 0;
                 expRow.status = chbDolg.Checked ? 1 : 0;
                 expRow.comment = chbDolg.Checked ? commentDebt : "";
+                expRow.expType = vozvrat ? 1 : 0;
                 if (chbTerminal.Checked)
                 {
                     expRow.terminal = tbxTerminal.Text != "" ? Convert.ToInt32(tbxTerminal.Text) : 0;
@@ -306,13 +336,17 @@ namespace tposDesktop
             
              
         }
-
+        delegate void SetLabel(string str);
+        private void SetTBX(string str)
+        {
+            lblSum.Text = str;
+        }
         private void sumTable()
         {
             var sum = DBclass.DS.orders.AsEnumerable().Sum(x => x.Field<int>("sumProduct"));
-            lblSum.Text = sum.ToString(); 
+            this.Invoke(new SetLabel(SetTBX), new object[]{ sum.ToString() }); 
         }
-        object packCount = 0;
+        
         private void dgvExpense_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             var grid = (DataGridView)sender;
@@ -348,8 +382,7 @@ namespace tposDesktop
         }
 
        
-        string commentDebt=null;
-        int terminalSum = 0;
+        
         private void chbDolg_CheckedChanged_1(object sender, EventArgs e)
         {
             CheckBox chb = sender as CheckBox;
@@ -383,6 +416,22 @@ namespace tposDesktop
         {
             FormDolgi dolgi = new FormDolgi();
             dolgi.ShowDialog();
+        }
+        bool vozvrat = false;
+        private void btnVozvrat_Click(object sender, EventArgs e)
+        {
+            if(!vozvrat)
+            {
+                this.btnVozvrat.BackgroundImage = (System.Drawing.Image)(Properties.Resources.back);
+                groupBox2.Text = "Возврат товара";
+                vozvrat = true;
+            }else
+            {
+                this.btnVozvrat.BackgroundImage = (System.Drawing.Image)(Properties.Resources.cart);
+                groupBox2.Text = "Расход товара";
+                vozvrat = false;
+            }
+            
         }
         
     }

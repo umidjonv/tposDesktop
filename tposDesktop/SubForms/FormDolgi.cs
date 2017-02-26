@@ -118,5 +118,11 @@ namespace tposDesktop
         {
             
         }
+
+        private void dgvDolgi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 27)
+            { this.Close(); }
+        }
     }
 }

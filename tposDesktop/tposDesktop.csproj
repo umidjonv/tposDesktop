@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\NumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
@@ -118,6 +121,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />
+    <Compile Include="SubForms\Ports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\Ports.Designer.cs">
+      <DependentUpon>Ports.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SubForms\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +182,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icoVozvrat.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\qarz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
