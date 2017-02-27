@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.администраторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
@@ -63,26 +63,28 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.администраторToolStripMenuItem,
+            this.menuAdmin,
             this.exitMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1081, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1081, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // администраторToolStripMenuItem
+            // menuAdmin
             // 
-            this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
-            this.администраторToolStripMenuItem.Size = new System.Drawing.Size(106, 19);
-            this.администраторToolStripMenuItem.Text = "Администратор";
+            this.menuAdmin.Name = "menuAdmin";
+            this.menuAdmin.Size = new System.Drawing.Size(131, 24);
+            this.menuAdmin.Text = "Администратор";
+            this.menuAdmin.Visible = false;
+            this.menuAdmin.Click += new System.EventHandler(this.администраторToolStripMenuItem_Click);
             // 
             // exitMenu
             // 
             this.exitMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(53, 19);
+            this.exitMenu.Size = new System.Drawing.Size(65, 24);
             this.exitMenu.Text = "Выход";
             this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
             // 
@@ -104,8 +106,8 @@
             // 
             this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
             this.tbxSearchTovar.Name = "tbxSearchTovar";
-            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 26);
-            this.tbxSearchTovar.TabIndex = 2;
+            this.tbxSearchTovar.Size = new System.Drawing.Size(399, 30);
+            this.tbxSearchTovar.TabIndex = 0;
             this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
             // 
             // dgvTovar
@@ -124,7 +126,7 @@
             this.dgvTovar.RowTemplate.Height = 40;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTovar.Size = new System.Drawing.Size(405, 490);
-            this.dgvTovar.TabIndex = 0;
+            this.dgvTovar.TabIndex = 3;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             // 
@@ -163,6 +165,7 @@
             this.dgvExpense.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             this.dgvExpense.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellValueChanged);
             this.dgvExpense.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvExpense_RowsAdded);
+            this.dgvExpense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvExpense_KeyPress);
             // 
             // ProductName
             // 
@@ -184,7 +187,7 @@
             this.btnOplata.Location = new System.Drawing.Point(965, 520);
             this.btnOplata.Name = "btnOplata";
             this.btnOplata.Size = new System.Drawing.Size(115, 76);
-            this.btnOplata.TabIndex = 4;
+            this.btnOplata.TabIndex = 2;
             this.btnOplata.Text = "Оплата";
             this.btnOplata.UseVisualStyleBackColor = false;
             this.btnOplata.Click += new System.EventHandler(this.btnOplata_Click);
@@ -195,7 +198,7 @@
             this.lblSum.AutoSize = true;
             this.lblSum.Location = new System.Drawing.Point(632, 566);
             this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(20, 24);
+            this.lblSum.Size = new System.Drawing.Size(26, 29);
             this.lblSum.TabIndex = 5;
             this.lblSum.Text = "0";
             // 
@@ -205,7 +208,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(521, 566);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 24);
+            this.label1.Size = new System.Drawing.Size(88, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "Итого:";
             // 
@@ -213,9 +216,9 @@
             // 
             this.chbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chbTerminal.AutoSize = true;
-            this.chbTerminal.Location = new System.Drawing.Point(734, 520);
+            this.chbTerminal.Location = new System.Drawing.Point(734, 515);
             this.chbTerminal.Name = "chbTerminal";
-            this.chbTerminal.Size = new System.Drawing.Size(118, 28);
+            this.chbTerminal.Size = new System.Drawing.Size(155, 33);
             this.chbTerminal.TabIndex = 6;
             this.chbTerminal.Text = "Терминал";
             this.chbTerminal.UseVisualStyleBackColor = true;
@@ -225,9 +228,9 @@
             // 
             this.chbDolg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chbDolg.AutoSize = true;
-            this.chbDolg.Location = new System.Drawing.Point(526, 520);
+            this.chbDolg.Location = new System.Drawing.Point(526, 515);
             this.chbDolg.Name = "chbDolg";
-            this.chbDolg.Size = new System.Drawing.Size(73, 28);
+            this.chbDolg.Size = new System.Drawing.Size(91, 33);
             this.chbDolg.TabIndex = 6;
             this.chbDolg.Text = "Долг";
             this.chbDolg.UseVisualStyleBackColor = true;
@@ -238,8 +241,8 @@
             this.tbxTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tbxTerminal.Location = new System.Drawing.Point(734, 568);
             this.tbxTerminal.Name = "tbxTerminal";
-            this.tbxTerminal.Size = new System.Drawing.Size(173, 28);
-            this.tbxTerminal.TabIndex = 7;
+            this.tbxTerminal.Size = new System.Drawing.Size(173, 34);
+            this.tbxTerminal.TabIndex = 4;
             this.tbxTerminal.Visible = false;
             this.tbxTerminal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_KeyPress);
             // 
@@ -275,6 +278,8 @@
             this.btnVozvrat.BackColor = System.Drawing.Color.LimeGreen;
             this.btnVozvrat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVozvrat.BackgroundImage")));
             this.btnVozvrat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVozvrat.FlatAppearance.BorderColor = System.Drawing.Color.Khaki;
+            this.btnVozvrat.FlatAppearance.BorderSize = 3;
             this.btnVozvrat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnVozvrat.Location = new System.Drawing.Point(429, 105);
             this.btnVozvrat.Name = "btnVozvrat";
@@ -285,7 +290,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 608);
             this.Controls.Add(this.tbxTerminal);
@@ -326,7 +331,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem администраторToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuAdmin;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbxSearchTovar;
         private System.Windows.Forms.DataGridView dgvTovar;

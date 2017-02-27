@@ -29,3 +29,5 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources

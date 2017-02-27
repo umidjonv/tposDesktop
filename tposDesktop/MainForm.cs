@@ -37,8 +37,19 @@ namespace tposDesktop
             
             dv.RowFilter = tbxSearchTovar.Text;
             dgvExpense.EditingControlShowing += dgv_EditingControlShowing;
-            scan = new Scanner();
-            scan.ScannerEvent += scan_ScannerEvent;
+            if(UserValues.role == "admin")
+            {
+                menuAdmin.Visible = true;
+            }
+            try
+            {
+                scan = new Scanner();
+                scan.ScannerEvent += scan_ScannerEvent;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -54,7 +65,9 @@ namespace tposDesktop
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Program.window_type!=1)
+            scan.isWorked = false;
+            scan.rd.ClosePort(scan.port);
+            if(Program.window_type!=1&& Program.window_type!=3)
             Program.window_type = 0;
 
         }
@@ -215,7 +228,7 @@ namespace tposDesktop
             }
             else if (isBarcode&& UserValues.role=="admin")
             {
-                AddForm addForm = new AddForm(true, barcode);
+                AddForm addForm = new AddForm(barcode);
                 if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     productTableAdapter daProduct = new productTableAdapter();
@@ -432,6 +445,26 @@ namespace tposDesktop
                 vozvrat = false;
             }
             
+        }
+
+        private void dgvExpense_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnOplata_Click(btnOplata, new EventArgs());
+            }
+        }
+
+        private void администраторToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (UserValues.role == "admin")
+            {
+                Program.window_type = 3;
+                
+                this.Close();
+
+ 
+            }
         }
         
     }

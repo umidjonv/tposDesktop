@@ -11,8 +11,8 @@ namespace tposDesktop
 {
     class Scanner
     {
-        SerialPort port;
-        Serial.ReadPort rd;
+        public SerialPort port;
+        public Serial.ReadPort rd;
         public event ScannerEventHandler ScannerEvent;
         public bool isWorked = true;
         public Scanner()
