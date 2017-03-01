@@ -52,7 +52,7 @@ namespace Classes
             dic["Login"] = "Логин";
             dic["Pass"] = "Пароль";
             dic["Login_Enter"] = "Вход";
-            dic["Err_Login"] = "Логин или пароль пользователя введён неверно";
+            dic["Err_Login"] = "Логин или пароль введён неверно";
 
         }
 

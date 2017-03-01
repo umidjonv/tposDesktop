@@ -31,3 +31,7 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.commentFor
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\System.Web.DataVisualization.Design.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\System.Web.DataVisualization.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\System.Windows.Forms.DataVisualization.Design.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\System.Windows.Forms.DataVisualization.dll

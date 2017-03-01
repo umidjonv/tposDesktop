@@ -11,6 +11,7 @@ using Classes;
 using Classes.DB;
 using tposDesktop.DataSetTposTableAdapters;
 
+
 namespace tposDesktop
 {
     public partial class FormAdmin : Form
@@ -26,6 +27,11 @@ namespace tposDesktop
             DataView dv = new DataView(DBclass.DS.product);
             dv.RowFilter = "";
             dgvTovar.DataSource = dv;
+            infoLoad(); 
+            realizeLoad();
+            expenseLoad();
+            balanceLoad();
+            infoGraph();
             try
             {
                 scanner = new Scanner();
@@ -103,6 +109,102 @@ namespace tposDesktop
             scanner.rd.ClosePort(scanner.port);
             if (Program.window_type != 2 && Program.window_type != 1)
                 Program.window_type = 0;
+        }
+
+        private void infoLoad()
+        {
+            DataView info = new DataView(DBclass.DS.info);
+            info.RowFilter = "";// "Dates = " + reportDate.Value.ToString("yyyy-MM-dd");
+            infoGrid.DataSource = info;
+
+            this.infoTableAdapter1.Fill(DBclass.DS.info);
+            infoGrid.Columns["Dates"].HeaderText = "Товар";
+            infoGrid.Columns["proceed"].HeaderText = "Выручка";
+            infoGrid.Columns["nal"].HeaderText = "Наличные";
+            infoGrid.Columns["back"].HeaderText = "Возврат";
+            infoGrid.Columns["terminal"].HeaderText = "Терминал";
+            
+        }
+
+        private void infoGraph()
+        {
+            DataTable table = DBclass.DS.Tables["info"];
+            DataRow[] rows = table.Select();
+            try
+            {
+                foreach (var val in rows)
+                {
+                    this.infoChart.Series["Выручка"].Points.AddXY(val["Dates"].ToString(), (val["proceed"] == null) ? 1 : val["proceed"]);
+                    this.infoChart.Series["Наличка"].Points.AddXY(val["Dates"].ToString(), (val["nal"] == null) ? 1 : val["nal"]);
+                    this.infoChart.Series["Терминал"].Points.AddXY(val["Dates"].ToString(), (val["terminal"] == null) ? 1 : val["terminal"]);
+                    this.infoChart.Series["Возврат"].Points.AddXY(val["Dates"].ToString(), (val["back"] == null) ? 1 : val["back"]);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private void realizeLoad()
+        {
+            DataView realize = new DataView(DBclass.DS.realizeview);
+            realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
+            realizeGrid.DataSource = realize;
+
+            this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+            realizeGrid.Columns["name"].HeaderText = "Наименование";
+            realizeGrid.Columns["fakturaDate"].Visible = false;
+            realizeGrid.Columns["count"].HeaderText = "Кол-во";
+            realizeGrid.Columns["price"].HeaderText = "Цена";
+            realizeGrid.Columns["name"].Width = 200;
+            realizeGrid.Columns["fakturaId"].Visible = false;
+        }
+
+        private void expenseLoad()
+        {
+            DataView expense = new DataView(DBclass.DS.expenseview);
+            expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+            expenseGrid.DataSource = expense;
+
+            this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
+            expenseGrid.Columns["name"].HeaderText = "Наименование";
+            expenseGrid.Columns["expenseDate"].Visible = false;
+            expenseGrid.Columns["count"].HeaderText = "Кол-во";
+            expenseGrid.Columns["name"].Width = 200;
+            expenseGrid.Columns["pack"].Visible = false;
+        }
+
+        private void balanceLoad()
+        {
+            DataView balance = new DataView(DBclass.DS.balanceview);
+            balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+            balanceGrid.DataSource = balance;
+
+            this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
+            balanceGrid.Columns["name"].HeaderText = "Наименование";
+            balanceGrid.Columns["prodId"].HeaderText = "№";
+            balanceGrid.Columns["balanceDate"].Visible = false;
+            balanceGrid.Columns["balanceId"].Visible = false;
+            balanceGrid.Columns["productId"].Visible = false;
+            balanceGrid.Columns["measureId"].Visible = false;
+            balanceGrid.Columns["barcode"].Visible = false;
+            balanceGrid.Columns["status"].Visible = false;
+            balanceGrid.Columns["price"].Visible = false;
+            balanceGrid.Columns["pack"].Visible = false;
+            balanceGrid.Columns["endCount"].HeaderText = "Кол-во";
+            balanceGrid.Columns["curEndCount"].HeaderText = "Кол-во";
+            balanceGrid.Columns["name"].Width = 200;
+        }
+
+        
+
+        private void reportDate_ValueChanged(object sender, EventArgs e)
+        {
+            expenseLoad();
+            infoLoad();
+            realizeLoad();
+            balanceLoad();
         }
     }
 }

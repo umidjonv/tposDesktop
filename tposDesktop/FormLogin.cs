@@ -29,7 +29,7 @@ namespace tposDesktop
             tbxLogin.Text = lang.Value("Login");
             tbxPass.Text = lang.Value("Pass");
             lblErr.Text = lang.Value("Err_Login");
-
+            lblErr.BackColor = Color.FromArgb(75, 192, 255);
 
         }
 
@@ -61,7 +61,7 @@ namespace tposDesktop
             //lblPassError.Visible = false;
             DataTable table = DBclass.DS.Tables["user"];
             string hash = CalculateMD5Hash(CalculateMD5Hash(tbxPass.Text));
-            DataRow[] rows = table.Select("password='" + hash+"'");
+            DataRow[] rows = table.Select("username='"+tbxLogin.Text+"' and password='" + hash+"'");
             if (rows.Length != 0)
             {
                 foreach (DataRow dr in rows)
@@ -139,6 +139,12 @@ namespace tposDesktop
             {
                 buttonLogin_Click(null, null);
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Program.window_type = 0;
         }
     }
 }

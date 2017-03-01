@@ -35,6 +35,7 @@
             this.tbxPass = new System.Windows.Forms.TextBox();
             this.lblErr = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -46,7 +47,7 @@
             // tbxLogin
             // 
             this.tbxLogin.ForeColor = System.Drawing.Color.Silver;
-            this.tbxLogin.Location = new System.Drawing.Point(263, 119);
+            this.tbxLogin.Location = new System.Drawing.Point(278, 234);
             this.tbxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxLogin.Name = "tbxLogin";
             this.tbxLogin.Size = new System.Drawing.Size(180, 34);
@@ -58,7 +59,7 @@
             // tbxPass
             // 
             this.tbxPass.ForeColor = System.Drawing.Color.Silver;
-            this.tbxPass.Location = new System.Drawing.Point(263, 160);
+            this.tbxPass.Location = new System.Drawing.Point(278, 272);
             this.tbxPass.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxPass.Name = "tbxPass";
             this.tbxPass.PasswordChar = '*';
@@ -74,7 +75,7 @@
             this.lblErr.AutoSize = true;
             this.lblErr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblErr.ForeColor = System.Drawing.Color.Red;
-            this.lblErr.Location = new System.Drawing.Point(260, 244);
+            this.lblErr.Location = new System.Drawing.Point(247, 175);
             this.lblErr.Name = "lblErr";
             this.lblErr.Size = new System.Drawing.Size(52, 20);
             this.lblErr.TabIndex = 1;
@@ -83,7 +84,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(263, 198);
+            this.btnLogin.Location = new System.Drawing.Point(278, 315);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(180, 34);
             this.btnLogin.TabIndex = 2;
@@ -91,19 +92,40 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(669, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(30, 30);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FormLogin
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::tposDesktop.Properties.Resources._11111;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(724, 376);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblErr);
             this.Controls.Add(this.tbxPass);
             this.Controls.Add(this.tbxLogin);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FormLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm);
             this.ResumeLayout(false);
@@ -118,6 +140,7 @@
         private System.Windows.Forms.TextBox tbxPass;
         private System.Windows.Forms.Label lblErr;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnExit;
 
     }
 }
