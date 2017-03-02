@@ -248,6 +248,7 @@ namespace tposDesktop
                 {
                     DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     dgvCell.Value = "+";
+                    
                 }
                 else 
                 {
