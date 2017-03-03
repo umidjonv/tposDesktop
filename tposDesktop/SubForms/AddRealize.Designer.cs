@@ -1,6 +1,6 @@
 ﻿namespace tposDesktop
 {
-    partial class AddForm
+    partial class AddRealize
     {
         /// <summary>
         /// Required designer variable.
@@ -51,10 +51,12 @@
             // 
             // tbxName
             // 
+            this.tbxName.Enabled = false;
             this.tbxName.Location = new System.Drawing.Point(198, 55);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(469, 34);
             this.tbxName.TabIndex = 1;
+            this.tbxName.TabStop = false;
             // 
             // tbxShtrix
             // 
@@ -63,6 +65,7 @@
             this.tbxShtrix.Name = "tbxShtrix";
             this.tbxShtrix.Size = new System.Drawing.Size(469, 34);
             this.tbxShtrix.TabIndex = 1;
+            this.tbxShtrix.TabStop = false;
             // 
             // label2
             // 
@@ -109,7 +112,7 @@
             this.tbxPrice.Location = new System.Drawing.Point(198, 273);
             this.tbxPrice.Name = "tbxPrice";
             this.tbxPrice.Size = new System.Drawing.Size(148, 34);
-            this.tbxPrice.TabIndex = 4;
+            this.tbxPrice.TabIndex = 1;
             this.tbxPrice.Text = "0";
             // 
             // tbxPack
@@ -117,10 +120,10 @@
             this.tbxPack.Location = new System.Drawing.Point(198, 198);
             this.tbxPack.Name = "tbxPack";
             this.tbxPack.Size = new System.Drawing.Size(148, 34);
-            this.tbxPack.TabIndex = 3;
+            this.tbxPack.TabIndex = 0;
             this.tbxPack.Text = "0";
             // 
-            // AddForm
+            // AddRealize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -139,8 +142,8 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddForm";
-            this.Text = "Добавить товар";
+            this.Name = "AddRealize";
+            this.Text = "Приходовать товар";
             this.ResumeLayout(false);
             this.PerformLayout();
 

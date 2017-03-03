@@ -28,6 +28,16 @@ namespace tposDesktop
             dv.RowFilter = "";
             dgvTovar.DataSource = dv;
 
+            
+            dv.RowFilter = "";
+            dgvTovarPrixod.DataSource = dv;
+
+            //DataGridViewButtonColumn cellBtn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            //cellBtn2.HeaderText = "";
+            //cellBtn2.Name = "colBtnDel";
+            //cellBtn2.Width = 100;
+            //realizeGrid.Columns.Add(cellBtn2);
+            
             this.infoTableAdapter1.Fill(DBclass.DS.info);
             DataView info = new DataView(DBclass.DS.info);
             info.RowFilter = "";// "Dates = " + reportDate.Value.ToString("yyyy-MM-dd");
@@ -74,7 +84,16 @@ namespace tposDesktop
         {
             string barcode = text;
             DataRow[] dr = DBclass.DS.product.Select("barcode = '" + barcode + "'");
-            AddProduct(dr, barcode);
+            switch(tabControl1.SelectedTab.Name)
+            {
+                case "tabTovar":
+                AddProduct(dr, barcode);
+                break;
+                case "tabPrixod":
+                AddPrixod(dr, barcode);
+                break;
+
+            }
         }
 
         private void AddProduct(DataRow[] dr, string barcode)
@@ -101,7 +120,37 @@ namespace tposDesktop
 
             }
         }
+        bool isPrixod = false;
 
+        private void AddPrixod(DataRow[] dr, string barcode)
+        {
+            DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
+
+            if (!isPrixod&&MessageBox.Show("Начать приход товаров?", "Приход", MessageBoxButtons.YesNo,  MessageBoxIcon.Question)== System.Windows.Forms.DialogResult.Yes)
+            {
+
+                DataSetTpos.fakturaRow fkrow = DBclass.DS.faktura.NewfakturaRow();
+                fkrow.fakturaDate = DateTime.Now;
+                fakturaTableAdapter daFaktura = new fakturaTableAdapter();
+                DBclass.DS.faktura.AddfakturaRow(fkrow);
+                daFaktura.Update(DBclass.DS.faktura);
+                daFaktura.Fill(DBclass.DS.faktura);
+                
+                isPrixod = true;
+
+            }
+            DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
+
+            DataView dv = realizeGrid.DataSource as DataView;
+            dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
+
+            AddRealize addForm = new AddRealize(prRow, faktRow);
+            if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+            }
+            
+        }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             this.productTableAdapter1.Fill(DBclass.DS.product);
@@ -137,7 +186,7 @@ namespace tposDesktop
             dgvTovar.Columns["pack"].Visible = false;
             dgvTovar.Columns["status"].Visible = false;
             dgvTovar.Columns["productId"].Width = 50;
-            dgvTovar.Columns["name"].Width = 200;
+            dgvTovar.Columns["name"].Width = 300;
             dgvTovar.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvTovar.Columns["price"].Width = 90;
             DataGridViewButtonColumn cellBtn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -145,6 +194,26 @@ namespace tposDesktop
             cellBtn.Name = "colBtn";
             cellBtn.Width = 100;
             dgvTovar.Columns.Add(cellBtn);
+
+
+            //Tovar rasxod
+            dgvTovarPrixod.Columns["productId"].HeaderText = "№";
+            dgvTovarPrixod.Columns["name"].HeaderText = "Товар";
+            dgvTovarPrixod.Columns["price"].HeaderText = "Цена";
+            dgvTovarPrixod.Columns["measureId"].Visible = false;
+            //dgvTovarPrixod.Columns["barcode"].HeaderText = "Штрихкод";
+            dgvTovarPrixod.Columns["barcode"].Visible = false;
+            dgvTovarPrixod.Columns["pack"].Visible = false;
+            dgvTovarPrixod.Columns["status"].Visible = false;
+            dgvTovarPrixod.Columns["productId"].Width = 50;
+            dgvTovarPrixod.Columns["name"].Width = 300;
+            dgvTovarPrixod.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvTovarPrixod.Columns["price"].Width = 90;
+            DataGridViewButtonColumn cellBtnRas = new System.Windows.Forms.DataGridViewButtonColumn();
+            cellBtnRas.HeaderText = "";
+            cellBtnRas.Name = "colBtn";
+            cellBtnRas.Width = 100;
+            dgvTovarPrixod.Columns.Add(cellBtnRas);
 
             //Info grid
             
@@ -158,14 +227,22 @@ namespace tposDesktop
             infoGrid.Columns["terminal"].HeaderText = "Терминал";
 
             //Realize grid
+            
             realizeGrid.Columns["name"].HeaderText = "Наименование";
-            realizeGrid.Columns["name"].DisplayIndex = 0;
+            realizeGrid.Columns["name"].DisplayIndex = 1;
+            realizeGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             realizeGrid.Columns["fakturaDate"].Visible = false;
+            
             realizeGrid.Columns["count"].HeaderText = "Кол-во";
+            realizeGrid.Columns["count"].DisplayIndex = 2;
             realizeGrid.Columns["price"].HeaderText = "Цена";
-            realizeGrid.Columns["name"].Width = 200;
-            realizeGrid.Columns["fakturaId"].Visible = false;
-
+            realizeGrid.Columns["price"].DisplayIndex = 3;
+            //realizeGrid.Columns["name"].Width = 200;
+            realizeGrid.Columns["fakturaId"].DisplayIndex = 0;
+            realizeGrid.Columns["fakturaId"].HeaderText = "№ Прихода";
+            realizeGrid.Columns["fakturaId"].Width = 70;
+            realizeGrid.Columns["colBtnDel"].DisplayIndex = 5;
+            //cellBtn2.DisplayIndex = 5;
             //Expense grid
             expenseGrid.Columns["name"].HeaderText = "Наименование";
             expenseGrid.Columns["name"].DisplayIndex = 0;
@@ -173,6 +250,7 @@ namespace tposDesktop
             expenseGrid.Columns["count"].HeaderText = "Кол-во";
             expenseGrid.Columns["name"].Width = 200;
             expenseGrid.Columns["pack"].Visible = false;
+            expenseGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             //Balance grid
             balanceGrid.Columns["name"].HeaderText = "Наименование";
@@ -193,6 +271,7 @@ namespace tposDesktop
             balanceGrid.Columns["name"].Width = 200;
             balanceGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
  
+            
         }
 
         private void Filtering()
@@ -275,22 +354,95 @@ namespace tposDesktop
             var dgv = sender as DataGridView;
             if (dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {
-                DataRow[] dr = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
-                AddProduct(dr, null);
+                switch (dgv.Name)
+                {
+                    case "dgvTovar":
+                        DataRow[] dr = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
+                        AddProduct(dr, null);
+                        break;
+                    case "dgvTovarPrixod":
+                        DataRow[] drP = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
+                        AddPrixod(drP, null);
+                        break;
+                    case "realizeGrid":
+                        //dgvCell.Value = "Удалить";
+                        break;
+                }
+                
             }
         }
 
-        private void dgvTovar_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             var grid = sender as DataGridView;
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                
                 DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                dgvCell.Value = "Изменить";
+                switch (grid.Name)
+                {
+                    case "dgvTovar":
+                        dgvCell.Value = "Изменить";
+                        break;
+                    case "dgvTovarPrixod":
+                        dgvCell.Value = "В приход";
+                        break;
+                    case "realizeGrid":
+                        dgvCell.Value = "Удалить";
+                        break;
+                }
+                
+                
+                
 
                 
             }
+        }
+
+        private void btnCloseFaktura_Click(object sender, EventArgs e)
+        {
+            if (isPrixod)
+            {
+                isPrixod = false;
+                MessageBox.Show("Приход закрыт!");
+            }
+        }
+
+        private void tbx_ValueChanged(object sender, EventArgs e)
+        {
+            TextBox tbx = sender as TextBox;
+            switch (tabControl1.SelectedTab.Name)
+            {
+                case "tabTovar":
+                    DataView dv = dgvTovar.DataSource as DataView;
+                    dv.RowFilter = "name like '%" + tbx.Text + "%'";
+                    break;
+                case "tabPrixod":
+                    DataView dvP = dgvTovar.DataSource as DataView;
+                    dvP.RowFilter = "name like '%" + tbx.Text + "%'";
+                    break;
+
+            }
+        }
+
+       
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tabControl = sender as TabControl;
+            Filtering();
+            switch(tabControl.SelectedTab.Name)
+            {
+                case "tabPrixod":
+                    realizeGrid.Columns["colBtnDel"].DisplayIndex = 4;    
+                    break;
+                
+            }
+
+        }
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

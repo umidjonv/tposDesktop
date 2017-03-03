@@ -9818,8 +9818,8 @@ namespace tposDesktop.DataSetTposTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `fakturaId`, `fakturaDate`, `userId`, `orgId`, `providerId` FROM `faktura`" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT fakturaId, fakturaDate, userId, orgId, providerId\r\nFROM     faktura\r\nORDER" +
+                " BY fakturaId DESC\r\nlimit 100";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

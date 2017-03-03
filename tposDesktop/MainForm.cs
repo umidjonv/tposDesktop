@@ -27,6 +27,7 @@ namespace tposDesktop
             db = new DBclass();
             db.FillExpense();
             db.FillProduct();
+            if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
             DataView dv = new DataView(DBclass.DS.product);
             
