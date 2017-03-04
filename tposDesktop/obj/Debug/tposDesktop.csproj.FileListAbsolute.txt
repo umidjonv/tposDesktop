@@ -32,3 +32,69 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.pdb
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.dll
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.pdb
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.xml
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+E:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+E:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+g:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+g:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
+g:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\tposDesktop.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.dll
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.xml
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+F:\mine\Projects\c#\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+F:\mine\Projects\c#\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml

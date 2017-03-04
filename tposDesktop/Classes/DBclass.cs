@@ -29,7 +29,7 @@ namespace Classes.DB
         string conStr = "server=localhost;user id=root;database=stock;";//"server=localhost;user id=foodsDB_user;password=D@faul(t);database=foods;persistsecurityinfo=True";
         public DBclass(string[] tables)
         {
-            connection = new MySqlConnection(conStr);
+            connection = new MySqlConnection(tposDesktop.Properties.Settings.Default.stockConnectionString);
             
             
             if (DS == null)
@@ -41,7 +41,7 @@ namespace Classes.DB
         }
         public DBclass()
         {
-            connection = new MySqlConnection(conStr);
+            connection = new MySqlConnection(tposDesktop.Properties.Settings.Default.stockConnectionString);
             if (DS == null)
                 DS = new DataSetTpos();
         }

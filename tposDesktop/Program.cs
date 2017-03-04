@@ -19,31 +19,31 @@ namespace tposDesktop
         [STAThread]
         static void Main()
         {
-            Lang = new Classes.Language(Classes.Language.lng.ru);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Form form;
-            UserValues.role = "admin";
-            while (window_type!=0)
-            {
-                
-                switch (window_type)
+                Lang = new Classes.Language(Classes.Language.lng.ru);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Form form;
+                UserValues.role = "admin";
+                while (window_type != 0)
                 {
-                    case 1:
-                        Application.Run(new FormLogin());
-                        
-                        break;
-                    case 2:
-                        Application.Run(new MainForm());
-                        break;
-                    case 3:
-                        Application.Run(new FormAdmin());
-                        break;
 
+                    switch (window_type)
+                    {
+                        case 1:
+                            Application.Run(new FormLogin());
+
+                            break;
+                        case 2:
+                            Application.Run(new MainForm());
+                            break;
+                        case 3:
+                            Application.Run(new FormAdmin());
+                            break;
+
+                    }
+
+                    GC.Collect();
                 }
-                
-                
-            }
         }
        
     } 

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Media.SolidColorBrush solidColorBrush2 = new System.Windows.Media.SolidColorBrush();
             this.showBtn = new System.Windows.Forms.Button();
             this.reportDate = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.expenseGrid = new System.Windows.Forms.DataGridView();
             this.tabOtchety = new System.Windows.Forms.TabPage();
+            this.Chart1 = new LiveCharts.WinForms.CartesianChart();
             this.infoGrid = new System.Windows.Forms.DataGridView();
             this.tabTovar = new System.Windows.Forms.TabPage();
             this.dgvTovar = new System.Windows.Forms.DataGridView();
@@ -55,6 +57,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuAdmin = new System.Windows.Forms.MenuStrip();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.realizeTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.realizeTableAdapter();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).BeginInit();
             this.tabOtchety.SuspendLayout();
@@ -77,7 +81,7 @@
             this.showBtn.Location = new System.Drawing.Point(608, 42);
             this.showBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showBtn.Name = "showBtn";
-            this.showBtn.Size = new System.Drawing.Size(181, 42);
+            this.showBtn.Size = new System.Drawing.Size(112, 42);
             this.showBtn.TabIndex = 1;
             this.showBtn.Text = "Показать";
             this.showBtn.UseVisualStyleBackColor = true;
@@ -86,16 +90,17 @@
             // reportDate
             // 
             this.reportDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.reportDate.Location = new System.Drawing.Point(338, 48);
+            this.reportDate.Location = new System.Drawing.Point(339, 48);
             this.reportDate.Margin = new System.Windows.Forms.Padding(4);
             this.reportDate.Name = "reportDate";
-            this.reportDate.Size = new System.Drawing.Size(262, 30);
+            this.reportDate.Size = new System.Drawing.Size(263, 30);
             this.reportDate.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.expenseGrid);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1077, 441);
             this.tabPage1.TabIndex = 2;
@@ -105,6 +110,7 @@
             // expenseGrid
             // 
             this.expenseGrid.AllowUserToAddRows = false;
+            this.expenseGrid.AllowUserToDeleteRows = false;
             this.expenseGrid.AllowUserToResizeRows = false;
             this.expenseGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
@@ -121,6 +127,7 @@
             // 
             // tabOtchety
             // 
+            this.tabOtchety.Controls.Add(this.Chart1);
             this.tabOtchety.Controls.Add(this.infoGrid);
             this.tabOtchety.Location = new System.Drawing.Point(4, 34);
             this.tabOtchety.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -131,9 +138,31 @@
             this.tabOtchety.Text = "Информация о выручках";
             this.tabOtchety.UseVisualStyleBackColor = true;
             // 
+            // Chart1
+            // 
+            this.Chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Chart1.Hoverable = true;
+            this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Chart1.Location = new System.Drawing.Point(718, 0);
+            this.Chart1.Margin = new System.Windows.Forms.Padding(4);
+            this.Chart1.Name = "Chart1";
+            solidColorBrush2.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
+            this.Chart1.ScrollBarFill = solidColorBrush2;
+            this.Chart1.ScrollHorizontalFrom = 0D;
+            this.Chart1.ScrollHorizontalTo = 0D;
+            this.Chart1.ScrollMode = LiveCharts.ScrollMode.None;
+            this.Chart1.ScrollVerticalFrom = 0D;
+            this.Chart1.ScrollVerticalTo = 0D;
+            this.Chart1.Size = new System.Drawing.Size(359, 296);
+            this.Chart1.TabIndex = 7;
+            this.Chart1.Text = "cartesianChart1";
+            // 
             // infoGrid
             // 
             this.infoGrid.AllowUserToAddRows = false;
+            this.infoGrid.AllowUserToDeleteRows = false;
             this.infoGrid.AllowUserToResizeRows = false;
             this.infoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.infoGrid.Dock = System.Windows.Forms.DockStyle.Left;
@@ -164,6 +193,7 @@
             // dgvTovar
             // 
             this.dgvTovar.AllowUserToAddRows = false;
+            this.dgvTovar.AllowUserToDeleteRows = false;
             this.dgvTovar.AllowUserToResizeRows = false;
             this.dgvTovar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -178,7 +208,7 @@
             this.dgvTovar.RowHeadersWidth = 50;
             this.dgvTovar.RowTemplate.Height = 40;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(511, 425);
+            this.dgvTovar.Size = new System.Drawing.Size(511, 417);
             this.dgvTovar.TabIndex = 4;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -207,8 +237,9 @@
             this.tabPrixod.Controls.Add(this.realizeGrid);
             this.tabPrixod.Controls.Add(this.btnCloseFaktura);
             this.tabPrixod.Location = new System.Drawing.Point(4, 34);
+            this.tabPrixod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrixod.Name = "tabPrixod";
-            this.tabPrixod.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPrixod.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrixod.Size = new System.Drawing.Size(1077, 441);
             this.tabPrixod.TabIndex = 4;
             this.tabPrixod.Text = "Приход товаров";
@@ -217,6 +248,7 @@
             // dgvTovarPrixod
             // 
             this.dgvTovarPrixod.AllowUserToAddRows = false;
+            this.dgvTovarPrixod.AllowUserToDeleteRows = false;
             this.dgvTovarPrixod.AllowUserToResizeRows = false;
             this.dgvTovarPrixod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
@@ -238,6 +270,7 @@
             // realizeGrid
             // 
             this.realizeGrid.AllowUserToAddRows = false;
+            this.realizeGrid.AllowUserToDeleteRows = false;
             this.realizeGrid.AllowUserToResizeRows = false;
             this.realizeGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -254,6 +287,7 @@
             this.realizeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.realizeGrid.Size = new System.Drawing.Size(495, 352);
             this.realizeGrid.TabIndex = 14;
+            this.realizeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.realizeGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             this.realizeGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -268,7 +302,8 @@
             this.btnCloseFaktura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseFaktura.BackColor = System.Drawing.Color.Red;
             this.btnCloseFaktura.ForeColor = System.Drawing.Color.White;
-            this.btnCloseFaktura.Location = new System.Drawing.Point(906, 363);
+            this.btnCloseFaktura.Location = new System.Drawing.Point(907, 363);
+            this.btnCloseFaktura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCloseFaktura.Name = "btnCloseFaktura";
             this.btnCloseFaktura.Size = new System.Drawing.Size(164, 76);
             this.btnCloseFaktura.TabIndex = 6;
@@ -280,6 +315,7 @@
             // 
             this.tabOstatok.Controls.Add(this.balanceGrid);
             this.tabOstatok.Location = new System.Drawing.Point(4, 34);
+            this.tabOstatok.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOstatok.Name = "tabOstatok";
             this.tabOstatok.Size = new System.Drawing.Size(1077, 441);
             this.tabOstatok.TabIndex = 3;
@@ -289,6 +325,7 @@
             // balanceGrid
             // 
             this.balanceGrid.AllowUserToAddRows = false;
+            this.balanceGrid.AllowUserToDeleteRows = false;
             this.balanceGrid.AllowUserToResizeRows = false;
             this.balanceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.balanceGrid.Dock = System.Windows.Forms.DockStyle.Left;
@@ -309,6 +346,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(12, 91);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1085, 479);
             this.panel1.TabIndex = 2;
@@ -337,6 +375,7 @@
             // 
             this.tbxFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxFilter.Location = new System.Drawing.Point(109, 48);
+            this.tbxFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxFilter.Name = "tbxFilter";
             this.tbxFilter.Size = new System.Drawing.Size(203, 30);
             this.tbxFilter.TabIndex = 3;
@@ -346,7 +385,8 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(844, 44);
+            this.button1.Location = new System.Drawing.Point(874, 44);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(223, 42);
             this.button1.TabIndex = 4;
@@ -358,7 +398,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(15, 51);
+            this.label1.Location = new System.Drawing.Point(15, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 14;
@@ -370,6 +410,7 @@
             this.menuExit});
             this.menuAdmin.Location = new System.Drawing.Point(0, 0);
             this.menuAdmin.Name = "menuAdmin";
+            this.menuAdmin.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
             this.menuAdmin.Size = new System.Drawing.Size(1109, 28);
             this.menuAdmin.TabIndex = 15;
             this.menuAdmin.Text = "menuStrip1";
@@ -382,11 +423,27 @@
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
+            // realizeTableAdapter1
+            // 
+            this.realizeTableAdapter1.ClearBeforeFill = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.Location = new System.Drawing.Point(727, 44);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(141, 40);
+            this.btnAdd.TabIndex = 16;
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 575);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxFilter);
@@ -454,5 +511,8 @@
         private System.Windows.Forms.DataGridView dgvTovarPrixod;
         private System.Windows.Forms.MenuStrip menuAdmin;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
+        private LiveCharts.WinForms.CartesianChart Chart1;
+        private DataSetTposTableAdapters.realizeTableAdapter realizeTableAdapter1;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

@@ -24,6 +24,7 @@ namespace tposDesktop
         public MainForm()
         {
             InitializeComponent();
+            this.Icon = tposDesktop.Properties.Resources.mainIcon;
             db = new DBclass();
             db.FillExpense();
             db.FillProduct();
@@ -66,8 +67,11 @@ namespace tposDesktop
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            scan.isWorked = false;
-            scan.rd.ClosePort(scan.port);
+            if (scan != null)
+            {
+                scan.isWorked = false;
+                scan.rd.ClosePort(scan.port);
+            }
             if(Program.window_type!=1&& Program.window_type!=3)
             Program.window_type = 0;
 
@@ -87,10 +91,13 @@ namespace tposDesktop
             dgvTovar.Columns["productId"].Width = 50;
             dgvTovar.Columns["name"].Width = 200;
             dgvTovar.Columns["price"].Width= 90;
-            DataGridViewButtonColumn cellBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            Classes.GridCells.ImageButtonColumn cellBtn = new Classes.GridCells.ImageButtonColumn();
             cellBtn.HeaderText = "";
             cellBtn.Name = "colBtn";
             cellBtn.Width = 40;
+            //Classes.GridCells.ImageCell cellImg = new Classes.GridCells.ImageCell();
+            cellBtn.SetImage(Properties.Resources.add);
+
             dgvTovar.Columns.Add(cellBtn);
 
             dgvExpense.Columns["prodId"].Visible = false;
@@ -102,6 +109,7 @@ namespace tposDesktop
             dgvExpense.Columns["productName"].Width = 200;
             dgvExpense.Columns["packCount"].Width = 50;
             dgvExpense.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvExpense.Columns["sumProduct"].HeaderText = "Сумма";
 
             DataGridViewButtonColumn cellBtn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             cellBtn2.HeaderText = "";
@@ -118,12 +126,12 @@ namespace tposDesktop
             dgvExpense.Columns.Add(cellBtn3);
 
 
-            DataGridViewTextBoxColumn cellTx = (DataGridViewTextBoxColumn)dgvExpense.Columns["sumProduct"];
-            cellTx.HeaderText = "Сумма";
-            //cellTx.Name = "sumProduct";
-            cellTx.Width = 80;
-            cellTx.ValueType = typeof(int);
-            cellTx.ReadOnly = true;
+            DataGridViewButtonColumn cellBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            cellBtnDel.HeaderText = "";
+            cellBtnDel.Name = "colBtnDel";
+            cellBtnDel.Width = 40;
+            cellBtnDel.DisplayIndex = 10;
+            dgvExpense.Columns.Add(cellBtnDel);
             //cellTx.CellType = typeof(int);
             //dgvExpense.Columns.Add(cellTx);
         }
@@ -169,7 +177,12 @@ namespace tposDesktop
                         i--;
                         dgvExpense.Rows[e.RowIndex].Cells["packCount"].Value = i;
                     }
-                    
+
+                }
+                else if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnDel")
+                {
+                    dgvExpense.Rows.RemoveAt(e.RowIndex);
+                    sumTable();
                 }
 
 
@@ -212,7 +225,7 @@ namespace tposDesktop
                     {
                         ordrow.packCount = oform.count;
                         DataRow drOrder = ordrow;
-                        drOrder["sumProduct"] = ordrow.packCount * drP.price;
+                        drOrder["sumProduct"] = ordrow.packCount * drP.price/(drP.pack==0?1:drP.pack);
 
                         //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                     }
@@ -271,7 +284,7 @@ namespace tposDesktop
         
         private void btnOplata_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+            if(dgvExpense.Rows.Count!=0 && MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
             {
                 expenseTableAdapter expDa = new expenseTableAdapter();
                 expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
@@ -287,12 +300,14 @@ namespace tposDesktop
                 expRow.status = chbDolg.Checked ? 1 : 0;
                 expRow.comment = chbDolg.Checked ? commentDebt : "";
                 expRow.expType = vozvrat ? 1 : 0;
+                
+                expRow.expSum = (int)sum;
+
                 if (chbTerminal.Checked)
                 {
-                    expRow.terminal = tbxTerminal.Text != "" ? Convert.ToInt32(tbxTerminal.Text) : 0;
+                    expRow.terminal = tbxTerminal.Text != "" ? Convert.ToInt32(tbxTerminal.Text) : expRow.expSum;
                 }
                 else expRow.terminal = 0;
-                expRow.expSum = (int)sum;
                 expTable.Rows.Add(expRow);
 
                 expDa.Update(expTable);
@@ -327,7 +342,14 @@ namespace tposDesktop
             {
                 DataSetTpos.productRow prRow = DBclass.DS.product.Select("productId = " + grid.Rows[e.RowIndex].Cells["prodId"].Value)[0] as DataSetTpos.productRow ;
                 grid.Rows[e.RowIndex].Cells["productName"].Value = prRow.name;
-                grid.Rows[e.RowIndex].Cells["productPrice"].Value = prRow.price; 
+                if (prRow.pack != 0)
+                {
+                    grid.Rows[e.RowIndex].Cells["productPrice"].Value = prRow.price/prRow.pack; 
+                }
+                else
+                {
+                    grid.Rows[e.RowIndex].Cells["productPrice"].Value = prRow.price; 
+                }
 
             }
         }
@@ -384,16 +406,18 @@ namespace tposDesktop
         }
         private void Text_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))||(char.IsDigit(e.KeyChar)&&e.KeyChar==48))
             {
                 e.Handled = true;
             }
+            
         }
 
         private void exitMenu_Click(object sender, EventArgs e)
         {
             Program.window_type = 0;
             this.Close();
+            
         }
 
        
@@ -462,7 +486,12 @@ namespace tposDesktop
             if (UserValues.role == "admin")
             {
                 Program.window_type = 3;
-                
+                if (scan != null)
+                {
+                    scan.isWorked = false;
+                    scan.rd.ClosePort(scan.port);
+                    
+                }
                 this.Close();
 
  

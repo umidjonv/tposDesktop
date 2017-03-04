@@ -4923,6 +4923,8 @@ namespace tposDesktop {
             
             private global::System.Data.DataColumn columnname;
             
+            private global::System.Data.DataColumn columnrealizeId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public realizeviewDataTable() {
@@ -4998,6 +5000,14 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn realizeIdColumn {
+                get {
+                    return this.columnrealizeId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5033,14 +5043,15 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public realizeviewRow AddrealizeviewRow(int fakturaId, System.DateTime fakturaDate, float count, float price, string name) {
+            public realizeviewRow AddrealizeviewRow(int fakturaId, System.DateTime fakturaDate, float count, float price, string name, int realizeId) {
                 realizeviewRow rowrealizeviewRow = ((realizeviewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fakturaId,
                         fakturaDate,
                         count,
                         price,
-                        name};
+                        name,
+                        realizeId};
                 rowrealizeviewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrealizeviewRow);
                 return rowrealizeviewRow;
@@ -5068,6 +5079,7 @@ namespace tposDesktop {
                 this.columncount = base.Columns["count"];
                 this.columnprice = base.Columns["price"];
                 this.columnname = base.Columns["name"];
+                this.columnrealizeId = base.Columns["realizeId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5083,8 +5095,11 @@ namespace tposDesktop {
                 base.Columns.Add(this.columnprice);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
+                this.columnrealizeId = new global::System.Data.DataColumn("realizeId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrealizeId);
                 this.columnfakturaId.AllowDBNull = false;
                 this.columnname.MaxLength = 150;
+                this.columnrealizeId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7049,6 +7064,17 @@ namespace tposDesktop {
                 }
                 set {
                     this[this.tablerealizeview.nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int realizeId {
+                get {
+                    return ((int)(this[this.tablerealizeview.realizeIdColumn]));
+                }
+                set {
+                    this[this.tablerealizeview.realizeIdColumn] = value;
                 }
             }
             
@@ -13223,6 +13249,7 @@ namespace tposDesktop.DataSetTposTableAdapters {
             tableMapping.ColumnMappings.Add("count", "count");
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.ColumnMappings.Add("realizeId", "realizeId");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -13239,8 +13266,8 @@ namespace tposDesktop.DataSetTposTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `fakturaId`, `fakturaDate`, `count`, `price`, `name` FROM `stock`.`realize" +
-                "view`";
+            this._commandCollection[0].CommandText = "SELECT realizeId, fakturaId, fakturaDate, `count`, price, name\r\nFROM     realizev" +
+                "iew";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -128,7 +128,6 @@
             this.dgvTovar.Size = new System.Drawing.Size(405, 490);
             this.dgvTovar.TabIndex = 3;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
-            this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             // 
             // groupBox2
             // 

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using Classes;
 using Classes.DB;
 using tposDesktop.DataSetTposTableAdapters;
+using LiveCharts;
+using LiveCharts.Wpf;
+using System.Windows.Media;
 
 
 namespace tposDesktop
@@ -21,6 +24,7 @@ namespace tposDesktop
         public FormAdmin()
         {
             InitializeComponent();
+            this.Icon = tposDesktop.Properties.Resources.mainIcon;
             if (UserValues.role != "admin")
                 this.Dispose();
             db = new DBclass();
@@ -60,6 +64,9 @@ namespace tposDesktop
             balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
             balanceGrid.DataSource = balance;
 
+
+            liveChartLoad();
+
             
             
             
@@ -83,8 +90,14 @@ namespace tposDesktop
         private void SendInfo(string text)
         {
             string barcode = text;
+
             DataRow[] dr = DBclass.DS.product.Select("barcode = '" + barcode + "'");
-            switch(tabControl1.SelectedTab.Name)
+            if (barcode == "-1") barcode = "";
+            string tname = tabControl1.SelectedTab.Name;
+
+            if (dr.Length == 0&&tname=="tabPrixod")
+                tname = "tabTovar";
+            switch(tname)
             {
                 case "tabTovar":
                 AddProduct(dr, barcode);
@@ -126,7 +139,7 @@ namespace tposDesktop
         {
             DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
 
-            if (!isPrixod&&MessageBox.Show("Начать приход товаров?", "Приход", MessageBoxButtons.YesNo,  MessageBoxIcon.Question)== System.Windows.Forms.DialogResult.Yes)
+            if (!isPrixod && MessageBox.Show("Начать приход товаров?", "Приход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
 
                 DataSetTpos.fakturaRow fkrow = DBclass.DS.faktura.NewfakturaRow();
@@ -135,20 +148,25 @@ namespace tposDesktop
                 DBclass.DS.faktura.AddfakturaRow(fkrow);
                 daFaktura.Update(DBclass.DS.faktura);
                 daFaktura.Fill(DBclass.DS.faktura);
-                
+                realizeGrid.Columns["colBtnDel"].Visible = true;
                 isPrixod = true;
 
             }
-            DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
-
-            DataView dv = realizeGrid.DataSource as DataView;
-            dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
-
-            AddRealize addForm = new AddRealize(prRow, faktRow);
-            if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if(isPrixod)
             {
-                this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
+
+                DataView dv = realizeGrid.DataSource as DataView;
+                dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
+
+                AddRealize addForm = new AddRealize(prRow, faktRow);
+                if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    realizeGrid.Columns["colBtnDel"].Visible = true;
+                    this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                }
             }
+            
             
         }
         private void FormAdmin_Load(object sender, EventArgs e)
@@ -168,8 +186,11 @@ namespace tposDesktop
 
         private void FormAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            scanner.isWorked = false;
-            scanner.rd.ClosePort(scanner.port);
+            if (scanner != null)
+            {
+                scanner.isWorked = false;
+                scanner.rd.ClosePort(scanner.port);
+            }
             if (Program.window_type != 2 && Program.window_type != 1)
                 Program.window_type = 0;
         }
@@ -227,7 +248,7 @@ namespace tposDesktop
             infoGrid.Columns["terminal"].HeaderText = "Терминал";
 
             //Realize grid
-            
+            realizeGrid.Columns["realizeId"].Visible = false;
             realizeGrid.Columns["name"].HeaderText = "Наименование";
             realizeGrid.Columns["name"].DisplayIndex = 1;
             realizeGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -280,9 +301,8 @@ namespace tposDesktop
 
             this.infoTableAdapter1.Fill(DBclass.DS.info);
             var info = infoGrid.DataSource as DataView;
-            info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
+            //info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
             info.Sort = "Dates desc";
-            
 
             this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
             var realize = realizeGrid.DataSource as DataView;
@@ -297,8 +317,8 @@ namespace tposDesktop
             this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
             DataView balance = balanceGrid.DataSource as DataView;
             balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-            
 
+            realizeGrid.Columns["colBtnDel"].Visible = false;
         }
 
         private void infoGraph()
@@ -343,9 +363,9 @@ namespace tposDesktop
         {
             var grid = sender as DataGridView;
             DataGridViewCellStyle style = new DataGridViewCellStyle();
-            if (e.RowIndex % 2 == 1) style.BackColor = Color.FromArgb(192, 230, 214);
+            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
             else
-                style.BackColor = Color.FromArgb(232, 232, 232);
+                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
             grid.Rows[e.RowIndex].DefaultCellStyle = style;
         }
 
@@ -365,7 +385,11 @@ namespace tposDesktop
                         AddPrixod(drP, null);
                         break;
                     case "realizeGrid":
-                        //dgvCell.Value = "Удалить";
+                        DataSetTpos.realizeRow[] rls = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("realizeId=" + dgv.Rows[e.RowIndex].Cells["realizeId"].Value.ToString());
+                        rls[0].Delete();
+                        
+                        this.realizeTableAdapter1.Update(DBclass.DS.realize);
+                        this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
                         break;
                 }
                 
@@ -404,6 +428,7 @@ namespace tposDesktop
             {
                 isPrixod = false;
                 MessageBox.Show("Приход закрыт!");
+                realizeGrid.Columns["colBtnDel"].Visible = false;
             }
         }
 
@@ -433,7 +458,16 @@ namespace tposDesktop
             switch(tabControl.SelectedTab.Name)
             {
                 case "tabPrixod":
-                    realizeGrid.Columns["colBtnDel"].DisplayIndex = 4;    
+                    realizeGrid.Columns["colBtnDel"].DisplayIndex = 4;
+                    if (isPrixod)
+                    {
+                        realizeGrid.Columns["colBtnDel"].Visible = true;
+                        DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
+
+                        DataView dv = realizeGrid.DataSource as DataView;
+                        dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
+                    }
+                    
                     break;
                 
             }
@@ -443,6 +477,100 @@ namespace tposDesktop
         private void menuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void liveChartLoad()
+        {
+            DataTable table = DBclass.DS.Tables["info"];
+            DataRow[] rows = table.Select();
+            double[] tempproc = new double[rows.Count()];
+            double[] tempnal = new double[rows.Count()];
+            double[] tempterm = new double[rows.Count()];
+            double[] tempback = new double[rows.Count()];
+            ChartValues<double> proc = new ChartValues<double>();
+            ChartValues<double> nal = new ChartValues<double>();
+            ChartValues<double> term = new ChartValues<double>();
+            ChartValues<double> back = new ChartValues<double>();
+            string[] dates = new string[rows.Count()];
+            int i = 0;
+            try
+            {
+                foreach (var val in rows)
+                {
+                    tempproc[i] = (val["proceed"].ToString() == "") ? 0 : Convert.ToInt32(val["proceed"]);
+                    tempnal[i] = (val["nal"].ToString() == "") ? 0 : Convert.ToInt32(val["nal"]);
+                    tempterm[i] = (val["terminal"].ToString() == "") ? 0 : Convert.ToInt32(val["terminal"]);
+                    tempback[i] = (val["back"].ToString() == "") ? 0 : Convert.ToInt32(val["back"]);
+                    dates[i] = Convert.ToDateTime(val["Dates"]).ToString("dd.MM");
+                    i++;
+                }
+                proc.AddRange(tempproc);
+                nal.AddRange(tempnal);
+                term.AddRange(tempterm);
+                back.AddRange(tempback);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            Chart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Выручка",
+                    Values = proc
+                },
+                new LineSeries
+                {
+                    Title = "Наличка",
+                    Values = nal,
+                    PointGeometry = DefaultGeometries.Diamond,
+                    PointGeometrySize = 10
+                },
+                new LineSeries
+                {
+                    Title = "Терминал",
+                    Values = term,
+                    PointGeometry = DefaultGeometries.Triangle,
+                    PointGeometrySize = 10
+                },
+                new LineSeries
+                {
+                    Title = "Возврат",
+                    Values = back,
+                    PointGeometry = DefaultGeometries.Square,
+                    PointGeometrySize = 10
+                }
+            };
+
+            Chart1.AxisX.Add(new Axis
+            {
+                Title = "month",
+                Labels = dates
+            });
+
+            Chart1.AxisY.Add(new Axis
+            {
+                Title = "",
+                //LabelFormatter = value => value.ToString("C")
+            });
+
+            Chart1.LegendLocation = LegendLocation.Right;
+
+            //modifying the series collection will animate and update the chart
+
+
+            //modifying any series values will also animate and update the chart
+            //Chart1.Series[2].Values.Add(5d);
+
+
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            SendInfo("-1");
         }
 
     }
