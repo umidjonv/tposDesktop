@@ -21,21 +21,34 @@ namespace tposDesktop
             lang = Program.Lang;
             int w = this.Size.Width;
             int h = this.Size.Height;
+            this.Icon = tposDesktop.Properties.Resources.mainIcon;
             tbxLogin.Location = new Point(w / 2-tbxLogin.Width/2, tbxLogin.Location.Y);
             tbxPass.Location = new Point(w / 2 - tbxPass.Width / 2, tbxPass.Location.Y);
             btnLogin.Location = new Point(w / 2 - btnLogin.Width / 2, btnLogin.Location.Y);
-            dbclass = new DBclass();
-            dbclass.Fill("user");
+            try
+            {
+                dbclass = new DBclass();
+                dbclass.Fill("user");
+            }
+            catch (Exception ex)
+            {
+                isMessage = true;
+                MessageBox.Show("Нет подключения к Базе данных, "+ex.Message);
+            }
             tbxLogin.Text = lang.Value("Login");
             tbxPass.Text = lang.Value("Pass");
             lblErr.Text = lang.Value("Err_Login");
             lblErr.BackColor = Color.FromArgb(75, 192, 255);
 
         }
-
+        bool isMessage = false;
         public void LoadForm(object sender, EventArgs e)
         {
-            
+            if (isMessage)
+            {
+                this.Close();
+ 
+            }
  
         }
         public string CalculateMD5Hash(string input)

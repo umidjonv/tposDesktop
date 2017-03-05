@@ -21,53 +21,62 @@ namespace tposDesktop
     {
         Scanner scanner;
         DBclass db;
+        bool isExit = false;
         public FormAdmin()
         {
             InitializeComponent();
-            this.Icon = tposDesktop.Properties.Resources.mainIcon;
-            if (UserValues.role != "admin")
-                this.Dispose();
-            db = new DBclass();
-            DataView dv = new DataView(DBclass.DS.product);
-            dv.RowFilter = "";
-            dgvTovar.DataSource = dv;
-
-            
-            dv.RowFilter = "";
-            dgvTovarPrixod.DataSource = dv;
-
-            //DataGridViewButtonColumn cellBtn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            //cellBtn2.HeaderText = "";
-            //cellBtn2.Name = "colBtnDel";
-            //cellBtn2.Width = 100;
-            //realizeGrid.Columns.Add(cellBtn2);
-            
-            this.infoTableAdapter1.Fill(DBclass.DS.info);
-            DataView info = new DataView(DBclass.DS.info);
-            info.RowFilter = "";// "Dates = " + reportDate.Value.ToString("yyyy-MM-dd");
-            info.Sort = "Dates desc";
-            infoGrid.DataSource = info;
-            
-
-            this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
-            DataView realize = new DataView(DBclass.DS.realizeview);
-            realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-            realizeGrid.DataSource = realize;
-
-            this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
-            DataView expense = new DataView(DBclass.DS.expenseview);
-            expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-            expenseGrid.DataSource = expense;
-
-            this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
-            DataView balance = new DataView(DBclass.DS.balanceview);
-            balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-            balanceGrid.DataSource = balance;
+            try
+            {
+                this.Icon = tposDesktop.Properties.Resources.mainIcon;
+                if (UserValues.role != "admin")
+                    this.Dispose();
+                db = new DBclass();
+                DataView dv = new DataView(DBclass.DS.product);
+                dv.RowFilter = "";
+                dgvTovar.DataSource = dv;
 
 
-            liveChartLoad();
+                dv.RowFilter = "";
+                dgvTovarPrixod.DataSource = dv;
 
-            
+                //DataGridViewButtonColumn cellBtn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+                //cellBtn2.HeaderText = "";
+                //cellBtn2.Name = "colBtnDel";
+                //cellBtn2.Width = 100;
+                //realizeGrid.Columns.Add(cellBtn2);
+
+                this.infoTableAdapter1.Fill(DBclass.DS.info);
+                DataView info = new DataView(DBclass.DS.info);
+                info.RowFilter = "";// "Dates = " + reportDate.Value.ToString("yyyy-MM-dd");
+                info.Sort = "Dates desc";
+                infoGrid.DataSource = info;
+
+
+                this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                DataView realize = new DataView(DBclass.DS.realizeview);
+                realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                realizeGrid.DataSource = realize;
+
+                this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
+                DataView expense = new DataView(DBclass.DS.expenseview);
+                expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                expenseGrid.DataSource = expense;
+
+                this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
+                DataView balance = new DataView(DBclass.DS.balanceview);
+                balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                balanceGrid.DataSource = balance;
+
+
+                liveChartLoad();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                isExit = true;
+            }
+
             
             
             try
@@ -90,7 +99,7 @@ namespace tposDesktop
         private void SendInfo(string text)
         {
             string barcode = text;
-
+            if (barcode == null) barcode = "-1";
             DataRow[] dr = DBclass.DS.product.Select("barcode = '" + barcode + "'");
             if (barcode == "-1") barcode = "";
             string tname = tabControl1.SelectedTab.Name;
@@ -171,6 +180,12 @@ namespace tposDesktop
         }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
+            if (isExit)
+            {
+                Program.window_type = 1;
+                this.Close();
+                return;
+            }
             this.productTableAdapter1.Fill(DBclass.DS.product);
             InitDataGridViews();
 
@@ -295,30 +310,47 @@ namespace tposDesktop
             
         }
 
-        private void Filtering()
+        private void Filtering(string tab)
         {
-            
+            switch (tab)
+            {
+                case "tabTovar":
 
-            this.infoTableAdapter1.Fill(DBclass.DS.info);
-            var info = infoGrid.DataSource as DataView;
-            //info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
-            info.Sort = "Dates desc";
-
-            this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
-            var realize = realizeGrid.DataSource as DataView;
-            realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-            
-
-            this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
+                    break;
+                case "tabPrixod":
+                    this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                    var realize = realizeGrid.DataSource as DataView;
+                    realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    realizeGrid.Columns["colBtnDel"].Visible = false;
+                    break;
+                case "tabOtchety":
+                    this.infoTableAdapter1.Fill(DBclass.DS.info);
+                    var info = infoGrid.DataSource as DataView;
+                    //info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
+                    info.Sort = "Dates desc";
+                    break;
+                case "tabRasxod":
+                    this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
             DataView expense = expenseGrid.DataSource as DataView;
             expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    break;
+                case "tabOstatok":
+                    this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
+                    DataView balance = balanceGrid.DataSource as DataView;
+                    balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    break;
+            }
+
             
 
-            this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
-            DataView balance = balanceGrid.DataSource as DataView;
-            balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+            
 
-            realizeGrid.Columns["colBtnDel"].Visible = false;
+            
+            
+
+            
+
+            
         }
 
         private void infoGraph()
@@ -350,7 +382,7 @@ namespace tposDesktop
 
         private void showBtn_Click(object sender, EventArgs e)
         {
-            Filtering();
+            Filtering(tabControl1.SelectedTab.Name);
         }
 
         private void menuRasxod_Click(object sender, EventArgs e)
@@ -449,12 +481,12 @@ namespace tposDesktop
             }
         }
 
-       
 
+        string selectedOldTab;
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             TabControl tabControl = sender as TabControl;
-            Filtering();
+            Filtering(tabControl1.SelectedTab.Name);
             switch(tabControl.SelectedTab.Name)
             {
                 case "tabPrixod":
@@ -469,8 +501,10 @@ namespace tposDesktop
                     }
                     
                     break;
-                
+
+                                
             }
+            
 
         }
 

@@ -12,18 +12,19 @@ namespace tposDesktop
 {
     public partial class OrderForm : Form
     {
-        public OrderForm(int cnt, string price)
+        public OrderForm(string name, int cnt, string price)
         {
             count = cnt;
             
             InitializeComponent();
+            this.Text = name;
             lblPrice.Text = price;
             tbxCount1.Text = (cnt != 0 ? cnt : 1).ToString();
         }
         public int count = 0;
         private void OrderForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if (e.KeyChar == 13&&EmptyChar())
             {
                 count = Int32.Parse(tbxCount1.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -34,28 +35,67 @@ namespace tposDesktop
                 this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                 this.Close();
             }
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            
+        
+        }
+        bool EmptyChar()
+        { 
+            if (tbxCount1.Text == "")
+            {
+                MessageBox.Show("Количество не должно быть пустым");
+                return false;
+            }else
+                return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            count = Int32.Parse(tbxCount1.Text);
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Close();
+            if(EmptyChar())
+            {
+                count = Int32.Parse(tbxCount1.Text);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
+            }
         }
         string text="";
         private void tbxCount1_TextChanged(object sender, EventArgs e)
         {
             TextBox t = sender as TextBox;
             int num;
-            if (Int32.TryParse(t.Text, out num))
+            int cnt = (count == 0 ? 1 : count);
+            int donasi = Convert.ToInt32(lblPrice.Text) / cnt;
+                
+            if (tbxCount1.Text != "")
             {
-                text = t.Text;
-                t.SelectionStart = t.Text.Length;
+                if (count.ToString() != tbxCount1.Text)
+                {
+                    
+                    int curCnt = Convert.ToInt32(tbxCount1.Text);
+
+                    
+                    //if (i == 1)
+
+                    lblOnePrice.Text = (curCnt * donasi).ToString();
+                }
+                else
+                    lblOnePrice.Text = lblPrice.Text;
+                
             }
-            else
-            {
-                t.Text = text;
-            }
+            lblOne.Text = donasi.ToString();
+            
+            //if (Int32.TryParse(t.Text, out num))
+            //{
+            //    text = t.Text;
+            //    //t.SelectionStart = t.Text.Length;
+            //}
         }
+
+
+
     }
 }

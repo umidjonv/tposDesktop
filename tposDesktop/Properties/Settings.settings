@@ -13,5 +13,11 @@
     <Setting Name="SerialPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM3</Value>
     </Setting>
+    <Setting Name="isPrinter" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="orgName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Zarafshon-Farm X/K</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

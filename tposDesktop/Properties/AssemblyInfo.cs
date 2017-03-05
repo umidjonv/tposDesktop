@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("TposDesktop")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Для учета продуктов")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TposCommand")]
 [assembly: AssemblyProduct("TposDesktop")]
-[assembly: AssemblyCopyright("Copyright © Umidjon Vakhidov & Azizbek Vakhidov")]
+[assembly: AssemblyCopyright("Copyright © TPOSCommand")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,6 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер построения и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
+
 [assembly: AssemblyVersion("1.0.1.0")]
 [assembly: AssemblyFileVersion("1.0.1.0")]

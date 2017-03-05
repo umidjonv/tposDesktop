@@ -98,3 +98,15 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.dll
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.pdb
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.xml
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll

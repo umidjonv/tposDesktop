@@ -50,7 +50,7 @@
             this.tbxLogin.Location = new System.Drawing.Point(278, 234);
             this.tbxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxLogin.Name = "tbxLogin";
-            this.tbxLogin.Size = new System.Drawing.Size(180, 34);
+            this.tbxLogin.Size = new System.Drawing.Size(180, 29);
             this.tbxLogin.TabIndex = 0;
             this.tbxLogin.Text = "Логин";
             this.tbxLogin.Enter += new System.EventHandler(this.tbxEnter);
@@ -63,7 +63,7 @@
             this.tbxPass.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxPass.Name = "tbxPass";
             this.tbxPass.PasswordChar = '*';
-            this.tbxPass.Size = new System.Drawing.Size(180, 34);
+            this.tbxPass.Size = new System.Drawing.Size(180, 29);
             this.tbxPass.TabIndex = 1;
             this.tbxPass.Text = "Пароль";
             this.tbxPass.Enter += new System.EventHandler(this.tbxEnter);
@@ -77,7 +77,7 @@
             this.lblErr.ForeColor = System.Drawing.Color.Red;
             this.lblErr.Location = new System.Drawing.Point(247, 175);
             this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(52, 20);
+            this.lblErr.Size = new System.Drawing.Size(40, 16);
             this.lblErr.TabIndex = 1;
             this.lblErr.Text = "Error:";
             this.lblErr.Visible = false;
@@ -108,7 +108,7 @@
             // FormLogin
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::tposDesktop.Properties.Resources._11111;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -124,7 +124,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Аптека";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm);
