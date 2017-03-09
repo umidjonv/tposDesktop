@@ -28,12 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Media.SolidColorBrush solidColorBrush2 = new System.Windows.Media.SolidColorBrush();
+            System.Windows.Media.SolidColorBrush solidColorBrush1 = new System.Windows.Media.SolidColorBrush();
             this.showBtn = new System.Windows.Forms.Button();
             this.reportDate = new System.Windows.Forms.DateTimePicker();
             this.tabRasxod = new System.Windows.Forms.TabPage();
             this.expenseGrid = new System.Windows.Forms.DataGridView();
             this.tabOtchety = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Chart1 = new LiveCharts.WinForms.CartesianChart();
             this.infoGrid = new System.Windows.Forms.DataGridView();
             this.tabTovar = new System.Windows.Forms.TabPage();
@@ -62,6 +67,7 @@
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).BeginInit();
             this.tabOtchety.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoGrid)).BeginInit();
             this.tabTovar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -124,6 +130,7 @@
             // 
             // tabOtchety
             // 
+            this.tabOtchety.Controls.Add(this.panel2);
             this.tabOtchety.Controls.Add(this.Chart1);
             this.tabOtchety.Controls.Add(this.infoGrid);
             this.tabOtchety.Location = new System.Drawing.Point(4, 29);
@@ -135,6 +142,70 @@
             this.tabOtchety.Text = "Информация о выручках";
             this.tabOtchety.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.checkBox4);
+            this.panel2.Controls.Add(this.checkBox3);
+            this.panel2.Controls.Add(this.checkBox2);
+            this.panel2.Controls.Add(this.checkBox1);
+            this.panel2.Location = new System.Drawing.Point(567, 279);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(228, 71);
+            this.panel2.TabIndex = 8;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(115, 40);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(92, 24);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "Возврат";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(115, 3);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(106, 24);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Наличные";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(3, 40);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(103, 24);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "Терминал";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(92, 24);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Выручка";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Chart1
             // 
             this.Chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -144,8 +215,8 @@
             this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Chart1.Location = new System.Drawing.Point(538, 0);
             this.Chart1.Name = "Chart1";
-            solidColorBrush2.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
-            this.Chart1.ScrollBarFill = solidColorBrush2;
+            solidColorBrush1.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
+            this.Chart1.ScrollBarFill = solidColorBrush1;
             this.Chart1.ScrollHorizontalFrom = 0D;
             this.Chart1.ScrollHorizontalTo = 0D;
             this.Chart1.ScrollMode = LiveCharts.ScrollMode.None;
@@ -208,6 +279,7 @@
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             this.dgvTovar.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
+            this.dgvTovar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
             // 
             // tabControl1
             // 
@@ -373,6 +445,7 @@
             this.tbxFilter.Size = new System.Drawing.Size(153, 26);
             this.tbxFilter.TabIndex = 3;
             this.tbxFilter.TextChanged += new System.EventHandler(this.tbx_ValueChanged);
+            this.tbxFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
             // 
             // button1
             // 
@@ -432,6 +505,7 @@
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
             // 
             // FormAdmin
             // 
@@ -460,6 +534,8 @@
             this.tabRasxod.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).EndInit();
             this.tabOtchety.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoGrid)).EndInit();
             this.tabTovar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).EndInit();
@@ -509,5 +585,10 @@
         private LiveCharts.WinForms.CartesianChart Chart1;
         private DataSetTposTableAdapters.realizeTableAdapter realizeTableAdapter1;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

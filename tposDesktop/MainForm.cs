@@ -330,7 +330,7 @@ namespace tposDesktop
                 float sum = 0;
                 foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
                 {
-                    drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), ((float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value).ToString() });
+                    drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), ((int)dgvRow.Cells["productPrice"].Value).ToString() });
                     sum += (float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value;
                 }
                 expRow.expenseDate = DateTime.Now;
@@ -368,7 +368,7 @@ namespace tposDesktop
                 lblSum.Text = "0";
                 if (Properties.Settings.Default.isPrinter == true)
                 {
-                    forPrinting(drPrintCol, expId);
+                    forPrinting(drPrintCol, expTable);
                 }
                 //dgvExpense.Columns["productName"].Visible = false;
                 //dgvExpense.Columns["productPrice"].Visible = false;
@@ -566,7 +566,7 @@ namespace tposDesktop
         }
 
 
-        private void forPrinting(List<string[]> data, int nomerZakaza)
+        private void forPrinting(List<string[]> data, DataSetTpos.expenseDataTable expTable)
         {
             int price = 0;
             string dataHtml = "";
@@ -575,12 +575,11 @@ namespace tposDesktop
             decimal summa = 0;
             foreach (string[] sr in data)
             {
-                dataHtml += "<tr><td>" + sr[0] + "</td><td>" + sr[1] + "</td><td>" + sr[2] + "</td></tr>";
-                summa += decimal.Parse(sr[2]);
+                dataHtml += "<tr><td>" + sr[0] + "</td><td>" + sr[1] + "</td> <td>" + (Convert.ToInt32(sr[1]) * Convert.ToInt32(sr[2])).ToString() + "</td></tr>";
+                summa += decimal.Parse((Convert.ToInt32(sr[1])*Convert.ToInt32(sr[2])).ToString());
                 num++;
-            }
-            dataHtml += "<tr><td><b>Итог:</b></td><td><b>" + summa + "</b></td><td></td><td></td></tr>";
-            dataHtml = GenerateHTML(dataHtml, nomerZakaza);
+            }   
+            dataHtml = GenerateHTML(dataHtml, expTable, Convert.ToInt32(summa));
             //string zakaz = "<h4>Номер заказа: " + nomerZakaza + "</h4>";
             //string oficiant = "<h4>Официант: " + lblUser.Text + "</h4>";
             //dataHtml = zakaz+oficiant+"<h4>Официант: " + DateTime.Now.ToString("dd.MM.YYYY HH:mm")+ "</h4>" + dataHtml;
@@ -617,29 +616,50 @@ namespace tposDesktop
             WebBrowser browser = sender as WebBrowser;
             browser.Print();
         }
-        private string GenerateHTML(string dataHtml, int nomerZakaza)
+        private string GenerateHTML(string dataHtml, DataSetTpos.expenseDataTable expTable, int summa)
         {
+            string temp = "";
+            if ((expTable.Rows[0] as DataSetTpos.expenseRow).debt == 0)
+            {
+                temp = "<tr>" +
+                                "<td colspan='1''>Наличные</td>" +
+                                "<td colspan='2''>" + (Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expSum) - Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).terminal)) + " сум</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td colspan='1''>Терминал</td>" +
+                                "<td colspan='2''>" + Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).terminal) + " сум</td>" +
+                            "</tr>" +
+                            "<tr><td colspan='4'>&nbsp;</td></tr>";
+            }
+            else
+            {
+                temp = "";
+            }
             string html = "<head></head><body>" +
-                "<table>" +
-                "<tr><td style=\"text-align:center\"> </td><td>" + Properties.Settings.Default.orgName + "</td></tr>" +
-                "<tr><td style=\"text-align:right\">Дата: </td><td>" + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "</td></tr>" +
+                    "<table style='font-size: 9px; font-family: Tahoma;'>" +
+                        "<thead>" +
+                            "<tr><td colspan='3' style=\"text-align:center\"> " + Properties.Settings.Default.orgName + "</td></tr>" +
+                            "<tr><td colspan='3' style=\"text-align:center\">Дата: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "</td></tr>" +
+                            "<tr><td colspan='3'></td></tr>" +
+                            "<tr><td colspan='3' style='text-align:center; font-size:14px'>" + ((expTable.Rows[0] as DataSetTpos.expenseRow).expType == 1 ? "Возврат" : "Покупка") + "</td></tr>" +
+                            "<tr>" +
 
-                "</table><br/>" +
-
-
-                "<table>" +
-                    "<thead>" +
-                        "<tr>" +
-
-                            "<td>Заказ</td>" +
-                            "<td>Кол.</td>" +
-                            "<td>Цена</td>" +
-                        "</tr>" +
-                    "<thead>" +
-
-                    "<tbody>" + dataHtml +
-                    "<tbody>" +
-                "</table>" +
+                                "<th style='border-bottom: 1px solid #000;'>Наименование</th>" +
+                                "<th style='border-bottom: 1px solid #000;'>Кол.</th>" +
+                                "<th style='border-bottom: 1px solid #000;'>Сумма</th>" +
+                            "</tr>" +
+                        "<thead>" +
+                        "<tbody>" + dataHtml +
+                        "<tbody>" +
+                        "<tfoot>" +
+                            "<tr><td style='border-top:1px solid #000' colspan='4'> &nbsp;</td></tr>" +
+                            temp+
+                            "<tr>" +
+                                "<th colspan='1'>Итого " + ((expTable.Rows[0] as DataSetTpos.expenseRow).debt == 1 ? "долг" : "") + " :</th>"+
+                                "<th colspan='2'>" + summa + " сум</td>" +
+                            "</tr>" +
+                        "</tfoot>"+
+                    "</table>" +
                 "</body>";
             return html;
         }

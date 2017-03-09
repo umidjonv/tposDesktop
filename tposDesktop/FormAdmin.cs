@@ -22,6 +22,10 @@ namespace tposDesktop
         Scanner scanner;
         DBclass db;
         bool isExit = false;
+        bool tproc = true;
+        bool tnal = true;
+        bool tterm = true;
+        bool tback = true;
         public FormAdmin()
         {
             InitializeComponent();
@@ -87,6 +91,7 @@ namespace tposDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                tscanner = new TextScanner();
             }
         }
         delegate void SendInfoDel(string text);
@@ -515,6 +520,8 @@ namespace tposDesktop
 
         private void liveChartLoad()
         {
+            Chart1.AxisX.Clear();
+            Chart1.AxisY.Clear();
             DataTable table = DBclass.DS.Tables["info"];
             DataRow[] rows = table.Select();
             double[] tempproc = new double[rows.Count()];
@@ -538,16 +545,28 @@ namespace tposDesktop
                     dates[i] = Convert.ToDateTime(val["Dates"]).ToString("dd.MM");
                     i++;
                 }
-                proc.AddRange(tempproc);
-                nal.AddRange(tempnal);
-                term.AddRange(tempterm);
-                back.AddRange(tempback);
+                if (tproc == true)
+                {
+                    proc.AddRange(tempproc);
+                }
+                if (tnal == true)
+                {
+                    nal.AddRange(tempnal);
+                }
+                if (tterm == true)
+                {
+                    term.AddRange(tempterm);
+                }
+                if (tback == true)
+                {
+                    back.AddRange(tempback);
+                }
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-
+            
             Chart1.Series = new SeriesCollection
             {
                 new LineSeries
@@ -605,6 +624,81 @@ namespace tposDesktop
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SendInfo("-1");
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                tproc = true;
+            }
+            else
+            {
+                tproc = false;
+            }
+            liveChartLoad();
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked == true)
+            {
+                tnal = true;
+            }
+            else
+            {
+                tnal = false;
+            }
+            liveChartLoad();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                tterm = true;
+            }
+            else
+            {
+                tterm = false;
+            }
+            liveChartLoad();
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked == true)
+            {
+                tback = true;
+            }
+            else
+            {
+                tback = false;
+            }
+            liveChartLoad();
+        }
+        string curBarcode = "";
+        bool beginBarcode = false;
+        TextScanner tscanner;
+        private void control_keyPress(object sender, KeyPressEventArgs e)
+        {
+            decimal dec;
+            if (char.IsDigit(e.KeyChar))
+            {
+                if (curBarcode == "")
+                    tscanner.Start();
+                tscanner.Symbol(e.KeyChar);
+                //if (Decimal.TryParse(curBarcode))
+                //{
+ 
+                //}
+            }else if(e.KeyChar==13)
+            {
+                //MessageBox.Show(curBarcode);
+                tscanner.End();
+                //tscanner.
+                curBarcode = "";
+            }
         }
 
     }

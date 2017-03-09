@@ -129,6 +129,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\ProductOne.cs" />
+    <Compile Include="Classes\TextScanner.cs" />
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
       <SubType>Component</SubType>
