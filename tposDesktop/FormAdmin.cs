@@ -509,6 +509,7 @@ namespace tposDesktop
 
                                 
             }
+            tbxFilter.Focus();
             
 
         }
@@ -682,23 +683,43 @@ namespace tposDesktop
         TextScanner tscanner;
         private void control_keyPress(object sender, KeyPressEventArgs e)
         {
-            decimal dec;
-            if (char.IsDigit(e.KeyChar))
+            if (tscanner != null)
             {
-                if (curBarcode == "")
-                    tscanner.Start();
-                tscanner.Symbol(e.KeyChar);
-                //if (Decimal.TryParse(curBarcode))
-                //{
- 
-                //}
-            }else if(e.KeyChar==13)
-            {
-                //MessageBox.Show(curBarcode);
-                tscanner.End();
-                //tscanner.
-                curBarcode = "";
+                decimal dec;
+                string st = "";
+                if (sender is TextBox)
+                    st = (sender as TextBox).Text;
+                if (decimal.TryParse(st, out dec) || st == "")
+                {
+                    if (char.IsDigit(e.KeyChar))
+                    {
+
+                        if (!beginBarcode)
+                        {
+                            tscanner.Start();
+                            beginBarcode = true;
+                        }
+                        tscanner.Symbol(e.KeyChar);
+                        //if (Decimal.TryParse(curBarcode))
+                        //{
+
+                        //}
+                    }
+                }
+                else { beginBarcode = false; tscanner.End(); }
+                if (e.KeyChar == 13 && beginBarcode)
+                {
+
+                    tscanner.End();
+                    SendInfo(tscanner.barcode);
+                    beginBarcode = false;
+                    //tscanner.
+                    curBarcode = "";
+                    if (st != "")
+                        (sender as TextBox).Text = "";
+                }
             }
+           
         }
 
     }

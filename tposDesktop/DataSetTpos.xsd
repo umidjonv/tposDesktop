@@ -172,9 +172,8 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        expenseId, expenseDate, debt, comment, off, status, expType, terminal, expSum
-FROM            expense
-WHERE        (status = 1)</CommandText>
+                    <CommandText>SELECT expenseId, expenseDate, debt, comment, off, status, expType, terminal, expSum
+FROM     expense</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -694,7 +693,7 @@ FROM     realizeview</CommandText>
   <xs:element name="DataSetTpos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetTpos" msprop:Generator_UserDSName="DataSetTpos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="balance" msprop:Generator_TableClassName="balanceDataTable" msprop:Generator_TableVarName="tablebalance" msprop:Generator_RowChangedName="balanceRowChanged" msprop:Generator_TablePropName="balance" msprop:Generator_RowDeletingName="balanceRowDeleting" msprop:Generator_RowChangingName="balanceRowChanging" msprop:Generator_RowEvHandlerName="balanceRowChangeEventHandler" msprop:Generator_RowDeletedName="balanceRowDeleted" msprop:Generator_RowClassName="balanceRow" msprop:Generator_UserTableName="balance" msprop:Generator_RowEvArgName="balanceRowChangeEvent">
+        <xs:element name="balance" msprop:Generator_TableClassName="balanceDataTable" msprop:Generator_TableVarName="tablebalance" msprop:Generator_TablePropName="balance" msprop:Generator_RowDeletingName="balanceRowDeleting" msprop:Generator_RowChangingName="balanceRowChanging" msprop:Generator_RowEvHandlerName="balanceRowChangeEventHandler" msprop:Generator_RowDeletedName="balanceRowDeleted" msprop:Generator_UserTableName="balance" msprop:Generator_RowChangedName="balanceRowChanged" msprop:Generator_RowEvArgName="balanceRowChangeEvent" msprop:Generator_RowClassName="balanceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="balanceId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnbalanceId" msprop:Generator_ColumnPropNameInRow="balanceId" msprop:Generator_ColumnPropNameInTable="balanceIdColumn" msprop:Generator_UserColumnName="balanceId" type="xs:int" />
@@ -705,7 +704,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="debt" msprop:Generator_TableClassName="debtDataTable" msprop:Generator_TableVarName="tabledebt" msprop:Generator_RowChangedName="debtRowChanged" msprop:Generator_TablePropName="debt" msprop:Generator_RowDeletingName="debtRowDeleting" msprop:Generator_RowChangingName="debtRowChanging" msprop:Generator_RowEvHandlerName="debtRowChangeEventHandler" msprop:Generator_RowDeletedName="debtRowDeleted" msprop:Generator_RowClassName="debtRow" msprop:Generator_UserTableName="debt" msprop:Generator_RowEvArgName="debtRowChangeEvent">
+        <xs:element name="debt" msprop:Generator_TableClassName="debtDataTable" msprop:Generator_TableVarName="tabledebt" msprop:Generator_TablePropName="debt" msprop:Generator_RowDeletingName="debtRowDeleting" msprop:Generator_RowChangingName="debtRowChanging" msprop:Generator_RowEvHandlerName="debtRowChangeEventHandler" msprop:Generator_RowDeletedName="debtRowDeleted" msprop:Generator_UserTableName="debt" msprop:Generator_RowChangedName="debtRowChanged" msprop:Generator_RowEvArgName="debtRowChangeEvent" msprop:Generator_RowClassName="debtRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="debtId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columndebtId" msprop:Generator_ColumnPropNameInRow="debtId" msprop:Generator_ColumnPropNameInTable="debtIdColumn" msprop:Generator_UserColumnName="debtId" type="xs:int" />
@@ -715,7 +714,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="expense" msprop:Generator_TableClassName="expenseDataTable" msprop:Generator_TableVarName="tableexpense" msprop:Generator_RowChangedName="expenseRowChanged" msprop:Generator_TablePropName="expense" msprop:Generator_RowDeletingName="expenseRowDeleting" msprop:Generator_RowChangingName="expenseRowChanging" msprop:Generator_RowEvHandlerName="expenseRowChangeEventHandler" msprop:Generator_RowDeletedName="expenseRowDeleted" msprop:Generator_RowClassName="expenseRow" msprop:Generator_UserTableName="expense" msprop:Generator_RowEvArgName="expenseRowChangeEvent">
+        <xs:element name="expense" msprop:Generator_TableClassName="expenseDataTable" msprop:Generator_TableVarName="tableexpense" msprop:Generator_TablePropName="expense" msprop:Generator_RowDeletingName="expenseRowDeleting" msprop:Generator_RowChangingName="expenseRowChanging" msprop:Generator_RowEvHandlerName="expenseRowChangeEventHandler" msprop:Generator_RowDeletedName="expenseRowDeleted" msprop:Generator_UserTableName="expense" msprop:Generator_RowChangedName="expenseRowChanged" msprop:Generator_RowEvArgName="expenseRowChangeEvent" msprop:Generator_RowClassName="expenseRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="expenseId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnexpenseId" msprop:Generator_ColumnPropNameInRow="expenseId" msprop:Generator_ColumnPropNameInTable="expenseIdColumn" msprop:Generator_UserColumnName="expenseId" type="xs:int" />
@@ -736,7 +735,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="faktura" msprop:Generator_TableClassName="fakturaDataTable" msprop:Generator_TableVarName="tablefaktura" msprop:Generator_RowChangedName="fakturaRowChanged" msprop:Generator_TablePropName="faktura" msprop:Generator_RowDeletingName="fakturaRowDeleting" msprop:Generator_RowChangingName="fakturaRowChanging" msprop:Generator_RowEvHandlerName="fakturaRowChangeEventHandler" msprop:Generator_RowDeletedName="fakturaRowDeleted" msprop:Generator_RowClassName="fakturaRow" msprop:Generator_UserTableName="faktura" msprop:Generator_RowEvArgName="fakturaRowChangeEvent">
+        <xs:element name="faktura" msprop:Generator_TableClassName="fakturaDataTable" msprop:Generator_TableVarName="tablefaktura" msprop:Generator_TablePropName="faktura" msprop:Generator_RowDeletingName="fakturaRowDeleting" msprop:Generator_RowChangingName="fakturaRowChanging" msprop:Generator_RowEvHandlerName="fakturaRowChangeEventHandler" msprop:Generator_RowDeletedName="fakturaRowDeleted" msprop:Generator_UserTableName="faktura" msprop:Generator_RowChangedName="fakturaRowChanged" msprop:Generator_RowEvArgName="fakturaRowChangeEvent" msprop:Generator_RowClassName="fakturaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="fakturaId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnfakturaId" msprop:Generator_ColumnPropNameInRow="fakturaId" msprop:Generator_ColumnPropNameInTable="fakturaIdColumn" msprop:Generator_UserColumnName="fakturaId" type="xs:int" />
@@ -747,7 +746,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="measure" msprop:Generator_TableClassName="measureDataTable" msprop:Generator_TableVarName="tablemeasure" msprop:Generator_RowChangedName="measureRowChanged" msprop:Generator_TablePropName="measure" msprop:Generator_RowDeletingName="measureRowDeleting" msprop:Generator_RowChangingName="measureRowChanging" msprop:Generator_RowEvHandlerName="measureRowChangeEventHandler" msprop:Generator_RowDeletedName="measureRowDeleted" msprop:Generator_RowClassName="measureRow" msprop:Generator_UserTableName="measure" msprop:Generator_RowEvArgName="measureRowChangeEvent">
+        <xs:element name="measure" msprop:Generator_TableClassName="measureDataTable" msprop:Generator_TableVarName="tablemeasure" msprop:Generator_TablePropName="measure" msprop:Generator_RowDeletingName="measureRowDeleting" msprop:Generator_RowChangingName="measureRowChanging" msprop:Generator_RowEvHandlerName="measureRowChangeEventHandler" msprop:Generator_RowDeletedName="measureRowDeleted" msprop:Generator_UserTableName="measure" msprop:Generator_RowChangedName="measureRowChanged" msprop:Generator_RowEvArgName="measureRowChangeEvent" msprop:Generator_RowClassName="measureRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="measureId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnmeasureId" msprop:Generator_ColumnPropNameInRow="measureId" msprop:Generator_ColumnPropNameInTable="measureIdColumn" msprop:Generator_UserColumnName="measureId" type="xs:int" />
@@ -763,7 +762,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="orders" msprop:Generator_TableClassName="ordersDataTable" msprop:Generator_TableVarName="tableorders" msprop:Generator_RowChangedName="ordersRowChanged" msprop:Generator_TablePropName="orders" msprop:Generator_RowDeletingName="ordersRowDeleting" msprop:Generator_RowChangingName="ordersRowChanging" msprop:Generator_RowEvHandlerName="ordersRowChangeEventHandler" msprop:Generator_RowDeletedName="ordersRowDeleted" msprop:Generator_RowClassName="ordersRow" msprop:Generator_UserTableName="orders" msprop:Generator_RowEvArgName="ordersRowChangeEvent">
+        <xs:element name="orders" msprop:Generator_TableClassName="ordersDataTable" msprop:Generator_TableVarName="tableorders" msprop:Generator_TablePropName="orders" msprop:Generator_RowDeletingName="ordersRowDeleting" msprop:Generator_RowChangingName="ordersRowChanging" msprop:Generator_RowEvHandlerName="ordersRowChangeEventHandler" msprop:Generator_RowDeletedName="ordersRowDeleted" msprop:Generator_UserTableName="orders" msprop:Generator_RowChangedName="ordersRowChanged" msprop:Generator_RowEvArgName="ordersRowChangeEvent" msprop:Generator_RowClassName="ordersRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="orderId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnorderId" msprop:Generator_ColumnPropNameInRow="orderId" msprop:Generator_ColumnPropNameInTable="orderIdColumn" msprop:Generator_UserColumnName="orderId" type="xs:int" />
@@ -774,7 +773,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="product" msprop:Generator_TableClassName="productDataTable" msprop:Generator_TableVarName="tableproduct" msprop:Generator_RowChangedName="productRowChanged" msprop:Generator_TablePropName="product" msprop:Generator_RowDeletingName="productRowDeleting" msprop:Generator_RowChangingName="productRowChanging" msprop:Generator_RowEvHandlerName="productRowChangeEventHandler" msprop:Generator_RowDeletedName="productRowDeleted" msprop:Generator_RowClassName="productRow" msprop:Generator_UserTableName="product" msprop:Generator_RowEvArgName="productRowChangeEvent">
+        <xs:element name="product" msprop:Generator_TableClassName="productDataTable" msprop:Generator_TableVarName="tableproduct" msprop:Generator_TablePropName="product" msprop:Generator_RowDeletingName="productRowDeleting" msprop:Generator_RowChangingName="productRowChanging" msprop:Generator_RowEvHandlerName="productRowChangeEventHandler" msprop:Generator_RowDeletedName="productRowDeleted" msprop:Generator_UserTableName="product" msprop:Generator_RowChangedName="productRowChanged" msprop:Generator_RowEvArgName="productRowChangeEvent" msprop:Generator_RowClassName="productRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="productId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnproductId" msprop:Generator_ColumnPropNameInRow="productId" msprop:Generator_ColumnPropNameInTable="productIdColumn" msprop:Generator_UserColumnName="productId" type="xs:int" />
@@ -799,7 +798,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="realize" msprop:Generator_TableClassName="realizeDataTable" msprop:Generator_TableVarName="tablerealize" msprop:Generator_RowChangedName="realizeRowChanged" msprop:Generator_TablePropName="realize" msprop:Generator_RowDeletingName="realizeRowDeleting" msprop:Generator_RowChangingName="realizeRowChanging" msprop:Generator_RowEvHandlerName="realizeRowChangeEventHandler" msprop:Generator_RowDeletedName="realizeRowDeleted" msprop:Generator_RowClassName="realizeRow" msprop:Generator_UserTableName="realize" msprop:Generator_RowEvArgName="realizeRowChangeEvent">
+        <xs:element name="realize" msprop:Generator_TableClassName="realizeDataTable" msprop:Generator_TableVarName="tablerealize" msprop:Generator_TablePropName="realize" msprop:Generator_RowDeletingName="realizeRowDeleting" msprop:Generator_RowChangingName="realizeRowChanging" msprop:Generator_RowEvHandlerName="realizeRowChangeEventHandler" msprop:Generator_RowDeletedName="realizeRowDeleted" msprop:Generator_UserTableName="realize" msprop:Generator_RowChangedName="realizeRowChanged" msprop:Generator_RowEvArgName="realizeRowChangeEvent" msprop:Generator_RowClassName="realizeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="realizeId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnrealizeId" msprop:Generator_ColumnPropNameInRow="realizeId" msprop:Generator_ColumnPropNameInTable="realizeIdColumn" msprop:Generator_UserColumnName="realizeId" type="xs:int" />
@@ -810,7 +809,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="backview" msprop:Generator_TableClassName="backviewDataTable" msprop:Generator_TableVarName="tablebackview" msprop:Generator_RowChangedName="backviewRowChanged" msprop:Generator_TablePropName="backview" msprop:Generator_RowDeletingName="backviewRowDeleting" msprop:Generator_RowChangingName="backviewRowChanging" msprop:Generator_RowEvHandlerName="backviewRowChangeEventHandler" msprop:Generator_RowDeletedName="backviewRowDeleted" msprop:Generator_RowClassName="backviewRow" msprop:Generator_UserTableName="backview" msprop:Generator_RowEvArgName="backviewRowChangeEvent">
+        <xs:element name="backview" msprop:Generator_TableClassName="backviewDataTable" msprop:Generator_TableVarName="tablebackview" msprop:Generator_TablePropName="backview" msprop:Generator_RowDeletingName="backviewRowDeleting" msprop:Generator_RowChangingName="backviewRowChanging" msprop:Generator_RowEvHandlerName="backviewRowChangeEventHandler" msprop:Generator_RowDeletedName="backviewRowDeleted" msprop:Generator_UserTableName="backview" msprop:Generator_RowChangedName="backviewRowChanged" msprop:Generator_RowEvArgName="backviewRowChangeEvent" msprop:Generator_RowClassName="backviewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="expenseDate" msprop:Generator_ColumnVarNameInTable="columnexpenseDate" msprop:Generator_ColumnPropNameInRow="expenseDate" msprop:Generator_ColumnPropNameInTable="expenseDateColumn" msprop:Generator_UserColumnName="expenseDate" type="xs:dateTime" minOccurs="0" />
@@ -826,7 +825,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="balanceview" msprop:Generator_TableClassName="balanceviewDataTable" msprop:Generator_TableVarName="tablebalanceview" msprop:Generator_RowChangedName="balanceviewRowChanged" msprop:Generator_TablePropName="balanceview" msprop:Generator_RowDeletingName="balanceviewRowDeleting" msprop:Generator_RowChangingName="balanceviewRowChanging" msprop:Generator_RowEvHandlerName="balanceviewRowChangeEventHandler" msprop:Generator_RowDeletedName="balanceviewRowDeleted" msprop:Generator_RowClassName="balanceviewRow" msprop:Generator_UserTableName="balanceview" msprop:Generator_RowEvArgName="balanceviewRowChangeEvent">
+        <xs:element name="balanceview" msprop:Generator_TableClassName="balanceviewDataTable" msprop:Generator_TableVarName="tablebalanceview" msprop:Generator_TablePropName="balanceview" msprop:Generator_RowDeletingName="balanceviewRowDeleting" msprop:Generator_RowChangingName="balanceviewRowChanging" msprop:Generator_RowEvHandlerName="balanceviewRowChangeEventHandler" msprop:Generator_RowDeletedName="balanceviewRowDeleted" msprop:Generator_UserTableName="balanceview" msprop:Generator_RowChangedName="balanceviewRowChanged" msprop:Generator_RowEvArgName="balanceviewRowChangeEvent" msprop:Generator_RowClassName="balanceviewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="balanceId" msprop:Generator_ColumnVarNameInTable="columnbalanceId" msprop:Generator_ColumnPropNameInRow="balanceId" msprop:Generator_ColumnPropNameInTable="balanceIdColumn" msprop:Generator_UserColumnName="balanceId" type="xs:int" />
@@ -856,7 +855,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="debtview" msprop:Generator_TableClassName="debtviewDataTable" msprop:Generator_TableVarName="tabledebtview" msprop:Generator_RowChangedName="debtviewRowChanged" msprop:Generator_TablePropName="debtview" msprop:Generator_RowDeletingName="debtviewRowDeleting" msprop:Generator_RowChangingName="debtviewRowChanging" msprop:Generator_RowEvHandlerName="debtviewRowChangeEventHandler" msprop:Generator_RowDeletedName="debtviewRowDeleted" msprop:Generator_RowClassName="debtviewRow" msprop:Generator_UserTableName="debtview" msprop:Generator_RowEvArgName="debtviewRowChangeEvent">
+        <xs:element name="debtview" msprop:Generator_TableClassName="debtviewDataTable" msprop:Generator_TableVarName="tabledebtview" msprop:Generator_TablePropName="debtview" msprop:Generator_RowDeletingName="debtviewRowDeleting" msprop:Generator_RowChangingName="debtviewRowChanging" msprop:Generator_RowEvHandlerName="debtviewRowChangeEventHandler" msprop:Generator_RowDeletedName="debtviewRowDeleted" msprop:Generator_UserTableName="debtview" msprop:Generator_RowChangedName="debtviewRowChanged" msprop:Generator_RowEvArgName="debtviewRowChangeEvent" msprop:Generator_RowClassName="debtviewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="expenseDate" msprop:Generator_ColumnVarNameInTable="columnexpenseDate" msprop:Generator_ColumnPropNameInRow="expenseDate" msprop:Generator_ColumnPropNameInTable="expenseDateColumn" msprop:Generator_UserColumnName="expenseDate" type="xs:dateTime" minOccurs="0" />
@@ -871,7 +870,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="expenseview" msprop:Generator_TableClassName="expenseviewDataTable" msprop:Generator_TableVarName="tableexpenseview" msprop:Generator_RowChangedName="expenseviewRowChanged" msprop:Generator_TablePropName="expenseview" msprop:Generator_RowDeletingName="expenseviewRowDeleting" msprop:Generator_RowChangingName="expenseviewRowChanging" msprop:Generator_RowEvHandlerName="expenseviewRowChangeEventHandler" msprop:Generator_RowDeletedName="expenseviewRowDeleted" msprop:Generator_RowClassName="expenseviewRow" msprop:Generator_UserTableName="expenseview" msprop:Generator_RowEvArgName="expenseviewRowChangeEvent">
+        <xs:element name="expenseview" msprop:Generator_TableClassName="expenseviewDataTable" msprop:Generator_TableVarName="tableexpenseview" msprop:Generator_TablePropName="expenseview" msprop:Generator_RowDeletingName="expenseviewRowDeleting" msprop:Generator_RowChangingName="expenseviewRowChanging" msprop:Generator_RowEvHandlerName="expenseviewRowChangeEventHandler" msprop:Generator_RowDeletedName="expenseviewRowDeleted" msprop:Generator_UserTableName="expenseview" msprop:Generator_RowChangedName="expenseviewRowChanged" msprop:Generator_RowEvArgName="expenseviewRowChangeEvent" msprop:Generator_RowClassName="expenseviewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="expenseDate" msprop:Generator_ColumnVarNameInTable="columnexpenseDate" msprop:Generator_ColumnPropNameInRow="expenseDate" msprop:Generator_ColumnPropNameInTable="expenseDateColumn" msprop:Generator_UserColumnName="expenseDate" type="xs:dateTime" minOccurs="0" />
@@ -887,7 +886,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="info" msprop:Generator_TableClassName="infoDataTable" msprop:Generator_TableVarName="tableinfo" msprop:Generator_RowChangedName="infoRowChanged" msprop:Generator_TablePropName="info" msprop:Generator_RowDeletingName="infoRowDeleting" msprop:Generator_RowChangingName="infoRowChanging" msprop:Generator_RowEvHandlerName="infoRowChangeEventHandler" msprop:Generator_RowDeletedName="infoRowDeleted" msprop:Generator_RowClassName="infoRow" msprop:Generator_UserTableName="info" msprop:Generator_RowEvArgName="infoRowChangeEvent">
+        <xs:element name="info" msprop:Generator_TableClassName="infoDataTable" msprop:Generator_TableVarName="tableinfo" msprop:Generator_TablePropName="info" msprop:Generator_RowDeletingName="infoRowDeleting" msprop:Generator_RowChangingName="infoRowChanging" msprop:Generator_RowEvHandlerName="infoRowChangeEventHandler" msprop:Generator_RowDeletedName="infoRowDeleted" msprop:Generator_UserTableName="info" msprop:Generator_RowChangedName="infoRowChanged" msprop:Generator_RowEvArgName="infoRowChangeEvent" msprop:Generator_RowClassName="infoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Dates" msprop:Generator_ColumnVarNameInTable="columnDates" msprop:Generator_ColumnPropNameInRow="Dates" msprop:Generator_ColumnPropNameInTable="DatesColumn" msprop:Generator_UserColumnName="Dates" type="xs:dateTime" minOccurs="0" />
@@ -898,7 +897,7 @@ FROM     realizeview</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="realizeview" msprop:Generator_TableClassName="realizeviewDataTable" msprop:Generator_TableVarName="tablerealizeview" msprop:Generator_RowChangedName="realizeviewRowChanged" msprop:Generator_TablePropName="realizeview" msprop:Generator_RowDeletingName="realizeviewRowDeleting" msprop:Generator_RowChangingName="realizeviewRowChanging" msprop:Generator_RowEvHandlerName="realizeviewRowChangeEventHandler" msprop:Generator_RowDeletedName="realizeviewRowDeleted" msprop:Generator_RowClassName="realizeviewRow" msprop:Generator_UserTableName="realizeview" msprop:Generator_RowEvArgName="realizeviewRowChangeEvent">
+        <xs:element name="realizeview" msprop:Generator_TableClassName="realizeviewDataTable" msprop:Generator_TableVarName="tablerealizeview" msprop:Generator_TablePropName="realizeview" msprop:Generator_RowDeletingName="realizeviewRowDeleting" msprop:Generator_RowChangingName="realizeviewRowChanging" msprop:Generator_RowEvHandlerName="realizeviewRowChangeEventHandler" msprop:Generator_RowDeletedName="realizeviewRowDeleted" msprop:Generator_UserTableName="realizeview" msprop:Generator_RowChangedName="realizeviewRowChanged" msprop:Generator_RowEvArgName="realizeviewRowChangeEvent" msprop:Generator_RowClassName="realizeviewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="fakturaId" msprop:Generator_ColumnVarNameInTable="columnfakturaId" msprop:Generator_ColumnPropNameInRow="fakturaId" msprop:Generator_ColumnPropNameInTable="fakturaIdColumn" msprop:Generator_UserColumnName="fakturaId" type="xs:int" />

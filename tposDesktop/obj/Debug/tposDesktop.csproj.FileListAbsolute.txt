@@ -110,3 +110,4 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll

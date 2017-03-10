@@ -28,7 +28,7 @@ namespace tposDesktop
             InitializeComponent();
             this.Icon = tposDesktop.Properties.Resources.mainIcon;
             db = new DBclass();
-            db.FillExpense();
+            db.FillExpense("");
             db.FillProduct();
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
@@ -53,6 +53,7 @@ namespace tposDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                tscanner = new TextScanner();
             }
 
         }
@@ -309,6 +310,11 @@ namespace tposDesktop
                         dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                         dgvCell.Value = "-";
                     }
+                    else if (dgvExpense.Columns[e.ColumnIndex].Name == "colBtnDel")
+                    {
+                        dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        dgvCell.Value = "Х"; 
+                    }
                 }
             }
             
@@ -477,8 +483,10 @@ namespace tposDesktop
                 if (commentf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     commentDebt = commentf.comment;
+                    
                 }
                 else chbDolg.Checked = false;
+                dgvTovar.Focus();
             }
             else if (chb.Checked)
                 chb.Checked = false;
@@ -535,6 +543,43 @@ namespace tposDesktop
 
         private void dgv_KeyPress(object sender, KeyPressEventArgs e)
         {
+            decimal dec;
+            string st = "";
+            if (sender is TextBox)
+                st = (sender as TextBox).Text;
+            if (tscanner != null&&(decimal.TryParse(st, out dec) || st == ""))
+            {
+                if (char.IsDigit(e.KeyChar))
+                {
+
+                    if (!beginBarcode)
+                    {
+                        tscanner.Start();
+                        beginBarcode = true;
+                    }
+                    tscanner.Symbol(e.KeyChar);
+                    //if (Decimal.TryParse(curBarcode))
+                    //{
+
+                    //}
+                }
+            }
+            else { beginBarcode = false; tscanner.End(); }
+            if (tscanner != null&&(e.KeyChar == 13 && beginBarcode))
+            {
+
+                tscanner.End();
+
+                AddToOrders(tscanner.barcode);
+                
+                
+                beginBarcode = false;
+                //tscanner.
+                curBarcode = "";
+                if (st != "")
+                    (sender as TextBox).Text = "";
+            }
+            else
             if (e.KeyChar == 43)
             {
                 btnOplata_Click(btnOplata, new EventArgs());
@@ -546,6 +591,13 @@ namespace tposDesktop
                     AddToOrders((int)dgvTovar.Rows[dgvTovar.CurrentCell.RowIndex].Cells["productid"].Value);
                 }    
             }
+        }
+        string curBarcode = "";
+        bool beginBarcode = false;
+        TextScanner tscanner;
+        private void control_keyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
 
         private void администраторToolStripMenuItem_Click(object sender, EventArgs e)

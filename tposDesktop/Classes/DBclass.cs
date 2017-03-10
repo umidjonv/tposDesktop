@@ -69,10 +69,20 @@ namespace Classes.DB
 
             
         }
-        public void FillExpense()
+        public void FillExpense(string filter)
         {
             expenseTableAdapter daEx = new expenseTableAdapter();
-            daEx.Fill(DS.expense);
+            if (filter != "")
+            {
+                DS.expense.Clear();
+                daEx.Adapter.SelectCommand = new MySqlCommand("select * from expense where " + filter, daEx.Connection);
+                
+                daEx.Adapter.Fill(DS.expense);
+            }
+            else
+            {
+                daEx.Fill(DS.expense);
+            }
             //DS.expense
         }
          

@@ -10,7 +10,7 @@ namespace Classes
 {
     class TextScanner
     {
-        string barcode;
+        public string barcode;
         string temp;
         string compare;
         BackgroundWorker worker;
@@ -28,7 +28,7 @@ namespace Classes
         {
             while (true)
             {
-                if (temp == compare&&!isEnd)
+                if (temp == compare&&!isEnd||isEnd)
                 {
                     temp = "";
                     compare = "";
@@ -39,6 +39,7 @@ namespace Classes
                     
                     compare = temp;
                 }
+                
                 Thread.Sleep(500);
             }
         }
@@ -47,10 +48,11 @@ namespace Classes
             temp += ch;
         }
         bool isEnd = false;
-        public void End()
+        public string End()
         {
             isEnd = true;
             barcode = temp;
+            return barcode;
         }
         public void Start()
         {

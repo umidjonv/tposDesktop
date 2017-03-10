@@ -17,7 +17,7 @@ namespace tposDesktop
         {
             InitializeComponent();
             DBclass db = new DBclass();
-            db.FillExpense();
+            db.FillExpense("status = 1");
             DataView dv = new DataView(DBclass.DS.expense);
             dv.RowFilter = "status = 1";
             
@@ -86,11 +86,13 @@ namespace tposDesktop
                     drs[0]["status"] = 0;
                 }
                 DBclass.DS.debt.AdddebtRow(debRow);
-                DataSetTposTableAdapters.expenseTableAdapter daExp = new DataSetTposTableAdapters.expenseTableAdapter();
-                daExp.Update(DBclass.DS.expense);
+                
                 DataSetTposTableAdapters.debtTableAdapter daDebt = new DataSetTposTableAdapters.debtTableAdapter();
                 daDebt.Update(DBclass.DS.debt);
+                DataSetTposTableAdapters.expenseTableAdapter daExp = new DataSetTposTableAdapters.expenseTableAdapter();
+                daExp.Update(DBclass.DS.expense);
                 dgvDolgi.Refresh();
+                //daExp.Fill();
             }else
             if (e.RowIndex >= 0)
             {
@@ -128,6 +130,15 @@ namespace tposDesktop
         {
             if (e.KeyChar == 27)
             { this.Close(); }
+        }
+
+        private void tbxFilter_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = dgvDolgi.DataSource as DataView;
+            if (tbxFilter.Text.Length > 0)
+            { dv.RowFilter = "status = 1 and comment like '%" + tbxFilter.Text + "%'"; }
+            else
+            { dv.RowFilter = "status = 1"; }
         }
     }
 }
