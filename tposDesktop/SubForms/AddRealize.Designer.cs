@@ -37,6 +37,8 @@
             this.lblPack = new System.Windows.Forms.Label();
             this.tbxPrice = new Classes.NumericTextBox();
             this.tbxPack = new Classes.NumericTextBox();
+            this.lblKol = new System.Windows.Forms.Label();
+            this.tbxKol = new Classes.NumericTextBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -45,7 +47,7 @@
             this.lblName.Location = new System.Drawing.Point(52, 55);
             this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(83, 29);
+            this.lblName.Size = new System.Drawing.Size(65, 24);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Товар";
             // 
@@ -54,7 +56,7 @@
             this.tbxName.Enabled = false;
             this.tbxName.Location = new System.Drawing.Point(198, 55);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(469, 34);
+            this.tbxName.Size = new System.Drawing.Size(469, 28);
             this.tbxName.TabIndex = 1;
             this.tbxName.TabStop = false;
             // 
@@ -63,7 +65,7 @@
             this.tbxShtrix.Enabled = false;
             this.tbxShtrix.Location = new System.Drawing.Point(198, 120);
             this.tbxShtrix.Name = "tbxShtrix";
-            this.tbxShtrix.Size = new System.Drawing.Size(469, 34);
+            this.tbxShtrix.Size = new System.Drawing.Size(469, 28);
             this.tbxShtrix.TabIndex = 1;
             this.tbxShtrix.TabStop = false;
             // 
@@ -73,7 +75,7 @@
             this.label2.Location = new System.Drawing.Point(52, 123);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 29);
+            this.label2.Size = new System.Drawing.Size(66, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Штрих";
             // 
@@ -83,7 +85,7 @@
             this.label3.Location = new System.Drawing.Point(52, 276);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 29);
+            this.label3.Size = new System.Drawing.Size(54, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "Цена";
             // 
@@ -100,37 +102,57 @@
             // lblPack
             // 
             this.lblPack.AutoSize = true;
-            this.lblPack.Location = new System.Drawing.Point(52, 201);
+            this.lblPack.Location = new System.Drawing.Point(52, 178);
             this.lblPack.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPack.Name = "lblPack";
-            this.lblPack.Size = new System.Drawing.Size(64, 29);
+            this.lblPack.Size = new System.Drawing.Size(62, 24);
             this.lblPack.TabIndex = 0;
-            this.lblPack.Text = "Кол.";
+            this.lblPack.Text = "Пачка";
             // 
             // tbxPrice
             // 
             this.tbxPrice.Location = new System.Drawing.Point(198, 273);
             this.tbxPrice.Name = "tbxPrice";
-            this.tbxPrice.Size = new System.Drawing.Size(148, 34);
+            this.tbxPrice.Size = new System.Drawing.Size(148, 28);
             this.tbxPrice.TabIndex = 1;
             this.tbxPrice.Text = "0";
             // 
             // tbxPack
             // 
-            this.tbxPack.Location = new System.Drawing.Point(198, 198);
+            this.tbxPack.Location = new System.Drawing.Point(198, 175);
             this.tbxPack.Name = "tbxPack";
-            this.tbxPack.Size = new System.Drawing.Size(148, 34);
+            this.tbxPack.Size = new System.Drawing.Size(148, 28);
             this.tbxPack.TabIndex = 0;
             this.tbxPack.Text = "0";
             // 
+            // lblKol
+            // 
+            this.lblKol.AutoSize = true;
+            this.lblKol.Location = new System.Drawing.Point(52, 228);
+            this.lblKol.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblKol.Name = "lblKol";
+            this.lblKol.Size = new System.Drawing.Size(48, 24);
+            this.lblKol.TabIndex = 0;
+            this.lblKol.Text = "Кол.";
+            // 
+            // tbxKol
+            // 
+            this.tbxKol.Location = new System.Drawing.Point(198, 225);
+            this.tbxKol.Name = "tbxKol";
+            this.tbxKol.Size = new System.Drawing.Size(148, 28);
+            this.tbxKol.TabIndex = 0;
+            this.tbxKol.Text = "0";
+            // 
             // AddRealize
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 349);
             this.Controls.Add(this.tbxPrice);
+            this.Controls.Add(this.tbxKol);
             this.Controls.Add(this.tbxPack);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.lblKol);
             this.Controls.Add(this.tbxShtrix);
             this.Controls.Add(this.lblPack);
             this.Controls.Add(this.label3);
@@ -160,5 +182,7 @@
         private System.Windows.Forms.Label lblPack;
         private Classes.NumericTextBox tbxPack;
         private Classes.NumericTextBox tbxPrice;
+        private System.Windows.Forms.Label lblKol;
+        private Classes.NumericTextBox tbxKol;
     }
 }

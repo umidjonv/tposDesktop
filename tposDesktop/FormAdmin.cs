@@ -13,6 +13,7 @@ using tposDesktop.DataSetTposTableAdapters;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
+using Classes;
 
 
 namespace tposDesktop
@@ -73,6 +74,8 @@ namespace tposDesktop
 
 
                 liveChartLoad();
+                balanceSumm();
+                realizeSumm();
 
             }
             catch (Exception ex)
@@ -139,8 +142,8 @@ namespace tposDesktop
                 AddForm addForm = new AddForm(barcode);
                 if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    productTableAdapter daProduct = new productTableAdapter();
-                    daProduct.Fill(DBclass.DS.product);
+                    //productTableAdapter daProduct = new productTableAdapter();
+                    //daProduct.Fill(DBclass.DS.product);
 
 
                 }
@@ -235,7 +238,11 @@ namespace tposDesktop
             cellBtn.Name = "colBtn";
             cellBtn.Width = 100;
             dgvTovar.Columns.Add(cellBtn);
-
+            DataGridViewButtonColumn cellBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            cellBtnDel.HeaderText = "";
+            cellBtnDel.Name = "colBtnDel";
+            cellBtnDel.Width = 70;
+            dgvTovar.Columns.Add(cellBtnDel);
 
             //Tovar rasxod
             dgvTovarPrixod.Columns["productId"].HeaderText = "№";
@@ -255,6 +262,8 @@ namespace tposDesktop
             cellBtnRas.Name = "colBtn";
             cellBtnRas.Width = 100;
             dgvTovarPrixod.Columns.Add(cellBtnRas);
+
+            
 
             //Info grid
             
@@ -280,7 +289,7 @@ namespace tposDesktop
             realizeGrid.Columns["price"].DisplayIndex = 3;
             //realizeGrid.Columns["name"].Width = 200;
             realizeGrid.Columns["fakturaId"].DisplayIndex = 0;
-            realizeGrid.Columns["fakturaId"].HeaderText = "№ Прихода";
+            realizeGrid.Columns["fakturaId"].HeaderText = "№ Фактуры";
             realizeGrid.Columns["fakturaId"].Width = 70;
             realizeGrid.Columns["colBtnDel"].DisplayIndex = 5;
             //cellBtn2.DisplayIndex = 5;
@@ -308,11 +317,47 @@ namespace tposDesktop
             balanceGrid.Columns["price"].Visible = false;
             balanceGrid.Columns["pack"].Visible = false;
             balanceGrid.Columns["endCount"].HeaderText = "Кол-во";
-            balanceGrid.Columns["curEndCount"].HeaderText = "Кол-во";
+            balanceGrid.Columns["curEndCount"].HeaderText = "Сумма";
             balanceGrid.Columns["name"].Width = 200;
             balanceGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
  
             
+        }
+
+        private void balanceSumm()
+        {
+            int sum = 0;
+            try
+            {
+                for (int i = 0; i < balanceGrid.Rows.Count; ++i)
+                {
+                    sum += Convert.ToInt32(balanceGrid.Rows[i].Cells[4].Value);
+                }
+                lblBalanceSum.Text = "Итого остаток : " +sum.ToString() + " сум";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void realizeSumm()
+        {
+            int sum = 0;
+            try
+            {
+                for (int i = 0; i < realizeGrid.Rows.Count; ++i)
+                {
+                    sum += Convert.ToInt32(realizeGrid.Rows[i].Cells[4].Value);
+                }
+                lblRealizeSum.Text = "Итого : "+sum.ToString() + " сум";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Filtering(string tab)
@@ -388,6 +433,8 @@ namespace tposDesktop
         private void showBtn_Click(object sender, EventArgs e)
         {
             Filtering(tabControl1.SelectedTab.Name);
+            balanceSumm();
+            realizeSumm();
         }
 
         private void menuRasxod_Click(object sender, EventArgs e)
@@ -415,7 +462,19 @@ namespace tposDesktop
                 {
                     case "dgvTovar":
                         DataRow[] dr = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
-                        AddProduct(dr, null);
+                        if (dgv.Columns[e.ColumnIndex].Name == "colBtn")
+                        {
+                            AddProduct(dr, null);
+                        }
+                        else if (dgv.Columns[e.ColumnIndex].Name == "colBtnDel")
+                        {
+                            dr[0].Delete();
+                            this.productTableAdapter1.Update(DBclass.DS.product);
+                            this.productTableAdapter1.Fill(DBclass.DS.product);
+                        }
+
+                        
+                        
                         break;
                     case "dgvTovarPrixod":
                         DataRow[] drP = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
@@ -442,7 +501,16 @@ namespace tposDesktop
                 switch (grid.Name)
                 {
                     case "dgvTovar":
-                        dgvCell.Value = "Изменить";
+                        switch (grid.Columns[e.ColumnIndex].Name)
+                        {
+                            case "colBtn":
+                                dgvCell.Value = "Изменить";
+                                break;
+                            case "colBtnDel":
+                                dgvCell.Value = "X";
+                                break;
+                        }
+                        
                         break;
                     case "dgvTovarPrixod":
                         dgvCell.Value = "В приход";
@@ -625,6 +693,7 @@ namespace tposDesktop
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SendInfo("-1");
+            tbxFilter.Focus();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -711,6 +780,9 @@ namespace tposDesktop
                 {
 
                     tscanner.End();
+                    if (tbxFilter.Text != ""&&tbxFilter.Focused)
+                        SendInfo(tbxFilter.Text);
+                    else
                     SendInfo(tscanner.barcode);
                     beginBarcode = false;
                     //tscanner.
@@ -720,6 +792,45 @@ namespace tposDesktop
                 }
             }
            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var ds = new DataSet();
+            var dt = new DataTable();
+            //Получаем из  
+            dt = ExportExcel.ToDataTable(dgvTovar, "PC");
+            //Записываем в Dataset нашу полученную таблицу 
+            ds.Tables.Add(dt);
+            var save = new SaveFileDialog();
+            save.Filter = "xls files (*.xls)|*.xls|All files|*.*";
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                //Собсвенно вот тут и передаем DataSet в наш метод который формирует Excel-документ
+                ExportExcel.CreateWorkbook(save.FileName, ds);
+            }
+        }
+
+        private void btnExportBalance_Click(object sender, EventArgs e)
+        {
+            var ds = new DataSet();
+            var dt = new DataTable();
+            //Получаем из  
+            dt = ExportExcel.ToDataTable(balanceGrid, "PC");
+            //Записываем в Dataset нашу полученную таблицу 
+            ds.Tables.Add(dt);
+            var save = new SaveFileDialog();
+            save.Filter = "xls files (*.xls)|*.xls|All files|*.*";
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                //Собсвенно вот тут и передаем DataSet в наш метод который формирует Excel-документ
+                ExportExcel.CreateWorkbook(save.FileName, ds);
+            }
         }
 
     }

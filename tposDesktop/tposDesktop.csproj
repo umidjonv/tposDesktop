@@ -90,6 +90,10 @@
     <ApplicationIcon>icon_hF6_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ExcelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts">
       <HintPath>..\packages\LiveCharts.0.9.3.5\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -124,6 +128,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Check.cs" />
+    <Compile Include="Classes\ExportExcel.cs" />
     <Compile Include="Classes\ImageCell.cs" />
     <Compile Include="Classes\NumericTextBox.cs">
       <SubType>Component</SubType>
@@ -139,6 +145,11 @@
     </Compile>
     <Compile Include="FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SubForms\AddRealize.cs">
       <SubType>Form</SubType>
@@ -248,14 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.config" />
     <None Include="DataSetTpos.xsc">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
@@ -281,9 +287,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icoVozvrat.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\qarz.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\back.png" />
@@ -325,6 +328,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon_hF6_icon.ico" />
+    <None Include="Resources\qarz.png" />
+    <None Include="Resources\poisk.png" />
+    <None Include="Resources\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

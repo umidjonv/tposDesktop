@@ -84,6 +84,7 @@ namespace tposDesktop
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            btnDolg.BackgroundImage = Properties.Resources.qarz;
             // TODO: This line of code loads data into the 'dataSetTpos.orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.dataSetTpos.orders);
             dgvTovar.Columns["productId"].HeaderText = "№";
@@ -275,8 +276,8 @@ namespace tposDesktop
                     AddForm addForm = new AddForm(barcode);
                     if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        productTableAdapter daProduct = new productTableAdapter();
-                        daProduct.Fill(DBclass.DS.product);
+                        //productTableAdapter daProduct = new productTableAdapter();
+                        //daProduct.Fill(DBclass.DS.product);
 
 
                     }
@@ -382,6 +383,7 @@ namespace tposDesktop
                 chbDolg.Checked = false;
                 commentDebt = "";
                 chbTerminal.Checked = false;
+                tbxTerminal.Text = "";
             }
             
         }
@@ -458,7 +460,7 @@ namespace tposDesktop
         }
         private void Text_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))||(char.IsDigit(e.KeyChar)&&e.KeyChar==48))
+            if ((!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)))//||(char.IsDigit(e.KeyChar)&&e.KeyChar==48))
             {
                 e.Handled = true;
             }
@@ -543,13 +545,14 @@ namespace tposDesktop
 
         private void dgv_KeyPress(object sender, KeyPressEventArgs e)
         {
+            char key = e.KeyChar;
             decimal dec;
             string st = "";
             if (sender is TextBox)
                 st = (sender as TextBox).Text;
             if (tscanner != null&&(decimal.TryParse(st, out dec) || st == ""))
             {
-                if (char.IsDigit(e.KeyChar))
+                if (char.IsDigit(key))
                 {
 
                     if (!beginBarcode)
@@ -557,21 +560,25 @@ namespace tposDesktop
                         tscanner.Start();
                         beginBarcode = true;
                     }
-                    tscanner.Symbol(e.KeyChar);
+                    tscanner.Symbol(key);
                     //if (Decimal.TryParse(curBarcode))
                     //{
 
                     //}
                 }
             }
-            else { beginBarcode = false; tscanner.End(); }
+            else 
+            { 
+                beginBarcode = false; if(tscanner!=null)tscanner.End(); 
+            }
             if (tscanner != null&&(e.KeyChar == 13 && beginBarcode))
             {
 
                 tscanner.End();
-
-                AddToOrders(tscanner.barcode);
-                
+                if(tbxSearchTovar.Text!=""&&tbxSearchTovar.Focused)
+                AddToOrders(tbxSearchTovar.Text);
+                else
+                    AddToOrders(tscanner.barcode);
                 
                 beginBarcode = false;
                 //tscanner.
@@ -714,6 +721,12 @@ namespace tposDesktop
                     "</table>" +
                 "</body>";
             return html;
+        }
+
+        private void menuCloseDay_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Будет выполнена опреация по завершению дня, не закрывайте пожалуйста окно программы пока не выйдет сообщение!");
+            db.CloseDay();
         }
 
 

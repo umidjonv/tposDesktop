@@ -14,6 +14,7 @@ namespace tposDesktop
 {
     public partial class AddRealize : Form
     {
+        int pack;
         public AddRealize(string barcode)
         {
             isAdd = true;
@@ -22,7 +23,7 @@ namespace tposDesktop
             if (barcode != null)
                 tbxShtrix.Text = barcode;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-
+            
         }
         public AddRealize(DataSetTpos.productRow productRow, DataSetTpos.fakturaRow faktRow)
         {
@@ -32,12 +33,19 @@ namespace tposDesktop
             InitializeComponent();
             
             tbxName.Text = productRow.name;
-            tbxPack.Text = productRow.pack.ToString();
+            tbxPack.Text = 1.ToString();
+            pack = productRow.pack;
             tbxPrice.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
             if (productRow.barcode != null)
                 tbxShtrix.Text = productRow.barcode;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            if (productRow.pack == 0 || productRow.pack == 1)
+            {
+                tbxKol.Visible = false;
+                lblKol.Visible = false;
+            }
+            
 
         }
         bool isAdd = true;
@@ -53,7 +61,14 @@ namespace tposDesktop
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
 
                 DataSetTpos.realizeRow rlRow = DBclass.DS.realize.NewrealizeRow();
-                rlRow.count = Convert.ToInt32(tbxPack.Text);
+                if (pack != 0)
+                {
+                    rlRow.count = Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
+                }
+                else
+                {
+                    rlRow.count = Convert.ToInt32(tbxPack.Text);
+                }
                 rlRow.price = Convert.ToInt32(tbxPrice.Text);
                 rlRow.fakturaId = fkRow.fakturaId;
                 rlRow.prodId = prRow.productId;

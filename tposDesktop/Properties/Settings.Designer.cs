@@ -23,19 +23,9 @@ namespace tposDesktop.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=stock")]
-        public string stockConnectionString {
-            get {
-                return ((string)(this["stockConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("COM3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM5")]
         public string SerialPort {
             get {
                 return ((string)(this["SerialPort"]));
@@ -59,13 +49,47 @@ namespace tposDesktop.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Zarafshon-Farm X/K")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TPOS Command")]
         public string orgName {
             get {
                 return ((string)(this["orgName"]));
             }
             set {
                 this["orgName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456789")]
+        public string SN {
+            get {
+                return ((string)(this["SN"]));
+            }
+            set {
+                this["SN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2018-03-15")]
+        public global::System.DateTime ExpDate {
+            get {
+                return ((global::System.DateTime)(this["ExpDate"]));
+            }
+            set {
+                this["ExpDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.43.151;user id=root;database=stock;password=123")]
+        public string stockConnectionString {
+            get {
+                return ((string)(this["stockConnectionString"]));
             }
         }
     }

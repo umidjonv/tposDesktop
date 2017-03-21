@@ -51,6 +51,7 @@
             this.dataSetTpos = new tposDesktop.DataSetTpos();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
+            this.menuCloseDay = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -65,7 +66,8 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAdmin,
-            this.exitMenu});
+            this.exitMenu,
+            this.menuCloseDay});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
@@ -255,7 +257,7 @@
             // btnDolg
             // 
             this.btnDolg.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnDolg.BackgroundImage = global::tposDesktop.Properties.Resources.qarz;
+
             this.btnDolg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDolg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDolg.Location = new System.Drawing.Point(429, 205);
@@ -293,6 +295,14 @@
             // ordersTableAdapter
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
+            // 
+            // menuCloseDay
+            // 
+            this.menuCloseDay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.menuCloseDay.Name = "menuCloseDay";
+            this.menuCloseDay.Size = new System.Drawing.Size(93, 19);
+            this.menuCloseDay.Text = "Закрыть день";
+            this.menuCloseDay.Click += new System.EventHandler(this.menuCloseDay_Click);
             // 
             // MainForm
             // 
@@ -358,5 +368,6 @@
         private System.Windows.Forms.CheckBox chbTerminal;
         private System.Windows.Forms.CheckBox chbDolg;
         private System.Windows.Forms.TextBox tbxTerminal;
+        private System.Windows.Forms.ToolStripMenuItem menuCloseDay;
     }
 }
