@@ -41,7 +41,6 @@
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCloseDay = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
             this.dgvTovar = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -53,9 +52,6 @@
             this.dgvExpense = new System.Windows.Forms.DataGridView();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chbTerminal = new System.Windows.Forms.CheckBox();
-            this.chbDolg = new System.Windows.Forms.CheckBox();
-            this.tbxTerminal = new System.Windows.Forms.TextBox();
             this.btnDolg = new System.Windows.Forms.Button();
             this.btnVozvrat = new System.Windows.Forms.Button();
             this.soat = new System.Windows.Forms.Label();
@@ -66,6 +62,7 @@
             this.dataSetTpos = new tposDesktop.DataSetTpos();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
+            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -140,18 +137,6 @@
             this.groupBox1.Size = new System.Drawing.Size(481, 621);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            // 
-            // tbxSearchPrice
-            // 
-            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
-            this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
-            this.tbxSearchPrice.Name = "tbxSearchPrice";
-            this.tbxSearchPrice.Size = new System.Drawing.Size(156, 30);
-            this.tbxSearchPrice.TabIndex = 4;
-            this.tbxSearchPrice.Text = "По цене";
-            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
-            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
-            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
             // 
             // tbxSearchTovar
             // 
@@ -380,40 +365,6 @@
             this.productPrice.ReadOnly = true;
             this.productPrice.Width = 83;
             // 
-            // chbTerminal
-            // 
-            this.chbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chbTerminal.AutoSize = true;
-            this.chbTerminal.Location = new System.Drawing.Point(744, 640);
-            this.chbTerminal.Name = "chbTerminal";
-            this.chbTerminal.Size = new System.Drawing.Size(155, 33);
-            this.chbTerminal.TabIndex = 6;
-            this.chbTerminal.Text = "Терминал";
-            this.chbTerminal.UseVisualStyleBackColor = true;
-            this.chbTerminal.CheckedChanged += new System.EventHandler(this.chbTerminal_CheckedChanged);
-            // 
-            // chbDolg
-            // 
-            this.chbDolg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chbDolg.AutoSize = true;
-            this.chbDolg.Location = new System.Drawing.Point(615, 643);
-            this.chbDolg.Name = "chbDolg";
-            this.chbDolg.Size = new System.Drawing.Size(91, 33);
-            this.chbDolg.TabIndex = 6;
-            this.chbDolg.Text = "Долг";
-            this.chbDolg.UseVisualStyleBackColor = true;
-            this.chbDolg.CheckedChanged += new System.EventHandler(this.chbDolg_CheckedChanged_1);
-            // 
-            // tbxTerminal
-            // 
-            this.tbxTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxTerminal.Location = new System.Drawing.Point(905, 643);
-            this.tbxTerminal.Name = "tbxTerminal";
-            this.tbxTerminal.Size = new System.Drawing.Size(173, 34);
-            this.tbxTerminal.TabIndex = 4;
-            this.tbxTerminal.Visible = false;
-            this.tbxTerminal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Text_KeyPress);
-            // 
             // btnDolg
             // 
             this.btnDolg.BackColor = System.Drawing.Color.DodgerBlue;
@@ -467,9 +418,6 @@
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.tbxTerminal);
-            this.panel2.Controls.Add(this.chbTerminal);
-            this.panel2.Controls.Add(this.chbDolg);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 52);
             this.panel2.Name = "panel2";
@@ -515,6 +463,18 @@
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
             // 
+            // tbxSearchPrice
+            // 
+            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
+            this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
+            this.tbxSearchPrice.Name = "tbxSearchPrice";
+            this.tbxSearchPrice.Size = new System.Drawing.Size(156, 30);
+            this.tbxSearchPrice.TabIndex = 4;
+            this.tbxSearchPrice.Text = "По цене";
+            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
+            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
+            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
+            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -551,7 +511,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExpense)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTpos)).EndInit();
@@ -577,9 +536,6 @@
         private System.Windows.Forms.BindingSource ordersBindingSource;
         private DataSetTposTableAdapters.ordersTableAdapter ordersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem exitMenu;
-        private System.Windows.Forms.CheckBox chbTerminal;
-        private System.Windows.Forms.CheckBox chbDolg;
-        private System.Windows.Forms.TextBox tbxTerminal;
         private System.Windows.Forms.ToolStripMenuItem menuCloseDay;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label soat;

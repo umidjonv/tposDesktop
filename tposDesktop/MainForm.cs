@@ -19,7 +19,7 @@ namespace tposDesktop
         DBclass db;
         Scanner scan;
         DataSetTpos.ordersDataTable order;
-        string commentDebt = null;
+        string commentDebt = "";
         int terminalSum = 0;
         bool isNewExpense = true;
         object packCount = 0;
@@ -341,7 +341,7 @@ namespace tposDesktop
         }
 
         List<string[]> drPrintCol;
-        //string terminalSum="";
+        bool isTerminal = false;
         private void btnOplata_Click(object sender, EventArgs e)
         {
             if(dgvExpense.Rows.Count!=0 && MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
@@ -367,8 +367,7 @@ namespace tposDesktop
                 expRow.expType = vozvrat ? 1 : 0;
                 
                 expRow.expSum = (int)sum;
-
-                if (chbTerminal.Checked)
+                if (isTerminal)
                 {
                     expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
                 }
@@ -399,11 +398,11 @@ namespace tposDesktop
                 }
                 //dgvExpense.Columns["productName"].Visible = false;
                 //dgvExpense.Columns["productPrice"].Visible = false;
+                isTerminal = false;
                 isNewExpense = true;
-                chbDolg.Checked = false;
+                
                 commentDebt = "";
-                chbTerminal.Checked = false;
-                tbxTerminal.Text = "";
+                
             }
             
         }
@@ -497,36 +496,9 @@ namespace tposDesktop
 
        
         
-        private void chbDolg_CheckedChanged_1(object sender, EventArgs e)
-        {
-            CheckBox chb = sender as CheckBox;
-            if (chb.Checked && DBclass.DS.orders.Select("expenseId = -1").Length > 0)
-            {
-                commentForm commentf = new commentForm();
-                if (commentf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    commentDebt = commentf.comment;
-                    
-                }
-                else chbDolg.Checked = false;
-                dgvTovar.Focus();
-            }
-            else if (chb.Checked)
-                chb.Checked = false;
-            
-        }
+        
 
-        private void chbTerminal_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbTerminal.Checked && DBclass.DS.orders.Select("expenseId = -1").Length > 0)
-            {
-                tbxTerminal.Visible = true;
-            }
-            else if (chbTerminal.Checked)
-            { chbTerminal.Checked = false; }
-            else
-            { tbxTerminal.Visible = false; }
-        }
+       
 
         private void btnDolg_Click(object sender, EventArgs e)
         {
@@ -782,6 +754,7 @@ namespace tposDesktop
             {
 
                 terminalSum = terminalF.sum != "" ? Convert.ToInt32(terminalF.sum) : 0;
+                isTerminal = true;
                 btnOplata_Click(btnOplata, new EventArgs());
 
             }
