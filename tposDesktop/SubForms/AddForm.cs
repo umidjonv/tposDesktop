@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Classes;
 using Classes.DB;
-
+using Classes.Forms;
 namespace tposDesktop
 {
-    public partial class AddForm : Form
+    public partial class AddForm : DesignedForm
     {
-        private bool _dragging = false;
-        private Point _offset;
-        private Point _start_point = new Point(0, 0);
+        //private bool _dragging = false;
+        //private Point _offset;
+        //private Point _start_point = new Point(0, 0);
         public AddForm(string barcode)
         {
             isAdd = true;
@@ -34,7 +34,7 @@ namespace tposDesktop
             InitializeComponent();
             if (!isAdd)
             {
-                this.Text = "Редактировать товар";
+                lblCaption.Text = "Редактировать товар";
                 btnAdd.Text = "Изменить";
             }
             tbxName.Text = productRow.name;
@@ -108,26 +108,26 @@ namespace tposDesktop
             this.Close();
         }
 
-        private void AddForm_MouseDown(object sender, MouseEventArgs e)
-        {
-            _dragging = true;
-            _start_point = new Point(e.X, e.Y);
-        }
+        //private void AddForm_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    _dragging = true;
+        //    _start_point = new Point(e.X, e.Y);
+        //}
 
-        private void AddForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (_dragging)
-            {
-                Point p = PointToScreen(e.Location);
-                Location = new Point(p.X-this._start_point.X,p.Y-this._start_point.Y);
+        //private void AddForm_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    if (_dragging)
+        //    {
+        //        Point p = PointToScreen(e.Location);
+        //        Location = new Point(p.X-this._start_point.X,p.Y-this._start_point.Y);
             
-            }
-        }
+        //    }
+        //}
 
-        private void AddForm_MouseUp(object sender, MouseEventArgs e)
-        {
-            _dragging = false;
-        }
+        //private void AddForm_MouseUp(object sender, MouseEventArgs e)
+        //{
+        //    _dragging = false;
+        //}
 
         private void control_keypress(object sender, KeyPressEventArgs e)
         {

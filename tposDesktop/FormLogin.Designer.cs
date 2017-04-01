@@ -46,12 +46,14 @@
             // 
             // tbxLogin
             // 
+            this.tbxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxLogin.ForeColor = System.Drawing.Color.Silver;
             this.tbxLogin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tbxLogin.Location = new System.Drawing.Point(280, 235);
             this.tbxLogin.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxLogin.Name = "tbxLogin";
-            this.tbxLogin.Size = new System.Drawing.Size(180, 29);
+            this.tbxLogin.Size = new System.Drawing.Size(180, 34);
             this.tbxLogin.TabIndex = 1;
             this.tbxLogin.Text = "Логин";
             this.tbxLogin.Enter += new System.EventHandler(this.tbxEnter);
@@ -59,12 +61,14 @@
             // 
             // tbxPass
             // 
+            this.tbxPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxPass.ForeColor = System.Drawing.Color.Silver;
             this.tbxPass.Location = new System.Drawing.Point(280, 273);
             this.tbxPass.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tbxPass.Name = "tbxPass";
             this.tbxPass.PasswordChar = '*';
-            this.tbxPass.Size = new System.Drawing.Size(180, 29);
+            this.tbxPass.Size = new System.Drawing.Size(180, 34);
             this.tbxPass.TabIndex = 2;
             this.tbxPass.Text = "Пароль";
             this.tbxPass.Enter += new System.EventHandler(this.tbxEnter);
@@ -78,13 +82,15 @@
             this.lblErr.ForeColor = System.Drawing.Color.Red;
             this.lblErr.Location = new System.Drawing.Point(247, 175);
             this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(40, 16);
+            this.lblErr.Size = new System.Drawing.Size(52, 20);
             this.lblErr.TabIndex = 1;
             this.lblErr.Text = "Error:";
             this.lblErr.Visible = false;
             // 
             // btnLogin
             // 
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.BackColor = System.Drawing.Color.Navy;
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.Navy;
             this.btnLogin.FlatAppearance.BorderSize = 0;
@@ -122,9 +128,10 @@
             // FormLogin
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::tposDesktop.Properties.Resources.LoginMain;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::tposDesktop.Properties.Resources._11111;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(724, 376);
             this.Controls.Add(this.btnExit);
@@ -138,7 +145,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Аптека";
+            this.Text = ",,,,";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.LoadForm);

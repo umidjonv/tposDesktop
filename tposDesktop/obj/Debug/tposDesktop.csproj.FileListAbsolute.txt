@@ -111,3 +111,5 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources

@@ -39,7 +39,8 @@ namespace tposDesktop
             dgvTovar.DataSource = dv;
             dgvExpense.DataSource = dvOr;
             
-            dv.RowFilter = tbxSearchTovar.Text;
+            dv.RowFilter = "name like '%"+tbxSearchTovar.Text+"%' and not price = 0";
+            dv.Sort = "name asc";
             dgvExpense.EditingControlShowing += dgv_EditingControlShowing;
             if(UserValues.role == "admin")
             {
@@ -85,6 +86,7 @@ namespace tposDesktop
         private void MainForm_Load(object sender, EventArgs e)
         {
             btnDolg.BackgroundImage = Properties.Resources.qarz;
+            timer.Start();
             // TODO: This line of code loads data into the 'dataSetTpos.orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.dataSetTpos.orders);
             dgvTovar.Columns["productId"].HeaderText = "№";
@@ -95,12 +97,12 @@ namespace tposDesktop
             dgvTovar.Columns["pack"].Visible = false;
             dgvTovar.Columns["status"].Visible = false;
             dgvTovar.Columns["productId"].Width = 50;
-            dgvTovar.Columns["name"].Width = 200;
+            dgvTovar.Columns["name"].Width = 255;
             dgvTovar.Columns["price"].Width= 90;
             Classes.GridCells.ImageButtonColumn cellBtn = new Classes.GridCells.ImageButtonColumn();
             cellBtn.HeaderText = "";
             cellBtn.Name = "colBtn";
-            cellBtn.Width = 40;
+            cellBtn.Width = 50;
             //Classes.GridCells.ImageCell cellImg = new Classes.GridCells.ImageCell();
             cellBtn.SetImage(Properties.Resources.add);
 
@@ -112,8 +114,8 @@ namespace tposDesktop
             dgvExpense.Columns["count"].Visible = false;
             dgvExpense.Columns["packCount"].HeaderText = "Кол.";
             dgvExpense.Columns["packCount"].ValueType = typeof(int);
-            dgvExpense.Columns["productName"].Width = 200;
-            dgvExpense.Columns["packCount"].Width = 50;
+            dgvExpense.Columns["productName"].Width = 250;
+            dgvExpense.Columns["packCount"].Width = 65;
             dgvExpense.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvExpense.Columns["sumProduct"].HeaderText = "Сумма";
 
@@ -140,14 +142,31 @@ namespace tposDesktop
             dgvExpense.Columns.Add(cellBtnDel);
             //cellTx.CellType = typeof(int);
             //dgvExpense.Columns.Add(cellTx);
+            foreach (DataGridViewColumn column in dgvExpense.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void tbxSearchTovar_TextChanged(object sender, EventArgs e)
         {
+            TextBox tbx = sender as TextBox;
+           
             try
             {
-                DataView dv = dgvTovar.DataSource as DataView;
-                dv.RowFilter = "name like '%" + tbxSearchTovar.Text + "%'";
+                DataView dv = dgvTovar.DataSource as DataView;  
+                
+                if(tbx.Name=="tbxSearchTovar"&& tbx.Text !="По имени")
+                {
+                    dv.RowFilter = "name like '%" + tbx.Text + "%' and not price = 0";
+                }
+                else if (tbx.Name == "tbxSearchPrice" && tbx.Text != "По цене")
+                {
+                    dv.RowFilter = "price+'' like '" + (tbx.Text == "" ? "0" : tbx.Text) + "%' and not price = 0";
+ 
+                }
+                
+                dv.Sort = "name asc";
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -256,7 +275,7 @@ namespace tposDesktop
                         {
                             ordrow.packCount = oform.count;
                             DataRow drOrder = ordrow;
-                            drOrder["sumProduct"] = ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
+                            drOrder["sumProduct"] = oform.sum;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
 
                             //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                         }
@@ -322,6 +341,7 @@ namespace tposDesktop
         }
 
         List<string[]> drPrintCol;
+        //string terminalSum="";
         private void btnOplata_Click(object sender, EventArgs e)
         {
             if(dgvExpense.Rows.Count!=0 && MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
@@ -334,23 +354,23 @@ namespace tposDesktop
                 expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
                 DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
                 DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
-                float sum = 0;
+                double sum = 0;
                 foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
                 {
-                    drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), ((int)dgvRow.Cells["productPrice"].Value).ToString() });
-                    sum += (float)dgvRow.Cells["packCount"].Value * (int)dgvRow.Cells["productPrice"].Value;
+                    drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (dgvRow.Cells["productPrice"].Value).ToString() });
+                    sum += Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse(dgvRow.Cells["productPrice"].Value.ToString());
                 }
                 expRow.expenseDate = DateTime.Now;
-                expRow.debt = chbDolg.Checked ? 1 : 0;
-                expRow.status = chbDolg.Checked ? 1 : 0;
-                expRow.comment = chbDolg.Checked ? commentDebt : "";
+                expRow.debt = commentDebt != "" ? 1 : 0;
+                expRow.status = commentDebt != "" ? 1 : 0;
+                expRow.comment = commentDebt != ""? commentDebt : "";
                 expRow.expType = vozvrat ? 1 : 0;
                 
                 expRow.expSum = (int)sum;
 
                 if (chbTerminal.Checked)
                 {
-                    expRow.terminal = tbxTerminal.Text != "" ? Convert.ToInt32(tbxTerminal.Text) : expRow.expSum;
+                    expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
                 }
                 else expRow.terminal = 0;
                 expTable.Rows.Add(expRow);
@@ -398,7 +418,7 @@ namespace tposDesktop
                 grid.Rows[e.RowIndex].Cells["productName"].Value = prRow.name;
                 if (prRow.pack != 0)
                 {
-                    grid.Rows[e.RowIndex].Cells["productPrice"].Value = prRow.price/prRow.pack; 
+                    grid.Rows[e.RowIndex].Cells["productPrice"].Value = Math.Round((double)prRow.price/prRow.pack, 2); 
                 }
                 else
                 {
@@ -416,7 +436,8 @@ namespace tposDesktop
                  int pck;
                  if (Int32.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
                  {
-                     grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
+
+                     grid.Rows[e.RowIndex].Cells["sumProduct"].Value =Math.Round((Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value))).ToString();
                      sumTable();
                  }
                  else
@@ -528,7 +549,7 @@ namespace tposDesktop
                     this.btnVozvrat.BackgroundImage = (System.Drawing.Image)(Properties.Resources.back);
                     groupBox2.Text = "Возврат товара";
                     vozvrat = true;
-                    btnVozvrat.BackColor = Color.Aqua;
+                    btnVozvrat.BackColor = Color.Red;
 
                 }
                 else
@@ -537,7 +558,7 @@ namespace tposDesktop
                     this.btnVozvrat.BackgroundImage = (System.Drawing.Image)(Properties.Resources.cart);
                     groupBox2.Text = "Расход товара";
                     vozvrat = false;
-                    btnVozvrat.BackColor = Color.LimeGreen;
+                    btnVozvrat.BackColor = Color.Blue;
                 }
             }
             
@@ -695,7 +716,7 @@ namespace tposDesktop
                 temp = "";
             }
             string html = "<head></head><body>" +
-                    "<table style='font-size: 9px; font-family: Tahoma;'>" +
+                    "<table style='font-size: 9px; font-family: Tahoma; width: 100%;'>" +
                         "<thead>" +
                             "<tr><td colspan='3' style=\"text-align:center\"> " + Properties.Settings.Default.orgName + "</td></tr>" +
                             "<tr><td colspan='3' style=\"text-align:center\">Дата: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "</td></tr>" +
@@ -728,7 +749,78 @@ namespace tposDesktop
             //MessageBox.Show("Будет выполнена опреация по завершению дня, не закрывайте пожалуйста окно программы пока не выйдет сообщение!");
             db.CloseDay();
         }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            soat.Text = DateTime.Now.ToString("HH:mm");
 
+        }
+
+        private void btnDebt_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (DBclass.DS.orders.Select("expenseId = -1").Length > 0)
+            {
+                commentForm commentf = new commentForm();
+                if (commentf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    commentDebt = commentf.comment;
+                    btnOplata_Click(btnOplata, new EventArgs());
+                }
+                
+                dgvTovar.Focus();
+            }
+            //else if ()
+            //    chb.Checked = false;
+            
+        }
+
+        private void btnTerminal_Click(object sender, EventArgs e)
+        {
+            SubForms.TerminalForm terminalF = new SubForms.TerminalForm();
+            terminalF.tbxSumma.Text = lblSum.Text;
+            if (DBclass.DS.orders.Select("expenseId = -1").Length > 0 && terminalF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                terminalSum = terminalF.sum != "" ? Convert.ToInt32(terminalF.sum) : 0;
+                btnOplata_Click(btnOplata, new EventArgs());
+
+            }
+            else dgvTovar.Focus();
+            
+        }
+        #region Search TBX
+        private void tbxEnter(object sender, EventArgs e)
+        {
+            
+            TextBox tbx = sender as TextBox;
+            if (tbx.Text == "По имени"|| tbx.Text == "По цене")
+            {
+                tbx.Text = "";
+                tbx.ForeColor = Color.Black;
+                
+            }
+        }
+       
+        private void tbxLeave(object sender, EventArgs e)
+        {
+
+            TextBox tbx = sender as TextBox;
+            if (tbx.Text == "")
+            {
+                if (tbx.Name == "tbxSearchTovar")
+                {
+                    tbx.Text = "По имени";
+
+                }
+                else if (tbx.Name == "tbxSearchPrice")
+                {
+                    tbx.Text = "По цене";
+
+                }
+                tbx.ForeColor = Color.Silver;
+            }
+        }
+        #endregion
 
     }
 }

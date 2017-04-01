@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Classes;
 using Classes.DB;
-
+using Classes.Forms;
 namespace tposDesktop
 {
-    public partial class AddRealize : Form
+    public partial class AddRealize : DesignedForm
     {
         int pack;
+        private bool _dragging = false;		
+        private Point _offset;		
+        private Point _start_point = new Point(0, 0);
         public AddRealize(string barcode)
         {
             isAdd = true;
@@ -78,5 +81,31 @@ namespace tposDesktop
                 
             }
         }
+
+        //private void label1_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    _dragging = true;
+        //    _start_point = new Point(e.X, e.Y);
+        //}
+
+        //private void label1_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    if (_dragging)
+        //    {
+        //        Point p = PointToScreen(e.Location);
+        //        Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
+
+        //    }
+        //}
+
+        //private void label1_MouseUp(object sender, MouseEventArgs e)
+        //{
+        //    _dragging = false;
+        //}
+
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    this.Close();
+        //}
     }
 }

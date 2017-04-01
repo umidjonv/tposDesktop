@@ -7,26 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Classes.Forms;
 namespace tposDesktop
 {
-    public partial class OrderForm : Form
+    public partial class OrderForm : DesignedForm
     {
+        private bool _dragging = false;
+        private Point _offset;
+        private Point _start_point = new Point(0, 0);
         public OrderForm(string name, int cnt, string price)
         {
             count = cnt;
             
             InitializeComponent();
-            this.Text = name;
+            lblCaption.Text = name;
             lblPrice.Text = price;
             tbxCount1.Text = (cnt != 0 ? cnt : 1).ToString();
         }
         public int count = 0;
+        public int sum = 0;
         private void OrderForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13&&EmptyChar())
             {
                 count = Int32.Parse(tbxCount1.Text);
+                sum = Int32.Parse(lblOnePrice.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
@@ -58,6 +63,7 @@ namespace tposDesktop
             if(EmptyChar())
             {
                 count = Int32.Parse(tbxCount1.Text);
+                sum = Int32.Parse(lblOnePrice.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
@@ -68,7 +74,7 @@ namespace tposDesktop
             TextBox t = sender as TextBox;
             int num;
             int cnt = (count == 0 ? 1 : count);
-            int donasi = Convert.ToInt32(lblPrice.Text) / cnt;
+            double donasi = Math.Round((Convert.ToSingle(lblPrice.Text) / cnt),2);
                 
             if (tbxCount1.Text != "")
             {
@@ -80,13 +86,18 @@ namespace tposDesktop
                     
                     //if (i == 1)
 
-                    lblOnePrice.Text = (curCnt * donasi).ToString();
+                    lblOnePrice.Text = Math.Round(curCnt * donasi).ToString();
                 }
                 else
                     lblOnePrice.Text = lblPrice.Text;
                 
             }
-            lblOne.Text = donasi.ToString();
+            string d = donasi.ToString();
+            if (d.IndexOf(".")!=-1)
+            lblOne.Text = d.Remove(d.IndexOf("."));
+            else
+                lblOne.Text = d;
+
             
             //if (Int32.TryParse(t.Text, out num))
             //{
@@ -95,7 +106,31 @@ namespace tposDesktop
             //}
         }
 
+        private void OrderForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            _dragging = true;
+            _start_point = new Point(e.X, e.Y);
+        }
 
+        private void OrderForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_dragging)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
+
+            }
+        }
+
+        private void OrderForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            _dragging = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

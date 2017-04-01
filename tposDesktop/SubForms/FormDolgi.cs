@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Classes.DB;
-
+using Classes.Forms;
 namespace tposDesktop
 {
-    public partial class FormDolgi : Form
+    public partial class FormDolgi : DesignedForm
     {
+        private bool _dragging = false;		
+	    private Point _offset;		
+    	private Point _start_point = new Point(0, 0);
         public FormDolgi()
         {
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace tposDesktop
             var grid = sender as DataGridView;
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
+                tbxFilter.Focus();
                 
                 DataSetTpos.debtRow debRow = DBclass.DS.debt.NewdebtRow();
                 debRow.expenseId = Convert.ToInt32(grid.Rows[e.RowIndex].Cells["expenseId"].Value);
@@ -88,17 +92,18 @@ namespace tposDesktop
                 DBclass.DS.debt.AdddebtRow(debRow);
                 
                 DataSetTposTableAdapters.debtTableAdapter daDebt = new DataSetTposTableAdapters.debtTableAdapter();
-                daDebt.Update(DBclass.DS.debt);
+                daDebt.Update(debRow);
                 DataSetTposTableAdapters.expenseTableAdapter daExp = new DataSetTposTableAdapters.expenseTableAdapter();
-                daExp.Update(DBclass.DS.expense);
-                dgvDolgi.Refresh();
-                //daExp.Fill();
-            }else
-            if (e.RowIndex >= 0)
-            {
-                dgvDolgi.CurrentCell = dgvDolgi.Rows[e.RowIndex].Cells["terminal"];
-                dgvDolgi.BeginEdit(true);
+                daExp.Update(drs);
+                //dgvDolgi.Refresh();
+                
             }
+            //else
+            //if (e.RowIndex >= 0)
+            //{
+            //    dgvDolgi.CurrentCell = dgvDolgi.Rows[e.RowIndex].Cells["terminal"];
+            //    dgvDolgi.BeginEdit(true);
+            //}
 
         }
         private void dgv_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -140,5 +145,27 @@ namespace tposDesktop
             else
             { dv.RowFilter = "status = 1"; }
         }
+
+        private void tbxFilter_Leave(object sender, EventArgs e)
+        {
+            if (tbxFilter.Text == "")
+            {
+                tbxFilter.Text = "Поиск";
+                tbxFilter.ForeColor = Color.Silver;
+            }
+            
+        }
+
+        private void tbxFilter_Enter(object sender, EventArgs e)
+        {
+            if (tbxFilter.Text == "Поиск")
+            {
+                tbxFilter.Text = "";
+                tbxFilter.ForeColor = Color.Black;
+                
+            }
+        }
+
+        
     }
 }

@@ -136,6 +136,9 @@
     </Compile>
     <Compile Include="Classes\ProductOne.cs" />
     <Compile Include="Classes\TextScanner.cs" />
+    <Compile Include="Classes\VisualEffects.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -163,7 +166,6 @@
     <Compile Include="SubForms\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Authorize.cs" />
     <Compile Include="Classes\VirtualKeyboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +229,15 @@
     <Compile Include="SubForms\Ports.Designer.cs">
       <DependentUpon>Ports.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\TerminalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\TerminalForm.Designer.cs">
+      <DependentUpon>TerminalForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Classes\VisualEffects.resx">
+      <DependentUpon>VisualEffects.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +272,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\TerminalForm.resx">
+      <DependentUpon>TerminalForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DataSetTpos.xsc">

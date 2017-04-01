@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Classes.Forms;
 namespace tposDesktop
 {
-    public partial class commentForm : Form
+    public partial class commentForm : DesignedForm
     {
         public commentForm()
         {

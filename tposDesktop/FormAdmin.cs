@@ -468,9 +468,12 @@ namespace tposDesktop
                         }
                         else if (dgv.Columns[e.ColumnIndex].Name == "colBtnDel")
                         {
-                            dr[0].Delete();
-                            this.productTableAdapter1.Update(DBclass.DS.product);
-                            this.productTableAdapter1.Fill(DBclass.DS.product);
+                            if (MessageBox.Show("Удалить товар?") == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                dr[0].Delete();
+                                this.productTableAdapter1.Update(DBclass.DS.product);
+                                this.productTableAdapter1.Fill(DBclass.DS.product);
+                            }
                         }
 
                         
