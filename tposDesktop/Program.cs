@@ -10,7 +10,7 @@ namespace tposDesktop
     {
         enum WorkType { Touch, Mouse };
         static WorkType wType = WorkType.Mouse;
-        public static int window_type = 2;
+        public static int window_type = 1;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
@@ -18,8 +18,22 @@ namespace tposDesktop
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] argument)
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            if(argument.Length!=0)
+            {
+                switch (argument[0])
+                {
+                    case "-config":
+                        SettingsForm settings = new SettingsForm(argument[0]);
+                        settings.ShowDialog();
+                        break;
+                    case "-admin":
+                        break;
+                }
+            }
             DateTime expDate = Properties.Settings.Default.ExpDate;
             Cryptapp.Check ch = new Check(Properties.Settings.Default.SN, expDate);
             string hash = ch.CreateHash();
@@ -28,8 +42,7 @@ namespace tposDesktop
                 if (expDate >= DateTime.Now.Date)
                 {
                     Lang = new Classes.Language(Classes.Language.lng.ru);
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
+                   
                     Form form;
                     UserValues.role = "admin";
                     while (window_type != 0)

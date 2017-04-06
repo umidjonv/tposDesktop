@@ -93,7 +93,7 @@ namespace tposDesktop
                     prRow.pack = tbxPack.Text != "0" && tbxPack.Text != "" ? Convert.ToInt32(tbxPack.Text) : 0; ;
                     
                     prRow.price = Convert.ToInt32(tbxPrice.Text);
-                    daProduct.Update(prRow);
+                    daProduct.Update(DBclass.DS.product);
                     daProduct.Fill(DBclass.DS.product);
                 
                 }

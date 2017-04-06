@@ -6,10 +6,10 @@
       <Value Profile="(Default)">COM5</Value>
     </Setting>
     <Setting Name="isPrinter" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="orgName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Zarafshon-Farm X/K</Value>
+      <Value Profile="(Default)">TouchPos command</Value>
     </Setting>
     <Setting Name="SN" Type="System.String" Scope="User">
       <Value Profile="(Default)">123456789</Value>
@@ -24,6 +24,9 @@
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=localhost;user id=root;database=stock;</Value>
+    </Setting>
+    <Setting Name="IsCom" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

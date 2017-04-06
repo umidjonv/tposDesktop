@@ -37,7 +37,7 @@ namespace tposDesktop.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool isPrinter {
             get {
                 return ((bool)(this["isPrinter"]));
@@ -49,7 +49,7 @@ namespace tposDesktop.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Zarafshon-Farm X/K")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TouchPos command")]
         public string orgName {
             get {
                 return ((string)(this["orgName"]));
@@ -90,6 +90,18 @@ namespace tposDesktop.Properties {
         public string stockConnectionString {
             get {
                 return ((string)(this["stockConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCom {
+            get {
+                return ((bool)(this["IsCom"]));
+            }
+            set {
+                this["IsCom"] = value;
             }
         }
     }

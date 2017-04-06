@@ -48,8 +48,15 @@ namespace tposDesktop
             }
             try
             {
-                scan = new Scanner();
-                scan.ScannerEvent += scan_ScannerEvent;
+                if (Properties.Settings.Default.IsCom)
+                {
+                    scan = new Scanner();
+                    scan.ScannerEvent += scan_ScannerEvent;
+                }
+                else
+                {
+                    tscanner = new TextScanner(); 
+                }
             }
             catch (Exception ex)
             {
@@ -358,7 +365,7 @@ namespace tposDesktop
                 foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
                 {
                     drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (dgvRow.Cells["productPrice"].Value).ToString() });
-                    sum += Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse(dgvRow.Cells["productPrice"].Value.ToString());
+                    sum += Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse(dgvRow.Cells["productPrice"].Value.ToString()));
                 }
                 expRow.expenseDate = DateTime.Now;
                 expRow.debt = commentDebt != "" ? 1 : 0;
@@ -366,7 +373,7 @@ namespace tposDesktop
                 expRow.comment = commentDebt != ""? commentDebt : "";
                 expRow.expType = vozvrat ? 1 : 0;
                 
-                expRow.expSum = (int)sum;
+                expRow.expSum = (int)Math.Round(sum);
                 if (isTerminal)
                 {
                     expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
@@ -627,8 +634,8 @@ namespace tposDesktop
             decimal summa = 0;
             foreach (string[] sr in data)
             {
-                dataHtml += "<tr><td>" + sr[0] + "</td><td>" + sr[1] + "</td> <td>" + (Convert.ToInt32(sr[1]) * Convert.ToInt32(sr[2])).ToString() + "</td></tr>";
-                summa += decimal.Parse((Convert.ToInt32(sr[1])*Convert.ToInt32(sr[2])).ToString());
+                dataHtml += "<tr><td>" + sr[0] + "</td><td>" + sr[1] + "</td> <td>" + (Math.Round(Double.Parse(sr[1]) * Double.Parse(sr[2]))).ToString() + "</td></tr>";
+                summa += decimal.Parse((Math.Round(Double.Parse(sr[1]) * Double.Parse(sr[2]))).ToString());
                 num++;
             }   
             dataHtml = GenerateHTML(dataHtml, expTable, Convert.ToInt32(summa));
@@ -794,6 +801,12 @@ namespace tposDesktop
             }
         }
         #endregion
+
+        private void menuSettings_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsform = new SettingsForm(null);
+            settingsform.ShowDialog();
+        }
 
     }
 }

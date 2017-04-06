@@ -41,6 +41,7 @@
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCloseDay = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
             this.dgvTovar = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,8 +63,8 @@
             this.dataSetTpos = new tposDesktop.DataSetTpos();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
-            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -86,7 +87,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAdmin,
             this.exitMenu,
-            this.menuCloseDay});
+            this.menuCloseDay,
+            this.menuSettings});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 4, 0, 4);
@@ -137,6 +139,18 @@
             this.groupBox1.Size = new System.Drawing.Size(481, 621);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // tbxSearchPrice
+            // 
+            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
+            this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
+            this.tbxSearchPrice.Name = "tbxSearchPrice";
+            this.tbxSearchPrice.Size = new System.Drawing.Size(156, 30);
+            this.tbxSearchPrice.TabIndex = 4;
+            this.tbxSearchPrice.Text = "По цене";
+            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
+            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
+            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
             // 
             // tbxSearchTovar
             // 
@@ -463,23 +477,19 @@
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
             // 
-            // tbxSearchPrice
-            // 
-            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
-            this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
-            this.tbxSearchPrice.Name = "tbxSearchPrice";
-            this.tbxSearchPrice.Size = new System.Drawing.Size(156, 30);
-            this.tbxSearchPrice.TabIndex = 4;
-            this.tbxSearchPrice.Text = "По цене";
-            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
-            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
-            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
-            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewButtonColumn1.HeaderText = "Column1";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            // 
+            // menuSettings
+            // 
+            this.menuSettings.ForeColor = System.Drawing.Color.Yellow;
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.Size = new System.Drawing.Size(117, 44);
+            this.menuSettings.Text = "Настройки";
+            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // MainForm
             // 
@@ -550,5 +560,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Classes.NumericTextBox tbxSearchPrice;
         private System.Windows.Forms.TextBox lblSum;
+        private System.Windows.Forms.ToolStripMenuItem menuSettings;
     }
 }

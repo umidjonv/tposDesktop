@@ -72,6 +72,7 @@
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(451, 34);
             this.tbxName.TabIndex = 1;
+            this.tbxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keypress);
             // 
             // tbxShtrix
             // 

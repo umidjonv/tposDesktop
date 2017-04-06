@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Media.SolidColorBrush solidColorBrush2 = new System.Windows.Media.SolidColorBrush();
+            System.Windows.Media.SolidColorBrush solidColorBrush1 = new System.Windows.Media.SolidColorBrush();
             this.showBtn = new System.Windows.Forms.Button();
             this.reportDate = new System.Windows.Forms.DateTimePicker();
             this.tabRasxod = new System.Windows.Forms.TabPage();
@@ -69,6 +69,7 @@
             this.realizeTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.realizeTableAdapter();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).BeginInit();
             this.tabOtchety.SuspendLayout();
@@ -93,8 +94,8 @@
             this.showBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
             this.showBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showBtn.Location = new System.Drawing.Point(653, 1);
-            this.showBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.showBtn.Location = new System.Drawing.Point(605, 7);
+            this.showBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showBtn.Name = "showBtn";
             this.showBtn.Size = new System.Drawing.Size(124, 42);
             this.showBtn.TabIndex = 1;
@@ -105,8 +106,8 @@
             // reportDate
             // 
             this.reportDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.reportDate.Location = new System.Drawing.Point(382, 7);
-            this.reportDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reportDate.Location = new System.Drawing.Point(334, 13);
+            this.reportDate.Margin = new System.Windows.Forms.Padding(4);
             this.reportDate.Name = "reportDate";
             this.reportDate.Size = new System.Drawing.Size(263, 30);
             this.reportDate.TabIndex = 1;
@@ -117,7 +118,7 @@
             this.tabRasxod.Location = new System.Drawing.Point(4, 34);
             this.tabRasxod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabRasxod.Name = "tabRasxod";
-            this.tabRasxod.Size = new System.Drawing.Size(1163, 430);
+            this.tabRasxod.Size = new System.Drawing.Size(1163, 440);
             this.tabRasxod.TabIndex = 2;
             this.tabRasxod.Text = "Расход товаров";
             this.tabRasxod.UseVisualStyleBackColor = true;
@@ -131,7 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.expenseGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.expenseGrid.Location = new System.Drawing.Point(4, 4);
-            this.expenseGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.expenseGrid.Margin = new System.Windows.Forms.Padding(4);
             this.expenseGrid.Name = "expenseGrid";
             this.expenseGrid.ReadOnly = true;
             this.expenseGrid.RowHeadersVisible = false;
@@ -149,7 +150,7 @@
             this.tabOtchety.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOtchety.Name = "tabOtchety";
             this.tabOtchety.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabOtchety.Size = new System.Drawing.Size(1163, 430);
+            this.tabOtchety.Size = new System.Drawing.Size(1163, 440);
             this.tabOtchety.TabIndex = 1;
             this.tabOtchety.Text = "Информация о выручках";
             this.tabOtchety.UseVisualStyleBackColor = true;
@@ -162,7 +163,7 @@
             this.panel2.Controls.Add(this.checkBox2);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Location = new System.Drawing.Point(876, 334);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(304, 87);
             this.panel2.TabIndex = 8;
@@ -173,7 +174,7 @@
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox4.Location = new System.Drawing.Point(153, 49);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(111, 29);
             this.checkBox4.TabIndex = 3;
@@ -187,7 +188,7 @@
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(153, 4);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(127, 29);
             this.checkBox3.TabIndex = 2;
@@ -201,7 +202,7 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Location = new System.Drawing.Point(4, 49);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(129, 29);
             this.checkBox2.TabIndex = 1;
@@ -215,7 +216,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(4, 4);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(111, 29);
             this.checkBox1.TabIndex = 0;
@@ -231,10 +232,10 @@
             this.Chart1.Hoverable = true;
             this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Chart1.Location = new System.Drawing.Point(780, 6);
-            this.Chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Chart1.Margin = new System.Windows.Forms.Padding(4);
             this.Chart1.Name = "Chart1";
-            solidColorBrush2.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
-            this.Chart1.ScrollBarFill = solidColorBrush2;
+            solidColorBrush1.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
+            this.Chart1.ScrollBarFill = solidColorBrush1;
             this.Chart1.ScrollHorizontalFrom = 0D;
             this.Chart1.ScrollHorizontalTo = 0D;
             this.Chart1.ScrollMode = LiveCharts.ScrollMode.None;
@@ -252,13 +253,13 @@
             this.infoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.infoGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.infoGrid.Location = new System.Drawing.Point(3, 2);
-            this.infoGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.infoGrid.Margin = new System.Windows.Forms.Padding(4);
             this.infoGrid.MultiSelect = false;
             this.infoGrid.Name = "infoGrid";
             this.infoGrid.ReadOnly = true;
             this.infoGrid.RowHeadersVisible = false;
             this.infoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.infoGrid.Size = new System.Drawing.Size(707, 426);
+            this.infoGrid.Size = new System.Drawing.Size(707, 436);
             this.infoGrid.TabIndex = 6;
             this.infoGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -271,7 +272,7 @@
             this.tabTovar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabTovar.Name = "tabTovar";
             this.tabTovar.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabTovar.Size = new System.Drawing.Size(1163, 440);
+            this.tabTovar.Size = new System.Drawing.Size(1163, 412);
             this.tabTovar.TabIndex = 0;
             this.tabTovar.Text = "Товары";
             this.tabTovar.UseVisualStyleBackColor = true;
@@ -280,7 +281,7 @@
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Location = new System.Drawing.Point(1029, 4);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(124, 39);
             this.btnExport.TabIndex = 5;
@@ -305,7 +306,7 @@
             this.dgvTovar.RowHeadersWidth = 50;
             this.dgvTovar.RowTemplate.Height = 40;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(1020, 436);
+            this.dgvTovar.Size = new System.Drawing.Size(1020, 408);
             this.dgvTovar.TabIndex = 4;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -323,11 +324,11 @@
             this.tabControl1.Controls.Add(this.tabRasxod);
             this.tabControl1.Controls.Add(this.tabOstatok);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabControl1.Location = new System.Drawing.Point(21, 17);
+            this.tabControl1.Location = new System.Drawing.Point(21, 45);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1171, 478);
+            this.tabControl1.Size = new System.Drawing.Size(1171, 450);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -341,7 +342,7 @@
             this.tabPrixod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrixod.Name = "tabPrixod";
             this.tabPrixod.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPrixod.Size = new System.Drawing.Size(1163, 430);
+            this.tabPrixod.Size = new System.Drawing.Size(1163, 440);
             this.tabPrixod.TabIndex = 4;
             this.tabPrixod.Text = "Приход товаров";
             this.tabPrixod.UseVisualStyleBackColor = true;
@@ -392,7 +393,7 @@
             this.realizeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colBtnDel});
             this.realizeGrid.Location = new System.Drawing.Point(575, 4);
-            this.realizeGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.realizeGrid.Margin = new System.Windows.Forms.Padding(4);
             this.realizeGrid.Name = "realizeGrid";
             this.realizeGrid.ReadOnly = true;
             this.realizeGrid.RowHeadersVisible = false;
@@ -433,7 +434,7 @@
             this.tabOstatok.Location = new System.Drawing.Point(4, 34);
             this.tabOstatok.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOstatok.Name = "tabOstatok";
-            this.tabOstatok.Size = new System.Drawing.Size(1163, 430);
+            this.tabOstatok.Size = new System.Drawing.Size(1163, 440);
             this.tabOstatok.TabIndex = 3;
             this.tabOstatok.Text = "Остаток";
             this.tabOstatok.UseVisualStyleBackColor = true;
@@ -442,7 +443,7 @@
             // 
             this.btnExportBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportBalance.Location = new System.Drawing.Point(845, 4);
-            this.btnExportBalance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportBalance.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportBalance.Name = "btnExportBalance";
             this.btnExportBalance.Size = new System.Drawing.Size(199, 38);
             this.btnExportBalance.TabIndex = 12;
@@ -469,19 +470,24 @@
             this.balanceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.balanceGrid.Dock = System.Windows.Forms.DockStyle.Left;
             this.balanceGrid.Location = new System.Drawing.Point(0, 0);
-            this.balanceGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.balanceGrid.Margin = new System.Windows.Forms.Padding(4);
             this.balanceGrid.MultiSelect = false;
             this.balanceGrid.Name = "balanceGrid";
             this.balanceGrid.ReadOnly = true;
             this.balanceGrid.RowHeadersVisible = false;
             this.balanceGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.balanceGrid.Size = new System.Drawing.Size(667, 430);
+            this.balanceGrid.Size = new System.Drawing.Size(667, 440);
             this.balanceGrid.TabIndex = 8;
             this.balanceGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Controls.Add(this.tbxFilter);
             this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.showBtn);
+            this.panel1.Controls.Add(this.reportDate);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 43);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -514,7 +520,7 @@
             this.tbxFilter.BackColor = System.Drawing.Color.White;
             this.tbxFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFilter.Location = new System.Drawing.Point(104, 9);
+            this.tbxFilter.Location = new System.Drawing.Point(124, 11);
             this.tbxFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxFilter.Name = "tbxFilter";
             this.tbxFilter.Size = new System.Drawing.Size(203, 30);
@@ -546,7 +552,7 @@
             this.label1.BackColor = System.Drawing.Color.Green;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(2, 6);
+            this.label1.Location = new System.Drawing.Point(22, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 32);
             this.label1.TabIndex = 14;
@@ -557,7 +563,8 @@
             this.menuAdmin.BackColor = System.Drawing.Color.Green;
             this.menuAdmin.ImageScalingSize = new System.Drawing.Size(35, 35);
             this.menuAdmin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuExit});
+            this.menuExit,
+            this.настройкиToolStripMenuItem});
             this.menuAdmin.Location = new System.Drawing.Point(0, 0);
             this.menuAdmin.Name = "menuAdmin";
             this.menuAdmin.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -588,7 +595,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(838, 1);
+            this.btnAdd.Location = new System.Drawing.Point(736, 4);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(133, 42);
@@ -603,19 +610,22 @@
             this.dataGridViewButtonColumn1.HeaderText = "";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
             // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Black", 12F);
+            this.настройкиToolStripMenuItem.ForeColor = System.Drawing.Color.Yellow;
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(135, 39);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1224, 551);
-            this.Controls.Add(this.tbxFilter);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.showBtn);
-            this.Controls.Add(this.reportDate);
             this.Controls.Add(this.menuAdmin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuAdmin;
@@ -645,6 +655,7 @@
             this.tabOstatok.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGrid)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.menuAdmin.ResumeLayout(false);
             this.menuAdmin.PerformLayout();
             this.ResumeLayout(false);
@@ -694,5 +705,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnExportBalance;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
     }
 }
