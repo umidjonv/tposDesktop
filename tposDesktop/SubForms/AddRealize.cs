@@ -38,7 +38,7 @@ namespace tposDesktop
             tbxName.Text = productRow.name;
             tbxPack.Text = 1.ToString();
             pack = productRow.pack;
-            tbxPrice.Text = productRow.price.ToString();
+            tbxPricePrixod.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
             if (productRow.barcode != null)
                 tbxShtrix.Text = productRow.barcode;
@@ -72,7 +72,8 @@ namespace tposDesktop
                 {
                     rlRow.count = Convert.ToInt32(tbxPack.Text);
                 }
-                rlRow.price = Convert.ToInt32(tbxPrice.Text);
+                rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
+                rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
                 rlRow.fakturaId = fkRow.fakturaId;
                 rlRow.prodId = prRow.productId;
                 DBclass.DS.realize.AddrealizeRow(rlRow);

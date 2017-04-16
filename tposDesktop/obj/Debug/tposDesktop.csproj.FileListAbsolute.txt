@@ -114,3 +114,5 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources

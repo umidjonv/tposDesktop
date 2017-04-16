@@ -56,20 +56,20 @@
             this.lblBalanceSum = new System.Windows.Forms.Label();
             this.balanceGrid = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.tbxFilter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.menuAdmin = new System.Windows.Forms.MenuStrip();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.productTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.productTableAdapter();
             this.infoTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.infoTableAdapter();
             this.balanceviewTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.balanceviewTableAdapter();
             this.realizeviewTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.realizeviewTableAdapter();
             this.expenseviewTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.expenseviewTableAdapter();
-            this.tbxFilter = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.menuAdmin = new System.Windows.Forms.MenuStrip();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.realizeTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.realizeTableAdapter();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).BeginInit();
             this.tabOtchety.SuspendLayout();
@@ -118,7 +118,7 @@
             this.tabRasxod.Location = new System.Drawing.Point(4, 34);
             this.tabRasxod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabRasxod.Name = "tabRasxod";
-            this.tabRasxod.Size = new System.Drawing.Size(1163, 440);
+            this.tabRasxod.Size = new System.Drawing.Size(1163, 412);
             this.tabRasxod.TabIndex = 2;
             this.tabRasxod.Text = "Расход товаров";
             this.tabRasxod.UseVisualStyleBackColor = true;
@@ -150,7 +150,7 @@
             this.tabOtchety.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOtchety.Name = "tabOtchety";
             this.tabOtchety.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabOtchety.Size = new System.Drawing.Size(1163, 440);
+            this.tabOtchety.Size = new System.Drawing.Size(1163, 412);
             this.tabOtchety.TabIndex = 1;
             this.tabOtchety.Text = "Информация о выручках";
             this.tabOtchety.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             this.infoGrid.ReadOnly = true;
             this.infoGrid.RowHeadersVisible = false;
             this.infoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.infoGrid.Size = new System.Drawing.Size(707, 436);
+            this.infoGrid.Size = new System.Drawing.Size(707, 408);
             this.infoGrid.TabIndex = 6;
             this.infoGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -342,7 +342,7 @@
             this.tabPrixod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrixod.Name = "tabPrixod";
             this.tabPrixod.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPrixod.Size = new System.Drawing.Size(1163, 440);
+            this.tabPrixod.Size = new System.Drawing.Size(1163, 412);
             this.tabPrixod.TabIndex = 4;
             this.tabPrixod.Text = "Приход товаров";
             this.tabPrixod.UseVisualStyleBackColor = true;
@@ -434,7 +434,7 @@
             this.tabOstatok.Location = new System.Drawing.Point(4, 34);
             this.tabOstatok.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOstatok.Name = "tabOstatok";
-            this.tabOstatok.Size = new System.Drawing.Size(1163, 440);
+            this.tabOstatok.Size = new System.Drawing.Size(1163, 412);
             this.tabOstatok.TabIndex = 3;
             this.tabOstatok.Text = "Остаток";
             this.tabOstatok.UseVisualStyleBackColor = true;
@@ -476,7 +476,7 @@
             this.balanceGrid.ReadOnly = true;
             this.balanceGrid.RowHeadersVisible = false;
             this.balanceGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.balanceGrid.Size = new System.Drawing.Size(667, 440);
+            this.balanceGrid.Size = new System.Drawing.Size(667, 412);
             this.balanceGrid.TabIndex = 8;
             this.balanceGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -495,25 +495,24 @@
             this.panel1.Size = new System.Drawing.Size(1224, 508);
             this.panel1.TabIndex = 2;
             // 
-            // productTableAdapter1
+            // btnAdd
             // 
-            this.productTableAdapter1.ClearBeforeFill = true;
-            // 
-            // infoTableAdapter1
-            // 
-            this.infoTableAdapter1.ClearBeforeFill = true;
-            // 
-            // balanceviewTableAdapter1
-            // 
-            this.balanceviewTableAdapter1.ClearBeforeFill = true;
-            // 
-            // realizeviewTableAdapter1
-            // 
-            this.realizeviewTableAdapter1.ClearBeforeFill = true;
-            // 
-            // expenseviewTableAdapter1
-            // 
-            this.expenseviewTableAdapter1.ClearBeforeFill = true;
+            this.btnAdd.BackColor = System.Drawing.Color.Lime;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Black;
+            this.btnAdd.Location = new System.Drawing.Point(736, 7);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(133, 42);
+            this.btnAdd.TabIndex = 16;
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
             // 
             // tbxFilter
             // 
@@ -527,6 +526,18 @@
             this.tbxFilter.TabIndex = 0;
             this.tbxFilter.TextChanged += new System.EventHandler(this.tbx_ValueChanged);
             this.tbxFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Green;
+            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(22, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 32);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Товар:";
             // 
             // button1
             // 
@@ -545,18 +556,6 @@
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.menuRasxod_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Green;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(22, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 32);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Товар:";
             // 
             // menuAdmin
             // 
@@ -582,34 +581,6 @@
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
-            // realizeTableAdapter1
-            // 
-            this.realizeTableAdapter1.ClearBeforeFill = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Lime;
-            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(736, 4);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(133, 42);
-            this.btnAdd.TabIndex = 16;
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            this.btnAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.HeaderText = "";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Black", 12F);
@@ -617,6 +588,35 @@
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(135, 39);
             this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            // 
+            // productTableAdapter1
+            // 
+            this.productTableAdapter1.ClearBeforeFill = true;
+            // 
+            // infoTableAdapter1
+            // 
+            this.infoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // balanceviewTableAdapter1
+            // 
+            this.balanceviewTableAdapter1.ClearBeforeFill = true;
+            // 
+            // realizeviewTableAdapter1
+            // 
+            this.realizeviewTableAdapter1.ClearBeforeFill = true;
+            // 
+            // expenseviewTableAdapter1
+            // 
+            this.expenseviewTableAdapter1.ClearBeforeFill = true;
+            // 
+            // realizeTableAdapter1
+            // 
+            this.realizeTableAdapter1.ClearBeforeFill = true;
             // 
             // FormAdmin
             // 

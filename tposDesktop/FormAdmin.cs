@@ -151,22 +151,29 @@ namespace tposDesktop
             }
         }
         bool isPrixod = false;
-
+        int idFaktura = -1;
         private void AddPrixod(DataRow[] dr, string barcode)
         {
             DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
-
-            if (!isPrixod && MessageBox.Show("Начать приход товаров?", "Приход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            FakturaOrgsForm orgForm = new FakturaOrgsForm();
+            
+            if (!isPrixod)
             {
-
-                DataSetTpos.fakturaRow fkrow = DBclass.DS.faktura.NewfakturaRow();
-                fkrow.fakturaDate = DateTime.Now;
-                fakturaTableAdapter daFaktura = new fakturaTableAdapter();
-                DBclass.DS.faktura.AddfakturaRow(fkrow);
-                daFaktura.Update(DBclass.DS.faktura);
-                daFaktura.Fill(DBclass.DS.faktura);
-                realizeGrid.Columns["colBtnDel"].Visible = true;
-                isPrixod = true;
+                if (orgForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    DataSetTpos.fakturaRow fkrow = DBclass.DS.faktura.NewfakturaRow();
+                    fkrow.providerId = orgForm.activeProviderRow.providerId;
+                    fkrow.fakturaDate = DateTime.Now;
+                    fakturaTableAdapter daFaktura = new fakturaTableAdapter();
+                    DBclass.DS.faktura.AddfakturaRow(fkrow);
+                    daFaktura.Update(DBclass.DS.faktura);
+                    daFaktura.Fill(DBclass.DS.faktura);
+                    idFaktura =  (DBclass.DS.faktura.Rows[0] as DataSetTpos.fakturaRow).fakturaId;
+                    realizeGrid.Columns["colBtnDel"].Visible = true;
+                    isPrixod = true;
+                    
+                }
+                
 
             }
             if(isPrixod)
@@ -292,6 +299,7 @@ namespace tposDesktop
             realizeGrid.Columns["fakturaId"].HeaderText = "№ Фактуры";
             realizeGrid.Columns["fakturaId"].Width = 70;
             realizeGrid.Columns["colBtnDel"].DisplayIndex = 5;
+            realizeGrid.Columns["productId"].Visible = false;
             //cellBtn2.DisplayIndex = 5;
             //Expense grid
             expenseGrid.Columns["name"].HeaderText = "Наименование";
@@ -349,7 +357,7 @@ namespace tposDesktop
             {
                 for (int i = 0; i < realizeGrid.Rows.Count; ++i)
                 {
-                    sum += Convert.ToInt32(realizeGrid.Rows[i].Cells[4].Value);
+                    sum += Convert.ToInt32(realizeGrid.Rows[i].Cells["price"].Value);
                 }
                 lblRealizeSum.Text = "Итого : "+sum.ToString() + " сум";
             }
@@ -481,6 +489,7 @@ namespace tposDesktop
                         break;
                     case "dgvTovarPrixod":
                         DataRow[] drP = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
+                        
                         AddPrixod(drP, null);
                         break;
                     case "realizeGrid":
@@ -535,6 +544,7 @@ namespace tposDesktop
             if (isPrixod)
             {
                 isPrixod = false;
+                idFaktura = -1;
                 MessageBox.Show("Приход закрыт!");
                 realizeGrid.Columns["colBtnDel"].Visible = false;
             }
