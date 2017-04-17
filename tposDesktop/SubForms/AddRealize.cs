@@ -62,21 +62,45 @@ namespace tposDesktop
                 
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
-
-                DataSetTpos.realizeRow rlRow = DBclass.DS.realize.NewrealizeRow();
-                if (pack != 0)
+                DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = "+prRow.productId+" and fakturaId = "+fkRow.fakturaId);
+                DataSetTpos.realizeRow rlRow;
+                if (rlRows.Length > 0)
                 {
-                    rlRow.count = Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
+                    rlRow = rlRows[0];
+                    if (pack != 0)
+                    {
+                        rlRow.count += Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
+                    }
+                    else
+                    {
+                        rlRow.count += Convert.ToInt32(tbxPack.Text);
+                    }
+                    rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
+                    rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
+                    
+                    
+                    
                 }
                 else
                 {
-                    rlRow.count = Convert.ToInt32(tbxPack.Text);
+                    rlRow = DBclass.DS.realize.NewrealizeRow();
+                    if (pack != 0)
+                    {
+                        rlRow.count = Convert.ToInt32(Math.Round(Convert.ToDouble(tbxPack.Text) * pack, 2) + Convert.ToInt32(tbxKol.Text));
+                    }
+                    else
+                    {
+                        rlRow.count = Convert.ToInt32(tbxPack.Text);
+                    }
+                    rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
+                    rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
+                    rlRow.fakturaId = fkRow.fakturaId;
+                    rlRow.prodId = prRow.productId;
+                    DBclass.DS.realize.AddrealizeRow(rlRow);
                 }
-                rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
-                rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
-                rlRow.fakturaId = fkRow.fakturaId;
-                rlRow.prodId = prRow.productId;
-                DBclass.DS.realize.AddrealizeRow(rlRow);
+                
+                
+                
                 daReal.Update(DBclass.DS.realize);
                 daReal.Fill(DBclass.DS.realize);
                 

@@ -159,9 +159,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "На заказ";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OrderForm_KeyPress);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OrderForm_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OrderForm_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OrderForm_MouseUp);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.tbxCount1, 0);
             this.Controls.SetChildIndex(this.label2, 0);

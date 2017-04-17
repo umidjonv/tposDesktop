@@ -277,7 +277,8 @@ namespace tposDesktop
 
                         ordrow.prodId = drP.productId;
                         ordrow.expenseId = -1;
-                        OrderForm oform = new OrderForm(drP.name, drP.pack, drP.price.ToString());
+                        int curPrice = drP.price;
+                        OrderForm oform = new OrderForm(drP);
                         if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             ordrow.packCount = oform.count;
@@ -288,6 +289,11 @@ namespace tposDesktop
                         }
                         else { return; }
                         DBclass.DS.orders.AddordersRow(ordrow);
+                        if (curPrice != drP.price) ;
+                        {
+                            productTableAdapter prda = new productTableAdapter();
+                            prda.Update(drP);
+                        }
                     }
                     if (isNewExpense)
                     {

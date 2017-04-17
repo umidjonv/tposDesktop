@@ -15,14 +15,15 @@ namespace tposDesktop
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
-        public OrderForm(string name, int cnt, string price)
+        public OrderForm(DataSetTpos.productRow prrow)
         {
-            count = cnt;
-            
+            count = prrow.pack;
+            prrow.price = getPrice(prrow.productId);
             InitializeComponent();
-            lblCaption.Text = name;
-            lblPrice.Text = price;
-            tbxCount1.Text = (cnt != 0 ? cnt : 1).ToString();
+            lblCaption.Text = prrow.name;
+            lblPrice.Text = prrow.price.ToString();
+            tbxCount1.Text = (count != 0 ? count : 1).ToString();
+            
         }
         public int count = 0;
         public int sum = 0;
@@ -99,38 +100,17 @@ namespace tposDesktop
                 lblOne.Text = d;
 
             
-            //if (Int32.TryParse(t.Text, out num))
-            //{
-            //    text = t.Text;
-            //    //t.SelectionStart = t.Text.Length;
-            //}
+            
         }
-
-        private void OrderForm_MouseDown(object sender, MouseEventArgs e)
+        private int getPrice(int id)
         {
-            _dragging = true;
-            _start_point = new Point(e.X, e.Y);
+            DataSetTposTableAdapters.getPriceTableAdapter daGetPrice = new DataSetTposTableAdapters.getPriceTableAdapter();
+            object price = daGetPrice.GetPrice(id.ToString());
+            return Convert.ToInt32(price);
         }
 
-        private void OrderForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (_dragging)
-            {
-                Point p = PointToScreen(e.Location);
-                Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
 
-            }
-        }
 
-        private void OrderForm_MouseUp(object sender, MouseEventArgs e)
-        {
-            _dragging = false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        
     }
 }
