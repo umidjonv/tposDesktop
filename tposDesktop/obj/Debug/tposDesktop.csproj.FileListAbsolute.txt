@@ -114,5 +114,12 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+<<<<<<< HEAD
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+=======
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+>>>>>>> d167fb7bb0a06402e32bb432ff8082ef2c275a3c
