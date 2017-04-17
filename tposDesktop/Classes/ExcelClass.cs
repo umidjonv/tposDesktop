@@ -28,7 +28,7 @@ namespace ComputerInventory.Classes
         }
         string savepath;
         Workbook activeWorkbook;
-        
+        //Worksheet activeSheet;
         public void Create(string name)
         {
             string wname = name;
@@ -62,7 +62,7 @@ namespace ComputerInventory.Classes
 
         public void ColWidth(string col, int width)
         {
-            activeSheet.Columns[col].ColumnWidth = width; 
+            //activeSheet.Columns[col].ColumnWidth = width; 
 
         }
         public void Save()
