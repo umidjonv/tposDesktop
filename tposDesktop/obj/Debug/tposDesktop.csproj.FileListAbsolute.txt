@@ -31,3 +31,4 @@ C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
 C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache

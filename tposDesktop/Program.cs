@@ -68,13 +68,13 @@ namespace tposDesktop
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Изменёна конфигурация, обратитесь в поддержку!");
+                    System.Windows.Forms.MessageBox.Show("Изменена конфигурация, обратитесь в поддержку!");
                 }
 
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Изменёна конфигурация, обратитесь в поддержку!");
+                System.Windows.Forms.MessageBox.Show("Изменена конфигурация, обратитесь в поддержку!");
             }
         }
        
@@ -88,7 +88,7 @@ namespace tposDesktop
         public static string role;
 
     }
-    struct Paramaters
+    struct Parameters
     {
         string LangPath;
         
