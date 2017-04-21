@@ -312,7 +312,7 @@
     <None Include="DataSetTpos.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>DataSetTpos2.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetTpos.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSetTpos.xss">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>

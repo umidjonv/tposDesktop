@@ -164,8 +164,25 @@ namespace tposDesktop
             {
                 temp1 = rand.Next(100000, 199999).ToString() + rand.Next(10, 9).ToString();
             }
-            
-            return id.ToString() + temp1;
+            //ischange = true;
+            temp1 = id.ToString() + temp1;
+            long n;
+            n = Convert.ToInt64(temp1);
+            long oddSum = 0, evenSum = 0;
+            bool odd = true;
+            while (n != 0)
+            {
+                if (odd)
+                    oddSum += n % 10;
+                else
+                    evenSum += n % 10;
+                n /= 10;
+                odd = !odd;
+
+            }
+            long temp2 = oddSum * 3 + evenSum;
+            temp1 = temp1 + (10 - temp2 % 10).ToString();
+            return temp1;
         }
 
     }

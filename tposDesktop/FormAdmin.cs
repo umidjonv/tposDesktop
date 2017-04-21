@@ -22,11 +22,18 @@ namespace tposDesktop
     {
         Scanner scanner;
         DBclass db;
+        delegate void SendInfoDel(string text);
         bool isExit = false;
+        //Diagramm
         bool tproc = true;
         bool tnal = true;
         bool tterm = true;
         bool tback = true;
+
+        //Prixod
+        bool isPrixod = false;
+        int idFaktura = -1;
+
         public FormAdmin()
         {
             InitializeComponent();
@@ -67,11 +74,20 @@ namespace tposDesktop
                 expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 expenseGrid.DataSource = expense;
 
-                this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
+                this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-30));
                 DataView balance = new DataView(DBclass.DS.balanceview);
                 balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 balanceGrid.DataSource = balance;
 
+                fakturaviewTableAdapter fviewda = new fakturaviewTableAdapter();
+                fviewda.Fill(DBclass.DS.fakturaview);
+                DataView fkview = new DataView(DBclass.DS.fakturaview);
+                fkview.RowFilter = "fakturaDate < '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                fkview.Sort = "fakturaId desc";
+                dgvFaktura.DataSource = fkview;
+
+                DataView dvRealize = new DataView(DBclass.DS.realizeview);
+                dgvFakturaTovar.DataSource = dvRealize;
 
                 liveChartLoad();
                 balanceSumm();
@@ -97,7 +113,7 @@ namespace tposDesktop
                 tscanner = new TextScanner();
             }
         }
-        delegate void SendInfoDel(string text);
+        
         
         void scanner_ScannerEvent(object source, ScannerEventArgs e)
         {
@@ -126,32 +142,26 @@ namespace tposDesktop
             }
         }
 
+        #region Product
         private void AddProduct(DataRow[] dr, string barcode)
         {
+            AddForm addForm;
             if (dr.Length != 0)
             {
                 DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
-                AddForm addForm = new AddForm(prRow);
-                if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    
-                }
+                addForm = new AddForm(prRow);
+                addForm.ShowDialog();
+                
             }
             else
             {
-                AddForm addForm = new AddForm(barcode);
-                if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    //productTableAdapter daProduct = new productTableAdapter();
-                    //daProduct.Fill(DBclass.DS.product);
-
-
-                }
-
+                addForm = new AddForm(barcode);
+                addForm.ShowDialog();
             }
         }
-        bool isPrixod = false;
-        int idFaktura = -1;
+        #endregion
+
+        #region Prixod
         private void AddPrixod(DataRow[] dr, string barcode)
         {
             DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
@@ -182,17 +192,27 @@ namespace tposDesktop
 
                 DataView dv = realizeGrid.DataSource as DataView;
                 dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
-
+                int curPrice = prRow.price;
                 AddRealize addForm = new AddRealize(prRow, faktRow);
                 if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    if (curPrice != prRow.price && prRow.price != 0)
+                    {
+                        productTableAdapter prda = new productTableAdapter();
+                        prda.Update(prRow);
+                    }
                     realizeGrid.Columns["colBtnDel"].Visible = true;
                     this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
                 }
+
+                
             }
             
             
         }
+        #endregion
+
+        #region FormLoad, Init, Close
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             if (isExit)
@@ -212,17 +232,6 @@ namespace tposDesktop
             }
             panel1.Location = new Point(xLoc, panel1.Location.Y);
             panel1.Size = new Size(wid + panel1.Width, panel1.Height);
-        }
-
-        private void FormAdmin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (scanner != null)
-            {
-                scanner.isWorked = false;
-                scanner.rd.ClosePort(scanner.port);
-            }
-            if (Program.window_type != 2 && Program.window_type != 1)
-                Program.window_type = 0;
         }
 
         private void InitDataGridViews()
@@ -270,11 +279,11 @@ namespace tposDesktop
             cellBtnRas.Width = 100;
             dgvTovarPrixod.Columns.Add(cellBtnRas);
 
-            
+
 
             //Info grid
-            
-            
+
+
             infoGrid.Columns["Dates"].HeaderText = "Товар";
             infoGrid.Columns["proceed"].HeaderText = "Выручка";
             infoGrid.Columns["proceed"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -289,7 +298,7 @@ namespace tposDesktop
             realizeGrid.Columns["name"].DisplayIndex = 1;
             realizeGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             realizeGrid.Columns["fakturaDate"].Visible = false;
-            
+
             realizeGrid.Columns["count"].HeaderText = "Кол-во";
             realizeGrid.Columns["count"].DisplayIndex = 2;
             realizeGrid.Columns["price"].HeaderText = "Цена";
@@ -328,9 +337,54 @@ namespace tposDesktop
             balanceGrid.Columns["curEndCount"].HeaderText = "Сумма";
             balanceGrid.Columns["name"].Width = 200;
             balanceGrid.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
- 
+
+            //fakturaTovar
+            dgvFakturaTovar.Columns["name"].HeaderText = "Товар";
+            dgvFakturaTovar.Columns["fakturaId"].HeaderText = "№ фактуры";
+            dgvFakturaTovar.Columns["fakturaDate"].HeaderText = "Дата";
+            dgvFakturaTovar.Columns["realizeId"].Visible = false;
+            dgvFakturaTovar.Columns["productId"].Visible = false;
+            dgvFakturaTovar.Columns["price"].HeaderText = "Цена";
+            dgvFakturaTovar.Columns["count"].HeaderText = "Кол.";
+            dgvFakturaTovar.Columns["name"].Width = 250;
+            dgvFakturaTovar.Columns["fakturaDate"].Width = 150;
+            dgvFakturaTovar.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            //dgvFaktura
+            dgvFaktura.Columns["orgName"].HeaderText = "Поставщик";
+            dgvFaktura.Columns["fakturaId"].HeaderText = "№ фактуры";
+            dgvFaktura.Columns["fakturaDate"].HeaderText = "Дата";
             
+            
+            dgvFaktura.Columns["phone"].HeaderText = "Тел.";
+            dgvFaktura.Columns["phone"].Width = 150;
+            dgvFaktura.Columns["orgName"].Width = 250;
+            dgvFaktura.Columns["fakturaDate"].Width = 150;
         }
+
+        private void FormAdmin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (scanner != null)
+            {
+                scanner.isWorked = false;
+                scanner.rd.ClosePort(scanner.port);
+            }
+            if (isPrixod)
+            {
+                isPrixod = false;
+
+                getPriceTableAdapter getPriceDA = new getPriceTableAdapter();
+                getPriceDA.FakturaTrigger(idFaktura);
+                idFaktura = -1;
+                
+                
+            }
+            if (Program.window_type != 2 && Program.window_type != 1)
+                Program.window_type = 0;
+        }
+        #endregion
+
+        #region Diagram functions
 
         private void balanceSumm()
         {
@@ -339,6 +393,7 @@ namespace tposDesktop
             {
                 for (int i = 0; i < balanceGrid.Rows.Count; ++i)
                 {
+                    if(balanceGrid.Rows[i].Cells[4].Value!=DBNull.Value)
                     sum += Convert.ToInt32(balanceGrid.Rows[i].Cells[4].Value);
                 }
                 lblBalanceSum.Text = "Итого остаток : " +sum.ToString() + " сум";
@@ -368,49 +423,6 @@ namespace tposDesktop
 
         }
 
-        private void Filtering(string tab)
-        {
-            switch (tab)
-            {
-                case "tabTovar":
-
-                    break;
-                case "tabPrixod":
-                    this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
-                    var realize = realizeGrid.DataSource as DataView;
-                    realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-                    realizeGrid.Columns["colBtnDel"].Visible = false;
-                    break;
-                case "tabOtchety":
-                    this.infoTableAdapter1.Fill(DBclass.DS.info);
-                    var info = infoGrid.DataSource as DataView;
-                    //info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
-                    info.Sort = "Dates desc";
-                    break;
-                case "tabRasxod":
-                    this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
-            DataView expense = expenseGrid.DataSource as DataView;
-            expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-                    break;
-                case "tabOstatok":
-                    this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
-                    DataView balance = balanceGrid.DataSource as DataView;
-                    balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
-                    break;
-            }
-
-            
-
-            
-
-            
-            
-
-            
-
-            
-        }
-
         private void infoGraph()
         {
             DataTable table = DBclass.DS.Tables["info"];
@@ -429,175 +441,6 @@ namespace tposDesktop
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
-
-        
-
-        private void reportDate_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void showBtn_Click(object sender, EventArgs e)
-        {
-            Filtering(tabControl1.SelectedTab.Name);
-            balanceSumm();
-            realizeSumm();
-        }
-
-        private void menuRasxod_Click(object sender, EventArgs e)
-        {
-            Program.window_type = 2;
-            this.Close();
-        }
-
-        private void dgv_postPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            var grid = sender as DataGridView;
-            DataGridViewCellStyle style = new DataGridViewCellStyle();
-            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
-            else
-                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
-            grid.Rows[e.RowIndex].DefaultCellStyle = style;
-        }
-
-        private void dgvTovar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var dgv = sender as DataGridView;
-            if (dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
-            {
-                switch (dgv.Name)
-                {
-                    case "dgvTovar":
-                        DataRow[] dr = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
-                        if (dgv.Columns[e.ColumnIndex].Name == "colBtn")
-                        {
-                            AddProduct(dr, null);
-                        }
-                        else if (dgv.Columns[e.ColumnIndex].Name == "colBtnDel")
-                        {
-                            if (MessageBox.Show("Удалить товар?") == System.Windows.Forms.DialogResult.Yes)
-                            {
-                                dr[0].Delete();
-                                this.productTableAdapter1.Update(DBclass.DS.product);
-                                this.productTableAdapter1.Fill(DBclass.DS.product);
-                            }
-                        }
-
-                        
-                        
-                        break;
-                    case "dgvTovarPrixod":
-                        DataRow[] drP = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
-                        
-                        AddPrixod(drP, null);
-                        break;
-                    case "realizeGrid":
-                        DataSetTpos.realizeRow[] rls = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("realizeId=" + dgv.Rows[e.RowIndex].Cells["realizeId"].Value.ToString());
-                        rls[0].Delete();
-                        
-                        this.realizeTableAdapter1.Update(DBclass.DS.realize);
-                        this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
-                        break;
-                }
-                
-            }
-        }
-
-        private void dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            var grid = sender as DataGridView;
-            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                switch (grid.Name)
-                {
-                    case "dgvTovar":
-                        switch (grid.Columns[e.ColumnIndex].Name)
-                        {
-                            case "colBtn":
-                                dgvCell.Value = "Изменить";
-                                break;
-                            case "colBtnDel":
-                                dgvCell.Value = "X";
-                                break;
-                        }
-                        
-                        break;
-                    case "dgvTovarPrixod":
-                        dgvCell.Value = "В приход";
-                        break;
-                    case "realizeGrid":
-                        dgvCell.Value = "Удалить";
-                        break;
-                }
-                
-                
-                
-
-                
-            }
-        }
-
-        private void btnCloseFaktura_Click(object sender, EventArgs e)
-        {
-            if (isPrixod)
-            {
-                isPrixod = false;
-                idFaktura = -1;
-                MessageBox.Show("Приход закрыт!");
-                realizeGrid.Columns["colBtnDel"].Visible = false;
-            }
-        }
-
-        private void tbx_ValueChanged(object sender, EventArgs e)
-        {
-            TextBox tbx = sender as TextBox;
-            switch (tabControl1.SelectedTab.Name)
-            {
-                case "tabTovar":
-                    DataView dv = dgvTovar.DataSource as DataView;
-                    dv.RowFilter = "name like '%" + tbx.Text + "%'";
-                    break;
-                case "tabPrixod":
-                    DataView dvP = dgvTovar.DataSource as DataView;
-                    dvP.RowFilter = "name like '%" + tbx.Text + "%'";
-                    break;
-
-            }
-        }
-
-
-        string selectedOldTab;
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TabControl tabControl = sender as TabControl;
-            Filtering(tabControl1.SelectedTab.Name);
-            switch(tabControl.SelectedTab.Name)
-            {
-                case "tabPrixod":
-                    realizeGrid.Columns["colBtnDel"].DisplayIndex = 4;
-                    if (isPrixod)
-                    {
-                        realizeGrid.Columns["colBtnDel"].Visible = true;
-                        DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
-
-                        DataView dv = realizeGrid.DataSource as DataView;
-                        dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
-                    }
-                    
-                    break;
-
-                                
-            }
-            tbxFilter.Focus();
-            
-
-        }
-
-        private void menuExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void liveChartLoad()
@@ -648,7 +491,7 @@ namespace tposDesktop
             {
                 Console.WriteLine(ex.ToString());
             }
-            
+
             Chart1.Series = new SeriesCollection
             {
                 new LineSeries
@@ -703,11 +546,7 @@ namespace tposDesktop
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            SendInfo("-1");
-            tbxFilter.Focus();
-        }
+
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -760,7 +599,235 @@ namespace tposDesktop
             }
             liveChartLoad();
         }
-        string curBarcode = "";
+
+        #endregion
+
+        #region Filtering
+        private void Filtering(string tab)
+        {
+            switch (tab)
+            {
+                case "tabTovar":
+
+                    break;
+                case "tabPrixod":
+                    this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                    var realize = realizeGrid.DataSource as DataView;
+                    realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    realizeGrid.Columns["colBtnDel"].Visible = false;
+                    break;
+                case "tabOtchety":
+                    this.infoTableAdapter1.Fill(DBclass.DS.info);
+                    var info = infoGrid.DataSource as DataView;
+                    //info.RowFilter = "Dates > '" + reportDate.Value.ToString("yyyy-MM-dd")+"'";
+                    info.Sort = "Dates desc";
+                    break;
+                case "tabRasxod":
+                    this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
+            DataView expense = expenseGrid.DataSource as DataView;
+            expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    break;
+                case "tabOstatok":
+                    this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-30));
+                    DataView balance = balanceGrid.DataSource as DataView;
+                    balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    break;
+            }
+                        
+        }
+
+        private void showBtn_Click(object sender, EventArgs e)
+        {
+            Filtering(tabControl1.SelectedTab.Name);
+            balanceSumm();
+            realizeSumm();
+        }
+        private void tbx_ValueChanged(object sender, EventArgs e)
+        {
+            TextBox tbx = sender as TextBox;
+            switch (tabControl1.SelectedTab.Name)
+            {
+                case "tabTovar":
+                    DataView dv = dgvTovar.DataSource as DataView;
+                    dv.RowFilter = "name like '%" + tbx.Text + "%'";
+                    break;
+                case "tabPrixod":
+                    DataView dvP = dgvTovar.DataSource as DataView;
+                    dvP.RowFilter = "name like '%" + tbx.Text + "%'";
+                    break;
+
+            }
+        }
+        #endregion
+
+        #region DataGridViews Event cells, Repaint and etc
+
+        /// <summary>
+        /// Event change grid colour even, odd
+        /// </summary>
+        /// <param name="sender">Datagridview</param>
+        /// <param name="e">Event params</param>
+        private void dgv_postPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            DataGridViewCellStyle style = new DataGridViewCellStyle();
+            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+            else
+                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+            grid.Rows[e.RowIndex].DefaultCellStyle = style;
+        }
+
+        private void dgvTovar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            if (dgv.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                switch (dgv.Name)
+                {
+                    case "dgvTovar":
+                        DataRow[] dr = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
+                        if (dgv.Columns[e.ColumnIndex].Name == "colBtn")
+                        {
+                            AddProduct(dr, null);
+                        }
+                        else if (dgv.Columns[e.ColumnIndex].Name == "colBtnDel")
+                        {
+                            if (MessageBox.Show("Удалить товар?") == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                dr[0].Delete();
+                                this.productTableAdapter1.Update(DBclass.DS.product);
+                                this.productTableAdapter1.Fill(DBclass.DS.product);
+                            }
+                        }
+
+                        
+                        
+                        break;
+                    case "dgvTovarPrixod":
+                        DataRow[] drP = DBclass.DS.product.Select("productId = " + dgv.Rows[e.RowIndex].Cells["productId"].Value.ToString());
+                        
+                        AddPrixod(drP, null);
+                        break;
+                    case "realizeGrid":
+                        DataSetTpos.realizeRow[] rls = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("realizeId=" + dgv.Rows[e.RowIndex].Cells["realizeId"].Value.ToString());
+                        rls[0].Delete();
+                        
+                        this.realizeTableAdapter1.Update(DBclass.DS.realize);
+                        this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+                        break;
+
+                    
+                }
+                
+            }
+            if (e.RowIndex != -1)
+            {
+                switch (dgv.Name)
+                {
+                    case "dgvFaktura":
+                        DataView dv = dgvFakturaTovar.DataSource as DataView;
+                        dv.RowFilter = "fakturaId =" + dgv.Rows[e.RowIndex].Cells["fakturaId"].Value.ToString();
+                        break;
+                }
+            }
+        }
+
+        private void dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                switch (grid.Name)
+                {
+                    case "dgvTovar":
+                        switch (grid.Columns[e.ColumnIndex].Name)
+                        {
+                            case "colBtn":
+                                dgvCell.Value = "Изменить";
+                                break;
+                            case "colBtnDel":
+                                dgvCell.Value = "X";
+                                break;
+                        }
+                        
+                        break;
+                    case "dgvTovarPrixod":
+                        dgvCell.Value = "В приход";
+                        break;
+                    case "realizeGrid":
+                        dgvCell.Value = "Удалить";
+                        break;
+                }
+                
+                
+                
+
+                
+            }
+        }
+        #endregion
+
+        private void btnCloseFaktura_Click(object sender, EventArgs e)
+        {
+            if (isPrixod)
+            {
+                isPrixod = false;
+
+                getPriceTableAdapter getPriceDA = new getPriceTableAdapter();
+                getPriceDA.FakturaTrigger(idFaktura);
+                idFaktura = -1;
+                MessageBox.Show("Приход закрыт!");
+                realizeGrid.Columns["colBtnDel"].Visible = false;
+            }
+        }
+
+
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tabControl = sender as TabControl;
+            Filtering(tabControl1.SelectedTab.Name);
+            switch(tabControl.SelectedTab.Name)
+            {
+                case "tabPrixod":
+                    realizeGrid.Columns["colBtnDel"].DisplayIndex = 4;
+                    if (isPrixod)
+                    {
+                        realizeGrid.Columns["colBtnDel"].Visible = true;
+                        DataSetTpos.fakturaRow faktRow = (DataSetTpos.fakturaRow)DBclass.DS.faktura.Rows[0];
+
+                        DataView dv = realizeGrid.DataSource as DataView;
+                        dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
+                    }
+                    
+                    break;
+
+                                
+            }
+            tbxFilter.Focus();
+            
+
+        }
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void menuRasxod_Click(object sender, EventArgs e)
+        {
+            Program.window_type = 2;
+            this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            SendInfo("-1");
+            tbxFilter.Focus();
+        }
+        
+
+
         bool beginBarcode = false;
         TextScanner tscanner;
         private void control_keyPress(object sender, KeyPressEventArgs e)
@@ -799,17 +866,12 @@ namespace tposDesktop
                     SendInfo(tscanner.barcode);
                     beginBarcode = false;
                     //tscanner.
-                    curBarcode = "";
+                    
                     if (st != "")
                         (sender as TextBox).Text = "";
                 }
             }
            
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnExport_Click(object sender, EventArgs e)

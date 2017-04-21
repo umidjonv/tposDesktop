@@ -124,7 +124,7 @@
             this.btnAdd.Location = new System.Drawing.Point(425, 372);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(158, 46);
-            this.btnAdd.TabIndex = 2;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.AddOrEdit);
@@ -156,7 +156,7 @@
             this.tbxPricePrixod.Location = new System.Drawing.Point(143, 302);
             this.tbxPricePrixod.Name = "tbxPricePrixod";
             this.tbxPricePrixod.Size = new System.Drawing.Size(148, 34);
-            this.tbxPricePrixod.TabIndex = 1;
+            this.tbxPricePrixod.TabIndex = 4;
             this.tbxPricePrixod.Text = "0";
             // 
             // tbxKol
@@ -164,7 +164,7 @@
             this.tbxKol.Location = new System.Drawing.Point(143, 244);
             this.tbxKol.Name = "tbxKol";
             this.tbxKol.Size = new System.Drawing.Size(148, 34);
-            this.tbxKol.TabIndex = 0;
+            this.tbxKol.TabIndex = 3;
             this.tbxKol.Text = "0";
             // 
             // tbxPack
@@ -172,7 +172,7 @@
             this.tbxPack.Location = new System.Drawing.Point(143, 186);
             this.tbxPack.Name = "tbxPack";
             this.tbxPack.Size = new System.Drawing.Size(148, 34);
-            this.tbxPack.TabIndex = 0;
+            this.tbxPack.TabIndex = 2;
             this.tbxPack.Text = "0";
             // 
             // label1
@@ -191,7 +191,7 @@
             this.tbxSoldPrice.Location = new System.Drawing.Point(143, 371);
             this.tbxSoldPrice.Name = "tbxSoldPrice";
             this.tbxSoldPrice.Size = new System.Drawing.Size(148, 34);
-            this.tbxSoldPrice.TabIndex = 1;
+            this.tbxSoldPrice.TabIndex = 5;
             this.tbxSoldPrice.Text = "0";
             // 
             // AddRealize
@@ -219,6 +219,7 @@
             this.MinimizeBox = false;
             this.Name = "AddRealize";
             this.Text = "Приходовать товар";
+            this.Load += new System.EventHandler(this.AddRealize_Load);
             this.Controls.SetChildIndex(this.lblName, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.tbxName, 0);

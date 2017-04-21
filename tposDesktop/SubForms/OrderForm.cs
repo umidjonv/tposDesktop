@@ -109,6 +109,12 @@ namespace tposDesktop
             return Convert.ToInt32(price);
         }
 
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            if (lblOnePrice.Text == "0")
+            { this.Close(); }
+        }
+
 
 
         

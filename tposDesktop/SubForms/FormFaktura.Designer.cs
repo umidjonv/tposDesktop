@@ -61,6 +61,8 @@
             // 
             // btnOK
             // 
+            this.btnOK.BackColor = System.Drawing.Color.Yellow;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOK.Location = new System.Drawing.Point(369, 252);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -68,7 +70,7 @@
             this.btnOK.Size = new System.Drawing.Size(135, 52);
             this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // tbxOrgName
@@ -128,6 +130,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormFaktura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormFaktura";
             this.Controls.SetChildIndex(this.pbCaption, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);

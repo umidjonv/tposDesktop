@@ -40,6 +40,7 @@
             this.menuAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCloseDay = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbxSearchPrice = new Classes.NumericTextBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
@@ -126,6 +126,14 @@
             this.menuCloseDay.Text = "Закрыть день";
             this.menuCloseDay.Click += new System.EventHandler(this.menuCloseDay_Click);
             // 
+            // menuSettings
+            // 
+            this.menuSettings.ForeColor = System.Drawing.Color.Yellow;
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.Size = new System.Drawing.Size(117, 44);
+            this.menuSettings.Text = "Настройки";
+            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -136,7 +144,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 621);
+            this.groupBox1.Size = new System.Drawing.Size(517, 621);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -145,7 +153,7 @@
             this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
             this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
             this.tbxSearchPrice.Name = "tbxSearchPrice";
-            this.tbxSearchPrice.Size = new System.Drawing.Size(156, 30);
+            this.tbxSearchPrice.Size = new System.Drawing.Size(192, 30);
             this.tbxSearchPrice.TabIndex = 4;
             this.tbxSearchPrice.Text = "По цене";
             this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
@@ -206,7 +214,7 @@
             this.dgvTovar.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTovar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(466, 554);
+            this.dgvTovar.Size = new System.Drawing.Size(502, 554);
             this.dgvTovar.TabIndex = 3;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
@@ -222,9 +230,9 @@
             this.groupBox2.Controls.Add(this.dgvExpense);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(599, 23);
+            this.groupBox2.Location = new System.Drawing.Point(635, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(479, 621);
+            this.groupBox2.Size = new System.Drawing.Size(443, 621);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Счёт на расход ";
@@ -238,7 +246,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(3, 406);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(473, 212);
+            this.panel1.Size = new System.Drawing.Size(437, 212);
             this.panel1.TabIndex = 7;
             // 
             // lblSum
@@ -282,7 +290,7 @@
             this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTerminal.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnTerminal.ForeColor = System.Drawing.Color.White;
-            this.btnTerminal.Location = new System.Drawing.Point(236, 136);
+            this.btnTerminal.Location = new System.Drawing.Point(200, 136);
             this.btnTerminal.Name = "btnTerminal";
             this.btnTerminal.Size = new System.Drawing.Size(237, 76);
             this.btnTerminal.TabIndex = 2;
@@ -304,7 +312,7 @@
             this.btnOplata.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.btnOplata.Location = new System.Drawing.Point(-3, 66);
             this.btnOplata.Name = "btnOplata";
-            this.btnOplata.Size = new System.Drawing.Size(479, 70);
+            this.btnOplata.Size = new System.Drawing.Size(443, 70);
             this.btnOplata.TabIndex = 2;
             this.btnOplata.Text = "Оплата";
             this.btnOplata.UseVisualStyleBackColor = false;
@@ -348,7 +356,7 @@
             this.dgvExpense.RowTemplate.Height = 55;
             this.dgvExpense.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExpense.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExpense.Size = new System.Drawing.Size(470, 378);
+            this.dgvExpense.Size = new System.Drawing.Size(434, 378);
             this.dgvExpense.TabIndex = 1;
             this.dgvExpense.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvExpense_CellBeginEdit);
             this.dgvExpense.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellContentClick);
@@ -385,7 +393,7 @@
             this.btnDolg.BackgroundImage = global::tposDesktop.Properties.Resources.qarz;
             this.btnDolg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDolg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnDolg.Location = new System.Drawing.Point(3, 100);
+            this.btnDolg.Location = new System.Drawing.Point(3, 3);
             this.btnDolg.Name = "btnDolg";
             this.btnDolg.Size = new System.Drawing.Size(91, 91);
             this.btnDolg.TabIndex = 3;
@@ -400,7 +408,7 @@
             this.btnVozvrat.FlatAppearance.BorderColor = System.Drawing.Color.Khaki;
             this.btnVozvrat.FlatAppearance.BorderSize = 3;
             this.btnVozvrat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnVozvrat.Location = new System.Drawing.Point(3, 3);
+            this.btnVozvrat.Location = new System.Drawing.Point(3, 100);
             this.btnVozvrat.Name = "btnVozvrat";
             this.btnVozvrat.Size = new System.Drawing.Size(91, 91);
             this.btnVozvrat.TabIndex = 3;
@@ -443,9 +451,9 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Controls.Add(this.btnVozvrat);
             this.flowLayoutPanel1.Controls.Add(this.btnDolg);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(499, 52);
+            this.flowLayoutPanel1.Controls.Add(this.btnVozvrat);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(535, 52);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(94, 195);
             this.flowLayoutPanel1.TabIndex = 7;
@@ -482,14 +490,6 @@
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewButtonColumn1.HeaderText = "Column1";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            // 
-            // menuSettings
-            // 
-            this.menuSettings.ForeColor = System.Drawing.Color.Yellow;
-            this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(117, 44);
-            this.menuSettings.Text = "Настройки";
-            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // MainForm
             // 

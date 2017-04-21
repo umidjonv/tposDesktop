@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Media.SolidColorBrush solidColorBrush1 = new System.Windows.Media.SolidColorBrush();
+            System.Windows.Media.SolidColorBrush solidColorBrush4 = new System.Windows.Media.SolidColorBrush();
             this.showBtn = new System.Windows.Forms.Button();
             this.reportDate = new System.Windows.Forms.DateTimePicker();
             this.tabRasxod = new System.Windows.Forms.TabPage();
@@ -51,6 +51,9 @@
             this.realizeGrid = new System.Windows.Forms.DataGridView();
             this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnCloseFaktura = new System.Windows.Forms.Button();
+            this.tabFaktura = new System.Windows.Forms.TabPage();
+            this.dgvFakturaTovar = new System.Windows.Forms.DataGridView();
+            this.dgvFaktura = new System.Windows.Forms.DataGridView();
             this.tabOstatok = new System.Windows.Forms.TabPage();
             this.btnExportBalance = new System.Windows.Forms.Button();
             this.lblBalanceSum = new System.Windows.Forms.Label();
@@ -81,6 +84,9 @@
             this.tabPrixod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovarPrixod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.realizeGrid)).BeginInit();
+            this.tabFaktura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFakturaTovar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFaktura)).BeginInit();
             this.tabOstatok.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,10 +100,10 @@
             this.showBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
             this.showBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showBtn.Location = new System.Drawing.Point(605, 7);
+            this.showBtn.Location = new System.Drawing.Point(605, 19);
             this.showBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showBtn.Name = "showBtn";
-            this.showBtn.Size = new System.Drawing.Size(124, 42);
+            this.showBtn.Size = new System.Drawing.Size(125, 42);
             this.showBtn.TabIndex = 1;
             this.showBtn.Text = "Показать";
             this.showBtn.UseVisualStyleBackColor = false;
@@ -106,7 +112,7 @@
             // reportDate
             // 
             this.reportDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.reportDate.Location = new System.Drawing.Point(334, 13);
+            this.reportDate.Location = new System.Drawing.Point(334, 29);
             this.reportDate.Margin = new System.Windows.Forms.Padding(4);
             this.reportDate.Name = "reportDate";
             this.reportDate.Size = new System.Drawing.Size(263, 30);
@@ -118,7 +124,7 @@
             this.tabRasxod.Location = new System.Drawing.Point(4, 34);
             this.tabRasxod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabRasxod.Name = "tabRasxod";
-            this.tabRasxod.Size = new System.Drawing.Size(1163, 412);
+            this.tabRasxod.Size = new System.Drawing.Size(1163, 394);
             this.tabRasxod.TabIndex = 2;
             this.tabRasxod.Text = "Расход товаров";
             this.tabRasxod.UseVisualStyleBackColor = true;
@@ -137,7 +143,7 @@
             this.expenseGrid.ReadOnly = true;
             this.expenseGrid.RowHeadersVisible = false;
             this.expenseGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.expenseGrid.Size = new System.Drawing.Size(525, 448);
+            this.expenseGrid.Size = new System.Drawing.Size(525, 430);
             this.expenseGrid.TabIndex = 13;
             this.expenseGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -150,7 +156,7 @@
             this.tabOtchety.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOtchety.Name = "tabOtchety";
             this.tabOtchety.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabOtchety.Size = new System.Drawing.Size(1163, 412);
+            this.tabOtchety.Size = new System.Drawing.Size(1163, 394);
             this.tabOtchety.TabIndex = 1;
             this.tabOtchety.Text = "Информация о выручках";
             this.tabOtchety.UseVisualStyleBackColor = true;
@@ -162,7 +168,7 @@
             this.panel2.Controls.Add(this.checkBox3);
             this.panel2.Controls.Add(this.checkBox2);
             this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Location = new System.Drawing.Point(876, 334);
+            this.panel2.Location = new System.Drawing.Point(876, 316);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(304, 87);
@@ -234,14 +240,14 @@
             this.Chart1.Location = new System.Drawing.Point(780, 6);
             this.Chart1.Margin = new System.Windows.Forms.Padding(4);
             this.Chart1.Name = "Chart1";
-            solidColorBrush1.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
-            this.Chart1.ScrollBarFill = solidColorBrush1;
+            solidColorBrush4.Color = System.Windows.Media.Color.FromArgb(((byte)(30)), ((byte)(30)), ((byte)(30)), ((byte)(30)));
+            this.Chart1.ScrollBarFill = solidColorBrush4;
             this.Chart1.ScrollHorizontalFrom = 0D;
             this.Chart1.ScrollHorizontalTo = 0D;
             this.Chart1.ScrollMode = LiveCharts.ScrollMode.None;
             this.Chart1.ScrollVerticalFrom = 0D;
             this.Chart1.ScrollVerticalTo = 0D;
-            this.Chart1.Size = new System.Drawing.Size(380, 308);
+            this.Chart1.Size = new System.Drawing.Size(380, 290);
             this.Chart1.TabIndex = 7;
             this.Chart1.Text = "cartesianChart1";
             // 
@@ -259,7 +265,7 @@
             this.infoGrid.ReadOnly = true;
             this.infoGrid.RowHeadersVisible = false;
             this.infoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.infoGrid.Size = new System.Drawing.Size(707, 408);
+            this.infoGrid.Size = new System.Drawing.Size(707, 390);
             this.infoGrid.TabIndex = 6;
             this.infoGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -272,7 +278,7 @@
             this.tabTovar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabTovar.Name = "tabTovar";
             this.tabTovar.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabTovar.Size = new System.Drawing.Size(1163, 412);
+            this.tabTovar.Size = new System.Drawing.Size(1163, 394);
             this.tabTovar.TabIndex = 0;
             this.tabTovar.Text = "Товары";
             this.tabTovar.UseVisualStyleBackColor = true;
@@ -306,7 +312,7 @@
             this.dgvTovar.RowHeadersWidth = 50;
             this.dgvTovar.RowTemplate.Height = 40;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(1020, 408);
+            this.dgvTovar.Size = new System.Drawing.Size(1020, 390);
             this.dgvTovar.TabIndex = 4;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -320,15 +326,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabTovar);
             this.tabControl1.Controls.Add(this.tabPrixod);
+            this.tabControl1.Controls.Add(this.tabFaktura);
             this.tabControl1.Controls.Add(this.tabOtchety);
             this.tabControl1.Controls.Add(this.tabRasxod);
             this.tabControl1.Controls.Add(this.tabOstatok);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabControl1.Location = new System.Drawing.Point(21, 45);
+            this.tabControl1.Location = new System.Drawing.Point(21, 63);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1171, 450);
+            this.tabControl1.Size = new System.Drawing.Size(1171, 432);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -342,7 +349,7 @@
             this.tabPrixod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrixod.Name = "tabPrixod";
             this.tabPrixod.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPrixod.Size = new System.Drawing.Size(1163, 412);
+            this.tabPrixod.Size = new System.Drawing.Size(1163, 394);
             this.tabPrixod.TabIndex = 4;
             this.tabPrixod.Text = "Приход товаров";
             this.tabPrixod.UseVisualStyleBackColor = true;
@@ -351,7 +358,7 @@
             // 
             this.lblRealizeSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRealizeSum.AutoSize = true;
-            this.lblRealizeSum.Location = new System.Drawing.Point(575, 388);
+            this.lblRealizeSum.Location = new System.Drawing.Point(575, 370);
             this.lblRealizeSum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRealizeSum.Name = "lblRealizeSum";
             this.lblRealizeSum.Size = new System.Drawing.Size(136, 25);
@@ -375,7 +382,7 @@
             this.dgvTovarPrixod.RowHeadersWidth = 50;
             this.dgvTovarPrixod.RowTemplate.Height = 40;
             this.dgvTovarPrixod.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovarPrixod.Size = new System.Drawing.Size(564, 406);
+            this.dgvTovarPrixod.Size = new System.Drawing.Size(564, 388);
             this.dgvTovarPrixod.TabIndex = 15;
             this.dgvTovarPrixod.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovarPrixod.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -399,7 +406,7 @@
             this.realizeGrid.RowHeadersVisible = false;
             this.realizeGrid.RowTemplate.Height = 40;
             this.realizeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.realizeGrid.Size = new System.Drawing.Size(579, 350);
+            this.realizeGrid.Size = new System.Drawing.Size(584, 332);
             this.realizeGrid.TabIndex = 14;
             this.realizeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.realizeGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -417,7 +424,7 @@
             this.btnCloseFaktura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseFaktura.BackColor = System.Drawing.Color.Red;
             this.btnCloseFaktura.ForeColor = System.Drawing.Color.White;
-            this.btnCloseFaktura.Location = new System.Drawing.Point(943, 359);
+            this.btnCloseFaktura.Location = new System.Drawing.Point(943, 341);
             this.btnCloseFaktura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCloseFaktura.Name = "btnCloseFaktura";
             this.btnCloseFaktura.Size = new System.Drawing.Size(212, 63);
@@ -425,6 +432,60 @@
             this.btnCloseFaktura.Text = "Закрыть приход";
             this.btnCloseFaktura.UseVisualStyleBackColor = false;
             this.btnCloseFaktura.Click += new System.EventHandler(this.btnCloseFaktura_Click);
+            // 
+            // tabFaktura
+            // 
+            this.tabFaktura.Controls.Add(this.dgvFakturaTovar);
+            this.tabFaktura.Controls.Add(this.dgvFaktura);
+            this.tabFaktura.Location = new System.Drawing.Point(4, 34);
+            this.tabFaktura.Name = "tabFaktura";
+            this.tabFaktura.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFaktura.Size = new System.Drawing.Size(1163, 394);
+            this.tabFaktura.TabIndex = 5;
+            this.tabFaktura.Text = "Фактуры";
+            this.tabFaktura.UseVisualStyleBackColor = true;
+            // 
+            // dgvFakturaTovar
+            // 
+            this.dgvFakturaTovar.AllowUserToAddRows = false;
+            this.dgvFakturaTovar.AllowUserToDeleteRows = false;
+            this.dgvFakturaTovar.AllowUserToResizeRows = false;
+            this.dgvFakturaTovar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFakturaTovar.ColumnHeadersHeight = 40;
+            this.dgvFakturaTovar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvFakturaTovar.Location = new System.Drawing.Point(682, 5);
+            this.dgvFakturaTovar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvFakturaTovar.MultiSelect = false;
+            this.dgvFakturaTovar.Name = "dgvFakturaTovar";
+            this.dgvFakturaTovar.RowHeadersVisible = false;
+            this.dgvFakturaTovar.RowHeadersWidth = 50;
+            this.dgvFakturaTovar.RowTemplate.Height = 40;
+            this.dgvFakturaTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFakturaTovar.Size = new System.Drawing.Size(478, 391);
+            this.dgvFakturaTovar.TabIndex = 16;
+            // 
+            // dgvFaktura
+            // 
+            this.dgvFaktura.AllowUserToAddRows = false;
+            this.dgvFaktura.AllowUserToDeleteRows = false;
+            this.dgvFaktura.AllowUserToResizeRows = false;
+            this.dgvFaktura.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvFaktura.ColumnHeadersHeight = 40;
+            this.dgvFaktura.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvFaktura.Location = new System.Drawing.Point(4, 5);
+            this.dgvFaktura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvFaktura.MultiSelect = false;
+            this.dgvFaktura.Name = "dgvFaktura";
+            this.dgvFaktura.RowHeadersVisible = false;
+            this.dgvFaktura.RowHeadersWidth = 50;
+            this.dgvFaktura.RowTemplate.Height = 40;
+            this.dgvFaktura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFaktura.Size = new System.Drawing.Size(672, 388);
+            this.dgvFaktura.TabIndex = 16;
+            this.dgvFaktura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             // 
             // tabOstatok
             // 
@@ -434,7 +495,7 @@
             this.tabOstatok.Location = new System.Drawing.Point(4, 34);
             this.tabOstatok.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabOstatok.Name = "tabOstatok";
-            this.tabOstatok.Size = new System.Drawing.Size(1163, 412);
+            this.tabOstatok.Size = new System.Drawing.Size(1163, 394);
             this.tabOstatok.TabIndex = 3;
             this.tabOstatok.Text = "Остаток";
             this.tabOstatok.UseVisualStyleBackColor = true;
@@ -460,7 +521,6 @@
             this.lblBalanceSum.Size = new System.Drawing.Size(217, 25);
             this.lblBalanceSum.TabIndex = 11;
             this.lblBalanceSum.Text = "Итого остаток : 0 сум";
-            this.lblBalanceSum.Click += new System.EventHandler(this.label2_Click);
             // 
             // balanceGrid
             // 
@@ -476,7 +536,7 @@
             this.balanceGrid.ReadOnly = true;
             this.balanceGrid.RowHeadersVisible = false;
             this.balanceGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.balanceGrid.Size = new System.Drawing.Size(667, 412);
+            this.balanceGrid.Size = new System.Drawing.Size(667, 394);
             this.balanceGrid.TabIndex = 8;
             this.balanceGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             // 
@@ -504,10 +564,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Location = new System.Drawing.Point(736, 7);
+            this.btnAdd.Location = new System.Drawing.Point(740, 19);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(133, 42);
+            this.btnAdd.Size = new System.Drawing.Size(134, 42);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -519,7 +579,7 @@
             this.tbxFilter.BackColor = System.Drawing.Color.White;
             this.tbxFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFilter.Location = new System.Drawing.Point(124, 11);
+            this.tbxFilter.Location = new System.Drawing.Point(124, 29);
             this.tbxFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxFilter.Name = "tbxFilter";
             this.tbxFilter.Size = new System.Drawing.Size(203, 30);
@@ -533,7 +593,7 @@
             this.label1.BackColor = System.Drawing.Color.Green;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(22, 11);
+            this.label1.Location = new System.Drawing.Point(22, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 32);
             this.label1.TabIndex = 14;
@@ -651,6 +711,9 @@
             this.tabPrixod.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovarPrixod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.realizeGrid)).EndInit();
+            this.tabFaktura.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFakturaTovar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFaktura)).EndInit();
             this.tabOstatok.ResumeLayout(false);
             this.tabOstatok.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGrid)).EndInit();
@@ -706,5 +769,8 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnExportBalance;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabFaktura;
+        private System.Windows.Forms.DataGridView dgvFakturaTovar;
+        private System.Windows.Forms.DataGridView dgvFaktura;
     }
 }
