@@ -36,7 +36,13 @@ namespace tposDesktop
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
             DataView dv = new DataView(DBclass.DS.productview);
-            
+            if (DBclass.DS.productview.Rows.Count == 0)
+            {
+                OpenDay opend = new OpenDay();
+                opend.ShowDialog();
+                prVda.Fill(DBclass.DS.productview);
+                 
+            }
             DataView dvOr = new DataView(DBclass.DS.orders);
             dvOr.RowFilter = "expenseId = -1";
             dgvTovar.DataSource = dv;

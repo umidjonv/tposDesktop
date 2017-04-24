@@ -110,6 +110,7 @@ namespace Classes.DB
 
 
         BackgroundWorker bgw;
+        System.Windows.Forms.Form form;
         public void CloseDay()
         {
             bgw = new BackgroundWorker();
@@ -120,6 +121,45 @@ namespace Classes.DB
 
         }
 
+        public void OpenDay(System.Windows.Forms.Form curForm)
+        {
+            form = curForm;
+            bgw = new BackgroundWorker();
+            bgw.DoWork += bgw_DoWorkOpenDay;
+            bgw.RunWorkerCompleted += bgw_RunWorkerCompleted;
+            bgw.WorkerSupportsCancellation = true;
+            bgw.RunWorkerAsync();
+        }
+
+        void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (form != null)
+            {
+                form.Close();
+            }
+        }
+
+        void bgw_DoWorkOpenDay(object sender, DoWorkEventArgs e)
+        {
+            
+            MySqlCommand command = new MySqlCommand("select `prodBalance`(0)", connection);
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandTimeout = 200;
+                    command.ExecuteNonQueryAsync();
+                    connection.Close();
+                    System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                e.Result = true;
+            }
+        }
         void bgw_DoWork(object sender, DoWorkEventArgs e)
         {
             MySqlCommand command = new MySqlCommand("CALL `balanceCalc`()", connection);
@@ -140,13 +180,5 @@ namespace Classes.DB
             }
         }
 
-        
-        /// <summary>
-        /// Update insert delete expense
-        /// </summary>
-        /// <returns>Last ID was inserted</returns>
-        
-        
-        
     }
 }
