@@ -277,6 +277,15 @@ namespace tposDesktop
                     barcode = po.barcode;
                     dr = po.drow;
                 }
+                float kg = -1;
+                if (isBarcode && dr.Length == 0)
+                {
+                    //object[] obj = getProductWithMassa(barcode);
+                    //dr = (DataRow[])obj[0];
+                    //kg = (float)obj[1];
+                    dr = getProductWithMassa(barcode);
+                }
+
                 if (dr.Length != 0)
                 {
                     DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
@@ -300,7 +309,7 @@ namespace tposDesktop
                         OrderForm oform = new OrderForm(drP);
                         if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-                            ordrow.packCount = oform.count;
+                            ordrow.packCount = (float)oform.count;
                             DataRow drOrder = ordrow;
                             drOrder["sumProduct"] = oform.sum;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
 
@@ -318,6 +327,7 @@ namespace tposDesktop
                         DBclass.DS.orders.AddordersRow(ordrow);
                         if (curPrice != drP.price && drP.price != 0)
                         {
+                            
                             productTableAdapter prda = new productTableAdapter();
                             prda.Update(drP);
                         }
@@ -346,6 +356,22 @@ namespace tposDesktop
 
                 next = true;
             } while (stBarcode.Count != 0);
+        }
+
+        private DataRow[] getProductWithMassa(string barcode)
+        {
+            barcode = barcode.Substring(2);
+            string id = barcode.Substring(0, 5);
+            string kg = barcode.Remove(0, 5).Substring(0, 5);
+            kg = kg.Insert(2, ".");
+            //float kgf = Convert.ToSingle(kg);
+            DataRow[] dr = DBclass.DS.product.Select("productId = " + Convert.ToInt32(id));
+            if (dr.Length != 0)
+            {
+                ((DataSetTpos.productRow)dr[0]).pack = Convert.ToSingle(kg);
+                
+            }
+            return dr;//new object[] { dr, kgf };
         }
         private void dgvSchet_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {

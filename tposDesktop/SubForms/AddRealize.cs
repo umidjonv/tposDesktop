@@ -14,7 +14,7 @@ namespace tposDesktop
 {
     public partial class AddRealize : DesignedForm
     {
-        int pack;
+        float pack;
         
         public AddRealize(string barcode)
         {

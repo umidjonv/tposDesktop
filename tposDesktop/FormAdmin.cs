@@ -127,7 +127,7 @@ namespace tposDesktop
             DataRow[] dr = DBclass.DS.product.Select("barcode = '" + barcode + "'");
             if (barcode == "-1") barcode = "";
             string tname = tabControl1.SelectedTab.Name;
-
+            
             if (dr.Length == 0&&tname=="tabPrixod")
                 tname = "tabTovar";
             switch(tname)
@@ -146,6 +146,7 @@ namespace tposDesktop
         private void AddProduct(DataRow[] dr, string barcode)
         {
             AddForm addForm;
+            
             if (dr.Length != 0)
             {
                 DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
@@ -159,11 +160,13 @@ namespace tposDesktop
                 addForm.ShowDialog();
             }
         }
+        
         #endregion
 
         #region Prixod
         private void AddPrixod(DataRow[] dr, string barcode)
         {
+            
             DataSetTpos.productRow prRow = (DataSetTpos.productRow)dr[0];
             FakturaOrgsForm orgForm = new FakturaOrgsForm();
             

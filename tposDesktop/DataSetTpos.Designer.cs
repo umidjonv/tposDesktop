@@ -2607,7 +2607,7 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public productRow AddproductRow(string name, int measureId, string barcode, int status, int price, int pack) {
+            public productRow AddproductRow(string name, int measureId, string barcode, int status, int price, float pack) {
                 productRow rowproductRow = ((productRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2670,7 +2670,7 @@ namespace tposDesktop {
                 base.Columns.Add(this.columnstatus);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
-                this.columnpack = new global::System.Data.DataColumn("pack", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnpack = new global::System.Data.DataColumn("pack", typeof(float), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpack);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnproductId}, true));
@@ -6968,9 +6968,9 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int pack {
+            public float pack {
                 get {
-                    return ((int)(this[this.tableproduct.packColumn]));
+                    return ((float)(this[this.tableproduct.packColumn]));
                 }
                 set {
                     this[this.tableproduct.packColumn] = value;
