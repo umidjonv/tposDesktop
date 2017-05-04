@@ -15,10 +15,12 @@ namespace tposDesktop
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
+        DataSetTpos.productRow prRow;
         public OrderForm(DataSetTpos.productRow prrow)
         {
             count = prrow.pack;
             prrow.price = getPrice(prrow.productId);
+            prRow = prrow;
             InitializeComponent();
             lblCaption.Text = prrow.name;
             lblPrice.Text = prrow.price.ToString();
@@ -31,16 +33,13 @@ namespace tposDesktop
         {
             if (e.KeyChar == 13&&EmptyChar())
             {
-                count = Int32.Parse(tbxCount1.Text);
-                sum = Int32.Parse(lblOnePrice.Text);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
+                button1_Click(null, new EventArgs());
             }
             if (e.KeyChar == 27)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                 this.Close();
-            }
+            } 
 
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -63,10 +62,18 @@ namespace tposDesktop
         {
             if(EmptyChar())
             {
+                
                 count = Int32.Parse(tbxCount1.Text);
-                sum = Int32.Parse(lblOnePrice.Text);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
+                if (pMax >= count)
+                {
+                    sum = Int32.Parse(lblOnePrice.Text);
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Close();
+                }
+                else 
+                {
+                    MessageBox.Show("Количество больше чем на складе!");
+                }
             }
         }
         string text="";
@@ -108,11 +115,41 @@ namespace tposDesktop
             object price = daGetPrice.GetPrice(id.ToString());
             return Convert.ToInt32(price);
         }
-
+        int pMax = 0;
         private void OrderForm_Load(object sender, EventArgs e)
         {
+            DataSetTpos.productviewRow[] prv = (DataSetTpos.productviewRow[])Classes.DB.DBclass.DS.productview.Select("productId = " + prRow.productId);
+            int cnt = Convert.ToInt32(tbxCount1.Text);
+            if(prv.Length>0)
+            {
+                if (prv[0].endCount.Contains("/"))
+                {
+                    string[] s = prv[0].endCount.Split(new char[] { '/' });
+                    int a = Convert.ToInt32(s[0].Trim());
+                    if (s[1].Contains("."))
+                    { s[1] = s[1].Remove(s[1].IndexOf(".")); }
+                    int b = Convert.ToInt32(s[1].Trim());
+                    pMax = a * prRow.pack + b;
+                    if (pMax <= 0)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    pMax = Convert.ToInt32(prv[0].endCount);
+                    if (pMax <= 0)
+                    {
+                        this.Close();
+                    }
+                }
+
+            }
             if (lblOnePrice.Text == "0")
-            { this.Close(); }
+            { 
+
+                this.Close(); 
+            }
         }
 
 

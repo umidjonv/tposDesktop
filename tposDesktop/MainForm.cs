@@ -207,7 +207,6 @@ namespace tposDesktop
             {
                 AddToOrders((int)grid.Rows[e.RowIndex].Cells["productid"].Value);
                 
-                
             }
         }
         private void dgvExpense_CellContentClick(object sender, DataGridViewCellEventArgs e)

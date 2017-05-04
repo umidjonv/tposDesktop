@@ -36,7 +36,7 @@ namespace tposDesktop
             tbxName.Text = productRow.name;
             tbxPack.Text = 1.ToString();
             pack = productRow.pack;
-            tbxPricePrixod.Text = productRow.price.ToString();
+            //tbxPricePrixod.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
             if (productRow.barcode != null)
                 tbxShtrix.Text = productRow.barcode;

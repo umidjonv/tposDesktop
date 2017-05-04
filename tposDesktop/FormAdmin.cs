@@ -196,11 +196,11 @@ namespace tposDesktop
                 AddRealize addForm = new AddRealize(prRow, faktRow);
                 if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (curPrice != prRow.price && prRow.price != 0)
-                    {
-                        productTableAdapter prda = new productTableAdapter();
-                        prda.Update(prRow);
-                    }
+                    //if (curPrice != prRow.price && prRow.price != 0)
+                    //{
+                    //    productTableAdapter prda = new productTableAdapter();
+                    //    prda.Update(prRow);
+                    //}
                     realizeGrid.Columns["colBtnDel"].Visible = true;
                     this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
                 }
