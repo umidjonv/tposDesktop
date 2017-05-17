@@ -10,7 +10,7 @@ namespace tposDesktop
     {
         enum WorkType { Touch, Mouse };
         static WorkType wType = WorkType.Mouse;
-        public static int window_type = 3;
+        public static int window_type = 1;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
@@ -68,13 +68,13 @@ namespace tposDesktop
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("Изменёна конфигурация, обратитесь в поддержку!");
+                    System.Windows.Forms.MessageBox.Show("Изменена конфигурация, обратитесь в поддержку!");
                 }
 
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Изменёна конфигурация, обратитесь в поддержку!");
+                System.Windows.Forms.MessageBox.Show("Изменена конфигурация, обратитесь в поддержку!");
             }
         }
        
@@ -86,9 +86,10 @@ namespace tposDesktop
         public static int CurrentTable;
         public static int expense_id;
         public static string role;
+        public static string CurrentUserName;
 
     }
-    struct Paramaters
+    struct Parameters
     {
         string LangPath;
         

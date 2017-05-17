@@ -15,12 +15,10 @@ namespace tposDesktop
     public partial class AddRealize : DesignedForm
     {
         int pack;
-        private bool _dragging = false;		
-        private Point _offset;		
-        private Point _start_point = new Point(0, 0);
+        int prodId;
         public AddRealize(string barcode)
         {
-            isAdd = true;
+            
             InitializeComponent();
             
             if (barcode != null)
@@ -30,18 +28,21 @@ namespace tposDesktop
         }
         public AddRealize(DataSetTpos.productRow productRow, DataSetTpos.fakturaRow faktRow)
         {
+            prodId = productRow.productId;
             prRow = productRow;
             fkRow = faktRow;
-            isAdd = true;
-            InitializeComponent();
             
+            InitializeComponent();
+            //blnLbl.Text = getSold(productRow.productId).ToString();
             tbxName.Text = productRow.name;
             tbxPack.Text = 1.ToString();
             pack = productRow.pack;
-            tbxPricePrixod.Text = productRow.price.ToString();
+            //tbxPricePrixod.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
             if (productRow.barcode != null)
                 tbxShtrix.Text = productRow.barcode;
+            if (productRow.limitProd == 1)
+                limitChbx.Checked = true;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             if (productRow.pack == 0 || productRow.pack == 1)
             {
@@ -51,7 +52,17 @@ namespace tposDesktop
             
 
         }
-        bool isAdd = true;
+
+        private string getSold(int id)
+        {
+            DataSetTposTableAdapters.balanceviewTableAdapter bln = new DataSetTposTableAdapters.balanceviewTableAdapter();
+            bln.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-1));
+            DataView balance = new DataView(DBclass.DS.balanceview);
+            balance.RowFilter = "balanceDate = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and prodId = " + id;
+
+            return balance[0]["endCount"].ToString();
+        }
+
         DataSetTpos.productRow prRow;
         DataSetTpos.fakturaRow fkRow;
         DataSetTpos.realizeRow rlRow;
@@ -62,6 +73,7 @@ namespace tposDesktop
                 
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
+                
                 DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = "+prRow.productId+" and fakturaId = "+fkRow.fakturaId);
                 DataSetTpos.realizeRow rlRow;
                 if (rlRows.Length > 0)
@@ -96,9 +108,19 @@ namespace tposDesktop
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
                     rlRow.fakturaId = fkRow.fakturaId;
                     rlRow.prodId = prRow.productId;
+                    if (Convert.ToDateTime(expiry.Text) != DateTime.Now)
+                        rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
                     DBclass.DS.realize.AddrealizeRow(rlRow);
                 }
-                
+                DataSetTposTableAdapters.productTableAdapter pr = new DataSetTposTableAdapters.productTableAdapter();
+                if (limitChbx.Checked)
+                    prRow.limitProd = 1;
+                if (prRow.price == 0)
+                {
+                    prRow.price = rlRow.soldPrice;
+
+                }
+                pr.Update(prRow);
                 
                 
                 daReal.Update(DBclass.DS.realize);
@@ -107,30 +129,24 @@ namespace tposDesktop
             }
         }
 
-        //private void label1_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    _dragging = true;
-        //    _start_point = new Point(e.X, e.Y);
-        //}
+        private void AddRealize_Load(object sender, EventArgs e)
+        {
+            tbxPack.Focus();
+        }
 
-        //private void label1_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    if (_dragging)
-        //    {
-        //        Point p = PointToScreen(e.Location);
-        //        Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddForm adF = new AddForm("");
+            if (tbxSoldPrice.Text == "0")
+            {
+                MessageBox.Show("не указана цена");
+            }
+            else
+            {
+                adF.forPrinting(tbxName.Text, tbxSoldPrice.Text, tbxShtrix.Text,prodId);
+            }
+        }
 
-        //    }
-        //}
-
-        //private void label1_MouseUp(object sender, MouseEventArgs e)
-        //{
-        //    _dragging = false;
-        //}
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    this.Close();
-        //}
+       
     }
 }

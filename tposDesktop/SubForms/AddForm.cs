@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Classes;
 using Classes.DB;
 using Classes.Forms;
+using System.IO;
 namespace tposDesktop
 {
     public partial class AddForm : DesignedForm
@@ -17,6 +18,7 @@ namespace tposDesktop
         //private bool _dragging = false;
         //private Point _offset;
         //private Point _start_point = new Point(0, 0);
+        private int prodId;
         public AddForm(string barcode)
         {
             isAdd = true;
@@ -30,6 +32,7 @@ namespace tposDesktop
         public AddForm(DataSetTpos.productRow productRow)
         {
             prRow = productRow;
+            prodId = prRow.productId;
             isAdd = false;
             InitializeComponent();
             if (!isAdd)
@@ -37,10 +40,13 @@ namespace tposDesktop
                 lblCaption.Text = "Редактировать товар";
                 btnAdd.Text = "Изменить";
             }
+            //blnLbl.Text = getSold(prRow.productId).ToString();
             tbxName.Text = productRow.name;
             tbxPack.Text = productRow.pack.ToString();
             tbxPrice.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
+            if (productRow.limitProd == 1)
+                limitProdChbx.Checked = true;
             if (productRow.barcode != null)
                 tbxShtrix.Text = productRow.barcode;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -65,12 +71,23 @@ namespace tposDesktop
                     prRowN.pack = tbxPack.Text!="0"&&tbxPack.Text!=""?Convert.ToInt32(tbxPack.Text):0;
                     prRowN.status = 0;
                     prRowN.price = Convert.ToInt32(tbxPrice.Text);
+                    if (limitProdChbx.Checked)
+                        prRowN.limitProd = 1;
+                    else
+                        prRowN.limitProd = 0;
                     DBclass.DS.product.AddproductRow(prRowN);
                     daProduct.Update(prRowN);
                     
                     daProduct.Fill(DBclass.DS.product);
                     int? lId = daProduct.LastID();
-
+                    DataSetTposTableAdapters.balanceTableAdapter bAdapetr = new DataSetTposTableAdapters.balanceTableAdapter();
+                    DataSetTpos.balanceRow bRow = DBclass.DS.balance.NewbalanceRow();
+                    bRow.balanceDate = DateTime.Now;
+                    bRow.prodId = Convert.ToInt32(lId);
+                    bRow.endCount = 0;
+                    bRow.curEndCount = 0;
+                    DBclass.DS.balance.AddbalanceRow(bRow);
+                    bAdapetr.Update(bRow);
 
                     if (lId != null&&tbxShtrix.Text=="")
                     {
@@ -101,6 +118,16 @@ namespace tposDesktop
                 
 
             }
+        }
+
+        private string getSold(int id)
+        {
+            DataSetTposTableAdapters.balanceviewTableAdapter bln = new DataSetTposTableAdapters.balanceviewTableAdapter();
+            bln.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-1));
+            DataView balance = new DataView(DBclass.DS.balanceview);
+            balance.RowFilter = "balanceDate = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and prodId = " + id;
+
+            return balance[0]["endCount"].ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -164,8 +191,109 @@ namespace tposDesktop
             {
                 temp1 = rand.Next(100000, 199999).ToString() + rand.Next(10, 9).ToString();
             }
-            
-            return id.ToString() + temp1;
+            //ischange = true;
+            temp1 = id.ToString() + temp1;
+            long n;
+            n = Convert.ToInt64(temp1);
+            long oddSum = 0, evenSum = 0;
+            bool odd = true;
+            while (n != 0)
+            {
+                if (odd)
+                    oddSum += n % 10;
+                else
+                    evenSum += n % 10;
+                n /= 10;
+                odd = !odd;
+
+            }
+            long temp2 = oddSum * 3 + evenSum;
+            if (temp2 != 0)
+            {
+                long temp3 = temp2 % 10;
+                temp1 = temp1 + ((temp3 == 0) ? temp3 : (10 - temp3)).ToString();
+            }
+            else
+            {
+                temp1 = temp1 + temp2.ToString();
+            }
+            return temp1;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (tbxName.Text == "" & tbxPrice.Text == "0")
+            {
+                MessageBox.Show("не указан названия товара или цена");
+            }
+            else
+            {
+                forPrinting(tbxName.Text, tbxPrice.Text, tbxShtrix.Text, prodId);
+
+            }
+        }
+
+        public void forPrinting(string name, string price, string barcode, int prodID)
+        {
+            string dataHtml = "";
+            StreamWriter sw = new StreamWriter(System.IO.Path.GetTempPath() + "\\tempData.htm");
+            //summa += decimal.Parse((Math.Round(Double.Parse(sr[1]) * Double.Parse(sr[2]))).ToString());
+
+
+            dataHtml = "<head></head><body>" +
+                    "<h1 style='text-align: center'>" + prodID +"</h1>" + 
+                    "<table style='font-size: 12px; font-family: Tahoma; width: 100%; border: 1px solid #000'>" + 
+                            "<tr >" +
+                                "<td style='text-align: center; font-size: 18px'>" + Properties.Settings.Default.orgName + "</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td ><span style='font-weight: bold'>Номи :</span> " + name + "</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td><span style='font-weight: bold'>Нархи :</span> " + price + "</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td><span style='font-weight: bold'>Имзо :</span> _____________</td>" +
+                            "</tr>" +
+                    "</table>" +
+                "</body>";
+            //dataHtml = GenerateHTML(dataHtml, expTable, Convert.ToInt32(summa));
+            //string zakaz = "<h4>Номер заказа: " + nomerZakaza + "</h4>";
+            //string oficiant = "<h4>Официант: " + lblUser.Text + "</h4>";
+            //dataHtml = zakaz+oficiant+"<h4>Официант: " + DateTime.Now.ToString("dd.MM.YYYY HH:mm")+ "</h4>" + dataHtml;
+            sw.Write(dataHtml);
+            sw.Close();
+            //printing();
+            string keyName = @"Software\Microsoft\Internet Explorer\PageSetup";
+            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(keyName, true))
+            {
+                if (key != null)
+                {
+                    string old_footer = (string)key.GetValue("footer");
+                    string old_header = (string)key.GetValue("header");
+                    key.SetValue("footer", "");
+                    key.SetValue("header", "");
+
+                    WebBrowser browser = new WebBrowser();
+                    browser.DocumentText = dataHtml;
+                    browser.DocumentCompleted += browser_DocumentCompleted;
+                    browser.Print();
+                    if (old_footer != null)
+                        key.SetValue("footer", old_footer);
+                    if (old_header != null)
+                        key.SetValue("header", old_header);
+                }
+            }
+
+            //PrintClass cl = new PrintClass();
+            //cl.Printing();
+        }
+
+
+        void browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            WebBrowser browser = sender as WebBrowser;
+            browser.Print();
         }
 
     }

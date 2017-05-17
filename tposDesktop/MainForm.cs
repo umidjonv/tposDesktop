@@ -30,10 +30,20 @@ namespace tposDesktop
             db = new DBclass();
             db.FillExpense("");
             db.FillProduct();
+
+            productviewTableAdapter prVda = new productviewTableAdapter();
+            prVda.Fill(DBclass.DS.productview);
+
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
-            DataView dv = new DataView(DBclass.DS.product);
-            
+            DataView dv = new DataView(DBclass.DS.productview);
+            if (DBclass.DS.productview.Rows.Count == 0)
+            {
+                OpenDay opend = new OpenDay();
+                opend.ShowDialog();
+                prVda.Fill(DBclass.DS.productview);
+                 
+            }
             DataView dvOr = new DataView(DBclass.DS.orders);
             dvOr.RowFilter = "expenseId = -1";
             dgvTovar.DataSource = dv;
@@ -99,13 +109,15 @@ namespace tposDesktop
             dgvTovar.Columns["productId"].HeaderText = "№";
             dgvTovar.Columns["name"].HeaderText = "Товар";
             dgvTovar.Columns["price"].HeaderText = "Цена";
-            dgvTovar.Columns["measureId"].Visible = false;
+            dgvTovar.Columns["endCount"].HeaderText = "Кол.";
+            dgvTovar.Columns["balanceDate"].Visible = false;
             dgvTovar.Columns["barcode"].Visible = false;
-            dgvTovar.Columns["pack"].Visible = false;
-            dgvTovar.Columns["status"].Visible = false;
+            //dgvTovar.Columns["pack"].Visible = false;
+            //dgvTovar.Columns["status"].Visible = false;
+            //dgvTovar.Columns["balanceT"].Visible = false;
             dgvTovar.Columns["productId"].Width = 50;
-            dgvTovar.Columns["name"].Width = 255;
-            dgvTovar.Columns["price"].Width= 90;
+            dgvTovar.Columns["name"].Width = 215;
+            dgvTovar.Columns["price"].Width= 70;
             Classes.GridCells.ImageButtonColumn cellBtn = new Classes.GridCells.ImageButtonColumn();
             cellBtn.HeaderText = "";
             cellBtn.Name = "colBtn";
@@ -147,12 +159,20 @@ namespace tposDesktop
             cellBtnDel.Width = 40;
             cellBtnDel.DisplayIndex = 10;
             dgvExpense.Columns.Add(cellBtnDel);
+
+            
             //cellTx.CellType = typeof(int);
             //dgvExpense.Columns.Add(cellTx);
             foreach (DataGridViewColumn column in dgvExpense.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            
+            
+
+
+
         }
 
         private void tbxSearchTovar_TextChanged(object sender, EventArgs e)
@@ -187,7 +207,6 @@ namespace tposDesktop
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 AddToOrders((int)grid.Rows[e.RowIndex].Cells["productid"].Value);
-                
                 
             }
         }
@@ -287,13 +306,22 @@ namespace tposDesktop
 
                             //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                         }
-                        else { return; }
+                        else 
+                        { 
+                            if(drP.price==0)
+                            {
+                                MessageBox.Show("Товар на складе отсутствует");
+                                drP.RejectChanges(); 
+                            }
+                            return; 
+                        }
                         DBclass.DS.orders.AddordersRow(ordrow);
-                        if (curPrice != drP.price) ;
+                        if (curPrice != drP.price && drP.price != 0)
                         {
                             productTableAdapter prda = new productTableAdapter();
                             prda.Update(drP);
                         }
+                        
                     }
                     if (isNewExpense)
                     {
@@ -319,6 +347,7 @@ namespace tposDesktop
                 next = true;
             } while (stBarcode.Count != 0);
         }
+
         private void dgvSchet_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             var grid = (DataGridView)sender;
@@ -328,6 +357,19 @@ namespace tposDesktop
                 {
                     DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     dgvCell.Value = "+";
+                    //getPriceTableAdapter getExpire = new getPriceTableAdapter();
+                    //DateTime expiryDate = Convert.ToDateTime(getExpire.GetExpiry(grid.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                    //if (expiryDate != DateTime.MinValue)
+                    //{
+                    //    if (DateTime.Compare(expiryDate, DateTime.Now) < 30 && DateTime.Compare(expiryDate, DateTime.Now) >= 15)
+                    //    {
+                    //        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Pink;
+                    //    }
+                    //    if (DateTime.Compare(expiryDate, DateTime.Now) < 15)
+                    //    {
+                    //        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    //    }
+                    //}
                     
                 }
                 else 
@@ -397,10 +439,19 @@ namespace tposDesktop
                 }
                 expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
                 prDa.Update(DBclass.DS.orders);
+                getPriceTableAdapter getPriceda = new getPriceTableAdapter();
+                if(vozvrat)
+                {
+                    getPriceda.BackTrigger(expId);
+                }else
+                {
+                    getPriceda.ExpenseTrigger(expId);
+                }
 
 
-                
 
+                productviewTableAdapter prVda = new productviewTableAdapter();
+                prVda.Fill(DBclass.DS.productview);
 
                 DataView dv = dgvExpense.DataSource as DataView;
                 DBclass.DS.orders.Clear();
@@ -415,8 +466,10 @@ namespace tposDesktop
                 isNewExpense = true;
                 
                 commentDebt = "";
-                
+
+
             }
+            this.ActiveControl = tbxSearchTovar;
             
         }
 
@@ -579,23 +632,31 @@ namespace tposDesktop
             }
             if (tscanner != null&&(e.KeyChar == 13 && beginBarcode))
             {
-
-                tscanner.End();
-                if(tbxSearchTovar.Text!=""&&tbxSearchTovar.Focused)
-                AddToOrders(tbxSearchTovar.Text);
+                if (tbxSearchTovar.Text.Length <= 5)
+                {
+                    AddToOrders(Convert.ToInt32(tbxSearchTovar.Text.ToString()));
+                    tbxSearchTovar.Text = "";
+                }
                 else
-                    AddToOrders(tscanner.barcode);
-                
-                beginBarcode = false;
-                //tscanner.
-                curBarcode = "";
-                if (st != "")
-                    (sender as TextBox).Text = "";
+                {
+                    tscanner.End();
+                    if (tbxSearchTovar.Text != "" && tbxSearchTovar.Focused)
+                        AddToOrders(tbxSearchTovar.Text);
+                    else
+                        AddToOrders(tscanner.barcode);
+
+                    beginBarcode = false;
+                    //tscanner.
+                    curBarcode = "";
+                    if (st != "")
+                        (sender as TextBox).Text = "";
+                }
             }
             else
             if (e.KeyChar == 43)
             {
                 btnOplata_Click(btnOplata, new EventArgs());
+                tbxSearchTovar.Text = "";
             }
             else if (e.KeyChar == 13)
             {
@@ -704,7 +765,8 @@ namespace tposDesktop
                     "<table style='font-size: 9px; font-family: Tahoma; width: 100%;'>" +
                         "<thead>" +
                             "<tr><td colspan='3' style=\"text-align:center\"> " + Properties.Settings.Default.orgName + "</td></tr>" +
-                            "<tr><td colspan='3' style=\"text-align:center\">Дата: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "</td></tr>" +
+                            "<tr><td colspan='3' style=\"text-align:right\">Дата: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm") + "</td></tr>" +
+                            "<tr><td colspan='3' style=\"text-align:right\">Касса: " + UserValues.CurrentUserName + "</td></tr>" +
                             "<tr><td colspan='3'></td></tr>" +
                             "<tr><td colspan='3' style='text-align:center; font-size:14px'>" + ((expTable.Rows[0] as DataSetTpos.expenseRow).expType == 1 ? "Возврат" : "Покупка") + "</td></tr>" +
                             "<tr>" +

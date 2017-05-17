@@ -37,6 +37,9 @@
             this.lblPack = new System.Windows.Forms.Label();
             this.tbxPrice = new Classes.NumericTextBox();
             this.tbxPack = new Classes.NumericTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.limitProdChbx = new System.Windows.Forms.CheckBox();
+            this.blnLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             // 
             // lblCaption
             // 
-            this.lblCaption.Size = new System.Drawing.Size(311, 42);
+            this.lblCaption.Size = new System.Drawing.Size(243, 33);
             this.lblCaption.Text = "Добавить товар";
             // 
             // lblName
@@ -62,7 +65,7 @@
             this.lblName.Location = new System.Drawing.Point(20, 94);
             this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(83, 29);
+            this.lblName.Size = new System.Drawing.Size(65, 24);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Товар";
             // 
@@ -70,7 +73,7 @@
             // 
             this.tbxName.Location = new System.Drawing.Point(111, 96);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(451, 34);
+            this.tbxName.Size = new System.Drawing.Size(451, 28);
             this.tbxName.TabIndex = 1;
             this.tbxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keypress);
             // 
@@ -79,7 +82,7 @@
             this.tbxShtrix.Enabled = false;
             this.tbxShtrix.Location = new System.Drawing.Point(111, 143);
             this.tbxShtrix.Name = "tbxShtrix";
-            this.tbxShtrix.Size = new System.Drawing.Size(451, 34);
+            this.tbxShtrix.Size = new System.Drawing.Size(332, 28);
             this.tbxShtrix.TabIndex = 2;
             // 
             // label2
@@ -88,7 +91,7 @@
             this.label2.Location = new System.Drawing.Point(20, 144);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 29);
+            this.label2.Size = new System.Drawing.Size(66, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Штрих";
             // 
@@ -98,7 +101,7 @@
             this.label3.Location = new System.Drawing.Point(20, 245);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 29);
+            this.label3.Size = new System.Drawing.Size(54, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "Цена";
             // 
@@ -123,15 +126,16 @@
             this.lblPack.Location = new System.Drawing.Point(20, 196);
             this.lblPack.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPack.Name = "lblPack";
-            this.lblPack.Size = new System.Drawing.Size(64, 29);
+            this.lblPack.Size = new System.Drawing.Size(48, 24);
             this.lblPack.TabIndex = 0;
             this.lblPack.Text = "Кол.";
             // 
             // tbxPrice
             // 
+            this.tbxPrice.Enabled = false;
             this.tbxPrice.Location = new System.Drawing.Point(111, 242);
             this.tbxPrice.Name = "tbxPrice";
-            this.tbxPrice.Size = new System.Drawing.Size(148, 34);
+            this.tbxPrice.Size = new System.Drawing.Size(148, 28);
             this.tbxPrice.TabIndex = 4;
             this.tbxPrice.Text = "0";
             // 
@@ -139,16 +143,49 @@
             // 
             this.tbxPack.Location = new System.Drawing.Point(111, 193);
             this.tbxPack.Name = "tbxPack";
-            this.tbxPack.Size = new System.Drawing.Size(148, 34);
+            this.tbxPack.Size = new System.Drawing.Size(148, 28);
             this.tbxPack.TabIndex = 3;
             this.tbxPack.Text = "0";
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::tposDesktop.Properties.Resources.printer_icon_vector_stock_vector_532760;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(487, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 60);
+            this.button1.TabIndex = 11;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // limitProdChbx
+            // 
+            this.limitProdChbx.AutoSize = true;
+            this.limitProdChbx.Location = new System.Drawing.Point(276, 192);
+            this.limitProdChbx.Name = "limitProdChbx";
+            this.limitProdChbx.Size = new System.Drawing.Size(90, 28);
+            this.limitProdChbx.TabIndex = 12;
+            this.limitProdChbx.Text = "Огран.";
+            this.limitProdChbx.UseVisualStyleBackColor = true;
+            // 
+            // blnLbl
+            // 
+            this.blnLbl.AutoSize = true;
+            this.blnLbl.Location = new System.Drawing.Point(272, 245);
+            this.blnLbl.Name = "blnLbl";
+            this.blnLbl.Size = new System.Drawing.Size(0, 24);
+            this.blnLbl.TabIndex = 13;
+            // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(595, 309);
+            this.Controls.Add(this.blnLbl);
+            this.Controls.Add(this.limitProdChbx);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxPrice);
             this.Controls.Add(this.tbxPack);
             this.Controls.Add(this.btnAdd);
@@ -176,6 +213,9 @@
             this.Controls.SetChildIndex(this.pbCaption, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.lblCaption, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.limitProdChbx, 0);
+            this.Controls.SetChildIndex(this.blnLbl, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -193,5 +233,8 @@
         private System.Windows.Forms.Label lblPack;
         private Classes.NumericTextBox tbxPack;
         private Classes.NumericTextBox tbxPrice;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox limitProdChbx;
+        private System.Windows.Forms.Label blnLbl;
     }
 }

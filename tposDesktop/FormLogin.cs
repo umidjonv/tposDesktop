@@ -90,6 +90,7 @@ namespace tposDesktop
                     UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
                     UserValues.CurrentUser = dr["username"].ToString();
                     UserValues.role = role;
+                    UserValues.CurrentUserName = dr["name"].ToString();
                     //MessageBox.Show(UserValues.CurrentUser+":"+role);
                     
                     //Program.oldWindow_type = 3;
