@@ -33,3 +33,4 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\Classes.OpenDay.resources
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealizeLocations.resources

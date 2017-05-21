@@ -132,7 +132,9 @@
     <Compile Include="Classes\Check.cs" />
     <Compile Include="Classes\ExcelClass.cs" />
     <Compile Include="Classes\ExportExcel.cs" />
-    <Compile Include="Classes\ImageCell.cs" />
+    <Compile Include="Classes\ChangedCells.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,6 +146,16 @@
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSetTpos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTpos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
@@ -186,11 +198,6 @@
     </Compile>
     <Compile Include="SubForms\commentForm.Designer.cs">
       <DependentUpon>commentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetTpos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -261,6 +268,12 @@
     <Compile Include="SubForms\TerminalForm.Designer.cs">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\AddRealizeLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\AddRealizeLocations.Designer.cs">
+      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Classes\VisualEffects.resx">
       <DependentUpon>VisualEffects.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +327,9 @@
     <EmbeddedResource Include="SubForms\TerminalForm.resx">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\AddRealizeLocations.resx">
+      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DataSetTpos.xsc">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
@@ -321,10 +337,21 @@
     <None Include="DataSetTpos.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>DataSetTpos2.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetTpos.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSetTpos.xss">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeDataSet.xsc">
+      <DependentUpon>ExchangeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ExchangeDataSet.xss">
+      <DependentUpon>ExchangeDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

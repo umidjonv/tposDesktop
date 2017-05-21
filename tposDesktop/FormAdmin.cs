@@ -214,7 +214,7 @@ namespace tposDesktop
                 DataView dv = realizeGrid.DataSource as DataView;
                 dv.RowFilter = "fakturaId = " + faktRow.fakturaId;
                 int curPrice = prRow.price;
-                AddRealize addForm = new AddRealize(prRow, faktRow);
+                AddRealizeLocations addForm = new AddRealizeLocations(prRow, faktRow);
                 if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     //if (curPrice != prRow.price && prRow.price != 0)
