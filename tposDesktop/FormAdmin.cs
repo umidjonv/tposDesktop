@@ -14,6 +14,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Media;
 using Classes;
+using MySql.Data.MySqlClient;
 
 
 namespace tposDesktop
@@ -70,10 +71,6 @@ namespace tposDesktop
                 realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 realize.Sort = "realizeId DESC";
                 realizeGrid.DataSource = realize;
-                this.realizeviewTableAdapter1.FillExpire(DBclass.DS.realizeview);
-                DataView rv = new DataView(DBclass.DS.realizeview);
-                rv.Sort = "expiryDate";
-                dgvExpire.DataSource = rv;
 
                 this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
                 DataView expense = new DataView(DBclass.DS.expenseview);
@@ -91,8 +88,11 @@ namespace tposDesktop
                 fkview.RowFilter = "fakturaDate < '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 fkview.Sort = "fakturaId desc";
                 dgvFaktura.DataSource = fkview;
-
-                dgvSpisaniye.DataSource = new DataView(DBclass.DS.productview);
+                productviewTableAdapter prdv = new productviewTableAdapter();
+                prdv.Fill(DBclass.DS.productview);
+                DataView prV = new DataView(DBclass.DS.productview);
+                prV.RowFilter = "";
+                dgvSpisaniye.DataSource = prV;
 
                 DataView dvRealize = new DataView(DBclass.DS.realizeview);
                 dgvFakturaTovar.DataSource = dvRealize;
@@ -259,27 +259,6 @@ namespace tposDesktop
             panel1.Size = new Size(wid + panel1.Width, panel1.Height);
         }
 
-        private void expirePaint(object sender, DoWorkEventArgs e)
-        {
-            foreach (DataGridViewRow row in dgvTovar.Rows)
-            {
-                getPriceTableAdapter getExpire = new getPriceTableAdapter();
-                DateTime expiryDate = Convert.ToDateTime(getExpire.GetExpiry(row.Cells["productId"].Value.ToString()));
-                if (expiryDate != DateTime.MinValue)
-                {
-                    if (DateTime.Compare(expiryDate, DateTime.Now) < 30 && DateTime.Compare(expiryDate, DateTime.Now) >= 15)
-                    {
-                        dgvTovar.Rows[row.Index].DefaultCellStyle.BackColor = System.Drawing.Color.Pink;
-                    }
-                    if (DateTime.Compare(expiryDate, DateTime.Now) < 15)
-                    {
-                        dgvTovar.Rows[row.Index].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
-                    }
-                }
-            }
-
-
-        }
 
         private void InitDataGridViews()
         {
@@ -290,6 +269,8 @@ namespace tposDesktop
             dgvTovar.Columns["measureId"].Visible = false;
             dgvTovar.Columns["barcode"].HeaderText = "Штрихкод";
             dgvTovar.Columns["barcode"].Width = 150;
+            dgvTovar.Columns["expiry"].HeaderText = "Срок годности";
+            dgvTovar.Columns["expiry"].Width = 50;
             dgvTovar.Columns["limitProd"].Visible = false;
             dgvTovar.Columns["pack"].Visible = false;
             dgvTovar.Columns["status"].Visible = false;
@@ -313,6 +294,7 @@ namespace tposDesktop
             dgvTovarPrixod.Columns["name"].HeaderText = "Товар";
             dgvTovarPrixod.Columns["price"].HeaderText = "Цена";
             dgvTovarPrixod.Columns["measureId"].Visible = false;
+            dgvTovarPrixod.Columns["expiry"].Visible = false;
             //dgvTovarPrixod.Columns["barcode"].HeaderText = "Штрихкод";
             dgvTovarPrixod.Columns["barcode"].Visible = false;
             dgvTovarPrixod.Columns["pack"].Visible = false;
@@ -421,6 +403,7 @@ namespace tposDesktop
             dgvSpisaniye.Columns["price"].HeaderText = "Цена";
             dgvSpisaniye.Columns["endCount"].HeaderText = "Кол.";
             dgvSpisaniye.Columns["balanceDate"].Visible = false;
+            dgvSpisaniye.Columns["expiry"].Visible = false;
             dgvSpisaniye.Columns["barcode"].HeaderText = "штрих-код";
             dgvSpisaniye.Columns["barcode"].Width = 200;
 
@@ -436,20 +419,6 @@ namespace tposDesktop
             dgvSpisaniye.Columns.Add(cellBtnSp);
             ///Change end!
 
-            dgvExpire.Columns["realizeId"].Visible = false;
-            dgvExpire.Columns["fakturaId"].Visible = false;
-            dgvExpire.Columns["name"].HeaderText = "Наименование";
-            dgvExpire.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvExpire.Columns["fakturaDate"].HeaderText = "Дата прихода";
-            dgvExpire.Columns["fakturaDate"].Width = 200;
-            dgvExpire.Columns["price"].HeaderText = "Цена";
-            dgvExpire.Columns["price"].Width = 150;
-            dgvExpire.Columns["soldPrice"].HeaderText = "Продажная цена";
-            dgvExpire.Columns["soldPrice"].Width = 150;
-            dgvExpire.Columns["count"].HeaderText = "Кол-во";
-            dgvExpire.Columns["productId"].Visible = false;
-            dgvExpire.Columns["expiryDate"].HeaderText = "Срок годности";
-
 
 
         }
@@ -464,9 +433,8 @@ namespace tposDesktop
             if (isPrixod)
             {
                 isPrixod = false;
-
-                getPriceTableAdapter getPriceDA = new getPriceTableAdapter();
-                getPriceDA.FakturaTrigger(idFaktura);
+                DBclass dbC = new DBclass();
+                dbC.triggerExecute("FakturaTrigger", idFaktura);
                 idFaktura = -1;
                 
                 
@@ -797,10 +765,48 @@ namespace tposDesktop
         {
             var grid = sender as DataGridView;
             DataGridViewCellStyle style = new DataGridViewCellStyle();
-            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
-            else
-                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
-            grid.Rows[e.RowIndex].DefaultCellStyle = style;
+            switch (grid.Name)
+            {
+                case "dgvTovar":
+
+                    String expiryDate = grid.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    if (expiryDate != "" && Convert.ToDateTime(expiryDate) > DateTime.Now)
+                    {
+                        DateTime month1 = DateTime.Now.AddDays(30);
+                        DateTime month2 = DateTime.Now.AddDays(60);
+                        DateTime expires = Convert.ToDateTime(expiryDate) ;
+                        if (expires < month2 && expires > month1)
+                        {
+                            grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                        }
+                        if (expires < month1 && expires > DateTime.Now)
+                        {
+                            grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+                            else
+                                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+                            grid.Rows[e.RowIndex].DefaultCellStyle = style;
+                        }
+                    }
+                    else
+                    {
+                        if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+                        else
+                            style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+                        grid.Rows[e.RowIndex].DefaultCellStyle = style;
+                    }
+                break;
+                default:
+                    
+                    if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+                    else
+                        style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+                    grid.Rows[e.RowIndex].DefaultCellStyle = style;
+                    break;
+            }
         }
 
         private void dgvTovar_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -836,6 +842,8 @@ namespace tposDesktop
                         break;
                     case "realizeGrid":
                         DataSetTpos.realizeRow[] rls = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("realizeId=" + dgv.Rows[e.RowIndex].Cells["realizeId"].Value.ToString());
+                        DBclass dbC = new DBclass();
+                        dbC.calcProc("minus", rls[0].prodId, rls[0].count);
                         rls[0].Delete();
                         
                         this.realizeTableAdapter1.Update(DBclass.DS.realize);
@@ -875,6 +883,7 @@ namespace tposDesktop
             }
         }
 
+
         private void dgv_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             var grid = sender as DataGridView;
@@ -894,6 +903,7 @@ namespace tposDesktop
                                 break;
                         }
                         
+          
                         break;
                     case "dgvTovarPrixod":
                         dgvCell.Value = "В приход";
@@ -905,6 +915,7 @@ namespace tposDesktop
 					case "dgvSpisaniye":
                         dgvCell.Value = "Списать";
                         break;
+
                 }
                 
                 
@@ -920,9 +931,25 @@ namespace tposDesktop
             if (isPrixod)
             {
                 isPrixod = false;
+                DBclass dbC = new DBclass();
 
-                getPriceTableAdapter getPriceDA = new getPriceTableAdapter();
-                getPriceDA.FakturaTrigger(idFaktura);
+                MySqlCommand command = new MySqlCommand("CALL `FakturaTrigger`('" + idFaktura + "')", dbC.connection);
+                if (dbC.connection.State == ConnectionState.Closed)
+                {
+                    try
+                    {
+                        dbC.connection.Open();
+                        command.ExecuteNonQuery();
+                        dbC.connection.Close();
+                        //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Windows.Forms.MessageBox.Show(ex.Message);
+                    }
+                }
+                //getPriceTableAdapter getPriceDA = new getPriceTableAdapter();
+                //getPriceDA.FakturaTrigger(idFaktura);
                 idFaktura = -1;
                 MessageBox.Show("Приход закрыт!");
                 realizeGrid.Columns["colBtnDel"].Visible = false;

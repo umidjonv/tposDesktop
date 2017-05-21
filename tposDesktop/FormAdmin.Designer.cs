@@ -50,7 +50,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvTovarPrixod = new System.Windows.Forms.DataGridView();
             this.realizeGrid = new System.Windows.Forms.DataGridView();
-            this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnCloseFaktura = new System.Windows.Forms.Button();
             this.lblRealizeSum = new System.Windows.Forms.Label();
             this.tabFaktura = new System.Windows.Forms.TabPage();
@@ -60,8 +59,6 @@
             this.btnExportBalance = new System.Windows.Forms.Button();
             this.lblBalanceSum = new System.Windows.Forms.Label();
             this.balanceGrid = new System.Windows.Forms.DataGridView();
-            this.tabSrok = new System.Windows.Forms.TabPage();
-            this.dgvExpire = new System.Windows.Forms.DataGridView();
             this.tabSpisaniye = new System.Windows.Forms.TabPage();
             this.dgvSpisaniye = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -84,6 +81,8 @@
             this.realizeviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.realizeviewBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.productviewTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.productviewTableAdapter();
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.expenseGrid)).BeginInit();
             this.tabOtchety.SuspendLayout();
@@ -104,8 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaktura)).BeginInit();
             this.tabOstatok.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGrid)).BeginInit();
-            this.tabSrok.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpire)).BeginInit();
             this.tabSpisaniye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpisaniye)).BeginInit();
             this.panel1.SuspendLayout();
@@ -346,7 +343,6 @@
             this.tabControl1.Controls.Add(this.tabOtchety);
             this.tabControl1.Controls.Add(this.tabRasxod);
             this.tabControl1.Controls.Add(this.tabOstatok);
-            this.tabControl1.Controls.Add(this.tabSrok);
             this.tabControl1.Controls.Add(this.tabSpisaniye);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(16, 51);
@@ -427,25 +423,19 @@
             this.realizeGrid.RowHeadersVisible = false;
             this.realizeGrid.RowTemplate.Height = 40;
             this.realizeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.realizeGrid.Size = new System.Drawing.Size(580, 257);
+            this.realizeGrid.Size = new System.Drawing.Size(574, 226);
             this.realizeGrid.TabIndex = 14;
             this.realizeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.realizeGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             this.realizeGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             this.realizeGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
             // 
-            // colBtnDel
-            // 
-            this.colBtnDel.HeaderText = "";
-            this.colBtnDel.Name = "colBtnDel";
-            this.colBtnDel.ReadOnly = true;
-            // 
             // btnCloseFaktura
             // 
             this.btnCloseFaktura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseFaktura.BackColor = System.Drawing.Color.Red;
             this.btnCloseFaktura.ForeColor = System.Drawing.Color.White;
-            this.btnCloseFaktura.Location = new System.Drawing.Point(422, 253);
+            this.btnCloseFaktura.Location = new System.Drawing.Point(415, 243);
             this.btnCloseFaktura.Margin = new System.Windows.Forms.Padding(2);
             this.btnCloseFaktura.Name = "btnCloseFaktura";
             this.btnCloseFaktura.Size = new System.Drawing.Size(159, 51);
@@ -571,34 +561,6 @@
             this.balanceGrid.Size = new System.Drawing.Size(691, 318);
             this.balanceGrid.TabIndex = 8;
             this.balanceGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
-            // 
-            // tabSrok
-            // 
-            this.tabSrok.Controls.Add(this.dgvExpire);
-            this.tabSrok.Location = new System.Drawing.Point(4, 29);
-            this.tabSrok.Name = "tabSrok";
-            this.tabSrok.Size = new System.Drawing.Size(883, 310);
-            this.tabSrok.TabIndex = 6;
-            this.tabSrok.Text = "Срок годности";
-            this.tabSrok.UseVisualStyleBackColor = true;
-            // 
-            // dgvExpire
-            // 
-            this.dgvExpire.AllowUserToAddRows = false;
-            this.dgvExpire.AllowUserToDeleteRows = false;
-            this.dgvExpire.AllowUserToResizeRows = false;
-            this.dgvExpire.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvExpire.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExpire.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvExpire.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvExpire.Location = new System.Drawing.Point(0, 0);
-            this.dgvExpire.MultiSelect = false;
-            this.dgvExpire.Name = "dgvExpire";
-            this.dgvExpire.ReadOnly = true;
-            this.dgvExpire.RowHeadersVisible = false;
-            this.dgvExpire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExpire.Size = new System.Drawing.Size(883, 310);
-            this.dgvExpire.TabIndex = 0;
             // 
             // tabSpisaniye
             // 
@@ -803,6 +765,16 @@
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
             this.dataGridViewButtonColumn1.ReadOnly = true;
             // 
+            // colBtnDel
+            // 
+            this.colBtnDel.HeaderText = "";
+            this.colBtnDel.Name = "colBtnDel";
+            this.colBtnDel.ReadOnly = true;
+            // 
+            // productviewTableAdapter1
+            // 
+            this.productviewTableAdapter1.ClearBeforeFill = true;
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,8 +818,6 @@
             this.tabOstatok.ResumeLayout(false);
             this.tabOstatok.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGrid)).EndInit();
-            this.tabSrok.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpire)).EndInit();
             this.tabSpisaniye.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpisaniye)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -911,13 +881,12 @@
         private System.Windows.Forms.DataGridView dgvFaktura;
         private System.Windows.Forms.CheckBox chbxSearchLimit;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabPage tabSrok;
         private System.Windows.Forms.TabPage tabSpisaniye;
         private System.Windows.Forms.DataGridView dgvSpisaniye;
         private DataSetTpos dataSetTpos;
-        private System.Windows.Forms.DataGridView dgvExpire;
         private System.Windows.Forms.BindingSource realizeviewBindingSource;
         private System.Windows.Forms.BindingSource expenseviewBindingSource;
         private System.Windows.Forms.BindingSource realizeviewBindingSource1;
+        private DataSetTposTableAdapters.productviewTableAdapter productviewTableAdapter1;
     }
 }

@@ -20,6 +20,7 @@ namespace tposDesktop
         {
             count = prrow.pack;
             prrow.price = getPrice(prrow.productId);
+            prrow.expiry = getExpire(prrow.productId).ToString("yyyy-MM-dd");
             prRow = prrow;
             InitializeComponent();
             lblCaption.Text = prrow.name;
@@ -119,6 +120,13 @@ namespace tposDesktop
             DataSetTposTableAdapters.getPriceTableAdapter daGetPrice = new DataSetTposTableAdapters.getPriceTableAdapter();
             object price = daGetPrice.GetPrice(id.ToString());
             return Convert.ToInt32(price);
+        }
+
+        private DateTime getExpire(int id)
+        {
+            DataSetTposTableAdapters.getPriceTableAdapter daGetPrice = new DataSetTposTableAdapters.getPriceTableAdapter();
+            object price = daGetPrice.GetExpiry(id.ToString());
+            return Convert.ToDateTime(price);
         }
         int pMax = 0;
         private void OrderForm_Load(object sender, EventArgs e)

@@ -45,6 +45,8 @@ namespace tposDesktop
             tbxPack.Text = productRow.pack.ToString();
             tbxPrice.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
+            lblExpiry.Text = productRow.expiry;
+            
             if (productRow.limitProd == 1)
                 limitProdChbx.Checked = true;
             if (productRow.barcode != null)
@@ -82,7 +84,7 @@ namespace tposDesktop
                     int? lId = daProduct.LastID();
                     DataSetTposTableAdapters.balanceTableAdapter bAdapetr = new DataSetTposTableAdapters.balanceTableAdapter();
                     DataSetTpos.balanceRow bRow = DBclass.DS.balance.NewbalanceRow();
-                    bRow.balanceDate = DateTime.Now;
+                    bRow.balanceDate = Convert.ToDateTime("2000-01-01");
                     bRow.prodId = Convert.ToInt32(lId);
                     bRow.endCount = 0;
                     bRow.curEndCount = 0;
@@ -108,7 +110,7 @@ namespace tposDesktop
                     prRow.barcode = tbxShtrix.Text;
                     prRow.measureId = 2;
                     prRow.pack = tbxPack.Text != "0" && tbxPack.Text != "" ? Convert.ToInt32(tbxPack.Text) : 0; ;
-                    
+                    prRow.expiry = lblExpiry.Text;
                     prRow.price = Convert.ToInt32(tbxPrice.Text);
                     daProduct.Update(DBclass.DS.product);
                     daProduct.Fill(DBclass.DS.product);

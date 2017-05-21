@@ -73,52 +73,64 @@ namespace tposDesktop
                 
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
-                
+                DBclass db = new DBclass();
                 DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = "+prRow.productId+" and fakturaId = "+fkRow.fakturaId);
                 DataSetTpos.realizeRow rlRow;
                 if (rlRows.Length > 0)
                 {
+                    Int32 cnt;
                     rlRow = rlRows[0];
                     if (pack != 0)
                     {
-                        rlRow.count += Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
+                        cnt = Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
                     }
                     else
                     {
-                        rlRow.count += Convert.ToInt32(tbxPack.Text);
+                        cnt = Convert.ToInt32(tbxPack.Text);
                     }
+                    rlRow.count += cnt;
                     rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
                     
-                    
+                    db.calcProc("plus", prRow.productId, cnt);   
                     
                 }
                 else
                 {
+                    Int32 cnt;
                     rlRow = DBclass.DS.realize.NewrealizeRow();
                     if (pack != 0)
                     {
-                        rlRow.count = Convert.ToInt32(Math.Round(Convert.ToDouble(tbxPack.Text) * pack, 2) + Convert.ToInt32(tbxKol.Text));
+                        cnt = Convert.ToInt32(Math.Round(Convert.ToDouble(tbxPack.Text) * pack, 2) + Convert.ToInt32(tbxKol.Text));
                     }
                     else
                     {
-                        rlRow.count = Convert.ToInt32(tbxPack.Text);
+                        cnt = Convert.ToInt32(tbxPack.Text);
                     }
+                    rlRow.count = cnt;
                     rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
                     rlRow.fakturaId = fkRow.fakturaId;
                     rlRow.prodId = prRow.productId;
-                    if (Convert.ToDateTime(expiry.Text) != DateTime.Now)
+                    if (expiry.Enabled == true)
+                    {
                         rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
+                        if (prRow.expiry == null)
+                        {
+                            prRow.expiry = Convert.ToDateTime(expiry.Text).ToString("yyyy-MM-dd");
+                        }
+                    }
+
+                    db.calcProc("plus", prRow.productId, cnt);
                     DBclass.DS.realize.AddrealizeRow(rlRow);
                 }
+
                 DataSetTposTableAdapters.productTableAdapter pr = new DataSetTposTableAdapters.productTableAdapter();
                 if (limitChbx.Checked)
                     prRow.limitProd = 1;
                 if (prRow.price == 0)
                 {
                     prRow.price = rlRow.soldPrice;
-
                 }
                 pr.Update(prRow);
                 
@@ -144,6 +156,18 @@ namespace tposDesktop
             else
             {
                 adF.forPrinting(tbxName.Text, tbxSoldPrice.Text, tbxShtrix.Text,prodId);
+            }
+        }
+
+        private void checkExpire_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkExpire.Checked == true)
+            {
+                expiry.Enabled = true;
+            }
+            else
+            {
+                expiry.Enabled = false;
             }
         }
 

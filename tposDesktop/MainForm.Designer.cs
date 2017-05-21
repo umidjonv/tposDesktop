@@ -102,7 +102,7 @@
             this.menuAdmin.ForeColor = System.Drawing.Color.Yellow;
             this.menuAdmin.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.menuAdmin.Name = "menuAdmin";
-            this.menuAdmin.Size = new System.Drawing.Size(141, 44);
+            this.menuAdmin.Size = new System.Drawing.Size(119, 44);
             this.menuAdmin.Text = "Администратор";
             this.menuAdmin.Visible = false;
             this.menuAdmin.Click += new System.EventHandler(this.администраторToolStripMenuItem_Click);
@@ -122,7 +122,7 @@
             this.menuCloseDay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.menuCloseDay.ForeColor = System.Drawing.Color.Yellow;
             this.menuCloseDay.Name = "menuCloseDay";
-            this.menuCloseDay.Size = new System.Drawing.Size(144, 44);
+            this.menuCloseDay.Size = new System.Drawing.Size(113, 44);
             this.menuCloseDay.Text = "Закрыть день";
             this.menuCloseDay.Click += new System.EventHandler(this.menuCloseDay_Click);
             // 
@@ -130,7 +130,7 @@
             // 
             this.menuSettings.ForeColor = System.Drawing.Color.Yellow;
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(117, 44);
+            this.menuSettings.Size = new System.Drawing.Size(89, 44);
             this.menuSettings.Text = "Настройки";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
@@ -144,7 +144,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 621);
+            this.groupBox1.Size = new System.Drawing.Size(517, 613);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -153,7 +153,7 @@
             this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
             this.tbxSearchPrice.Location = new System.Drawing.Point(316, 29);
             this.tbxSearchPrice.Name = "tbxSearchPrice";
-            this.tbxSearchPrice.Size = new System.Drawing.Size(192, 30);
+            this.tbxSearchPrice.Size = new System.Drawing.Size(192, 26);
             this.tbxSearchPrice.TabIndex = 4;
             this.tbxSearchPrice.Text = "По цене";
             this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
@@ -165,7 +165,7 @@
             this.tbxSearchTovar.ForeColor = System.Drawing.Color.Silver;
             this.tbxSearchTovar.Location = new System.Drawing.Point(6, 29);
             this.tbxSearchTovar.Name = "tbxSearchTovar";
-            this.tbxSearchTovar.Size = new System.Drawing.Size(304, 30);
+            this.tbxSearchTovar.Size = new System.Drawing.Size(304, 26);
             this.tbxSearchTovar.TabIndex = 0;
             this.tbxSearchTovar.Text = "По имени";
             this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
@@ -214,7 +214,7 @@
             this.dgvTovar.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTovar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(502, 554);
+            this.dgvTovar.Size = new System.Drawing.Size(502, 546);
             this.dgvTovar.TabIndex = 3;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
@@ -232,7 +232,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(635, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(443, 621);
+            this.groupBox2.Size = new System.Drawing.Size(443, 613);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Счёт на расход ";
@@ -244,7 +244,7 @@
             this.panel1.Controls.Add(this.btnTerminal);
             this.panel1.Controls.Add(this.btnOplata);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 406);
+            this.panel1.Location = new System.Drawing.Point(3, 398);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(437, 212);
             this.panel1.TabIndex = 7;
@@ -256,7 +256,7 @@
             this.lblSum.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblSum.Location = new System.Drawing.Point(0, 0);
             this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(473, 66);
+            this.lblSum.Size = new System.Drawing.Size(473, 54);
             this.lblSum.TabIndex = 9;
             this.lblSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -356,7 +356,7 @@
             this.dgvExpense.RowTemplate.Height = 55;
             this.dgvExpense.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExpense.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExpense.Size = new System.Drawing.Size(434, 378);
+            this.dgvExpense.Size = new System.Drawing.Size(434, 370);
             this.dgvExpense.TabIndex = 1;
             this.dgvExpense.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvExpense_CellBeginEdit);
             this.dgvExpense.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellContentClick);
@@ -385,7 +385,7 @@
             this.productPrice.HeaderText = "Цена";
             this.productPrice.Name = "productPrice";
             this.productPrice.ReadOnly = true;
-            this.productPrice.Width = 83;
+            this.productPrice.Width = 73;
             // 
             // btnDolg
             // 
@@ -424,7 +424,7 @@
             this.soat.ForeColor = System.Drawing.Color.White;
             this.soat.Location = new System.Drawing.Point(769, 3);
             this.soat.Name = "soat";
-            this.soat.Size = new System.Drawing.Size(122, 46);
+            this.soat.Size = new System.Drawing.Size(99, 37);
             this.soat.TabIndex = 4;
             this.soat.Text = "00:00";
             this.soat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,7 +443,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1100, 688);
+            this.panel2.Size = new System.Drawing.Size(1100, 680);
             this.panel2.TabIndex = 7;
             // 
             // flowLayoutPanel1
@@ -455,7 +455,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnVozvrat);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(535, 52);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(94, 195);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(94, 201);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // pictureBox2
@@ -493,10 +493,10 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(1100, 740);
+            this.ClientSize = new System.Drawing.Size(1100, 732);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.soat);
             this.Controls.Add(this.panel2);

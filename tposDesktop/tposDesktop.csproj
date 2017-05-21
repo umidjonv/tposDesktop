@@ -321,7 +321,7 @@
     <None Include="DataSetTpos.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>DataSetTpos2.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetTpos.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSetTpos.xss">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
@@ -380,6 +380,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon_hF6_icon.ico" />
+    <None Include="Resources\printer-icon-vector-stock-vector-532760.gif" />
     <None Include="Resources\qarz.png" />
     <None Include="Resources\poisk.png" />
     <None Include="Resources\remove.png" />

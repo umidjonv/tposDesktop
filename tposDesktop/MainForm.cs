@@ -28,6 +28,7 @@ namespace tposDesktop
             InitializeComponent();
             this.Icon = tposDesktop.Properties.Resources.mainIcon;
             db = new DBclass();
+            DBclass.DS.Clear();
             db.FillExpense("");
             db.FillProduct();
 
@@ -37,7 +38,9 @@ namespace tposDesktop
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
             DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
             DataView dv = new DataView(DBclass.DS.productview);
-            if (DBclass.DS.productview.Rows.Count == 0)
+            DataView bl = new DataView(DBclass.DS.balanceview);
+            bl.RowFilter = "balanceDate = '" + DateTime.Now.ToString("yyyy-MM-dd") + "'";
+            if (bl.Count == 0)
             {
                 OpenDay opend = new OpenDay();
                 opend.ShowDialog();
@@ -112,6 +115,7 @@ namespace tposDesktop
             dgvTovar.Columns["endCount"].HeaderText = "Кол.";
             dgvTovar.Columns["balanceDate"].Visible = false;
             dgvTovar.Columns["barcode"].Visible = false;
+            dgvTovar.Columns["expiry"].Visible = false;
             //dgvTovar.Columns["pack"].Visible = false;
             //dgvTovar.Columns["status"].Visible = false;
             //dgvTovar.Columns["balanceT"].Visible = false;
@@ -357,15 +361,15 @@ namespace tposDesktop
                 {
                     DataGridViewButtonCell dgvCell = (DataGridViewButtonCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                     dgvCell.Value = "+";
-                    //getPriceTableAdapter getExpire = new getPriceTableAdapter();
-                    //DateTime expiryDate = Convert.ToDateTime(getExpire.GetExpiry(grid.Rows[e.RowIndex].Cells[0].Value.ToString()));
-                    //if (expiryDate != DateTime.MinValue)
+                    
+                    //String expiryDate = grid.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    //if (expiryDate != "")
                     //{
-                    //    if (DateTime.Compare(expiryDate, DateTime.Now) < 30 && DateTime.Compare(expiryDate, DateTime.Now) >= 15)
+                    //    if (DateTime.Compare(Convert.ToDateTime(expiryDate), DateTime.Now) < 30 && DateTime.Compare(Convert.ToDateTime(expiryDate), DateTime.Now) >= 15)
                     //    {
                     //        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Pink;
                     //    }
-                    //    if (DateTime.Compare(expiryDate, DateTime.Now) < 15)
+                    //    if (DateTime.Compare(Convert.ToDateTime(expiryDate), DateTime.Now) < 15)
                     //    {
                     //        grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
                     //    }
@@ -442,13 +446,11 @@ namespace tposDesktop
                 getPriceTableAdapter getPriceda = new getPriceTableAdapter();
                 if(vozvrat)
                 {
-                    getPriceda.BackTrigger(expId);
+                    db.triggerExecute("BackTrigger", expId);   
                 }else
                 {
-                    getPriceda.ExpenseTrigger(expId);
+                    db.triggerExecute("ExpenseTrigger", expId);
                 }
-
-
 
                 productviewTableAdapter prVda = new productviewTableAdapter();
                 prVda.Fill(DBclass.DS.productview);
@@ -632,10 +634,17 @@ namespace tposDesktop
             }
             if (tscanner != null&&(e.KeyChar == 13 && beginBarcode))
             {
-                if (tbxSearchTovar.Text.Length <= 5)
+                if (tbxSearchTovar.Text.Length <= 5 && tbxSearchTovar.Text.Length > 0)
                 {
-                    AddToOrders(Convert.ToInt32(tbxSearchTovar.Text.ToString()));
-                    tbxSearchTovar.Text = "";
+                    try
+                    {
+                        AddToOrders(Convert.ToInt32(tbxSearchTovar.Text.ToString()));
+                        tbxSearchTovar.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("нет товара по номеру " + tbxSearchTovar.Text.ToString());
+                    }
                 }
                 else
                 {

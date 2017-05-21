@@ -44,8 +44,8 @@
             this.limitChbx = new System.Windows.Forms.CheckBox();
             this.blnLbl = new System.Windows.Forms.Label();
             this.expiry = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkExpire = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,7 +203,7 @@
             // limitChbx
             // 
             this.limitChbx.AutoSize = true;
-            this.limitChbx.Location = new System.Drawing.Point(429, 184);
+            this.limitChbx.Location = new System.Drawing.Point(429, 188);
             this.limitChbx.Name = "limitChbx";
             this.limitChbx.Size = new System.Drawing.Size(90, 28);
             this.limitChbx.TabIndex = 6;
@@ -220,20 +220,11 @@
             // 
             // expiry
             // 
+            this.expiry.Enabled = false;
             this.expiry.Location = new System.Drawing.Point(429, 244);
             this.expiry.Name = "expiry";
             this.expiry.Size = new System.Drawing.Size(185, 28);
             this.expiry.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(314, 247);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Срок годн.";
             // 
             // button1
             // 
@@ -247,14 +238,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // checkExpire
+            // 
+            this.checkExpire.AutoSize = true;
+            this.checkExpire.Location = new System.Drawing.Point(300, 246);
+            this.checkExpire.Name = "checkExpire";
+            this.checkExpire.Size = new System.Drawing.Size(115, 28);
+            this.checkExpire.TabIndex = 15;
+            this.checkExpire.Text = "Срок год.";
+            this.checkExpire.UseVisualStyleBackColor = true;
+            this.checkExpire.CheckedChanged += new System.EventHandler(this.checkExpire_CheckedChanged);
+            // 
             // AddRealize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(638, 444);
+            this.Controls.Add(this.checkExpire);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.expiry);
             this.Controls.Add(this.blnLbl);
             this.Controls.Add(this.limitChbx);
@@ -297,8 +299,8 @@
             this.Controls.SetChildIndex(this.limitChbx, 0);
             this.Controls.SetChildIndex(this.blnLbl, 0);
             this.Controls.SetChildIndex(this.expiry, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.checkExpire, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -323,7 +325,7 @@
         private System.Windows.Forms.CheckBox limitChbx;
         private System.Windows.Forms.Label blnLbl;
         private System.Windows.Forms.DateTimePicker expiry;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkExpire;
     }
 }
