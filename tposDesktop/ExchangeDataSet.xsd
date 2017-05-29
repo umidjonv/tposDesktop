@@ -2,8 +2,9 @@
 <xs:schema id="ExchangeDataSet" targetNamespace="http://tempuri.org/ExchangeDataSet.xsd" xmlns:mstns="http://tempuri.org/ExchangeDataSet.xsd" xmlns="http://tempuri.org/ExchangeDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="stock_exchangeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="stock_exchangeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.stock_exchangeConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="stock_exchangeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="stock_exchangeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.stock_exchangeConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>

@@ -132,9 +132,7 @@
     <Compile Include="Classes\Check.cs" />
     <Compile Include="Classes\ExcelClass.cs" />
     <Compile Include="Classes\ExportExcel.cs" />
-    <Compile Include="Classes\ChangedCells.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Classes\ImageCell.cs" />
     <Compile Include="Classes\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -146,11 +144,6 @@
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DataSetTpos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
     <Compile Include="ExchangeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -167,6 +160,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\AddLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\AddLocations.Designer.cs">
+      <DependentUpon>AddLocations.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\AddRealize.cs">
       <SubType>Form</SubType>
@@ -193,11 +192,22 @@
     <Compile Include="Classes\TablePanelDishes.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SubForms\AddRealizeLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\AddRealizeLocations.Designer.cs">
+      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForms\commentForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SubForms\commentForm.Designer.cs">
       <DependentUpon>commentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetTpos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -268,17 +278,14 @@
     <Compile Include="SubForms\TerminalForm.Designer.cs">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\AddRealizeLocations.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForms\AddRealizeLocations.Designer.cs">
-      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Classes\VisualEffects.resx">
       <DependentUpon>VisualEffects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\AddLocations.resx">
+      <DependentUpon>AddLocations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\AddRealize.resx">
       <DependentUpon>AddRealize.cs</DependentUpon>
@@ -288,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\VirtualKeyboard.resx">
       <DependentUpon>VirtualKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\AddRealizeLocations.resx">
+      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\commentForm.resx">
       <DependentUpon>commentForm.cs</DependentUpon>
@@ -327,9 +337,6 @@
     <EmbeddedResource Include="SubForms\TerminalForm.resx">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\AddRealizeLocations.resx">
-      <DependentUpon>AddRealizeLocations.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DataSetTpos.xsc">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
@@ -346,7 +353,6 @@
       <DependentUpon>ExchangeDataSet.xsd</DependentUpon>
     </None>
     <None Include="ExchangeDataSet.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ExchangeDataSet.Designer.cs</LastGenOutput>
     </None>
@@ -407,6 +413,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon_hF6_icon.ico" />
+    <None Include="Resources\printer-icon-vector-stock-vector-532760.gif" />
     <None Include="Resources\qarz.png" />
     <None Include="Resources\poisk.png" />
     <None Include="Resources\remove.png" />

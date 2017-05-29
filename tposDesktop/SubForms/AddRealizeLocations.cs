@@ -91,94 +91,77 @@ namespace tposDesktop
         {
             if (!string.IsNullOrEmpty(tbxName.Text))
             {
-                
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
-                
-                DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = "+prRow.productId+" and fakturaId = "+fkRow.fakturaId);
-                DataSetTpos.realizeRow rlRow;
-                if (rlRows.Length > 0)
-                {
-                    rlRow = rlRows[0];
-                    if (pack != 0)
-                    {
-                        rlRow.count += Convert.ToInt32(tbxPack.Text) * pack + Convert.ToInt32(tbxKol.Text);
-                    }
-                    else
-                    {
-                        rlRow.count += Convert.ToInt32(tbxPack.Text);
-                    }
-                    //rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
-                    //rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
-                    
-                    
-                    
-                }
-                else
-                {
-                    rlRow = DBclass.DS.realize.NewrealizeRow();
-                    if (pack != 0)
-                    {
-                        rlRow.count = Convert.ToInt32(Math.Round(Convert.ToDouble(tbxPack.Text) * pack, 2) + Convert.ToInt32(tbxKol.Text));
-                    }
-                    else
-                    {
-                        rlRow.count = Convert.ToInt32(tbxPack.Text);
-                    }
-                    //rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
-                    //rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
-                    rlRow.fakturaId = fkRow.fakturaId;
-                    rlRow.prodId = prRow.productId;
-                    if (Convert.ToDateTime(expiry.Text) != DateTime.Now)
-                        rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
-                    DBclass.DS.realize.AddrealizeRow(rlRow);
-                }
-                DataSetTposTableAdapters.productTableAdapter pr = new DataSetTposTableAdapters.productTableAdapter();
-                if (limitChbx.Checked)
-                    prRow.limitProd = 1;
-                if (prRow.price == 0)
-                {
-                    prRow.price = rlRow.soldPrice;
 
-                }
-                pr.Update(prRow);
-                
-                
-                daReal.Update(DBclass.DS.realize);
-                daReal.Fill(DBclass.DS.realize);
-                
+                AddRows();
+
             }
         }
 
         private void AddRows()
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
+            DBclass db = new DBclass();
             foreach (DataSetTpos.locPrices_tRow locrow in DBclass.DS.locPrices_t.Rows)
             {
-                DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("(prodid = " + prRow.productId + " and fakturaId = " + fkRow.fakturaId+") and locationID = "+locrow.locationID);
-                DataSetTpos.realizeRow rlRow;
-                if (rlRows.Length > 0)
+                if (locrow.count != 0)
                 {
-                }
-                else
-                {
-                    rlRow = DBclass.DS.realize.NewrealizeRow();
-                    if (pack != 0)
+                    DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("(prodid = " + prRow.productId + " and fakturaId = " + fkRow.fakturaId + ") and locationID = " + locrow.locationID);
+                    DataSetTpos.realizeRow rlRow;
+                    if (rlRows.Length > 0)
                     {
-                        rlRow.count = Convert.ToInt32(Math.Round(Convert.ToDouble(locrow.count) * pack, 2));
+                        Int32 cnt;
+                        rlRow = rlRows[0];
+                        if (pack != 0)
+                        {
+                            cnt = Convert.ToInt32(locrow.count) * pack;
+                        }
+                        else
+                        {
+                            cnt = Convert.ToInt32(locrow.count);
+                        }
+                        rlRow.count += cnt;
+                        rlRow.price = locrow.price;
+                        rlRow.soldPrice = locrow.soldPrice;
+
+                        db.calcProc("plus", prRow.productId, cnt);
                     }
                     else
                     {
-                        rlRow.count = Convert.ToInt32(locrow.count);
+                        Int32 cnt;
+                        rlRow = DBclass.DS.realize.NewrealizeRow();
+                        if (pack != 0)
+                        {
+                            cnt = Convert.ToInt32(Math.Round(Convert.ToDouble(locrow.count) * pack, 2));
+
+                        }
+                        else
+                        {
+                            cnt = Convert.ToInt32(locrow.count);
+                        }
+                        rlRow.count = cnt;
+                        rlRow.price = Convert.ToInt32(locrow.price);
+                        rlRow.soldPrice = Convert.ToInt32(locrow.soldPrice);
+                        rlRow.fakturaId = fkRow.fakturaId;
+                        rlRow.prodId = prRow.productId;
+                        if (expiry.Enabled == true)
+                        {
+                            rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
+                            if (prRow.expiry == null)
+                            {
+                                prRow.expiry = Convert.ToDateTime(expiry.Text).ToString("yyyy-MM-dd");
+                            }
+                        }
+
+                        db.calcProc("plus", prRow.productId, cnt);
+                        DBclass.DS.realize.AddrealizeRow(rlRow);
                     }
-                    rlRow.price = Convert.ToInt32(locrow.price);
-                    rlRow.soldPrice = Convert.ToInt32(locrow.soldPrice);
-                    rlRow.fakturaId = fkRow.fakturaId;
-                    rlRow.prodId = prRow.productId;
-                    if (Convert.ToDateTime(expiry.Text) != DateTime.Now)
-                        rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
-                    DBclass.DS.realize.AddrealizeRow(rlRow);
                 }
             }
+            DataSetTposTableAdapters.productTableAdapter pr = new DataSetTposTableAdapters.productTableAdapter();
+                
+            daReal.Update(DBclass.DS.realize);
+            daReal.Fill(DBclass.DS.realize);    
  
         }
 

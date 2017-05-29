@@ -86,7 +86,7 @@ namespace tposDesktop.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=stock;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=stock;password=198923233171")]
         public string stockConnectionString {
             get {
                 return ((string)(this["stockConnectionString"]));
@@ -108,7 +108,7 @@ namespace tposDesktop.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=stock_exchange")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=198923233171;database=stock_exchange")]
         public string stock_exchangeConnectionString {
             get {
                 return ((string)(this["stock_exchangeConnectionString"]));

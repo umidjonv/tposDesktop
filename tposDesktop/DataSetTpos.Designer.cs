@@ -2553,6 +2553,8 @@ namespace tposDesktop {
             
             private global::System.Data.DataColumn columnlimitProd;
             
+            private global::System.Data.DataColumn columnexpiry;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public productDataTable() {
@@ -2652,6 +2654,14 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn expiryColumn {
+                get {
+                    return this.columnexpiry;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2687,7 +2697,7 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public productRow AddproductRow(string name, int measureId, string barcode, int status, int price, int pack, int limitProd) {
+            public productRow AddproductRow(string name, int measureId, string barcode, int status, int price, int pack, int limitProd, string expiry) {
                 productRow rowproductRow = ((productRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2697,7 +2707,8 @@ namespace tposDesktop {
                         status,
                         price,
                         pack,
-                        limitProd};
+                        limitProd,
+                        expiry};
                 rowproductRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowproductRow);
                 return rowproductRow;
@@ -2735,6 +2746,7 @@ namespace tposDesktop {
                 this.columnprice = base.Columns["price"];
                 this.columnpack = base.Columns["pack"];
                 this.columnlimitProd = base.Columns["limitProd"];
+                this.columnexpiry = base.Columns["expiry"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2756,6 +2768,8 @@ namespace tposDesktop {
                 base.Columns.Add(this.columnpack);
                 this.columnlimitProd = new global::System.Data.DataColumn("limitProd", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlimitProd);
+                this.columnexpiry = new global::System.Data.DataColumn("expiry", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexpiry);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnproductId}, true));
                 this.columnproductId.AutoIncrement = true;
@@ -2766,6 +2780,8 @@ namespace tposDesktop {
                 this.columnbarcode.MaxLength = 50;
                 this.columnstatus.AllowDBNull = false;
                 this.columnpack.AllowDBNull = false;
+                this.columnlimitProd.AllowDBNull = false;
+                this.columnexpiry.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5283,8 +5299,7 @@ namespace tposDesktop {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnrealizeId}, true));
                 this.columnrealizeId.AutoIncrement = true;
-                this.columnrealizeId.AutoIncrementSeed = -1;
-                this.columnrealizeId.AutoIncrementStep = -1;
+                this.columnrealizeId.AutoIncrementSeed = 1;
                 this.columnrealizeId.AllowDBNull = false;
                 this.columnrealizeId.Unique = true;
             }
@@ -6101,6 +6116,8 @@ namespace tposDesktop {
             
             private global::System.Data.DataColumn columnendCount;
             
+            private global::System.Data.DataColumn columnexpiry;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public productviewDataTable() {
@@ -6184,6 +6201,14 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn expiryColumn {
+                get {
+                    return this.columnexpiry;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6219,7 +6244,7 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public productviewRow AddproductviewRow(string name, int price, string barcode, System.DateTime balanceDate, string endCount) {
+            public productviewRow AddproductviewRow(string name, int price, string barcode, System.DateTime balanceDate, string endCount, string expiry) {
                 productviewRow rowproductviewRow = ((productviewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6227,7 +6252,8 @@ namespace tposDesktop {
                         price,
                         barcode,
                         balanceDate,
-                        endCount};
+                        endCount,
+                        expiry};
                 rowproductviewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowproductviewRow);
                 return rowproductviewRow;
@@ -6263,6 +6289,7 @@ namespace tposDesktop {
                 this.columnbarcode = base.Columns["barcode"];
                 this.columnbalanceDate = base.Columns["balanceDate"];
                 this.columnendCount = base.Columns["endCount"];
+                this.columnexpiry = base.Columns["expiry"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6280,6 +6307,8 @@ namespace tposDesktop {
                 base.Columns.Add(this.columnbalanceDate);
                 this.columnendCount = new global::System.Data.DataColumn("endCount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnendCount);
+                this.columnexpiry = new global::System.Data.DataColumn("expiry", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnexpiry);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnproductId}, true));
                 this.columnproductId.AutoIncrement = true;
@@ -6513,10 +6542,10 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public locationsRow AddlocationsRow(uint locationID, string LocationName) {
+            public locationsRow AddlocationsRow(string LocationName) {
                 locationsRow rowlocationsRow = ((locationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        locationID,
+                        null,
                         LocationName};
                 rowlocationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlocationsRow);
@@ -6525,7 +6554,7 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public locationsRow FindBylocationID(uint locationID) {
+            public locationsRow FindBylocationID(int locationID) {
                 return ((locationsRow)(this.Rows.Find(new object[] {
                             locationID})));
             }
@@ -6554,12 +6583,15 @@ namespace tposDesktop {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnlocationID = new global::System.Data.DataColumn("locationID", typeof(uint), null, global::System.Data.MappingType.Element);
+                this.columnlocationID = new global::System.Data.DataColumn("locationID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlocationID);
                 this.columnLocationName = new global::System.Data.DataColumn("LocationName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocationName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnlocationID}, true));
+                this.columnlocationID.AutoIncrement = true;
+                this.columnlocationID.AutoIncrementSeed = -1;
+                this.columnlocationID.AutoIncrementStep = -1;
                 this.columnlocationID.AllowDBNull = false;
                 this.columnlocationID.Unique = true;
                 this.columnLocationName.AllowDBNull = false;
@@ -6817,7 +6849,7 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public locPrices_tRow AddlocPrices_tRow(uint locationID, string LocationName, int count, int price, int soldPrice) {
+            public locPrices_tRow AddlocPrices_tRow(int locationID, string LocationName, int count, float price, int soldPrice) {
                 locPrices_tRow rowlocPrices_tRow = ((locPrices_tRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         locationID,
@@ -6857,21 +6889,16 @@ namespace tposDesktop {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnlocationID = new global::System.Data.DataColumn("locationID", typeof(uint), null, global::System.Data.MappingType.Element);
+                this.columnlocationID = new global::System.Data.DataColumn("locationID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlocationID);
                 this.columnLocationName = new global::System.Data.DataColumn("LocationName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocationName);
                 this.columncount = new global::System.Data.DataColumn("count", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncount);
-                this.columnprice = new global::System.Data.DataColumn("price", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnprice = new global::System.Data.DataColumn("price", typeof(float), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
                 this.columnsoldPrice = new global::System.Data.DataColumn("soldPrice", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsoldPrice);
-                this.columnlocationID.AutoIncrementSeed = -1;
-                this.columnlocationID.AutoIncrementStep = -1;
-                this.columncount.DefaultValue = ((int)(0));
-                this.columnprice.DefaultValue = ((int)(0));
-                this.columnsoldPrice.DefaultValue = ((int)(0));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7689,15 +7716,26 @@ namespace tposDesktop {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int limitProd {
                 get {
-                    try {
-                        return ((int)(this[this.tableproduct.limitProdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'limitProd\' в таблице \'product\' равно DBNull.", e);
-                    }
+                    return ((int)(this[this.tableproduct.limitProdColumn]));
                 }
                 set {
                     this[this.tableproduct.limitProdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string expiry {
+                get {
+                    if (this.IsexpiryNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tableproduct.expiryColumn]));
+                    }
+                }
+                set {
+                    this[this.tableproduct.expiryColumn] = value;
                 }
             }
             
@@ -7751,14 +7789,14 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IslimitProdNull() {
-                return this.IsNull(this.tableproduct.limitProdColumn);
+            public bool IsexpiryNull() {
+                return this.IsNull(this.tableproduct.expiryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetlimitProdNull() {
-                this[this.tableproduct.limitProdColumn] = global::System.Convert.DBNull;
+            public void SetexpiryNull() {
+                this[this.tableproduct.expiryColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9349,6 +9387,22 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string expiry {
+                get {
+                    if (this.IsexpiryNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableproductview.expiryColumn]));
+                    }
+                }
+                set {
+                    this[this.tableproductview.expiryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnameNull() {
                 return this.IsNull(this.tableproductview.nameColumn);
             }
@@ -9406,6 +9460,18 @@ namespace tposDesktop {
             public void SetendCountNull() {
                 this[this.tableproductview.endCountColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsexpiryNull() {
+                return this.IsNull(this.tableproductview.expiryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetexpiryNull() {
+                this[this.tableproductview.expiryColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -9424,9 +9490,9 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public uint locationID {
+            public int locationID {
                 get {
-                    return ((uint)(this[this.tablelocations.locationIDColumn]));
+                    return ((int)(this[this.tablelocations.locationIDColumn]));
                 }
                 set {
                     this[this.tablelocations.locationIDColumn] = value;
@@ -9461,10 +9527,10 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public uint locationID {
+            public int locationID {
                 get {
                     try {
-                        return ((uint)(this[this.tablelocPrices_t.locationIDColumn]));
+                        return ((int)(this[this.tablelocPrices_t.locationIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'locationID\' в таблице \'locPrices_t\' равно DBNull.", e);
@@ -9509,10 +9575,10 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int price {
+            public float price {
                 get {
                     try {
-                        return ((int)(this[this.tablelocPrices_t.priceColumn]));
+                        return ((float)(this[this.tablelocPrices_t.priceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Значение для столбца \'price\' в таблице \'locPrices_t\' равно DBNull.", e);
@@ -13167,15 +13233,13 @@ namespace tposDesktop.DataSetTposTableAdapters {
             tableMapping.ColumnMappings.Add("status", "status");
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("pack", "pack");
+            tableMapping.ColumnMappings.Add("measureId", "measureId");
+            tableMapping.ColumnMappings.Add("limitProd", "limitProd");
+            tableMapping.ColumnMappings.Add("expiry", "expiry");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM product
-WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
-                      name = @p3) AND (@p4 = 1 AND measureId IS NULL OR
-                      measureId = @p5) AND (@p6 = 1 AND barcode IS NULL OR
-                      barcode = @p7) AND (status = @p8) AND (@p9 = 1 AND price IS NULL OR
-                      price = @p10) AND (pack = @p11) AND (limitProd = @p12)";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `product` WHERE ((`productId` = @p1) AND ((@p2 = 1 AND `name` IS NULL) OR (`name` = @p3)) AND ((@p4 = 1 AND `measureId` IS NULL) OR (`measureId` = @p5)) AND ((@p6 = 1 AND `barcode` IS NULL) OR (`barcode` = @p7)) AND (`status` = @p8) AND ((@p9 = 1 AND `price` IS NULL) OR (`price` = @p10)) AND (`pack` = @p11) AND (`limitProd` = @p12) AND ((@p13 = 1 AND `expiry` IS NULL) OR (`expiry` = @p14)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -13187,26 +13251,29 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 150;
             param.IsNullable = true;
             param.SourceColumn = "name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p4";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "measureId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
@@ -13218,16 +13285,17 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "barcode";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 100;
             param.IsNullable = true;
             param.SourceColumn = "barcode";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -13242,10 +13310,12 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p9";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "price";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p10";
@@ -13269,6 +13339,23 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "limitProd";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p13";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "expiry";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p14";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "expiry";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
@@ -13295,7 +13382,7 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 100;
+            param.Size = 50;
             param.IsNullable = true;
             param.SourceColumn = "barcode";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -13329,19 +13416,12 @@ WHERE     (productId = @p1) AND (@p2 = 1 AND name IS NULL OR
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE    product
-SET              name = @p1, measureId = @p2, barcode = @p3, status = @p4, price = @p5, pack = @p6, limitProd = @p7
-WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
-                      name = @p10) AND (@p11 = 1 AND measureId IS NULL OR
-                      measureId = @p12) AND (@p13 = 1 AND barcode IS NULL OR
-                      barcode = @p14) AND (status = @p15) AND (@p16 = 1 AND price IS NULL OR
-                      price = @p17) AND (pack = @p18) AND (limitProd = @p19)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `product` SET `name` = @p1, `measureId` = @p2, `barcode` = @p3, `status` = @p4, `price` = @p5, `pack` = @p6, `limitProd` = @p7, `expiry` = @p8 WHERE ((`productId` = @p9) AND ((@p10 = 1 AND `name` IS NULL) OR (`name` = @p11)) AND ((@p12 = 1 AND `measureId` IS NULL) OR (`measureId` = @p13)) AND ((@p14 = 1 AND `barcode` IS NULL) OR (`barcode` = @p15)) AND (`status` = @p16) AND ((@p17 = 1 AND `price` IS NULL) OR (`price` = @p18)) AND (`pack` = @p19) AND (`limitProd` = @p20) AND ((@p21 = 1 AND `expiry` IS NULL) OR (`expiry` = @p22)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 150;
             param.IsNullable = true;
             param.SourceColumn = "name";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -13356,7 +13436,6 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 100;
             param.IsNullable = true;
             param.SourceColumn = "barcode";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -13390,6 +13469,13 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p8";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "expiry";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -13397,26 +13483,20 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
-            param.Size = 1024;
-            param.IsNullable = true;
-            param.SourceColumn = "";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p10";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 150;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p11";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "name";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -13426,36 +13506,39 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             param.IsNullable = true;
             param.SourceColumn = "measureId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p13";
-            param.Size = 1024;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "";
+            param.SourceColumn = "measureId";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p14";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "barcode";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p15";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
-            param.Size = 100;
             param.IsNullable = true;
             param.SourceColumn = "barcode";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p15";
+            param.ParameterName = "@p16";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "status";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p16";
-            param.Size = 1024;
-            param.IsNullable = true;
-            param.SourceColumn = "";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -13465,13 +13548,14 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             param.IsNullable = true;
             param.SourceColumn = "price";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p18";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "pack";
+            param.SourceColumn = "price";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -13479,7 +13563,32 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
+            param.SourceColumn = "pack";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p20";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
             param.SourceColumn = "limitProd";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p21";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "expiry";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p22";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.IsNullable = true;
+            param.SourceColumn = "expiry";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -13497,8 +13606,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT     productId, name, measureId, barcode, status, price, pack, limitProd\r\nF" +
-                "ROM         product";
+            this._commandCollection[0].CommandText = "SELECT     productId, name, measureId, barcode, status, price, pack, limitProd, e" +
+                "xpiry\r\nFROM         product";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -13563,59 +13672,51 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p1, string p2, string p3, string p4, global::System.Nullable<int> p5, string p6, string p7, int p8, string p9, global::System.Nullable<int> p10, int p11, int p12) {
+        public virtual int Delete(int p1, string p3, global::System.Nullable<int> p5, string p7, int p8, global::System.Nullable<int> p10, int p11, int p12, string p14) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
-            if ((p2 == null)) {
-                throw new global::System.ArgumentNullException("p2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
-            }
             if ((p3 == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
             }
-            if ((p4 == null)) {
-                throw new global::System.ArgumentNullException("p4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(p4));
-            }
             if ((p5.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(p5.Value));
             }
             else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((p6 == null)) {
-                throw new global::System.ArgumentNullException("p6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(p6));
-            }
             if ((p7 == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(p7));
             }
             this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(p8));
-            if ((p9 == null)) {
-                throw new global::System.ArgumentNullException("p9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(p9));
-            }
             if ((p10.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(p10.Value));
             }
             else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(p11));
             this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(p12));
+            if ((p14 == null)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(p14));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13692,18 +13793,16 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
                     global::System.Nullable<int> p5, 
                     int p6, 
                     int p7, 
-                    int p8, 
-                    string p9, 
-                    string p10, 
+                    string p8, 
+                    int p9, 
                     string p11, 
-                    global::System.Nullable<int> p12, 
-                    string p13, 
-                    string p14, 
-                    int p15, 
-                    string p16, 
-                    global::System.Nullable<int> p17, 
-                    int p18, 
-                    int p19) {
+                    global::System.Nullable<int> p13, 
+                    string p15, 
+                    int p16, 
+                    global::System.Nullable<int> p18, 
+                    int p19, 
+                    int p20, 
+                    string p22) {
             if ((p1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -13731,58 +13830,56 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p6));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p7));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p8));
-            if ((p9 == null)) {
-                throw new global::System.ArgumentNullException("p9");
+            if ((p8 == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(p9));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
             }
-            if ((p10 == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(p10));
-            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
             if ((p11 == null)) {
-                throw new global::System.ArgumentNullException("p11");
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(p11));
             }
-            if ((p12.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(p12.Value));
+            if ((p13.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(p13.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((p13 == null)) {
-                throw new global::System.ArgumentNullException("p13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(p13));
-            }
-            if ((p14 == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((p15 == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(p14));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
             }
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(p15));
-            if ((p16 == null)) {
-                throw new global::System.ArgumentNullException("p16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(p16));
-            }
-            if ((p17.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(p17.Value));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(p16));
+            if ((p18.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(p18.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(p18));
             this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(p19));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(p20));
+            if ((p22 == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(p22));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17011,6 +17108,7 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             tableMapping.ColumnMappings.Add("barcode", "barcode");
             tableMapping.ColumnMappings.Add("balanceDate", "balanceDate");
             tableMapping.ColumnMappings.Add("endCount", "endCount");
+            tableMapping.ColumnMappings.Add("expiry", "expiry");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -17027,8 +17125,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT productId, name, price, barcode, balanceDate, endCount\r\nFROM     productvi" +
-                "ew";
+            this._commandCollection[0].CommandText = "SELECT     productId, name, price, barcode, expiry, balanceDate, endCount\r\nFROM  " +
+                "       productview";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17187,8 +17285,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
-            param.DbType = global::System.Data.DbType.UInt32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "locationID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -17226,8 +17324,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
-            param.DbType = global::System.Data.DbType.UInt32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.UInt32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "locationID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -17316,8 +17414,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(uint p1, string p2) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((uint)(p1));
+        public virtual int Delete(int p1, string p2) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
             if ((p2 == null)) {
                 throw new global::System.ArgumentNullException("p2");
             }
@@ -17371,14 +17469,14 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p1, uint p2, string p3) {
+        public virtual int Update(string p1, int p2, string p3) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p1));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((uint)(p2));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(p2));
             if ((p3 == null)) {
                 throw new global::System.ArgumentNullException("p3");
             }
@@ -17429,7 +17527,7 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[5];
+            this._commandCollection = new global::System.Data.IDbCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[0])).Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::tposDesktop.Properties.Settings.Default.stockConnectionString);
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[0])).CommandText = "select getPrice(@idProd)";
@@ -17440,45 +17538,12 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[0])).Parameters.Add(param);
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::tposDesktop.Properties.Settings.Default.stockConnectionString);
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandText = "`stock`.`BackTrigger`";
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).Parameters.Add(param);
-            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[2])).Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::tposDesktop.Properties.Settings.Default.stockConnectionString);
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[2])).CommandText = "`stock`.`ExpenseTrigger`";
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[2])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[2])).Parameters.Add(param);
-            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::tposDesktop.Properties.Settings.Default.stockConnectionString);
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).CommandText = "`stock`.`FakturaTrigger`";
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "id";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.Size = 2147483647;
-            param.IsNullable = true;
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[3])).Parameters.Add(param);
-            this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[4])).Connection = new global::MySql.Data.MySqlClient.MySqlConnection(global::tposDesktop.Properties.Settings.Default.stockConnectionString);
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[4])).CommandText = "SELECT   getExpiry(@idProduct)";
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[4])).CommandType = global::System.Data.CommandType.Text;
+            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandText = "SELECT   getExpiry(@idProduct)";
+            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "idProduct";
             param.IsNullable = true;
-            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[4])).Parameters.Add(param);
+            ((global::MySql.Data.MySqlClient.MySqlCommand)(this._commandCollection[1])).Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17518,92 +17583,8 @@ WHERE     (productId = @p8) AND (@p9 = 1 AND name IS NULL OR
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int BackTrigger(global::System.Nullable<int> id) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[1]));
-            if ((id.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(id.Value));
-            }
-            else {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int ExpenseTrigger(global::System.Nullable<int> id) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[2]));
-            if ((id.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(id.Value));
-            }
-            else {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int FakturaTrigger(global::System.Nullable<int> id) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[3]));
-            if ((id.HasValue == true)) {
-                command.Parameters[0].Value = ((int)(id.Value));
-            }
-            else {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object GetExpiry(string idProduct) {
-            global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[4]));
+            global::MySql.Data.MySqlClient.MySqlCommand command = ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[1]));
             if ((idProduct == null)) {
                 throw new global::System.ArgumentNullException("idProduct");
             }

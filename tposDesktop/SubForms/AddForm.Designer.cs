@@ -40,6 +40,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.limitProdChbx = new System.Windows.Forms.CheckBox();
             this.blnLbl = new System.Windows.Forms.Label();
+            this.lblExpiry = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,12 +178,21 @@
             this.blnLbl.Size = new System.Drawing.Size(0, 24);
             this.blnLbl.TabIndex = 13;
             // 
+            // lblExpiry
+            // 
+            this.lblExpiry.AutoSize = true;
+            this.lblExpiry.Location = new System.Drawing.Point(272, 245);
+            this.lblExpiry.Name = "lblExpiry";
+            this.lblExpiry.Size = new System.Drawing.Size(0, 24);
+            this.lblExpiry.TabIndex = 14;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(595, 309);
+            this.Controls.Add(this.lblExpiry);
             this.Controls.Add(this.blnLbl);
             this.Controls.Add(this.limitProdChbx);
             this.Controls.Add(this.button1);
@@ -216,6 +226,7 @@
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.limitProdChbx, 0);
             this.Controls.SetChildIndex(this.blnLbl, 0);
+            this.Controls.SetChildIndex(this.lblExpiry, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -236,5 +247,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox limitProdChbx;
         private System.Windows.Forms.Label blnLbl;
+        private System.Windows.Forms.Label lblExpiry;
     }
 }

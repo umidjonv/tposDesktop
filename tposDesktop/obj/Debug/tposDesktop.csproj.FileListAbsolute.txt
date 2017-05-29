@@ -34,3 +34,4 @@ E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\Classes.OpenDay.resour
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
 E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealizeLocations.resources
+E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddLocations.resources

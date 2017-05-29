@@ -13,7 +13,7 @@ namespace Classes.DB
 {
     class DBclass
     {
-        MySqlConnection connection;
+        public MySqlConnection connection;
         MySqlDataAdapter adapter;
         public DataTable Product { get; set; }
         public static DataSetTpos DS { get; set; }
@@ -180,7 +180,7 @@ namespace Classes.DB
                     {
                         ordrow.packCount = (float)oform.count;
                         DataRow drOrder = ordrow;
-                        drOrder["sumProduct"] = oform.sum;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
+                        //drOrder["sumProduct"] = oform.sum;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
 
                         //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                     }
@@ -277,10 +277,10 @@ namespace Classes.DB
             }
             expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
             prDa.Update(DBclass.DS.orders);
-            getPriceTableAdapter getPriceda = new getPriceTableAdapter();
-            getPriceda.ExpenseTrigger(expId);
+            //DBclass dbC = new DBclass();
 
 
+            triggerExecute("ExpenseTrigger",expId);
 
             productviewTableAdapter prVda = new productviewTableAdapter();
             prVda.Fill(DBclass.DS.productview);
@@ -289,6 +289,44 @@ namespace Classes.DB
             isNewExpense = true;
 
 
+        }
+
+        public void triggerExecute(string trigger, int id)
+        {
+            MySqlCommand command = new MySqlCommand("CALL `" + trigger + "`('" + id + "')", connection);
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandTimeout = 200;
+                    command.ExecuteNonQueryAsync();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        public void calcProc(string t, int id, float cnt)
+        {
+            MySqlCommand command = new MySqlCommand("CALL `calc`('" + id + "','" + t + "','" + cnt + "')", connection);
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandTimeout = 200;
+                    command.ExecuteNonQueryAsync();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         void bgw_DoWork(object sender, DoWorkEventArgs e)

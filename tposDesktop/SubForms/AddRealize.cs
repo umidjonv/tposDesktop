@@ -70,12 +70,11 @@ namespace tposDesktop
         {
             if (!string.IsNullOrEmpty(tbxName.Text))
             {
-
+                
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
                 DBclass db = new DBclass();
-
-                DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = " + prRow.productId + " and fakturaId = " + fkRow.fakturaId);
+                DataSetTpos.realizeRow[] rlRows = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("prodid = "+prRow.productId+" and fakturaId = "+fkRow.fakturaId);
                 DataSetTpos.realizeRow rlRow;
                 if (rlRows.Length > 0)
                 {
@@ -92,11 +91,9 @@ namespace tposDesktop
                     rlRow.count += cnt;
                     rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
-
-                    //db.calcProc("plus", prRow.productId, cnt);
-
-
-
+                    
+                    db.calcProc("plus", prRow.productId, cnt);   
+                    
                 }
                 else
                 {
@@ -118,13 +115,13 @@ namespace tposDesktop
                     if (expiry.Enabled == true)
                     {
                         rlRow.expiryDate = Convert.ToDateTime(expiry.Text);
-                        //if (prRow.expiry == null)
-                        //{
-                        //    prRow.expiry = Convert.ToDateTime(expiry.Text).ToString("yyyy-MM-dd");
-                        //}
+                        if (prRow.expiry == null)
+                        {
+                            prRow.expiry = Convert.ToDateTime(expiry.Text).ToString("yyyy-MM-dd");
+                        }
                     }
 
-                    //db.calcProc("plus", prRow.productId, cnt);
+                    db.calcProc("plus", prRow.productId, cnt);
                     DBclass.DS.realize.AddrealizeRow(rlRow);
                 }
 
@@ -134,16 +131,16 @@ namespace tposDesktop
                 if (prRow.price == 0)
                 {
                     prRow.price = rlRow.soldPrice;
-
                 }
                 pr.Update(prRow);
-
-
+                
+                
                 daReal.Update(DBclass.DS.realize);
                 daReal.Fill(DBclass.DS.realize);
-
+                
             }
         }
+
         private void AddRealize_Load(object sender, EventArgs e)
         {
             tbxPack.Focus();
@@ -159,6 +156,18 @@ namespace tposDesktop
             else
             {
                 adF.forPrinting(tbxName.Text, tbxSoldPrice.Text, tbxShtrix.Text,prodId);
+            }
+        }
+
+        private void checkExpire_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkExpire.Checked == true)
+            {
+                expiry.Enabled = true;
+            }
+            else
+            {
+                expiry.Enabled = false;
             }
         }
 
