@@ -1,0 +1,11 @@
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\bin\Debug\FirstConfig.exe.config
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\bin\Debug\FirstConfig.exe
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\bin\Debug\FirstConfig.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.csprojResolveAssemblyReference.cache
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.Properties.Resources.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.csproj.GenerateResource.Cache
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.exe
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.pdb
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.FormConfig.resources
+C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\FirstConfig\obj\Debug\FirstConfig.FormSettings.resources
