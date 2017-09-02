@@ -139,7 +139,7 @@ namespace Classes.DB
             }
         }
 
-        void bgw_DoWorkOpenDay(object sender, DoWorkEventArgs e)
+        public void bgw_DoWorkOpenDay(object sender, DoWorkEventArgs e)
         {
             
             MySqlCommand command = new MySqlCommand("select `prodBalance`(0)", connection);
@@ -147,11 +147,16 @@ namespace Classes.DB
             {
                 try
                 {
+                    string result;
                     connection.Open();
                     command.CommandTimeout = 200;
-                    command.ExecuteNonQueryAsync();
+                    result = command.ExecuteScalar().ToString();
                     connection.Close();
-                    System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+                    if (result == "0")
+                    {
+                        Program.backDate = true;
+                    }
+                    //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
                 }
                 catch (Exception ex)
                 {
@@ -179,6 +184,217 @@ namespace Classes.DB
                 }
             }
         }
+        
+        /// Change!
+        
+        bool isNewExpense = false;
+        public void AddProduct(DataRow[] dr, bool isBarcode, string barcode)
+        {
+            bool next = false;
+
+
+            float kg = -1;
+            if (isBarcode && dr.Length == 0)
+            {
+                //object[] obj = getProductWithMassa(barcode);
+                //dr = (DataRow[])obj[0];
+                //kg = (float)obj[1];
+                dr = getProductWithMassa(barcode);
+            }
+
+            if (dr.Length != 0)
+            {
+                DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
+                DataRow[] existRows = DBclass.DS.orders.Select("expenseId=-1 and prodId = " + drP.productId);
+                if (existRows.Length > 0)
+                {
+                    DataSetTpos.ordersRow ordrow = (DataSetTpos.ordersRow)existRows[0];
+                    ordrow.packCount = ordrow.packCount + (drP.pack == 0 ? 1 : drP.pack);
+                    DataRow drOrder = ordrow;
+                    drOrder["sumProduct"] = ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);//ordrow.AcceptChanges();
+                }
+                else
+                {
+                    DataSetTpos.ordersRow ordrow = DBclass.DS.orders.NewordersRow();
+
+
+
+                    ordrow.prodId = drP.productId;
+                    if (drP.pack == 0) drP.pack = 1;
+                    ordrow.expenseId = -1;
+                    int curPrice = drP.price;
+                    OrderForm oform = new OrderForm(drP);
+                    if (oform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        ordrow.packCount = (float)oform.count;
+                        DataRow drOrder = ordrow;
+                        drOrder["sumProduct"] = oform.sum;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
+                        ordrow.orderSumm = Convert.ToSingle(drOrder["sumProduct"]);
+
+                        //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
+                    }
+                    else
+                    {
+                        if (drP.price == 0)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Товар на складе отсутствует");
+                            drP.RejectChanges();
+                        }
+                        return;
+                    }
+                    DBclass.DS.orders.AddordersRow(ordrow);
+                    if (curPrice != drP.price && drP.price != 0)
+                    {
+
+                        productTableAdapter prda = new productTableAdapter();
+                        prda.Update(drP);
+                    }
+
+                }
+                if (isNewExpense)
+                {
+                    //dgvExpense.Columns["productName"].Visible = true;
+                    //dgvExpense.Columns["productPrice"].Visible = true;
+                    isNewExpense = false;
+                }
+                //sumTable();
+            }
+            else if (isBarcode && UserValues.role == "admin")
+            {
+                AddForm addForm = new AddForm(barcode);
+                if (addForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //productTableAdapter daProduct = new productTableAdapter();
+                    //daProduct.Fill(DBclass.DS.product);
+
+
+                }
+
+            }
+
+            next = true;
+
+        }
+        //private void sumTable()
+        //{
+        //    var sum = DBclass.DS.orders.AsEnumerable().Sum(x => x.Field<int>("sumProduct"));
+        //    this.Invoke(new SetLabel(SetTBX), new object[] { sum.ToString() });
+        //}
+        private DataRow[] getProductWithMassa(string barcode)
+        {
+            int prefix = Int32.Parse(barcode.Substring(0, 2));
+            if (prefix == 20)
+            {
+                barcode = barcode.Substring(2);
+                string id = barcode.Substring(0, 5);
+                string kg = barcode.Remove(0, 5).Substring(0, 5);
+                kg = kg.Insert(2, ".");
+                //float kgf = Convert.ToSingle(kg);
+                DataRow[] dr = DBclass.DS.product.Select("productId = " + Convert.ToInt32(id));
+                if (dr.Length != 0)
+                {
+                    ((DataSetTpos.productRow)dr[0]).pack = Convert.ToSingle(kg);
+                }
+                return dr;
+            }
+            else
+            {
+                barcode = barcode.Substring(2);
+                string id = barcode.Substring(0, 5);
+                string sht = barcode.Remove(0, 5).Substring(0, 5);
+                //sht = sht.Insert(2, ".");
+                //float kgf = Convert.ToSingle(kg);
+                DataRow[] dr = DBclass.DS.product.Select("productId = " + Convert.ToInt32(id));
+                if (dr.Length != 0)
+                {
+                    ((DataSetTpos.productRow)dr[0]).pack = Convert.ToSingle(sht);
+                }
+                return dr;
+            }
+            //new object[] { dr, kgf };
+        }
+        public void Debt()
+        {
+            expenseTableAdapter expDa = new expenseTableAdapter();
+            expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
+            DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
+            DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
+            double sum = 0;
+            
+            expRow.expenseDate = DateTime.Now;
+            expRow.debt = 0;
+            expRow.status = 0;
+            expRow.comment = "";
+            expRow.expType = 3;
+
+            expRow.expSum = (int)Math.Round(sum);
+            expRow.terminal = 0;
+            
+            expTable.Rows.Add(expRow);
+            int expId;
+            expDa.Update(expTable);
+            expDa.FillLast(expTable);
+            ordersTableAdapter prDa = new ordersTableAdapter();
+            DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = -1");
+            foreach (DataSetTpos.ordersRow oneRow in orRows)
+            {
+                oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId;
+            }
+            expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
+            prDa.Update(DBclass.DS.orders);
+            
+            triggerExecute("ExpenseTrigger",expId);
+            
+
+
+            productviewTableAdapter prVda = new productviewTableAdapter();
+            prVda.Fill(DBclass.DS.productview);
+
+            
+            isNewExpense = true;
+
+            
+        }
+
+
+        public void triggerExecute(string trigger, int id)
+        {
+            MySqlCommand command = new MySqlCommand("CALL `" + trigger + "`('" + id + "')", connection);
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandTimeout = 200;
+                    command.ExecuteNonQueryAsync();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        public void calcProc(string t, int id, float cnt)
+        {
+            MySqlCommand command = new MySqlCommand("CALL `calc`('" + id + "','" + t + "','" + cnt + "')", connection);
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                    command.CommandTimeout = 200;
+                    command.ExecuteNonQueryAsync();
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
 
     }
 }

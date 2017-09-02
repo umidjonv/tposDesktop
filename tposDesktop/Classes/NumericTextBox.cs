@@ -7,21 +7,38 @@ using System.Windows.Forms;
 
 namespace Classes
 {
-    class NumericTextBox:TextBox
+    class NumericTextBox : TextBox
     {
         public NumericTextBox()
         {
             this.KeyPress += NumericTextBox_KeyPress;
         }
         public bool isFloat = false;
+
         void NumericTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (isFloat)
             {
-                e.Handled = true;
+                if ((e.KeyChar == '.' || e.KeyChar == ',') && !this.Text.Contains('.'))
+                {
+
+                    if (e.KeyChar == ',')
+                        e.KeyChar = '.';
+
+                }
+                else
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true;
+                    }
             }
-            
+            else
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
         }
-        
+
     }
 }

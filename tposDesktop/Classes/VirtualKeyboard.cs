@@ -51,6 +51,7 @@ namespace VirtualKeyboard
         private Button btnsagshift;
         private Button btnsagaltgr;
         private Button btnsolalt;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
         private const int WM_CHAR = 0x0102;
         #endregion SendMessage Constants
         #region API fonction
@@ -948,6 +949,7 @@ namespace VirtualKeyboard
             this.btnsagshift = new System.Windows.Forms.Button();
             this.btnsagaltgr = new System.Windows.Forms.Button();
             this.btnsolalt = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.SuspendLayout();
             // 
             // btn1
@@ -1045,7 +1047,7 @@ namespace VirtualKeyboard
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(450, 81);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
@@ -1085,9 +1087,19 @@ namespace VirtualKeyboard
             this.btnsolalt.Text = "Alt R";
             this.btnsolalt.UseVisualStyleBackColor = true;
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(185, 24);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(389, 101);
+            this.elementHost1.TabIndex = 3;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = null;
+            // 
             // FormKeyBoard
             // 
             this.ClientSize = new System.Drawing.Size(732, 273);
+            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.btnsolalt);
             this.Controls.Add(this.btnsagshift);
             this.Controls.Add(this.btnsagaltgr);

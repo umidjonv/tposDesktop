@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Classes.Forms;
+using Classes.DB;
 namespace tposDesktop
 {
     public partial class OrderForm : DesignedForm
@@ -15,21 +16,37 @@ namespace tposDesktop
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
+        float bal;
         public OrderForm(DataSetTpos.productRow prrow)
         {
             count = prrow.pack;
             
  
             prrow.price = getPrice(prrow.productId);
-            
             InitializeComponent();
+            //lblOne.Visible = false;
+                lblOne.Text = prrow.price.ToString();
             lblCaption.Text = prrow.name;
 
-            lblPrice.Text = ((int)Math.Round(prrow.price * prrow.pack, 2)).ToString();
+            lblPrice.Text = (Math.Round(prrow.price * prrow.pack, 0)).ToString();
 
+            bal = getSold(prrow.productId);
             tbxCount1.Text = (count != 0 ? count : 1).ToString();
-            float f = prrow.pack - (int)prrow.pack;
-            if (f > 0) prrow.pack = 1;
+            //float f = prrow.pack - (int)prrow.pack;
+            //if (f > 0) prrow.pack = 1;
+            if (Program.window_type == 2)
+            {
+                button1_Click(button1, new EventArgs());
+            }
+        }
+
+        private float getSold(int id)
+        {
+            this.balanceTableAdapter1.Fill(DBclass.DS.balance);
+            DataView balance = new DataView(DBclass.DS.balance);
+            balance.RowFilter = "balanceDate = '2000-01-01' and prodId = " + id;
+
+            return float.Parse(balance[0]["endCount"].ToString());
         }
         public float count = 0;
         public int sum = 0;
@@ -37,10 +54,7 @@ namespace tposDesktop
         {
             if (e.KeyChar == 13&&EmptyChar())
             {
-                count = Single.Parse(tbxCount1.Text);
-                sum = Int32.Parse(lblOnePrice.Text);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
+                button1_Click(null, new EventArgs());
             }
             if (e.KeyChar == 27)
             {
@@ -77,8 +91,19 @@ namespace tposDesktop
                 //prrow.price = (int)Math.Round(getPrice(prrow.productId) * prrow.pack, 2);
                 count = Single.Parse(tbxCount1.Text);
                 sum = Int32.Parse(lblOnePrice.Text);
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                this.Close();
+                //if (bal == 0)
+                //{
+                //    MessageBox.Show("Товара не осталось");
+                //}
+                //else if (bal < count)
+                //{
+                //    MessageBox.Show("Количество больше чем на складе");
+                //}
+                //else
+                //{
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Close();
+                //}
             }
         }
         string text="";
@@ -87,7 +112,7 @@ namespace tposDesktop
             TextBox t = sender as TextBox;
             int num;
             double cnt = (count == 0 ? 1 : count);
-            double donasi = Math.Round((Convert.ToSingle(lblPrice.Text) / cnt),2);
+            double donasi = Math.Round((Convert.ToSingle(lblPrice.Text) / Math.Round(cnt,3)),2);
                 
             if (tbxCount1.Text != "")
             {
@@ -106,10 +131,10 @@ namespace tposDesktop
                 
             }
             string d = donasi.ToString();
-            if (d.IndexOf(".")!=-1)
-            lblOne.Text = d.Remove(d.IndexOf("."));
-            else
-                lblOne.Text = d;
+            //if (d.IndexOf(".")!=-1)
+            //lblOne.Text = d.Remove(d.IndexOf("."));
+            //else
+                //lblOne.Text = d;
 
             
             

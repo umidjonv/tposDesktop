@@ -10,10 +10,11 @@ namespace tposDesktop
     {
         enum WorkType { Touch, Mouse };
         static WorkType wType = WorkType.Mouse;
-        public static int window_type = 2;
+        public static int window_type = 1;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
+        public static bool backDate = false;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

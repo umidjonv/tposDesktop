@@ -9,6 +9,10 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using Classes;
 using Classes.DB;
+using tposDesktop.DataSetTposTableAdapters;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
 namespace tposDesktop
 {
     public partial class FormLogin : Form
@@ -17,6 +21,7 @@ namespace tposDesktop
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
+        private String KeyNumber = "";
 
         DBclass dbclass;
         Language lang;
@@ -33,7 +38,8 @@ namespace tposDesktop
             try
             {
                 dbclass = new DBclass();
-                dbclass.Fill("user");
+                userTableAdapter uTba = new userTableAdapter();
+                uTba.Fill(DBclass.DS.user);
             }
             catch (Exception ex)
             {
@@ -46,9 +52,29 @@ namespace tposDesktop
             lblErr.BackColor = Color.FromArgb(75, 192, 255);
 
         }
+
+        private void btnKeypress_Click(object sender, EventArgs e)
+        {
+            Button numBtn = sender as Button;
+            
+                tbxPassword.Text += numBtn.Text;
+            
+        }
         bool isMessage = false;
         public void LoadForm(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.isAdmin)
+            {
+            }
+            else
+            {
+                this.BackgroundImage = null;
+                //this.TransparencyKey = Color.Transparent;
+                btnPanel.Visible = true;
+                btnExit.Visible= false;
+                btnkassaexit.Visible = true;
+                
+            }
             if (isMessage)
             {
                 this.Close();
@@ -77,36 +103,79 @@ namespace tposDesktop
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //lblPassError.Visible = false;
-            DataTable table = DBclass.DS.Tables["user"];
-            string hash = CalculateMD5Hash(CalculateMD5Hash(tbxPass.Text));
-            DataRow[] rows = table.Select("username='"+tbxLogin.Text+"' and password='" + hash+"'");
-            if (rows.Length != 0)
+            DataTable table = DBclass.DS.user;
+            if (Properties.Settings.Default.isAdmin)
             {
-                foreach (DataRow dr in rows)
+                string hash = CalculateMD5Hash(CalculateMD5Hash(tbxPass.Text));
+                DataRow[] rows = table.Select("username='" + tbxLogin.Text + "' and password='" + hash + "'");
+                if (rows.Length != 0)
                 {
-                    string role = dr["role"].ToString();
+                    foreach (DataRow dr in rows)
+                    {
+                        string role = dr["role"].ToString();
+                        if (role == "admin")
+                        {
+                            Program.window_type = 3;
+                        }
+                        else
+                        {
+                            Program.window_type = 2;
+                        }
+                        UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
+                        UserValues.CurrentUser = dr["username"].ToString();
+                        UserValues.role = role;
+                        //MessageBox.Show(UserValues.CurrentUser+":"+role);
 
-                    Program.window_type = 2;
-                    UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
-                    UserValues.CurrentUser = dr["username"].ToString();
-                    UserValues.role = role;
-                    //MessageBox.Show(UserValues.CurrentUser+":"+role);
-                    
-                    //Program.oldWindow_type = 3;
-                    //Program.onClose = true;
-                    this.Close();
-                    return;
+                        //Program.oldWindow_type = 3;
+                        //Program.onClose = true;
+                        this.Close();
+                        return;
+
+                    }
+
 
                 }
+                else
+                {
+                    lblErr.Visible = true;
+                    lblErr.Text = lang.Value("Err_Login");
 
-
+                }
             }
-            else
-            {
-                lblErr.Visible = true;
-                lblErr.Text = lang.Value("Err_Login");
+            else {
 
+                string hash = CalculateMD5Hash(CalculateMD5Hash(tbxPassword.Text));
+                DataRow[] rows = table.Select("role='user' and password='" + hash + "'");
+                if (rows.Length != 0)
+                {
+                    foreach (DataRow dr in rows)
+                    {
+                        string role = dr["role"].ToString();
+                        
+                            Program.window_type = 2;
+                        
+                        UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
+                        UserValues.CurrentUser = dr["username"].ToString();
+                        UserValues.role = role;
+                        //MessageBox.Show(UserValues.CurrentUser+":"+role);
+
+                        //Program.oldWindow_type = 3;
+                        //Program.onClose = true;
+                        this.Close();
+                        return;
+
+                    }
+
+
+                }
+                else
+                {
+                    lblErr.Visible = true;
+                    lblErr.Text = lang.Value("Err_Login");
+
+                }
             }
+
 
         }
 
@@ -145,12 +214,6 @@ namespace tposDesktop
             }
         }
 
-        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(Program.window_type!=2)
-            Program.window_type = 0;
-        }
-
         private void tbxPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -184,6 +247,35 @@ namespace tposDesktop
         private void FormLogin_MouseUp(object sender, MouseEventArgs e)
         {
             _dragging = false;
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void key_dot_Click(object sender, EventArgs e)
+        {
+            if (tbxPassword.Text.Length > 0)
+            {
+                tbxPassword.Text = tbxPassword.Text.Remove(tbxPassword.Text.Length - 1);
+            }
+            
+        }
+
+        private void key_plus_Click(object sender, EventArgs e)
+        {
+            if (tbxPassword.Text.Length > 0)
+            {
+                tbxPassword.Text = "";
+            }
+            
+        }
+
+        private void btnkassaexit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Program.window_type = 0;
         }
     }
 }
