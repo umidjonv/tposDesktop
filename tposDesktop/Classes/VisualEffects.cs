@@ -63,24 +63,25 @@ namespace Classes.Forms
             // 
             this.pbCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCaption.BackColor = System.Drawing.Color.DarkGreen;
+            this.pbCaption.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             this.pbCaption.Location = new System.Drawing.Point(-3, 0);
             this.pbCaption.Name = "pbCaption";
-            this.pbCaption.Size = new System.Drawing.Size(545, 66);
+            this.pbCaption.Size = new System.Drawing.Size(548, 66);
             this.pbCaption.TabIndex = 8;
             this.pbCaption.TabStop = false;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnCancel.BackColor = System.Drawing.Color.LightSeaGreen;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Arial Black", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancel.Location = new System.Drawing.Point(473, 0);
+            this.btnCancel.Location = new System.Drawing.Point(476, 0);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(69, 66);
             this.btnCancel.TabIndex = 9;
@@ -91,21 +92,21 @@ namespace Classes.Forms
             // lblCaption
             // 
             this.lblCaption.AutoSize = true;
-            this.lblCaption.BackColor = System.Drawing.Color.DarkGreen;
+            this.lblCaption.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             this.lblCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblCaption.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCaption.Location = new System.Drawing.Point(12, 9);
+            this.lblCaption.Location = new System.Drawing.Point(12, 16);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(95, 42);
+            this.lblCaption.Size = new System.Drawing.Size(76, 33);
             this.lblCaption.TabIndex = 10;
             this.lblCaption.Text = "Text";
             // 
             // DesignedForm
             // 
-            this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(541, 337);
-            this.Controls.Add(this.lblCaption);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(219)))), ((int)(((byte)(179)))));
+            this.ClientSize = new System.Drawing.Size(544, 337);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.lblCaption);
             this.Controls.Add(this.pbCaption);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DesignedForm";

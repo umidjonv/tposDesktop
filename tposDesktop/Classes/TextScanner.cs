@@ -32,7 +32,7 @@ namespace Classes
                 {
                     temp = "";
                     compare = "";
-                    barcode = "";
+                    //barcode = "";
                 }
                 else 
                 {
@@ -50,12 +50,14 @@ namespace Classes
         bool isEnd = false;
         public string End()
         {
-            isEnd = true;
             barcode = temp;
+            isEnd = true;
+            
             return barcode;
         }
         public void Start()
         {
+            barcode = "";
             isEnd = false;
             
         }

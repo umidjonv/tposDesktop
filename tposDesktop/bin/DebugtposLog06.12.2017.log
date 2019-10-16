@@ -1,0 +1,337 @@
+Info;06.12.2017 15:49:27;Message:_____________
+Info;06.12.2017 15:49:27;Message:Begin expense
+Info;06.12.2017 15:49:27;Message:Временный:-1
+Info;06.12.2017 15:49:27;Message:Сумма:182 200
+Info;06.12.2017 15:49:27;Message:--------------------
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7976, orderSum:15200, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7662, orderSum:17400, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7661, orderSum:34800, cnt:2
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7664, orderSum:16500, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7663, orderSum:16500, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:7660, orderSum:23800, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:9241, orderSum:12900, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:9242, orderSum:12900, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:9239, orderSum:10500, cnt:1
+Info;06.12.2017 15:49:27;Message:exp:8035 orders:prodId:9238, orderSum:10500, cnt:1
+Info;06.12.2017 15:49:27;Message:updating orders,exp:8035
+Warning;06.12.2017 15:49:32;Message:end update orders,exp:8035
+Info;06.12.2017 15:49:32;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 15:49:33;Message:на вр-ного счёта:-1
+Info;06.12.2017 15:49:33;Message:0
+Warning;06.12.2017 15:49:38;Message:------End Trigger------
+Info;06.12.2017 17:41:48;Message:_____________
+Info;06.12.2017 17:41:48;Message:Begin expense
+Info;06.12.2017 17:41:48;Message:Временный:-1
+Info;06.12.2017 17:41:48;Message:Сумма:43 590
+Info;06.12.2017 17:41:48;Message:--------------------
+Info;06.12.2017 17:41:48;Message:exp:8036 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 17:41:48;Message:exp:8036 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 17:41:48;Message:exp:8036 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 17:41:48;Message:exp:8036 orders:prodId:5063, orderSum:4000, cnt:1
+Info;06.12.2017 17:41:48;Message:updating orders,exp:8036
+Warning;06.12.2017 17:41:48;Message:end update orders,exp:8036
+Info;06.12.2017 17:41:48;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 17:41:48;Message:на вр-ного счёта:-1
+Info;06.12.2017 17:41:48;Message:0
+Warning;06.12.2017 17:41:48;Message:------End Trigger------
+Info;06.12.2017 17:47:32;Message:_____________
+Info;06.12.2017 17:47:32;Message:Begin expense
+Info;06.12.2017 17:47:32;Message:Временный:-1
+Info;06.12.2017 17:47:32;Message:Сумма:185 600
+Info;06.12.2017 17:47:32;Message:--------------------
+Info;06.12.2017 17:52:41;Message:_____________
+Info;06.12.2017 17:52:41;Message:Begin expense
+Info;06.12.2017 17:52:41;Message:Временный:-1
+Info;06.12.2017 17:52:41;Message:Сумма:136 470
+Info;06.12.2017 17:52:41;Message:--------------------
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:5361, orderSum:53190, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:6110, orderSum:1500, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:6202, orderSum:12990, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:7976, orderSum:15200, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:4942, orderSum:23400, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 17:52:41;Message:exp:8038 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 17:52:41;Message:updating orders,exp:8038
+Warning;06.12.2017 17:52:41;Message:end update orders,exp:8038
+Info;06.12.2017 17:52:41;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 17:52:41;Message:на вр-ного счёта:-1
+Info;06.12.2017 17:52:41;Message:0
+Warning;06.12.2017 17:52:41;Message:------End Trigger------
+Info;06.12.2017 17:55:32;Message:_____________
+Info;06.12.2017 17:55:32;Message:Begin expense
+Info;06.12.2017 17:55:32;Message:Временный:-1
+Info;06.12.2017 17:55:32;Message:Сумма:167 760
+Info;06.12.2017 17:55:32;Message:--------------------
+Info;06.12.2017 17:55:36;Message:exp:8039 orders:prodId:2713, orderSum:9800, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:6230, orderSum:34190, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:6223, orderSum:11400, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:7097, orderSum:19790, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:7096, orderSum:10500, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:7095, orderSum:36300, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:7094, orderSum:18590, cnt:1
+Info;06.12.2017 17:55:46;Message:exp:8039 orders:prodId:7093, orderSum:27190, cnt:1
+Info;06.12.2017 17:55:46;Message:updating orders,exp:8039
+Warning;06.12.2017 17:55:46;Message:end update orders,exp:8039
+Info;06.12.2017 17:55:46;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 17:55:46;Message:на вр-ного счёта:-1
+Info;06.12.2017 17:55:46;Message:0
+Warning;06.12.2017 17:55:46;Message:------End Trigger------
+Info;06.12.2017 18:01:18;Message:_____________
+Info;06.12.2017 18:01:18;Message:Begin expense
+Info;06.12.2017 18:01:18;Message:Временный:-1
+Info;06.12.2017 18:01:18;Message:Сумма:23 520
+Info;06.12.2017 18:01:18;Message:--------------------
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8911, orderSum:1500, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8859, orderSum:4400, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:2676, orderSum:720, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:2873, orderSum:5000, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:2872, orderSum:3100, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8771, orderSum:3300, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8786, orderSum:1700, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8789, orderSum:2000, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8788, orderSum:300, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8790, orderSum:500, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8791, orderSum:500, cnt:1
+Info;06.12.2017 18:01:18;Message:exp:8040 orders:prodId:8794, orderSum:500, cnt:1
+Info;06.12.2017 18:01:18;Message:updating orders,exp:8040
+Warning;06.12.2017 18:01:18;Message:end update orders,exp:8040
+Info;06.12.2017 18:01:18;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:01:18;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:01:18;Message:0
+Warning;06.12.2017 18:01:18;Message:------End Trigger------
+Info;06.12.2017 18:09:48;Message:_____________
+Info;06.12.2017 18:09:48;Message:Begin expense
+Info;06.12.2017 18:09:48;Message:Временный:-1
+Info;06.12.2017 18:09:48;Message:Сумма:680
+Info;06.12.2017 18:09:48;Message:--------------------
+Info;06.12.2017 18:09:48;Message:exp:8041 orders:prodId:2782, orderSum:680, cnt:1
+Info;06.12.2017 18:09:48;Message:updating orders,exp:8041
+Warning;06.12.2017 18:09:48;Message:end update orders,exp:8041
+Info;06.12.2017 18:09:48;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:09:48;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:09:48;Message:0
+Warning;06.12.2017 18:09:48;Message:------End Trigger------
+Info;06.12.2017 18:42:17;Message:_____________
+Info;06.12.2017 18:42:17;Message:Begin expense
+Info;06.12.2017 18:42:17;Message:Временный:-1
+Info;06.12.2017 18:42:17;Message:Сумма:68 100
+Info;06.12.2017 18:42:17;Message:--------------------
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:19, orderSum:33000, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:5, orderSum:10000, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:26, orderSum:6600, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:25, orderSum:6600, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8786, orderSum:1700, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8789, orderSum:2000, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8788, orderSum:300, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8791, orderSum:500, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8790, orderSum:500, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8794, orderSum:500, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:8771, orderSum:3300, cnt:1
+Info;06.12.2017 18:42:17;Message:exp:8042 orders:prodId:2872, orderSum:3100, cnt:1
+Info;06.12.2017 18:42:17;Message:updating orders,exp:8042
+Warning;06.12.2017 18:42:17;Message:end update orders,exp:8042
+Info;06.12.2017 18:42:17;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:42:17;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:42:17;Message:0
+Warning;06.12.2017 18:42:17;Message:------End Trigger------
+Info;06.12.2017 18:42:27;Message:_____________
+Info;06.12.2017 18:42:27;Message:Begin expense
+Info;06.12.2017 18:42:27;Message:Временный:-1
+Info;06.12.2017 18:42:27;Message:Сумма:49 790
+Info;06.12.2017 18:42:27;Message:--------------------
+Info;06.12.2017 18:42:27;Message:exp:8043 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 18:42:27;Message:exp:8043 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 18:42:27;Message:exp:8043 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 18:42:27;Message:exp:8043 orders:prodId:7890, orderSum:8100, cnt:1
+Info;06.12.2017 18:42:27;Message:exp:8043 orders:prodId:7889, orderSum:2100, cnt:1
+Info;06.12.2017 18:42:27;Message:updating orders,exp:8043
+Warning;06.12.2017 18:42:27;Message:end update orders,exp:8043
+Info;06.12.2017 18:42:27;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:42:27;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:42:27;Message:0
+Warning;06.12.2017 18:42:27;Message:------End Trigger------
+Info;06.12.2017 18:53:18;Message:_____________
+Info;06.12.2017 18:53:18;Message:Begin expense
+Info;06.12.2017 18:53:18;Message:Временный:-1
+Info;06.12.2017 18:53:18;Message:Сумма:277 200
+Info;06.12.2017 18:53:23;Message:--------------------
+Info;06.12.2017 18:53:23;Message:exp:8044 orders:prodId:5194, orderSum:42400, cnt:2
+Info;06.12.2017 18:53:23;Message:exp:8044 orders:prodId:5193, orderSum:21200, cnt:1
+Info;06.12.2017 18:53:23;Message:exp:8044 orders:prodId:8291, orderSum:21200, cnt:1
+Info;06.12.2017 18:53:23;Message:exp:8044 orders:prodId:8299, orderSum:107900, cnt:1
+Info;06.12.2017 18:53:23;Message:exp:8044 orders:prodId:8297, orderSum:84500, cnt:1
+Info;06.12.2017 18:53:23;Message:updating orders,exp:8044
+Warning;06.12.2017 18:53:23;Message:end update orders,exp:8044
+Info;06.12.2017 18:53:23;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:53:23;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:53:23;Message:0
+Warning;06.12.2017 18:53:23;Message:------End Trigger------
+Info;06.12.2017 18:53:33;Message:_____________
+Info;06.12.2017 18:53:33;Message:Begin expense
+Info;06.12.2017 18:53:33;Message:Временный:-1
+Info;06.12.2017 18:53:33;Message:Сумма:67 690
+Info;06.12.2017 18:53:33;Message:--------------------
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:5063, orderSum:4000, cnt:1
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:4942, orderSum:23400, cnt:1
+Info;06.12.2017 18:53:33;Message:exp:8045 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 18:53:33;Message:updating orders,exp:8045
+Warning;06.12.2017 18:53:33;Message:end update orders,exp:8045
+Info;06.12.2017 18:53:33;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:53:33;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:53:33;Message:0
+Warning;06.12.2017 18:53:33;Message:------End Trigger------
+Info;06.12.2017 18:53:48;Message:_____________
+Info;06.12.2017 18:53:48;Message:Begin expense
+Info;06.12.2017 18:53:48;Message:Временный:-1
+Info;06.12.2017 18:53:48;Message:Сумма:75 350
+Info;06.12.2017 18:53:48;Message:--------------------
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:9217, orderSum:15300, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:9220, orderSum:14700, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:9219, orderSum:14700, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:7890, orderSum:8100, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:7889, orderSum:2100, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:7888, orderSum:1200, cnt:1
+Info;06.12.2017 18:53:48;Message:exp:8046 orders:prodId:6637, orderSum:19250, cnt:1
+Info;06.12.2017 18:53:48;Message:updating orders,exp:8046
+Warning;06.12.2017 18:53:48;Message:end update orders,exp:8046
+Info;06.12.2017 18:53:48;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 18:53:48;Message:на вр-ного счёта:-1
+Info;06.12.2017 18:53:48;Message:0
+Warning;06.12.2017 18:53:48;Message:------End Trigger------
+Info;06.12.2017 19:00:39;Message:_____________
+Info;06.12.2017 19:00:39;Message:Begin expense
+Info;06.12.2017 19:00:39;Message:Временный:-1
+Info;06.12.2017 19:00:39;Message:Сумма:108 000
+Info;06.12.2017 19:00:49;Message:--------------------
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9241, orderSum:12900, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9242, orderSum:12900, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9239, orderSum:10500, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9238, orderSum:10500, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9235, orderSum:19200, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9234, orderSum:19200, cnt:1
+Info;06.12.2017 19:00:49;Message:exp:8047 orders:prodId:9233, orderSum:22800, cnt:1
+Info;06.12.2017 19:00:49;Message:updating orders,exp:8047
+Warning;06.12.2017 19:00:49;Message:end update orders,exp:8047
+Info;06.12.2017 19:00:49;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:00:49;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:00:49;Message:0
+Warning;06.12.2017 19:00:49;Message:------End Trigger------
+Info;06.12.2017 19:05:44;Message:_____________
+Info;06.12.2017 19:05:44;Message:Begin expense
+Info;06.12.2017 19:05:44;Message:Временный:-1
+Info;06.12.2017 19:05:44;Message:Сумма:179 030
+Info;06.12.2017 19:05:49;Message:--------------------
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6702, orderSum:22200, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6701, orderSum:35290, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6972, orderSum:16990, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:7642, orderSum:23200, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:7641, orderSum:23200, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6980, orderSum:17290, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6664, orderSum:16970, cnt:1
+Info;06.12.2017 19:05:49;Message:exp:8048 orders:prodId:6971, orderSum:23890, cnt:1
+Info;06.12.2017 19:05:49;Message:updating orders,exp:8048
+Warning;06.12.2017 19:05:49;Message:end update orders,exp:8048
+Info;06.12.2017 19:05:49;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:05:49;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:05:49;Message:0
+Warning;06.12.2017 19:05:49;Message:------End Trigger------
+Info;06.12.2017 19:05:59;Message:_____________
+Info;06.12.2017 19:05:59;Message:Begin expense
+Info;06.12.2017 19:05:59;Message:Временный:-1
+Info;06.12.2017 19:05:59;Message:Сумма:95 880
+Info;06.12.2017 19:05:59;Message:--------------------
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:5063, orderSum:4000, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:4942, orderSum:23400, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:7976, orderSum:15200, cnt:1
+Info;06.12.2017 19:05:59;Message:exp:8049 orders:prodId:6202, orderSum:12990, cnt:1
+Info;06.12.2017 19:05:59;Message:updating orders,exp:8049
+Warning;06.12.2017 19:05:59;Message:end update orders,exp:8049
+Info;06.12.2017 19:05:59;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:05:59;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:05:59;Message:0
+Warning;06.12.2017 19:05:59;Message:------End Trigger------
+Info;06.12.2017 19:06:09;Message:_____________
+Info;06.12.2017 19:06:09;Message:Begin expense
+Info;06.12.2017 19:06:09;Message:Временный:-1
+Info;06.12.2017 19:06:09;Message:Сумма:212 630
+Info;06.12.2017 19:06:09;Message:--------------------
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7336, orderSum:37390, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7337, orderSum:36390, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7335, orderSum:22990, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7334, orderSum:22990, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7332, orderSum:22990, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7333, orderSum:22990, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7327, orderSum:22790, cnt:1
+Info;06.12.2017 19:06:09;Message:exp:8050 orders:prodId:7330, orderSum:24100, cnt:1
+Info;06.12.2017 19:06:09;Message:updating orders,exp:8050
+Warning;06.12.2017 19:06:09;Message:end update orders,exp:8050
+Info;06.12.2017 19:06:09;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:06:09;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:06:09;Message:0
+Warning;06.12.2017 19:06:09;Message:------End Trigger------
+Info;06.12.2017 19:06:19;Message:_____________
+Info;06.12.2017 19:06:19;Message:Begin expense
+Info;06.12.2017 19:06:19;Message:Временный:-1
+Info;06.12.2017 19:06:19;Message:Сумма:88 800
+Info;06.12.2017 19:06:19;Message:--------------------
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:9221, orderSum:2300, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:7891, orderSum:9200, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:7892, orderSum:9200, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:9218, orderSum:15300, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:9217, orderSum:15300, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:9220, orderSum:14700, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:9219, orderSum:14700, cnt:1
+Info;06.12.2017 19:06:19;Message:exp:8051 orders:prodId:7890, orderSum:8100, cnt:1
+Info;06.12.2017 19:06:19;Message:updating orders,exp:8051
+Warning;06.12.2017 19:06:19;Message:end update orders,exp:8051
+Info;06.12.2017 19:06:19;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:06:19;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:06:19;Message:0
+Warning;06.12.2017 19:06:19;Message:------End Trigger------
+Info;06.12.2017 19:06:29;Message:_____________
+Info;06.12.2017 19:06:29;Message:Begin expense
+Info;06.12.2017 19:06:29;Message:Временный:-1
+Info;06.12.2017 19:06:29;Message:Сумма:82 890
+Info;06.12.2017 19:06:29;Message:--------------------
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:5063, orderSum:4000, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:4942, orderSum:23400, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 19:06:29;Message:exp:8052 orders:prodId:7976, orderSum:15200, cnt:1
+Info;06.12.2017 19:06:29;Message:updating orders,exp:8052
+Warning;06.12.2017 19:06:29;Message:end update orders,exp:8052
+Info;06.12.2017 19:06:29;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:06:29;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:06:29;Message:0
+Warning;06.12.2017 19:06:29;Message:------End Trigger------
+Info;06.12.2017 19:06:34;Message:_____________
+Info;06.12.2017 19:06:34;Message:Begin expense
+Info;06.12.2017 19:06:34;Message:Временный:-1
+Info;06.12.2017 19:06:34;Message:Сумма:95 880
+Info;06.12.2017 19:06:34;Message:--------------------
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:5063, orderSum:4000, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:4916, orderSum:10100, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:3051, orderSum:18990, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:5234, orderSum:10500, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:4942, orderSum:23400, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:2736, orderSum:700, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:7976, orderSum:15200, cnt:1
+Info;06.12.2017 19:06:34;Message:exp:8053 orders:prodId:6202, orderSum:12990, cnt:1
+Info;06.12.2017 19:06:34;Message:updating orders,exp:8053
+Warning;06.12.2017 19:06:34;Message:end update orders,exp:8053
+Info;06.12.2017 19:06:34;Message:Переход c вр-го счёта:-1
+Info;06.12.2017 19:06:34;Message:на вр-ного счёта:-1
+Info;06.12.2017 19:06:34;Message:0
+Warning;06.12.2017 19:06:39;Message:------End Trigger------

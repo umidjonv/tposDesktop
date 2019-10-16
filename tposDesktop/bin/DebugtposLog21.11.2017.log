@@ -1,0 +1,114 @@
+Warning;21.11.2017 11:32:38;Message:end update orders,exp:4383
+Warning;21.11.2017 11:32:38;Message:------End Trigger------
+Info;21.11.2017 11:32:38;Message:updating orders,exp:4383
+Info;21.11.2017 11:32:38;Message:exp:4383 orders:prodId:1983, orderSum:42500, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:1984, orderSum:42500, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:1755, orderSum:65100, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:1757, orderSum:65100, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:1756, orderSum:65100, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:4069, orderSum:27750, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:4070, orderSum:27750, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:7886, orderSum:25100, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:7885, orderSum:25100, cnt:1
+Info;21.11.2017 11:32:39;Message:exp:4383 orders:prodId:7887, orderSum:25100, cnt:1
+Info;21.11.2017 11:32:39;Message:--------------------
+Info;21.11.2017 11:32:39;Message:Begin expense
+Info;21.11.2017 11:32:39;Message:_____________
+Warning;21.11.2017 11:32:49;Message:end update orders,exp:4384
+Warning;21.11.2017 11:32:49;Message:------End Trigger------
+Info;21.11.2017 11:32:49;Message:updating orders,exp:4384
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:408, orderSum:22100, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:436, orderSum:14200, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:441, orderSum:4550, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:403, orderSum:22100, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:3339, orderSum:11800, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:397, orderSum:11800, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:405, orderSum:22100, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:399, orderSum:11800, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:404, orderSum:22100, cnt:1
+Info;21.11.2017 11:32:49;Message:exp:4384 orders:prodId:3368, orderSum:7990, cnt:1
+Info;21.11.2017 11:32:49;Message:--------------------
+Info;21.11.2017 11:32:49;Message:Begin expense
+Info;21.11.2017 11:32:49;Message:_____________
+Warning;21.11.2017 11:32:59;Message:end update orders,exp:4385
+Warning;21.11.2017 11:32:59;Message:------End Trigger------
+Info;21.11.2017 11:32:59;Message:updating orders,exp:4385
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2433, orderSum:48100, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2432, orderSum:48100, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2123, orderSum:26100, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2115, orderSum:48100, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2144, orderSum:39950, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:1001, orderSum:20250, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:1050, orderSum:26650, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2120, orderSum:48100, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2122, orderSum:19800, cnt:1
+Info;21.11.2017 11:32:59;Message:exp:4385 orders:prodId:2141, orderSum:39950, cnt:1
+Info;21.11.2017 11:32:59;Message:--------------------
+Info;21.11.2017 11:32:59;Message:Begin expense
+Info;21.11.2017 11:32:59;Message:_____________
+Warning;21.11.2017 11:39:59;Message:end update orders,exp:4386
+Warning;21.11.2017 11:39:59;Message:------End Trigger------
+Info;21.11.2017 11:39:59;Message:updating orders,exp:4386
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:4914, orderSum:17950, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:1994, orderSum:17950, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:4003, orderSum:5500, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:3999, orderSum:5500, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:3996, orderSum:10390, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:3997, orderSum:20780, cnt:2
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:7386, orderSum:6100, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:1990, orderSum:35900, cnt:2
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:1995, orderSum:17950, cnt:1
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:4913, orderSum:35900, cnt:2
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:1992, orderSum:35900, cnt:2
+Info;21.11.2017 11:39:59;Message:exp:4386 orders:prodId:7393, orderSum:35900, cnt:2
+Info;21.11.2017 11:39:59;Message:--------------------
+Info;21.11.2017 11:39:59;Message:Begin expense
+Info;21.11.2017 11:39:59;Message:_____________
+Info;21.11.2017 11:40:34;Message:updating orders,exp:4387
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:5361, orderSum:53190, cnt:1
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:6110, orderSum:1500, cnt:1
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:6202, orderSum:12990, cnt:1
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:7976, orderSum:15200, cnt:1
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:4942, orderSum:23400, cnt:1
+Info;21.11.2017 11:40:34;Message:exp:4387 orders:prodId:3051, orderSum:18990, cnt:1
+Info;21.11.2017 11:40:34;Message:--------------------
+Info;21.11.2017 11:40:34;Message:Begin expense
+Warning;21.11.2017 11:40:34;Message:------End Trigger------
+Info;21.11.2017 11:40:34;Message:_____________
+Warning;21.11.2017 11:40:39;Message:end update orders,exp:4387
+Warning;21.11.2017 11:40:44;Message:end update orders,exp:4388
+Warning;21.11.2017 11:40:44;Message:------End Trigger------
+Info;21.11.2017 11:40:44;Message:updating orders,exp:4388
+Info;21.11.2017 11:40:44;Message:exp:4388 orders:prodId:6110, orderSum:1500, cnt:1
+Info;21.11.2017 11:40:44;Message:exp:4388 orders:prodId:6202, orderSum:12990, cnt:1
+Info;21.11.2017 11:40:44;Message:exp:4388 orders:prodId:2736, orderSum:700, cnt:1
+Info;21.11.2017 11:40:44;Message:exp:4388 orders:prodId:5234, orderSum:10500, cnt:1
+Info;21.11.2017 11:40:44;Message:exp:4388 orders:prodId:3051, orderSum:18990, cnt:1
+Info;21.11.2017 11:40:44;Message:--------------------
+Info;21.11.2017 11:40:44;Message:Begin expense
+Info;21.11.2017 11:40:44;Message:_____________
+Warning;21.11.2017 11:52:22;Message:------End Trigger------
+Warning;21.11.2017 11:52:22;Message:end update orders,exp:4389
+Info;21.11.2017 11:52:22;Message:updating orders,exp:4389
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:3051, orderSum:18990, cnt:1
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:5234, orderSum:10500, cnt:1
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:4942, orderSum:23400, cnt:1
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:6202, orderSum:12990, cnt:1
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:7976, orderSum:45600, cnt:3
+Info;21.11.2017 11:52:22;Message:exp:4389 orders:prodId:2736, orderSum:2100, cnt:3
+Info;21.11.2017 11:52:22;Message:--------------------
+Info;21.11.2017 11:52:22;Message:Begin expense
+Info;21.11.2017 11:52:22;Message:_____________
+Warning;21.11.2017 11:52:27;Message:end update orders,exp:4390
+Info;21.11.2017 11:52:27;Message:updating orders,exp:4390
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:7976, orderSum:15200, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:2736, orderSum:700, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:4942, orderSum:23400, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:5234, orderSum:10500, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:3051, orderSum:18990, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:4916, orderSum:10100, cnt:1
+Info;21.11.2017 11:52:27;Message:exp:4390 orders:prodId:6638, orderSum:19250, cnt:1
+Info;21.11.2017 11:52:27;Message:--------------------
+Info;21.11.2017 11:52:27;Message:Begin expense
+Info;21.11.2017 11:52:27;Message:_____________
+Warning;21.11.2017 11:52:32;Message:------End Trigger------

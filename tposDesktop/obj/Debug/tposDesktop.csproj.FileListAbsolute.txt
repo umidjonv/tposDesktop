@@ -1,35 +1,664 @@
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\tposDesktop.pdb
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.dll
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\MySql.Data.dll
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.pdb
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.xml
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
-C:\Users\user1\Documents\Visual Studio 2013\Projects\tposDesktop\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\SSD\Desktop\INSTALL\market\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Aptitude\Desktop\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\Aptitude\Desktop\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\Aptitude\Desktop\Новая папка\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\Aptitude\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\keypad.dll
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\bin\Debug\keypad.pdb
+C:\Users\user1\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market14122017\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\zxing.dll
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\umidjon.vakhidov\Desktop\Tpos\market\market1\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+D:\docs\ydisk\market\tposDesktop\bin\Debug\tposDesktop.exe.config
+D:\docs\ydisk\market\tposDesktop\bin\Debug\tposDesktop.exe
+D:\docs\ydisk\market\tposDesktop\bin\Debug\tposDesktop.pdb
+D:\docs\ydisk\market\tposDesktop\bin\Debug\ExcelLibrary.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\MySql.Data.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\zxing.dll
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.pdb
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.xml
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+D:\docs\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+D:\docs\ydisk\market\tposDesktop\obj\Debug\Interop.AddIn.dll
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+D:\docs\ydisk\market\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.users.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\Classes.OpenDay.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.packing.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.exe
+D:\docs\ydisk\market\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\zxing.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.KolForm.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.FormSpisaniye.resources
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\zxing.dll
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\User\Desktop\market\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.SubForms.FormSpisaniye.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.KolForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\User\Desktop\market\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\Interop.AddIn.dll
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\ExcelLibrary.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\zxing.dll
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\user\Downloads\market\market\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.BackRealize.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.AddUser.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.DateSelectForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.SubForms.FormSpisaniye.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.SubForms.GetFakturaForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.KeyPadForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.KolForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.ProdListLibra.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.ProvReport.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.userPass.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.users.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.ContAdd.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.Contragent.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.debtPaid.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.Kassa.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.packing.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.printerSettings.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.printForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.virtualKeyboard.resources
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache

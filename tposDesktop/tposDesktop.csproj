@@ -29,7 +29,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -87,12 +87,15 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon_hF6_icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ExcelLibrary.dll</HintPath>
+      <HintPath>.\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="keypad">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2013\Projects\keypad\keypad\bin\Debug\keypad.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts">
       <HintPath>..\packages\LiveCharts.0.9.3.5\lib\net45\LiveCharts.dll</HintPath>
@@ -104,12 +107,18 @@
       <HintPath>..\packages\LiveCharts.Wpf.0.9.3.5\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Debug\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.AddIn" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -127,23 +136,36 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="zxing, Version=0.15.0.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\zxing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Check.cs" />
+    <Compile Include="Classes\Configs.cs" />
     <Compile Include="Classes\ExcelClass.cs" />
     <Compile Include="Classes\ExportExcel.cs" />
+    <Compile Include="Classes\EzioApi.cs" />
+    <Compile Include="Classes\GodexPrinter.cs" />
     <Compile Include="Classes\ImageCell.cs" />
+    <Compile Include="Classes\Logs.cs" />
     <Compile Include="Classes\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\ProductOne.cs" />
+    <Compile Include="Classes\Reports.cs" />
     <Compile Include="Classes\TextScanner.cs" />
     <Compile Include="Classes\VisualEffects.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
-      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSetTpos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
@@ -151,21 +173,33 @@
     <Compile Include="FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\printer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>printer.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\AddRealize.cs">
+    <Compile Include="Settings.cs" />
+    <Compile Include="SubForms\backend\BackRealize.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\AddRealize.Designer.cs">
+    <Compile Include="SubForms\backend\BackRealize.Designer.cs">
+      <DependentUpon>BackRealize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\AddRealize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\AddRealize.Designer.cs">
       <DependentUpon>AddRealize.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\AddForm.cs">
+    <Compile Include="SubForms\backend\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\AddForm.Designer.cs">
+    <Compile Include="SubForms\backend\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\VirtualKeyboard.cs">
@@ -181,16 +215,71 @@
     <Compile Include="Classes\TablePanelDishes.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SubForms\commentForm.cs">
+    <Compile Include="SubForms\backend\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\commentForm.Designer.cs">
-      <DependentUpon>commentForm.cs</DependentUpon>
+    <Compile Include="SubForms\backend\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSetTpos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetTpos.xsd</DependentUpon>
+    <Compile Include="SubForms\backend\DateSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\DateSelect.Designer.cs">
+      <DependentUpon>DateSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\FormSpisaniye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\FormSpisaniye.Designer.cs">
+      <DependentUpon>FormSpisaniye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\GetFakturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\GetFakturaForm.Designer.cs">
+      <DependentUpon>GetFakturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\KeyPadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\KeyPadForm.Designer.cs">
+      <DependentUpon>KeyPadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\KolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\KolForm.Designer.cs">
+      <DependentUpon>KolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdListLibra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdListLibra.Designer.cs">
+      <DependentUpon>ProdListLibra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\ProvReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\ProvReport.Designer.cs">
+      <DependentUpon>ProvReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\userPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\userPass.Designer.cs">
+      <DependentUpon>userPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\users.Designer.cs">
+      <DependentUpon>users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\commentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\commentForm.Designer.cs">
+      <DependentUpon>commentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -210,28 +299,52 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\FakturaOrgsForm.cs">
+    <Compile Include="SubForms\frontEnd\ContAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\FakturaOrgsForm.Designer.cs">
+    <Compile Include="SubForms\frontEnd\ContAdd.Designer.cs">
+      <DependentUpon>ContAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\Contragent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\Contragent.Designer.cs">
+      <DependentUpon>Contragent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\debtPaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\debtPaid.Designer.cs">
+      <DependentUpon>debtPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\FakturaOrgsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\FakturaOrgsForm.Designer.cs">
       <DependentUpon>FakturaOrgsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\FormDolgi.cs">
+    <Compile Include="SubForms\frontEnd\FormDolgi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\FormDolgi.Designer.cs">
+    <Compile Include="SubForms\frontEnd\FormDolgi.Designer.cs">
       <DependentUpon>FormDolgi.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\FormFaktura.cs">
+    <Compile Include="SubForms\backend\FormFaktura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\FormFaktura.Designer.cs">
+    <Compile Include="SubForms\backend\FormFaktura.Designer.cs">
       <DependentUpon>FormFaktura.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\OpenDay.cs">
+    <Compile Include="SubForms\frontEnd\Kassa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\OpenDay.Designer.cs">
+    <Compile Include="SubForms\frontEnd\kassa.Designer.cs">
+      <DependentUpon>Kassa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\OpenDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\frontEnd\OpenDay.Designer.cs">
       <DependentUpon>OpenDay.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\OrderForm.cs">
@@ -243,23 +356,59 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />
-    <Compile Include="SubForms\Ports.cs">
+    <Compile Include="SubForms\backend\packing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\Ports.Designer.cs">
+    <Compile Include="SubForms\backend\packing.Designer.cs">
+      <DependentUpon>packing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\passForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\passForm.Designer.cs">
+      <DependentUpon>passForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\Ports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\Ports.Designer.cs">
       <DependentUpon>Ports.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\SettingsForm.cs">
+    <Compile Include="SubForms\backend\printerSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\SettingsForm.Designer.cs">
+    <Compile Include="SubForms\backend\printerSettings.Designer.cs">
+      <DependentUpon>printerSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\printForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\printForm.Designer.cs">
+      <DependentUpon>printForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdList.Designer.cs">
+      <DependentUpon>ProdList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\TerminalForm.cs">
+    <Compile Include="SubForms\frontEnd\TerminalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForms\TerminalForm.Designer.cs">
+    <Compile Include="SubForms\frontEnd\TerminalForm.Designer.cs">
       <DependentUpon>TerminalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\virtualKeyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\virtualKeyboard.Designer.cs">
+      <DependentUpon>virtualKeyboard.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Classes\VisualEffects.resx">
       <DependentUpon>VisualEffects.cs</DependentUpon>
@@ -267,16 +416,49 @@
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\AddRealize.resx">
+    <EmbeddedResource Include="SubForms\backend\BackRealize.resx">
+      <DependentUpon>BackRealize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\AddRealize.resx">
       <DependentUpon>AddRealize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\AddForm.resx">
+    <EmbeddedResource Include="SubForms\backend\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Classes\VirtualKeyboard.resx">
       <DependentUpon>VirtualKeyboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\commentForm.resx">
+    <EmbeddedResource Include="SubForms\backend\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\DateSelect.resx">
+      <DependentUpon>DateSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\FormSpisaniye.resx">
+      <DependentUpon>FormSpisaniye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\GetFakturaForm.resx">
+      <DependentUpon>GetFakturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\KeyPadForm.resx">
+      <DependentUpon>KeyPadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\KolForm.resx">
+      <DependentUpon>KolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\ProdListLibra.resx">
+      <DependentUpon>ProdListLibra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\ProvReport.resx">
+      <DependentUpon>ProvReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\userPass.resx">
+      <DependentUpon>userPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\users.resx">
+      <DependentUpon>users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\frontEnd\commentForm.resx">
       <DependentUpon>commentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
@@ -288,16 +470,28 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\FakturaOrgsForm.resx">
+    <EmbeddedResource Include="SubForms\frontEnd\ContAdd.resx">
+      <DependentUpon>ContAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\frontEnd\Contragent.resx">
+      <DependentUpon>Contragent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\frontEnd\debtPaid.resx">
+      <DependentUpon>debtPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\FakturaOrgsForm.resx">
       <DependentUpon>FakturaOrgsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\FormDolgi.resx">
+    <EmbeddedResource Include="SubForms\frontEnd\FormDolgi.resx">
       <DependentUpon>FormDolgi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\FormFaktura.resx">
+    <EmbeddedResource Include="SubForms\backend\FormFaktura.resx">
       <DependentUpon>FormFaktura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\OpenDay.resx">
+    <EmbeddedResource Include="SubForms\frontEnd\kassa.resx">
+      <DependentUpon>Kassa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\frontEnd\OpenDay.resx">
       <DependentUpon>OpenDay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\OrderForm.resx">
@@ -308,25 +502,46 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\SettingsForm.resx">
+    <EmbeddedResource Include="SubForms\backend\packing.resx">
+      <DependentUpon>packing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\printerSettings.resx">
+      <DependentUpon>printerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\printForm.resx">
+      <DependentUpon>printForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\ProdList.resx">
+      <DependentUpon>ProdList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\TerminalForm.resx">
+    <EmbeddedResource Include="SubForms\frontEnd\TerminalForm.resx">
       <DependentUpon>TerminalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <EmbeddedResource Include="SubForms\virtualKeyboard.resx">
+      <DependentUpon>virtualKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataSetTpos.xsc">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </None>
     <None Include="DataSetTpos.xsd">
-      <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSetTpos.Designer.cs</LastGenOutput>
     </None>
     <None Include="DataSetTpos.xss">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\printer.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>printer.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -349,12 +564,12 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -379,36 +594,36 @@
     <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="icon_hF6_icon.ico" />
+    <Content Include="MySql.Data.dll" />
+    <None Include="Resources\Package-Add-icon.png" />
+    <None Include="Resources\add-base1.gif" />
+    <None Include="Resources\delete1.gif" />
+    <None Include="Resources\back1.gif" />
+    <None Include="Resources\delete.gif" />
+    <None Include="Resources\back.gif" />
+    <None Include="Resources\login-new.gif" />
+    <None Include="Resources\printer-icon-vector-stock-vector-532760.gif" />
+    <None Include="Resources\login3.gif" />
+    <None Include="Resources\terminal2.gif" />
+    <None Include="Resources\dolg1.gif" />
+    <None Include="Resources\save.gif" />
+    <None Include="Resources\zoom-search-2-icon.png" />
+    <None Include="Resources\show_dolg.gif" />
+    <None Include="Resources\home.gif" />
+    <None Include="Resources\add-base.gif" />
     <None Include="Resources\qarz.png" />
     <None Include="Resources\poisk.png" />
     <None Include="Resources\remove.png" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>7</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+    <COMReference Include="AddIn">
+      <Guid>{14713A13-3A1E-44B6-B8E0-BEBE19B93BED}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>8</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

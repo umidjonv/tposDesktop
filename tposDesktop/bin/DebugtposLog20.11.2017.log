@@ -1,0 +1,134 @@
+Info;20.11.2017 16:57:45;Message:--------------------
+Info;20.11.2017 16:57:45;Message:Begin expense
+Info;20.11.2017 16:57:45;Message:update expense
+Info;20.11.2017 16:57:45;Message:Triggeting executed
+Info;20.11.2017 16:57:45;Message:Clear dgv
+Info;20.11.2017 16:57:45;Message:exp:4355 orders:prodId:6638, orderSum:19250, cnt:1
+Info;20.11.2017 16:57:45;Message:exp:4355 orders:prodId:3051, orderSum:18990, cnt:1
+Info;20.11.2017 16:57:45;Message:exp:4355 orders:prodId:5234, orderSum:10500, cnt:1
+Info;20.11.2017 16:57:45;Message:updating orders,exp:4355
+Error;20.11.2017 16:57:45;Message:Error:Процесс не может получить доступ к файлу "C:\Users\umidjon.vakhidov\Desktop\Tpos\market1\tposDesktop\bin\DebugtposLog20.11.2017.log", так как этот файл используется другим процессом.
+Warning;20.11.2017 16:57:45;Message:end update orders,exp:4355
+Info;20.11.2017 17:13:17;Message:--------------------
+Info;20.11.2017 17:13:17;Message:Begin expense
+Info;20.11.2017 17:13:17;Message:update expense
+Info;20.11.2017 17:13:17;Message:Triggeting executed
+Info;20.11.2017 17:13:17;Message:Clear dgv
+Info;20.11.2017 17:13:17;Message:exp:4356 orders:prodId:2736, orderSum:700, cnt:1
+Info;20.11.2017 17:13:17;Message:exp:4356 orders:prodId:4916, orderSum:10100, cnt:1
+Info;20.11.2017 17:13:17;Message:exp:4356 orders:prodId:6638, orderSum:19250, cnt:1
+Info;20.11.2017 17:13:17;Message:updating orders,exp:4356
+Info;20.11.2017 17:13:17;Message:Printing
+Warning;20.11.2017 17:13:17;Message:end update orders,exp:4356
+Info;20.11.2017 17:14:45;Message:--------------------
+Info;20.11.2017 17:14:45;Message:Begin expense
+Info;20.11.2017 17:14:45;Message:update expense
+Info;20.11.2017 17:14:45;Message:Triggeting executed
+Info;20.11.2017 17:14:45;Message:Clear dgv
+Info;20.11.2017 17:15:09;Message:Printing
+Info;20.11.2017 17:16:37;Message:--------------------
+Info;20.11.2017 17:16:37;Message:Begin expense
+Info;20.11.2017 17:16:37;Message:update expense
+Info;20.11.2017 17:16:37;Message:Triggeting executed
+Info;20.11.2017 17:16:37;Message:Clear dgv
+Info;20.11.2017 17:16:37;Message:Printing
+Info;20.11.2017 17:16:44;Message:--------------------
+Info;20.11.2017 17:16:44;Message:Begin expense
+Info;20.11.2017 17:16:44;Message:update expense
+Info;20.11.2017 17:16:44;Message:Triggeting executed
+Info;20.11.2017 17:16:44;Message:Clear dgv
+Info;20.11.2017 17:16:44;Message:Printing
+Info;20.11.2017 17:16:55;Message:--------------------
+Info;20.11.2017 17:16:55;Message:Begin expense
+Info;20.11.2017 17:16:55;Message:update expense
+Info;20.11.2017 17:16:55;Message:Triggeting executed
+Info;20.11.2017 17:16:55;Message:Clear dgv
+Info;20.11.2017 17:16:55;Message:Printing
+Info;20.11.2017 17:18:22;Message:--------------------
+Info;20.11.2017 17:18:22;Message:Begin expense
+Info;20.11.2017 17:18:22;Message:update expense
+Info;20.11.2017 17:18:22;Message:Triggeting executed
+Info;20.11.2017 17:18:22;Message:Clear dgv
+Info;20.11.2017 17:18:22;Message:Printing
+Info;20.11.2017 17:28:33;Message:--------------------
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:2736, orderSum:700, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:2782, orderSum:680, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1075, orderSum:150, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:8275, orderSum:150, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:7752, orderSum:200, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:2676, orderSum:720, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:8875, orderSum:100, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:8618, orderSum:200, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:8433, orderSum:100, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:5162, orderSum:1000, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1556, orderSum:3000, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1587, orderSum:950, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1586, orderSum:950, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:6714, orderSum:8000, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1677, orderSum:3700, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:6508, orderSum:1390, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:2673, orderSum:4500, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:6509, orderSum:1500, cnt:1
+Info;20.11.2017 17:28:33;Message:exp:4362 orders:prodId:1634, orderSum:950, cnt:1
+Info;20.11.2017 17:28:33;Message:updating orders,exp:4362
+Warning;20.11.2017 17:28:34;Message:end update orders,exp:4362
+Warning;20.11.2017 17:28:44;Message:------End Trigger------
+Info;20.11.2017 17:32:55;Message:--------------------
+Info;20.11.2017 17:32:55;Message:exp:4363 orders:prodId:7752, orderSum:200, cnt:1
+Info;20.11.2017 17:32:55;Message:exp:4363 orders:prodId:2782, orderSum:680, cnt:1
+Info;20.11.2017 17:32:55;Message:exp:4363 orders:prodId:2676, orderSum:720, cnt:1
+Info;20.11.2017 17:32:55;Message:exp:4363 orders:prodId:8875, orderSum:100, cnt:1
+Info;20.11.2017 17:32:55;Message:exp:4363 orders:prodId:8618, orderSum:200, cnt:1
+Info;20.11.2017 17:33:29;Message:exp:4363 orders:prodId:5162, orderSum:1000, cnt:1
+Info;20.11.2017 18:00:42;Message:--------------------
+Info;20.11.2017 18:00:42;Message:exp:4364 orders:prodId:2736, orderSum:700, cnt:1
+Info;20.11.2017 18:00:42;Message:exp:4364 orders:prodId:8477, orderSum:1000, cnt:1
+Info;20.11.2017 18:00:42;Message:exp:4364 orders:prodId:8478, orderSum:1000, cnt:1
+Error;20.11.2017 18:00:42;Message:Error:Недопустимая операция: приводит к повторному вызову функции SetCurrentCellAddressCore.
+Info;20.11.2017 18:02:29;Message:--------------------
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:6110, orderSum:1500, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:5361, orderSum:53190, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:6202, orderSum:12990, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:7976, orderSum:15200, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:2736, orderSum:700, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:4942, orderSum:23400, cnt:1
+Info;20.11.2017 18:02:29;Message:exp:4365 orders:prodId:3051, orderSum:18990, cnt:1
+Info;20.11.2017 18:02:29;Message:updating orders,exp:4365
+Warning;20.11.2017 18:02:30;Message:end update orders,exp:4365
+Warning;20.11.2017 18:02:33;Message:------End Trigger------
+Info;20.11.2017 18:03:04;Message:--------------------
+Info;20.11.2017 18:03:04;Message:exp:4366 orders:prodId:5882, orderSum:5850, cnt:1
+Info;20.11.2017 18:03:04;Message:exp:4366 orders:prodId:3570, orderSum:9000, cnt:3
+Info;20.11.2017 18:03:04;Message:exp:4366 orders:prodId:8007, orderSum:17200, cnt:2
+Info;20.11.2017 18:03:04;Message:exp:4366 orders:prodId:3056, orderSum:17200, cnt:2
+Info;20.11.2017 18:03:04;Message:exp:4366 orders:prodId:4505, orderSum:4600, cnt:1
+Info;20.11.2017 18:03:04;Message:updating orders,exp:4366
+Warning;20.11.2017 18:03:20;Message:end update orders,exp:4366
+Info;20.11.2017 18:06:59;Message:--------------------
+Info;20.11.2017 18:06:59;Message:exp:4367 orders:prodId:6223, orderSum:11400, cnt:1
+Info;20.11.2017 18:06:59;Message:exp:4367 orders:prodId:7097, orderSum:19790, cnt:1
+Info;20.11.2017 18:06:59;Message:exp:4367 orders:prodId:7095, orderSum:36300, cnt:1
+Info;20.11.2017 18:06:59;Message:exp:4367 orders:prodId:7094, orderSum:18590, cnt:1
+Info;20.11.2017 18:06:59;Message:exp:4367 orders:prodId:7093, orderSum:54380, cnt:2
+Info;20.11.2017 18:06:59;Message:updating orders,exp:4367
+Warning;20.11.2017 18:06:59;Message:end update orders,exp:4367
+Warning;20.11.2017 18:07:01;Message:------End Trigger------
+Info;20.11.2017 18:07:15;Message:--------------------
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7093, orderSum:27190, cnt:1
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7092, orderSum:11190, cnt:1
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7094, orderSum:37180, cnt:2
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7095, orderSum:36300, cnt:1
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7097, orderSum:19790, cnt:1
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:8598, orderSum:31400, cnt:1
+Info;20.11.2017 18:07:15;Message:exp:4368 orders:prodId:7096, orderSum:10500, cnt:1
+Info;20.11.2017 18:07:15;Message:updating orders,exp:4368
+Warning;20.11.2017 18:07:15;Message:end update orders,exp:4368
+Warning;20.11.2017 18:07:19;Message:------End Trigger------
+Info;20.11.2017 18:07:27;Message:--------------------
+Info;20.11.2017 18:07:27;Message:exp:4369 orders:prodId:7093, orderSum:27190, cnt:1
+Info;20.11.2017 18:07:27;Message:exp:4369 orders:prodId:7094, orderSum:18590, cnt:1
+Info;20.11.2017 18:07:27;Message:exp:4369 orders:prodId:7096, orderSum:10500, cnt:1
+Info;20.11.2017 18:07:27;Message:exp:4369 orders:prodId:7097, orderSum:19790, cnt:1
+Info;20.11.2017 18:07:27;Message:updating orders,exp:4369
+Warning;20.11.2017 18:07:27;Message:end update orders,exp:4369
+Warning;20.11.2017 18:07:29;Message:------End Trigger------

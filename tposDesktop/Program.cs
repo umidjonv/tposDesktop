@@ -10,10 +10,11 @@ namespace tposDesktop
     {
         enum WorkType { Touch, Mouse };
         static WorkType wType = WorkType.Mouse;
-        public static int window_type = 2;
+        public static int window_type = 1;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
+        public static bool backDate = false;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -55,15 +56,17 @@ namespace tposDesktop
 
                                 break;
                             case 2:
+                                
                                 Application.Run(new MainForm());
                                 break;
                             case 3:
+                                
                                 Application.Run(new FormAdmin());
                                 break;
 
                         }
 
-                        GC.Collect();
+                        //GC.Collect();
                     }
                 }
                 else
@@ -86,11 +89,14 @@ namespace tposDesktop
         public static int CurrentTable;
         public static int expense_id;
         public static string role;
+        
 
     }
+    
+
     struct Parameters
     {
         string LangPath;
-        
+        int lastFaktura;
     }
 }
