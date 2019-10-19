@@ -107,7 +107,7 @@
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTovar.Size = new System.Drawing.Size(699, 378);
             this.dgvTovar.TabIndex = 12;
-            this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.double_click);
+            this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectproduct_click);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             // 
             // productTableAdapter1

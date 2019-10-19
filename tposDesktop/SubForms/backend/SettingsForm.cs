@@ -24,6 +24,9 @@ namespace tposDesktop
             if (Configs.GetConfig("IsPercentAll") != "" && Configs.GetConfig("IsPercentAll") == "True")
                 chbRebate.Checked = true;
             else chbRebate.Checked = false;
+            cbxDiscount.Enabled = settings.discount;
+            chbDiscount.Checked = settings.discount;
+
 
             if (Configs.GetConfig("PercentAll") != "")
                 tbxPercent.Text = Configs.GetConfig("PercentAll");
@@ -50,7 +53,12 @@ namespace tposDesktop
                 lblDB.Visible = true;
                 tbxDB.Visible = true;
             }
+            DataSetTposTableAdapters.discountsTableAdapter discountDa = new DataSetTposTableAdapters.discountsTableAdapter();
+            discountDa.Fill(Classes.DB.DBclass.DS.discounts);
 
+            cbxDiscount.DataSource = Classes.DB.DBclass.DS.discounts;
+            cbxDiscount.DisplayMember = "discountName";
+            cbxDiscount.ValueMember = "discountId";
         }
 
         private void chbCOM_CheckedChanged(object sender, EventArgs e)
@@ -73,6 +81,7 @@ namespace tposDesktop
             settings.SerialPort = tbxCom.Text;
             settings.ExpDate = dtpExpDate.Value;
             settings.kassa = kassaTbx.Text;
+            
             Configuration config = ConfigurationManager.OpenExeConfiguration(Application.StartupPath+"\\tposDesktop.exe");
             config.ConnectionStrings.ConnectionStrings["tposDesktop.Properties.Settings.testConnectionString"].ConnectionString = tbxDB.Text;
             //config.ConnectionStrings.ConnectionStrings["tposDesktop.Properties.Settings.testConnectionString"].ProviderName = "MySql.Data.MySqlClient";
@@ -81,9 +90,17 @@ namespace tposDesktop
 
             Configs.SetConfig("IsPercentAll", this.chbRebate.Checked.ToString());
             Configs.SetConfig("PercentAll", tbxPercent.Text);
-            //if(this.chbRebate.Checked) settings.chbRebateChecked = this.chbRebate.Checked;
 
-            //settings.PercentPensioner = int.Parse(tbxPercent.Text);
+            if (chbDiscount.Enabled)
+            {
+                settings.discount = chbDiscount.Enabled;
+                Configs.SetConfig("Discount", cbxDiscount.SelectedValue.ToString());
+            }
+            else
+            {
+                Configs.SetConfig("Discount", "0");
+            }
+            
 
             settings.Save();
             this.Close();
@@ -103,6 +120,20 @@ namespace tposDesktop
             if (chbRebate.Checked)
             {
                 tbxPercent.Enabled = true;
+                settings.chbRebateChecked = true;
+            }
+            else
+            {
+                tbxPercent.Enabled = false;
+                settings.chbRebateChecked = false;
+            }
+        }
+
+        private void chbDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbDiscount.Checked)
+            {
+                cbxDiscount.Enabled = true;
                 settings.chbRebateChecked = true;
             }
             else

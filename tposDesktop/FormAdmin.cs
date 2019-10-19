@@ -2470,5 +2470,11 @@ namespace tposDesktop
                 //dgvBalanceChange.Rows[e.RowIndex].Cells["colProduct"].Value = 
             }
         }
+
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+            ProdListDiscount pd = new ProdListDiscount();
+            pd.ShowDialog();
+        }
     }
 }

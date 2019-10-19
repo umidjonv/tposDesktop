@@ -19,7 +19,7 @@ namespace tposDesktop
         public string id;
         string btn;
         bool isNew = true;
-        
+        bool getOnlyProduct = false;
         DataSetTpos.hotkeysRow[] hdr;
         public ProdList(string btnNum,string btns, string ID)
         {
@@ -44,6 +44,20 @@ namespace tposDesktop
  
             }
 
+        }
+
+        public ProdList()
+        {
+            InitializeComponent();
+            id = "";
+            btn = "";
+            prodName = "";
+            DBclass db = new DBclass();
+            productTableAdapter1.Fill(DBclass.DS.product);
+            DataView dtv = new DataView(DBclass.DS.product);
+            dgvTovar.DataSource = dtv;
+            getOnlyProduct = true;
+            
         }
 
         private void tbx_ValueChanged(object sender, EventArgs e)
@@ -74,7 +88,32 @@ namespace tposDesktop
             dgvTovar.Columns.Add(cellBtn);
         }
 
-        private void double_click(object sender, DataGridViewCellEventArgs e)
+        private void selectproduct_click(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!getOnlyProduct)
+            {
+                select_for_hotkey_click(sender, e);
+            }
+            else
+            {
+                select_for_product(sender, e);
+            }
+        }
+
+        private void select_for_product(object sender, DataGridViewCellEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            DataSetTpos.productRow dr = DBclass.DS.product.FindByproductId((int)dgv.Rows[e.RowIndex].Cells["productId"].Value);
+
+            if (dr != null)
+            {
+                prodName = dr.name;
+                id = dr.productId.ToString();
+                this.DialogResult = DialogResult.OK;
+            }
+            this.Close();
+        }
+        private void select_for_hotkey_click(object sender, DataGridViewCellEventArgs e)
         {
             var dgv = sender as DataGridView;
             

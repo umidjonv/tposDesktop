@@ -540,7 +540,6 @@ C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.virtualKe
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.exe
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.pdb
-C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.KolForm.resources
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.SubForms.FormSpisaniye.resources
 C:\Users\User\Desktop\market\tposDesktop\bin\Debug\tposDesktop.exe.config
@@ -662,3 +661,5 @@ C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csproj.G
 C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
 C:\Users\user\Downloads\market\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.ProdListDiscount.resources
+C:\Users\user\Documents\ydisk\market\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache

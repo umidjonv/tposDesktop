@@ -28,7 +28,7 @@ namespace tposDesktop
         bool backDate = false;
         private bool actionMath = false;
         private string action = "";
-
+        private int discountId = -1;
         private string key_num = "";
         int ExpenseId = 0;
         private Button activeBtn;
@@ -58,6 +58,15 @@ namespace tposDesktop
             configsTableAdapter cfgDa = new configsTableAdapter();
             cfgDa.Fill(DBclass.DS.configs);
             Configs cfgs = new Configs();
+
+            string discount_val = Configs.GetConfig("discount");
+            if(discount_val!=""&& discount_val != "0")
+            {
+                discountId = Convert.ToInt32(discount_val);
+                v_discountTableAdapter discountpDa = new v_discountTableAdapter();
+                discountpDa.Fill(DBclass.DS.v_discount, discountId);
+                
+            }
 
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
                 DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
@@ -481,6 +490,42 @@ namespace tposDesktop
             }
 
         }
+
+        private int CheckDiscount(int productId)
+        {
+            DataSetTpos.v_discountRow[] discRows = FindDiscountByproductId(productId);
+
+            if (discRows.Length > 0)
+            {
+                return discRows[0].discount;
+            }
+            else
+            {
+                return 0;
+            }
+                
+        }
+
+        public DataSetTpos.v_discountRow[] FindDiscountByproductId(int productId)
+        {
+            return (DataSetTpos.v_discountRow[])(DBclass.DS.v_discount.Select("productId =" + productId.ToString()));
+        }
+        private double GetDiscountSum(int productId, double sum)
+        {
+            double discountSum = 0;
+            //checking discount
+            if (discountId != -1)
+            {
+                int discount = CheckDiscount(productId);
+                if (discount != 0)
+                {
+                    discountSum = sum / 100 * discount;
+                }
+
+            }
+            return discountSum;
+        }
+
         private void AddProduct(DataRow[] dr, bool isBarcode, string barcode)
         {
 
@@ -507,8 +552,11 @@ namespace tposDesktop
 
                 if (dr.Length != 0)
                 {
+                    
 
                     DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
+                    float discountSum = 0;
+
                     if (drP.price == 0)
                     {
                         MessageBox.Show("Товара нет на складе. Обратитесь к администратору");
@@ -530,7 +578,9 @@ namespace tposDesktop
                         ordrow.packCount = ordrow.packCount + (drP.pack == 0 ? 1 : drP.pack);
                         if (ordrow.packCount <= 0) ordrow.packCount = 1;
                         DataRow drOrder = ordrow;
-                        drOrder["sumProduct"] = ordrow.packCount * drP.price;//ordrow.AcceptChanges();
+                        double summ = ordrow.packCount * drP.price;//ordrow.AcceptChanges();
+                        ordrow.discount = (discountId!=-1? CheckDiscount(drP.productId):0);
+                        drOrder["sumProduct"] = summ - GetDiscountSum(drP.productId, summ);
                         ordrow.orderSumm = Convert.ToSingle(drOrder["sumProduct"]);
                     }
                     else
@@ -548,9 +598,12 @@ namespace tposDesktop
                         if (drP.price != 0)
                         {
                             ordrow.packCount = drP.pack;
-                            ordrow.orderSumm = (float)Math.Round(drP.price * drP.pack);
+                            double summ = Math.Round(drP.price * drP.pack);
+                            
                             DataRow drOrder = ordrow;
-                            drOrder["sumProduct"] = (float)Math.Round(drP.price * drP.pack); ;//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
+                            ordrow.discount = (discountId != -1 ? CheckDiscount(drP.productId) : 0);
+                            drOrder["sumProduct"] = summ - GetDiscountSum(drP.productId, summ); ;
+                            ordrow.orderSumm = Convert.ToSingle(drOrder["sumProduct"]);//ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);
 
                             //grid.Rows[e.RowIndex].Cells["sumProduct"].Value = (Convert.ToInt32(grid.Rows[e.RowIndex].Cells["packCount"].Value) * Convert.ToInt32(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
                         }
@@ -704,10 +757,10 @@ namespace tposDesktop
                     int num = 1;
                     foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
                     {
-                        forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (dgvRow.Cells["productPrice"].Value).ToString());
+                        forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (Convert.ToDouble(dgvRow.Cells["productPrice"].Value)-(discountId!=-1? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) :0)).ToString());
                         num++;
                         //drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (dgvRow.Cells["productPrice"].Value).ToString() });
-                        sum += Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse(dgvRow.Cells["productPrice"].Value.ToString()));
+                        sum += Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse((Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString()));
                         
                     }
                     var percentPens = Double.Parse(((100 - Double.Parse(Configs.GetConfig("PercentAll"))) / 100).ToString());

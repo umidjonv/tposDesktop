@@ -147,6 +147,7 @@
     <Compile Include="Classes\ExcelClass.cs" />
     <Compile Include="Classes\ExportExcel.cs" />
     <Compile Include="Classes\EzioApi.cs" />
+    <Compile Include="Classes\Generator.cs" />
     <Compile Include="Classes\GodexPrinter.cs" />
     <Compile Include="Classes\ImageCell.cs" />
     <Compile Include="Classes\Logs.cs" />
@@ -250,6 +251,18 @@
     </Compile>
     <Compile Include="SubForms\backend\KolForm.Designer.cs">
       <DependentUpon>KolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdList.Designer.cs">
+      <DependentUpon>ProdList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdListDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\backend\ProdListDiscount.Designer.cs">
+      <DependentUpon>ProdListDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\backend\ProdListLibra.cs">
       <SubType>Form</SubType>
@@ -386,12 +399,6 @@
     <Compile Include="SubForms\backend\printForm.Designer.cs">
       <DependentUpon>printForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForms\backend\ProdList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForms\backend\ProdList.Designer.cs">
-      <DependentUpon>ProdList.cs</DependentUpon>
-    </Compile>
     <Compile Include="SubForms\backend\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +452,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\backend\KolForm.resx">
       <DependentUpon>KolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\ProdList.resx">
+      <DependentUpon>ProdList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\backend\ProdListDiscount.resx">
+      <DependentUpon>ProdListDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\backend\ProdListLibra.resx">
       <DependentUpon>ProdListLibra.cs</DependentUpon>
@@ -510,9 +523,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\backend\printForm.resx">
       <DependentUpon>printForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubForms\backend\ProdList.resx">
-      <DependentUpon>ProdList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\backend\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -597,6 +607,8 @@
     <Content Include="icon.ico" />
     <Content Include="icon_hF6_icon.ico" />
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\checked.png" />
+    <None Include="Resources\discount.png" />
     <None Include="Resources\Package-Add-icon.png" />
     <None Include="Resources\add-base1.gif" />
     <None Include="Resources\delete1.gif" />

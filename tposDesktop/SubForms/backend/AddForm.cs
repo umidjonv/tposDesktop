@@ -194,7 +194,7 @@ namespace tposDesktop
 
                             int id = lId.Value;
                             DataSetTpos.productRow pr = DBclass.DS.product.FindByproductId(id);
-                            string barcode = randNumbers(id);
+                            string barcode = Generator.barcode_generate(id, 1);
                             pr.barcode = barcode;
                             pr.status = 1;
                             daProduct.Update(pr);
