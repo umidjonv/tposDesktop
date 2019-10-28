@@ -59,14 +59,7 @@ namespace tposDesktop
             cfgDa.Fill(DBclass.DS.configs);
             Configs cfgs = new Configs();
 
-            string discount_val = Configs.GetConfig("discount");
-            if(discount_val!=""&& discount_val != "0")
-            {
-                discountId = Convert.ToInt32(discount_val);
-                v_discountTableAdapter discountpDa = new v_discountTableAdapter();
-                discountpDa.Fill(DBclass.DS.v_discount, discountId);
-                
-            }
+            if(chbDiscount.Checked)GetDiscountConfig();
 
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
                 DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
@@ -135,6 +128,17 @@ namespace tposDesktop
 
         }
 
+        private void GetDiscountConfig()
+        {
+            string discount_val = Configs.GetConfig("discount");
+            if (discount_val != "" && discount_val != "0")
+            {
+                discountId = Convert.ToInt32(discount_val);
+                v_discountTableAdapter discountpDa = new v_discountTableAdapter();
+                discountpDa.Fill(DBclass.DS.v_discount, discountId);
+
+            }
+        }
         private void loadBtn()
         {
             DBclass.DS.hotkeys.Clear();
@@ -325,6 +329,8 @@ namespace tposDesktop
             dgvExpense.Columns["sumProduct"].ReadOnly = false;
             dgvExpense.Columns["productName"].Width = 250;
             dgvExpense.Columns["packCount"].Width = 60;
+            dgvExpense.Columns["discount"].HeaderText = "%";
+            dgvExpense.Columns["discount"].Visible = false;
             //dgvExpense.Columns["packCount"].CellType = typeof(double);
 
             dgvExpense.Columns["productName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -954,8 +960,8 @@ namespace tposDesktop
                 double pck;
                 if (Double.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
                 {
-
-                    grid.Rows[e.RowIndex].Cells["sumProduct"].Value = Math.Round((pck) * Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value)).ToString();
+                    grid.Rows[e.RowIndex].Cells["discount"].Value = (chbDiscount.Checked?CheckDiscount((int)grid.Rows[e.RowIndex].Cells["prodId"].Value):0);
+                    grid.Rows[e.RowIndex].Cells["sumProduct"].Value = Math.Round((pck) * (Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value) - GetDiscountSum((int)grid.Rows[e.RowIndex].Cells["prodId"].Value, Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value)))).ToString();
                     sumTable();
                 }
                 else
@@ -1779,7 +1785,31 @@ namespace tposDesktop
             }
 
         }
-        
-        
+
+        private void chbReb_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chb = sender as CheckBox;
+            switch (chb.Name)
+            {
+                case "chbReb":
+                    if (chb.Checked)
+                        chbDiscount.Checked = false;
+                    break;
+                case "chbDiscount":
+                    if (chb.Checked)
+                    {
+                        chbReb.Checked = false;
+                        GetDiscountConfig();
+                        if (discountId == -1) chb.Checked = false;
+                        dgvExpense.Columns["discount"].Visible = true;
+                    }
+                    else
+                    {
+                        dgvExpense.Columns["discount"].Visible = false;
+                        discountId = -1;
+                    }
+                    break;
+            }
+        }
     }
 }
