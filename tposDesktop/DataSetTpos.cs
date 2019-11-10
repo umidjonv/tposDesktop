@@ -1,7 +1,9 @@
-﻿namespace tposDesktop {
-    
-    
-    public partial class DataSetTpos {
+﻿namespace tposDesktop
+{
+
+
+    public partial class DataSetTpos
+    {
     }
 }
 namespace tposDesktop {
@@ -10,3 +12,4 @@ namespace tposDesktop {
     public partial class DataSetTpos {
     }
 }
+

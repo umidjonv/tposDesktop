@@ -13,9 +13,6 @@ namespace tposDesktop
 {
     public partial class FormDolgi : DesignedForm
     {
-        private bool _dragging = false;		
-	    private Point _offset;		
-    	private Point _start_point = new Point(0, 0);
         public FormDolgi()
         {
             InitializeComponent();

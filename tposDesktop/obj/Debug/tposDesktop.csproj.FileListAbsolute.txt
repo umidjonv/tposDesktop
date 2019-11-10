@@ -103,11 +103,156 @@ C:\Users\Aziz\Desktop\disk D\projects\Новая папка2\tposDesktop\obj\Deb
 C:\Users\Aziz\Desktop\disk D\projects\Новая папка2\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
 C:\Users\Aziz\Desktop\disk D\projects\Новая папка2\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
 C:\Users\Aziz\Desktop\disk D\projects\Новая папка2\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
-E:\projects\apteka\apteka\tposDesktop\bin\Debug\tposDesktop.exe.config
-E:\projects\apteka\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
-E:\projects\apteka\apteka\tposDesktop\obj\Debug\tposDesktop.exe
-E:\projects\apteka\apteka\tposDesktop\obj\Debug\tposDesktop.pdb
-E:\projects\tposDesktop\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
-E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
-E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
-E:\projects\tposDesktop\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.passForm.resources
+C:\Users\Aziz\Desktop\disk D\projects\apteka\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\tposDesktop.exe.config
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.exe
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.pdb
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\tposDesktop.exe
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\tposDesktop.pdb
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.dll
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\MySql.Data.dll
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.pdb
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.xml
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\Classes.OpenDay.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.passForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+D:\docs\pojects\apteka\tposDesktop\bin\Debug\zxing.dll
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.FormToFilial.resources
+D:\docs\pojects\apteka\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.exe.config
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.exe
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.pdb
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.dll
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\MySql.Data.dll
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\zxing.dll
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.pdb
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.xml
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+D:\docs\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.ResolveComReference.cache
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.FormToFilial.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\Classes.OpenDay.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.passForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.exe
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.pdb
+D:\docs\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\Classes.Forms.DesignedForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormAdmin.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.AddRealize.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.AddForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\VirtualKeyboard.FormKeyBoard.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.commentForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormLogin.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.LoginForm_O.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.MainForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FakturaOrgsForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormDolgi.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.FormFaktura.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.FormToFilial.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\Classes.OpenDay.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.OrderForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.Properties.Resources.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.passForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.ProdList.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SettingsForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.SubForms.TerminalForm.resources
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.GenerateResource.Cache
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.pdb
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.exe
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\tposDesktop.pdb
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.dll
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\MySql.Data.dll
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.pdb
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.xml
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache

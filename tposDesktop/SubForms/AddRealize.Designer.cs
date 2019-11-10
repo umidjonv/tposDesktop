@@ -39,13 +39,17 @@
             this.tbxPricePrixod = new Classes.NumericTextBox();
             this.tbxKol = new Classes.NumericTextBox();
             this.tbxPack = new Classes.NumericTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSoldPrice = new System.Windows.Forms.Label();
             this.tbxSoldPrice = new Classes.NumericTextBox();
             this.limitChbx = new System.Windows.Forms.CheckBox();
             this.blnLbl = new System.Windows.Forms.Label();
             this.expiry = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.checkExpire = new System.Windows.Forms.CheckBox();
+            this.lblAllCount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbxPercent = new Classes.NumericTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +65,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnCancel.Location = new System.Drawing.Point(552, -2);
             this.btnCancel.Size = new System.Drawing.Size(87, 66);
-            this.btnCancel.TabIndex = 10;
+            this.btnCancel.TabIndex = 11;
             // 
             // lblCaption
             // 
@@ -130,7 +134,7 @@
             this.btnAdd.Location = new System.Drawing.Point(456, 372);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(158, 46);
-            this.btnAdd.TabIndex = 9;
+            this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.AddOrEdit);
@@ -181,16 +185,16 @@
             this.tbxPack.TabIndex = 2;
             this.tbxPack.Text = "0";
             // 
-            // label1
+            // lblSoldPrice
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(27, 360);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 58);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Цена продажи";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSoldPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSoldPrice.Location = new System.Drawing.Point(27, 360);
+            this.lblSoldPrice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblSoldPrice.Name = "lblSoldPrice";
+            this.lblSoldPrice.Size = new System.Drawing.Size(125, 58);
+            this.lblSoldPrice.TabIndex = 0;
+            this.lblSoldPrice.Text = "Цена продажи";
+            this.lblSoldPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxSoldPrice
             // 
@@ -203,12 +207,13 @@
             // limitChbx
             // 
             this.limitChbx.AutoSize = true;
-            this.limitChbx.Location = new System.Drawing.Point(429, 188);
+            this.limitChbx.Location = new System.Drawing.Point(523, 192);
             this.limitChbx.Name = "limitChbx";
             this.limitChbx.Size = new System.Drawing.Size(90, 28);
             this.limitChbx.TabIndex = 6;
             this.limitChbx.Text = "Огран.";
             this.limitChbx.UseVisualStyleBackColor = true;
+            this.limitChbx.CheckedChanged += new System.EventHandler(this.limitChbx_CheckedChanged);
             // 
             // blnLbl
             // 
@@ -220,21 +225,26 @@
             // 
             // expiry
             // 
+            this.expiry.CustomFormat = "MM.yyyy";
             this.expiry.Enabled = false;
+            this.expiry.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.expiry.Location = new System.Drawing.Point(429, 244);
             this.expiry.Name = "expiry";
             this.expiry.Size = new System.Drawing.Size(185, 28);
-            this.expiry.TabIndex = 7;
+            this.expiry.TabIndex = 8;
+            this.expiry.ValueChanged += new System.EventHandler(this.expiry_ValueChanged);
             // 
             // button1
             // 
             this.button1.BackgroundImage = global::tposDesktop.Properties.Resources.printer_icon_vector_stock_vector_532760;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(539, 302);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 60);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 9;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -244,10 +254,50 @@
             this.checkExpire.Location = new System.Drawing.Point(300, 246);
             this.checkExpire.Name = "checkExpire";
             this.checkExpire.Size = new System.Drawing.Size(115, 28);
-            this.checkExpire.TabIndex = 15;
+            this.checkExpire.TabIndex = 7;
             this.checkExpire.Text = "Срок год.";
             this.checkExpire.UseVisualStyleBackColor = true;
             this.checkExpire.CheckedChanged += new System.EventHandler(this.checkExpire_CheckedChanged);
+            // 
+            // lblAllCount
+            // 
+            this.lblAllCount.AutoSize = true;
+            this.lblAllCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblAllCount.Location = new System.Drawing.Point(373, 190);
+            this.lblAllCount.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblAllCount.Name = "lblAllCount";
+            this.lblAllCount.Size = new System.Drawing.Size(18, 20);
+            this.lblAllCount.TabIndex = 0;
+            this.lblAllCount.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(297, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 24);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Всего:";
+            // 
+            // tbxPercent
+            // 
+            this.tbxPercent.Location = new System.Drawing.Point(300, 302);
+            this.tbxPercent.Name = "tbxPercent";
+            this.tbxPercent.Size = new System.Drawing.Size(44, 28);
+            this.tbxPercent.TabIndex = 22;
+            this.tbxPercent.Text = "0";
+            this.tbxPercent.TextChanged += new System.EventHandler(this.tbxPercent_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(347, 305);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 20);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "%";
             // 
             // AddRealize
             // 
@@ -255,6 +305,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(638, 444);
+            this.Controls.Add(this.tbxPercent);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.checkExpire);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.expiry);
@@ -267,7 +320,8 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblKol);
             this.Controls.Add(this.tbxShtrix);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSoldPrice);
+            this.Controls.Add(this.lblAllCount);
             this.Controls.Add(this.lblPack);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbxName);
@@ -285,7 +339,8 @@
             this.Controls.SetChildIndex(this.tbxName, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.lblPack, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.lblAllCount, 0);
+            this.Controls.SetChildIndex(this.lblSoldPrice, 0);
             this.Controls.SetChildIndex(this.tbxShtrix, 0);
             this.Controls.SetChildIndex(this.lblKol, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
@@ -301,6 +356,9 @@
             this.Controls.SetChildIndex(this.expiry, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.checkExpire, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.tbxPercent, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,12 +378,16 @@
         private Classes.NumericTextBox tbxPricePrixod;
         private System.Windows.Forms.Label lblKol;
         private Classes.NumericTextBox tbxKol;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSoldPrice;
         private Classes.NumericTextBox tbxSoldPrice;
         private System.Windows.Forms.CheckBox limitChbx;
         private System.Windows.Forms.Label blnLbl;
         private System.Windows.Forms.DateTimePicker expiry;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkExpire;
+        private System.Windows.Forms.Label lblAllCount;
+        private System.Windows.Forms.Label label4;
+        private Classes.NumericTextBox tbxPercent;
+        private System.Windows.Forms.Label label5;
     }
 }

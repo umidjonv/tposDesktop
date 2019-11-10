@@ -14,19 +14,42 @@
     <Setting Name="SN" Type="System.String" Scope="User">
       <Value Profile="(Default)">123456789</Value>
     </Setting>
-    <Setting Name="ExpDate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">2018-03-15</Value>
+    <Setting Name="IsCom" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="kassa" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="workMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="orgPlace" Type="System.String" Scope="User">
+      <Value Profile="(Default)">asdkjhsdfhk sf sfhsd fk</Value>
+    </Setting>
+    <Setting Name="orgTel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">342423-234234-234</Value>
+    </Setting>
+    <Setting Name="site" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tpos.uz</Value>
     </Setting>
     <Setting Name="stockConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=localhost;user id=root;database=stock;password=198923233171&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=stock;password=198923233171; convert zero datetime = True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=localhost;user id=root;database=stock;password=198923233171</Value>
+      <Value Profile="(Default)">server=localhost;user id=root;database=stock;password=198923233171; convert zero datetime = True</Value>
     </Setting>
-    <Setting Name="IsCom" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="ExpDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2018-03-15</Value>
+    </Setting>
+    <Setting Name="stockConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;database=stock;persistsecurityinfo=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=localhost;user id=root;database=stock;persistsecurityinfo=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

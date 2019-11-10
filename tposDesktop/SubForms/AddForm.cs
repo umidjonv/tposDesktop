@@ -27,6 +27,10 @@ namespace tposDesktop
             if (barcode != null)
                 tbxShtrix.Text = barcode;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            if (Properties.Settings.Default.workMode == "1")
+            {
+                tbxPrice.Enabled = true;
+            }
 
         }
         public AddForm(DataSetTpos.productRow productRow)
@@ -45,8 +49,11 @@ namespace tposDesktop
             tbxPack.Text = productRow.pack.ToString();
             tbxPrice.Text = productRow.price.ToString();
             tbxShtrix.Text = productRow.barcode;
-            lblExpiry.Text = productRow.expiry;
-            
+            lblExpiry.Text = productRow.exp != null ? Convert.ToDateTime(productRow.expiry).ToString("dd.MM.yyyy") : "";
+            if (Properties.Settings.Default.workMode == "1")
+            {
+                tbxPrice.Enabled = true;
+            }
             if (productRow.limitProd == 1)
                 limitProdChbx.Checked = true;
             if (productRow.barcode != null)
@@ -106,15 +113,20 @@ namespace tposDesktop
                 }
                 else
                 {
+                    if (limitProdChbx.Checked)
+                        prRow.limitProd = 1;
+                    else
+                        prRow.limitProd = 0;
                     prRow.name = tbxName.Text;
                     prRow.barcode = tbxShtrix.Text;
                     prRow.measureId = 2;
-                    prRow.pack = tbxPack.Text != "0" && tbxPack.Text != "" ? Convert.ToInt32(tbxPack.Text) : 0; ;
-                    prRow.expiry = lblExpiry.Text;
+                    prRow.pack = tbxPack.Text != "0" && tbxPack.Text != "" ? Convert.ToInt32(tbxPack.Text) : 0;
+                    prRow.limitProd = limitProdChbx.Checked == false ? 0 : 1;
+                    //prRow.expiry = Convert.ToDateTime(lblExpiry.Text).ToString();
                     prRow.price = Convert.ToInt32(tbxPrice.Text);
                     daProduct.Update(DBclass.DS.product);
                     daProduct.Fill(DBclass.DS.product);
-                
+                    
                 }
                 
                 
@@ -122,15 +134,6 @@ namespace tposDesktop
             }
         }
 
-        private string getSold(int id)
-        {
-            DataSetTposTableAdapters.balanceviewTableAdapter bln = new DataSetTposTableAdapters.balanceviewTableAdapter();
-            bln.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-1));
-            DataView balance = new DataView(DBclass.DS.balanceview);
-            balance.RowFilter = "balanceDate = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' and prodId = " + id;
-
-            return balance[0]["endCount"].ToString();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -237,16 +240,18 @@ namespace tposDesktop
 
         public void forPrinting(string name, string price, string barcode, int prodID)
         {
+            FormAdmin admF = new FormAdmin();
+
+            admF.saveBmp(barcode);
             string dataHtml = "";
             StreamWriter sw = new StreamWriter(System.IO.Path.GetTempPath() + "\\tempData.htm");
             //summa += decimal.Parse((Math.Round(Double.Parse(sr[1]) * Double.Parse(sr[2]))).ToString());
 
 
             dataHtml = "<head></head><body>" +
-                    "<h1 style='text-align: center'>" + prodID +"</h1>" + 
                     "<table style='font-size: 12px; font-family: Tahoma; width: 100%; border: 1px solid #000'>" + 
                             "<tr >" +
-                                "<td style='text-align: center; font-size: 18px'>" + Properties.Settings.Default.orgName + "</td>" +
+                                "<td style='text-align: center; font-size: 14px'>" + Properties.Settings.Default.orgName + "</td>" +
                             "</tr>" +
                             "<tr>" +
                                 "<td ><span style='font-weight: bold'>Номи :</span> " + name + "</td>" +
@@ -256,6 +261,12 @@ namespace tposDesktop
                             "</tr>" +
                             "<tr>" +
                                 "<td><span style='font-weight: bold'>Имзо :</span> _____________</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td><span style='font-weight: bold'>ID :</span> "+ prodID +"</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<th colspan = '3'><img width ='150' height='30' src='" + Directory.GetCurrentDirectory() + "\\barcode.png '/></th>" +
                             "</tr>" +
                     "</table>" +
                 "</body>";
@@ -296,6 +307,11 @@ namespace tposDesktop
         {
             WebBrowser browser = sender as WebBrowser;
             browser.Print();
+        }
+
+        private void limitProdChbx_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

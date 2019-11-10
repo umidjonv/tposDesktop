@@ -9,19 +9,19 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using Classes;
 using Classes.DB;
+using tposDesktop.DataSetTposTableAdapters;
 namespace tposDesktop
 {
     public partial class FormLogin : Form
     {
-
         private bool _dragging = false;
-        private Point _offset;
         private Point _start_point = new Point(0, 0);
 
         DBclass dbclass;
         Language lang;
         public FormLogin()
         {
+            
             InitializeComponent();
             lang = Program.Lang;
             int w = this.Size.Width;
@@ -33,7 +33,8 @@ namespace tposDesktop
             try
             {
                 dbclass = new DBclass();
-                dbclass.Fill("user");
+                userTableAdapter uTba = new userTableAdapter();
+                uTba.Fill(DBclass.DS.user);
             }
             catch (Exception ex)
             {
@@ -77,7 +78,7 @@ namespace tposDesktop
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //lblPassError.Visible = false;
-            DataTable table = DBclass.DS.Tables["user"];
+            DataTable table = DBclass.DS.user;
             string hash = CalculateMD5Hash(CalculateMD5Hash(tbxPass.Text));
             DataRow[] rows = table.Select("username='"+tbxLogin.Text+"' and password='" + hash+"'");
             if (rows.Length != 0)
@@ -90,7 +91,7 @@ namespace tposDesktop
                     UserValues.CurrentUserID = Convert.ToInt32(dr["IDUser"]);
                     UserValues.CurrentUser = dr["username"].ToString();
                     UserValues.role = role;
-                    UserValues.CurrentUserName = dr["name"].ToString();
+                    //UserValues.CurrentUserName = dr["name"].ToString();
                     //MessageBox.Show(UserValues.CurrentUser+":"+role);
                     
                     //Program.oldWindow_type = 3;

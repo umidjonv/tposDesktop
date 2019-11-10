@@ -72,7 +72,7 @@
             // 
             // tbxName
             // 
-            this.tbxName.Location = new System.Drawing.Point(111, 96);
+            this.tbxName.Location = new System.Drawing.Point(101, 96);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(451, 28);
             this.tbxName.TabIndex = 1;
@@ -81,7 +81,7 @@
             // tbxShtrix
             // 
             this.tbxShtrix.Enabled = false;
-            this.tbxShtrix.Location = new System.Drawing.Point(111, 143);
+            this.tbxShtrix.Location = new System.Drawing.Point(101, 143);
             this.tbxShtrix.Name = "tbxShtrix";
             this.tbxShtrix.Size = new System.Drawing.Size(332, 28);
             this.tbxShtrix.TabIndex = 2;
@@ -124,17 +124,17 @@
             // lblPack
             // 
             this.lblPack.AutoSize = true;
-            this.lblPack.Location = new System.Drawing.Point(20, 196);
+            this.lblPack.Location = new System.Drawing.Point(97, 180);
             this.lblPack.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPack.Name = "lblPack";
-            this.lblPack.Size = new System.Drawing.Size(48, 24);
+            this.lblPack.Size = new System.Drawing.Size(120, 24);
             this.lblPack.TabIndex = 0;
-            this.lblPack.Text = "Кол.";
+            this.lblPack.Text = "Кол. в пачке";
             // 
             // tbxPrice
             // 
             this.tbxPrice.Enabled = false;
-            this.tbxPrice.Location = new System.Drawing.Point(111, 242);
+            this.tbxPrice.Location = new System.Drawing.Point(101, 242);
             this.tbxPrice.Name = "tbxPrice";
             this.tbxPrice.Size = new System.Drawing.Size(148, 28);
             this.tbxPrice.TabIndex = 4;
@@ -142,7 +142,7 @@
             // 
             // tbxPack
             // 
-            this.tbxPack.Location = new System.Drawing.Point(111, 193);
+            this.tbxPack.Location = new System.Drawing.Point(101, 207);
             this.tbxPack.Name = "tbxPack";
             this.tbxPack.Size = new System.Drawing.Size(148, 28);
             this.tbxPack.TabIndex = 3;
@@ -152,6 +152,8 @@
             // 
             this.button1.BackgroundImage = global::tposDesktop.Properties.Resources.printer_icon_vector_stock_vector_532760;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(487, 144);
             this.button1.Name = "button1";
@@ -163,12 +165,13 @@
             // limitProdChbx
             // 
             this.limitProdChbx.AutoSize = true;
-            this.limitProdChbx.Location = new System.Drawing.Point(276, 192);
+            this.limitProdChbx.Location = new System.Drawing.Point(276, 242);
             this.limitProdChbx.Name = "limitProdChbx";
             this.limitProdChbx.Size = new System.Drawing.Size(90, 28);
             this.limitProdChbx.TabIndex = 12;
             this.limitProdChbx.Text = "Огран.";
             this.limitProdChbx.UseVisualStyleBackColor = true;
+            this.limitProdChbx.CheckedChanged += new System.EventHandler(this.limitProdChbx_CheckedChanged);
             // 
             // blnLbl
             // 

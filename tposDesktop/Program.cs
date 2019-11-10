@@ -9,11 +9,11 @@ namespace tposDesktop
     static class Program
     {
         enum WorkType { Touch, Mouse };
-        static WorkType wType = WorkType.Mouse;
-        public static int window_type = 3;
+        public static int window_type = 1;
         public static bool onClose = false;
         public static int oldWindow_type;
         public static Classes.Language Lang;
+        public static bool backDate = false;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -42,7 +42,7 @@ namespace tposDesktop
                 if (expDate >= DateTime.Now.Date)
                 {
                     Lang = new Classes.Language(Classes.Language.lng.ru);
-                   
+                                       
                     Form form;
                     UserValues.role = "admin";
                     while (window_type != 0)
@@ -51,7 +51,15 @@ namespace tposDesktop
                         switch (window_type)
                         {
                             case 1:
-                                Application.Run(new FormLogin());
+                                if (System.Diagnostics.Process.GetProcessesByName(Application.ProductName).Length > 1)
+                                {
+                                    MessageBox.Show("Приложение уже запущено");
+                                    return;
+                                }
+                                else
+                                {
+                                    Application.Run(new FormLogin());
+                                }
 
                                 break;
                             case 2:

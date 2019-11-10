@@ -34,40 +34,49 @@
             // 
             // pbCaption
             // 
-            this.pbCaption.Size = new System.Drawing.Size(386, 38);
+            this.pbCaption.Location = new System.Drawing.Point(-2, 0);
+            this.pbCaption.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCaption.Size = new System.Drawing.Size(290, 31);
             // 
             // btnCancel
             // 
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(314, 0);
+            this.btnCancel.Location = new System.Drawing.Point(236, 0);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Size = new System.Drawing.Size(52, 54);
             this.btnCancel.Visible = false;
             // 
             // lblCaption
             // 
             this.lblCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCaption.Size = new System.Drawing.Size(272, 25);
+            this.lblCaption.Location = new System.Drawing.Point(9, 7);
+            this.lblCaption.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCaption.Size = new System.Drawing.Size(226, 20);
             this.lblCaption.Text = "Обновление базы данных";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 44);
+            this.progressBar1.Location = new System.Drawing.Point(9, 36);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(353, 31);
+            this.progressBar1.Size = new System.Drawing.Size(265, 25);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 11;
             this.progressBar1.Value = 100;
             // 
             // OpenDay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 89);
+            this.ClientSize = new System.Drawing.Size(286, 72);
             this.Controls.Add(this.progressBar1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "OpenDay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenDay";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseWindows);
             this.Load += new System.EventHandler(this.OpenDay_Load);
             this.Controls.SetChildIndex(this.pbCaption, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);

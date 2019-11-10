@@ -13,19 +13,29 @@ namespace Classes
 {
     public partial class OpenDay :DesignedForm
     {
+        DBclass db = new DBclass();
         public OpenDay()
         {
             InitializeComponent();
         }
         public void OpenDayProcess()
         {
-            DBclass db = new DBclass();
             db.OpenDay(this);
         }
 
         private void OpenDay_Load(object sender, EventArgs e)
         {
             OpenDayProcess();
+        }
+
+        private void CloseWindows(object sender, FormClosedEventArgs e)
+        {
+
+            if (tposDesktop.Program.backDate == true)
+            {
+
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         

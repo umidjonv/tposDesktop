@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using tposDesktop;
 using tposDesktop.DataSetTposTableAdapters;
 using System.ComponentModel;
+using System.Threading;
 
 namespace Classes.DB
 {
@@ -17,6 +18,7 @@ namespace Classes.DB
         MySqlDataAdapter adapter;
         public DataTable Product { get; set; }
         public static DataSetTpos DS { get; set; }
+        public UpdateThreading updateThread;
 
         //public DBclass()
         //{
@@ -39,12 +41,21 @@ namespace Classes.DB
             {
                 Fill(table);
             }
+            updateThread = new UpdateThreading();
         }
         public DBclass()
         {
             connection = new MySqlConnection(tposDesktop.Properties.Settings.Default.stockConnectionString);
             if (DS == null)
                 DS = new DataSetTpos();
+        }
+        public DBclass(bool isUpdateThread)
+        {
+            connection = new MySqlConnection(tposDesktop.Properties.Settings.Default.stockConnectionString);
+            if (DS == null)
+                DS = new DataSetTpos();
+            if (isUpdateThread)
+                updateThread = new UpdateThreading();
         }
         public void Fill(string table_name)
         {
@@ -111,15 +122,15 @@ namespace Classes.DB
 
         BackgroundWorker bgw;
         System.Windows.Forms.Form form;
-        public void CloseDay()
-        {
-            bgw = new BackgroundWorker();
-            bgw.DoWork += bgw_DoWork;
-            bgw.RunWorkerAsync();
+        //public void CloseDay()
+        //{
+        //    bgw = new BackgroundWorker();
+        //    bgw.DoWork += bgw_DoWork;
+        //    bgw.RunWorkerAsync();
                 
             
 
-        }
+        //}
 
         public void OpenDay(System.Windows.Forms.Form curForm)
         {
@@ -139,8 +150,53 @@ namespace Classes.DB
             }
         }
         bool isNewExpense = false;
-      
+        
 
+        public void AddProduct(DataRow[] dr, bool isBarcode, string barcode, int kol)
+        {
+            if (dr.Length != 0)
+            {
+                DataSetTpos.productRow drP = (DataSetTpos.productRow)dr[0];
+                DataRow[] existRows = DBclass.DS.orders.Select("expenseId=-1 and prodId = " + drP.productId);
+                if (existRows.Length > 0)
+                {
+                    DataSetTpos.ordersRow ordrow = (DataSetTpos.ordersRow)existRows[0];
+                    ordrow.packCount = ordrow.packCount + (drP.pack == 0 ? 1 : drP.pack);
+                    DataRow drOrder = ordrow;
+                    drOrder["sumProduct"] = ordrow.packCount * drP.price / (drP.pack == 0 ? 1 : drP.pack);//ordrow.AcceptChanges();
+                }
+                else
+                {
+                    DataSetTpos.ordersRow ordrow = DBclass.DS.orders.NewordersRow();
+
+                    ordrow.prodId = drP.productId;
+                    if (drP.pack == 0) drP.pack = 1;
+                    ordrow.expenseId = -1;
+                    int curPrice = drP.price;
+                    ordrow.packCount = (float)kol;
+                    DataRow drOrder = ordrow;
+                    
+                    if (drP.price == 0)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Товар на складе отсутствует");
+                        drP.RejectChanges();
+                        return;
+                    }
+                    
+                    
+                    DBclass.DS.orders.AddordersRow(ordrow);
+                    
+
+                }
+                if (isNewExpense)
+                {
+                    //dgvExpense.Columns["productName"].Visible = true;
+                    //dgvExpense.Columns["productPrice"].Visible = true;
+                    isNewExpense = false;
+                }
+                //sumTable();
+            }
+        }
         public void AddProduct(DataRow[] dr, bool isBarcode, string barcode)
         {
             bool next = false;
@@ -218,7 +274,6 @@ namespace Classes.DB
                     //productTableAdapter daProduct = new productTableAdapter();
                     //daProduct.Fill(DBclass.DS.product);
 
-
                 }
 
             }
@@ -227,7 +282,7 @@ namespace Classes.DB
 
         }
 
-        void bgw_DoWorkOpenDay(object sender, DoWorkEventArgs e)
+        public void bgw_DoWorkOpenDay(object sender, DoWorkEventArgs e)
         {
             
             MySqlCommand command = new MySqlCommand("select `prodBalance`(0)", connection);
@@ -235,11 +290,16 @@ namespace Classes.DB
             {
                 try
                 {
+                    string result;
                     connection.Open();
                     command.CommandTimeout = 200;
-                    command.ExecuteNonQueryAsync();
+                    result = command.ExecuteScalar().ToString();
                     connection.Close();
-                    System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+                    if (result == "0")
+                    {
+                        Program.backDate = true;
+                    }
+                    //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
                 }
                 catch (Exception ex)
                 {
@@ -271,9 +331,13 @@ namespace Classes.DB
             expDa.FillLast(expTable);
             ordersTableAdapter prDa = new ordersTableAdapter();
             DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = -1");
+            this.updateThread = new UpdateThreading(false);
+           
+
             foreach (DataSetTpos.ordersRow oneRow in orRows)
             {
                 oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId;
+                this.updateThread.UpdateRealize(oneRow.packCount, oneRow.prodId, 0);
             }
             expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
             prDa.Update(DBclass.DS.orders);
@@ -281,15 +345,15 @@ namespace Classes.DB
 
 
             triggerExecute("ExpenseTrigger",expId);
-
-            productviewTableAdapter prVda = new productviewTableAdapter();
-            prVda.Fill(DBclass.DS.productview);
+            
+            
 
 
             isNewExpense = true;
 
 
         }
+        
 
         public void triggerExecute(string trigger, int id)
         {
@@ -307,6 +371,7 @@ namespace Classes.DB
                 {
                     System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
+                
             }
         }
 
@@ -329,25 +394,227 @@ namespace Classes.DB
             }
         }
 
-        void bgw_DoWork(object sender, DoWorkEventArgs e)
+        //void bgw_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    MySqlCommand command = new MySqlCommand("CALL `balanceCalc`()", connection);
+        //    if (connection.State == ConnectionState.Closed)
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+        //            command.CommandTimeout = 200;
+        //            command.ExecuteNonQueryAsync();
+        //            connection.Close();
+        //            //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+        //        }
+        //        catch(Exception ex)
+        //        {
+        //            System.Windows.Forms.MessageBox.Show(ex.Message);
+        //        }
+        //    }
+        //}
+
+    }
+    public class UpdateThreading
+    {
+        class ExpenseOrders
         {
-            MySqlCommand command = new MySqlCommand("CALL `balanceCalc`()", connection);
-            if (connection.State == ConnectionState.Closed)
+            public int[] expense;
+            public DataRow[] rows;
+        }
+        Thread th;
+        public Queue<int[]> listExpenseID;
+        public bool haveCheck = false;
+        bool blocking = false;
+        int[] expense;
+        public delegate void EndExpenseDel();
+        public event EndExpenseDel EndExpense;
+        public UpdateThreading()
+        {
+            
+
+            listExpenseID = new Queue<int[]>();
+            ordersTable = new DataSetTpos.ordersDataTable();
+            if (!(ordersTable.Columns["sumProduct"] is DataColumn))
+                ordersTable.Columns.Add("sumProduct", typeof(int));
+            string s = "";
+            th = new Thread(new ParameterizedThreadStart(CheckForUpdate));
+            th.Start();
+
+        }
+        public UpdateThreading(bool isThread)
+        {
+            if (isThread)
             {
-                try
-                {
-                    connection.Open();
-                    command.CommandTimeout = 200;
-                    command.ExecuteNonQueryAsync();
-                    connection.Close();
-                    System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
-                }
-                catch(Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
-                }
+                listExpenseID = new Queue<int[]>();
+                ordersTable = new DataSetTpos.ordersDataTable();
+                if (!(ordersTable.Columns["sumProduct"] is DataColumn))
+                    ordersTable.Columns.Add("sumProduct", typeof(int));
+                string s = "";
+                th = new Thread(new ParameterizedThreadStart(CheckForUpdate));
+                th.Start();
             }
         }
 
+        public void StopThread()
+        {
+            if (th != null)
+            {
+                while (listExpenseID.Count > 0)
+                    Thread.Sleep(2000);
+                th.Abort();
+            }
+        }
+        public void AddToExpenseList(int expenseId, DataSetTpos.ordersRow[] orRows, int expType)
+        {
+            expense = new int[2] { expenseId, expType };
+            listExpenseID.Enqueue(expense);
+            foreach (DataSetTpos.ordersRow ordRow in orRows)
+            {
+
+                ordersTable.Rows.Add(ordRow.ItemArray);
+            }
+
+        }
+        DataSetTpos.ordersDataTable ordersTable;
+        private void CheckForUpdate(object argument)
+        {
+            DBclass dbcl = new DBclass();
+            while (true)
+            {
+                if (haveCheck)
+                {
+                    while (listExpenseID.Count != 0)
+                    {
+                        DataTable table = new DataTable();
+
+                        int[] expenseT = listExpenseID.Dequeue();
+
+                        DataSetTpos.ordersRow[] ordRows = (DataSetTpos.ordersRow[])ordersTable.Select("expenseId = " + expenseT[0]);
+                        foreach (DataSetTpos.ordersRow rw in ordRows)
+                        {
+                            UpdateRealize(rw.packCount, rw.prodId, expenseT[1]);
+                        }
+                        ordersTableAdapter ordDa = new ordersTableAdapter();
+                        ordDa.Update(ordRows);
+                        //ordersTable.Clear();
+                        switch (expenseT[1])
+                        {
+                            case 0:
+                                dbcl.triggerExecute("ExpenseTrigger", expenseT[0]);
+                                break;
+                            case 1:
+                                dbcl.triggerExecute("BackTrigger", expenseT[0]);
+                                break;
+                        }
+                        EndExpense();
+
+                    }
+
+                }
+
+                Thread.Sleep(2000);
+            }
+
+        }
+
+        public void UpdateRealize(float count, int id, int vozvrat)
+        {
+            
+            realizeTableAdapter rlzDa = new realizeTableAdapter();
+            if (vozvrat == 0)
+            {
+                rlzDa.FillByIsSold(DBclass.DS.realize, id);
+
+                
+                bool nextExpiry = false;
+                float tCnt = (float)count;
+                foreach (DataRow dr in DBclass.DS.realize.Rows)
+                {
+                    DataSetTpos.realizeRow rlzRow = (DataSetTpos.realizeRow)dr;
+                    //rlzDa.FillByID(DBclass.DS.realize, rlzNRow.realizeId);
+                    //DataSetTpos.realizeRow rlzRow = DBclass.DS.realize.FindByrealizeId(rlzNRow.realizeId);
+                    if (tCnt == 0)
+                    {
+                        if (nextExpiry)
+                        {
+                            UpdateProduct(rlzRow);
+
+                        }
+                        //rlzRow.expiryDate;
+                        break;
+                    }
+                    float rCount = (rlzRow.IsSold == 0 ? rlzRow.count : rlzRow.IsSold);
+                    nextExpiry = false;
+
+                    if (tCnt >= rCount)
+                    {
+                        tCnt = tCnt - rCount;
+                        rlzRow.IsSold = -1;
+                        if (tCnt == 0) nextExpiry = true;
+                    }
+                    else
+                    {
+                        UpdateProduct(rlzRow);
+                        rlzRow.IsSold = (int)(rCount - tCnt);
+                        tCnt = 0;
+                    }
+                    rlzDa.Update(rlzRow);
+
+
+                }
+            }
+            else if (vozvrat == 1)
+            {
+                rlzDa.FillBySolded(DBclass.DS.realize, id);
+
+                bool nextExpiry = false;
+                float tCnt = (float)count;
+                foreach (DataRow dr in DBclass.DS.realize.Rows)
+                {
+                    DataSetTpos.realizeRow rlzRow = (DataSetTpos.realizeRow)dr;
+                    //rlzDa.FillByID(DBclass.DS.realize, rlzNRow.realizeId);
+                    //DataSetTpos.realizeRow rlzRow = DBclass.DS.realize.FindByrealizeId(rlzNRow.realizeId);
+                    if (tCnt == 0)
+                    {
+                        
+                        break;
+                    }
+                    float rCount = (rlzRow.IsSold == -1 ? rlzRow.count : rlzRow.count - rlzRow.IsSold);
+                    nextExpiry = false;
+
+                    if (tCnt >= rCount)
+                    {
+                        tCnt = tCnt - rCount;
+                        rlzRow.IsSold = 0;
+                        
+                        //if (tCnt == 0) nextExpiry = true;
+                    }
+                    else 
+                    {
+                        //UpdateProduct(rlzRow);
+                        rlzRow.IsSold = (int)((rlzRow.IsSold==-1?0: rlzRow.IsSold) + tCnt);
+                        tCnt = 0;
+                        UpdateProduct(rlzRow);
+                    }
+                    rlzDa.Update(rlzRow);
+
+
+                }
+            }
+
+        }
+        private void UpdateProduct(DataSetTpos.realizeRow rlzRow)
+        {
+            try
+            {
+                DataSetTpos.productRow prRow = DBclass.DS.product.FindByproductId(rlzRow.prodId);
+                productTableAdapter pda = new productTableAdapter();
+                prRow.expiry = rlzRow.expiryDate;
+                pda.Update(prRow);
+            }
+            catch (StrongTypingException ex)
+            { }
+        }
     }
 }

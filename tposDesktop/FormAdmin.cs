@@ -15,6 +15,12 @@ using LiveCharts.Wpf;
 using System.Windows.Media;
 using Classes;
 using MySql.Data.MySqlClient;
+using tposDesktop.SubForms;
+using ZXing;
+using ZXing.Common;
+using ZXing.Rendering;
+using System.Drawing.Imaging;
+using System.IO;
 
 
 namespace tposDesktop
@@ -23,6 +29,8 @@ namespace tposDesktop
     {
         Scanner scanner;
         DBclass db;
+        private EncodingOptions EncodingOptions { get; set; }
+        private Type Renderer { get; set; }
         delegate void SendInfoDel(string text);
         bool isExit = false;
         //Diagramm
@@ -36,6 +44,15 @@ namespace tposDesktop
         bool isPrixod = false;
         int idFaktura = -1;
 
+        private void Update()
+        {
+            this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
+            this.expenseTableAdapter1.Fill(DBclass.DS.expense);
+            this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
+            this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview);
+ 
+        }
+
         public FormAdmin()
         {
             InitializeComponent();
@@ -48,6 +65,17 @@ namespace tposDesktop
                 DataView dv = new DataView(DBclass.DS.product);
                 dv.RowFilter = "";
                 dgvTovar.DataSource = dv;
+
+
+                DataView dvExp = new DataView(DBclass.DS.product);
+                
+                //int mx = Convert.ToInt32(DateTime.Now.Month) + 3;
+                //string maxYear = DateTime.Now.Year.ToString();
+                //string dt = mx.ToString() + "." + maxYear;
+                //DateTime dt = DateTime.ParseExact(DateTime.Now.ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InstalledUICulture);
+                dvExp.RowFilter = "expiry is not null and expiry <= '" + Convert.ToDateTime(DateTime.Now.AddMonths(3)) + "'";
+                dvExp.Sort = "expiry asc";
+                dgvExpiry.DataSource = dvExp;
 
 
                 dv.RowFilter = "";
@@ -71,21 +99,26 @@ namespace tposDesktop
                 realize.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 realize.Sort = "realizeId DESC";
                 realizeGrid.DataSource = realize;
-
+                
                 this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
                 DataView expense = new DataView(DBclass.DS.expenseview);
                 expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 expenseGrid.DataSource = expense;
 
-                this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-30));
+                this.expenseTableAdapter1.Fill(DBclass.DS.expense);
+                DataView expenseView = new DataView(DBclass.DS.expense);
+                expenseView.RowFilter = "expenseDate <= '" + Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59") + "' and expenseDate >= '" + Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00") + "'";
+                dgvExpense.DataSource = expenseView;
+
+                this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview);
                 DataView balance = new DataView(DBclass.DS.balanceview);
-                balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                //balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 balanceGrid.DataSource = balance;
 
                 fakturaviewTableAdapter fviewda = new fakturaviewTableAdapter();
                 fviewda.Fill(DBclass.DS.fakturaview);
                 DataView fkview = new DataView(DBclass.DS.fakturaview);
-                fkview.RowFilter = "fakturaDate < '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                fkview.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
                 fkview.Sort = "fakturaId desc";
                 dgvFaktura.DataSource = fkview;
                 productviewTableAdapter prdv = new productviewTableAdapter();
@@ -97,10 +130,17 @@ namespace tposDesktop
                 DataView dvRealize = new DataView(DBclass.DS.realizeview);
                 dgvFakturaTovar.DataSource = dvRealize;
 
+                ordersviewTableAdapter orV = new ordersviewTableAdapter();
+                orV.Fill(DBclass.DS.ordersview);
+                DataView ordersView = new DataView(DBclass.DS.ordersview);
+                ordersView.RowFilter = "expenseDate <= '" + Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59") + "' and expenseDate >= '" + Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd") + " 00:00:00") + "'";
+                dgvOrders.DataSource = ordersView;
+                loadBtn();
                 liveChartLoad();
+                pieChartLoad();
                 balanceSumm();
                 realizeSumm();
-
+                Renderer = typeof(BitmapRenderer);
             }
             catch (Exception ex)
             {
@@ -112,8 +152,16 @@ namespace tposDesktop
             
             try
             {
-                scanner = new Scanner();
-                scanner.ScannerEvent += scanner_ScannerEvent;
+                if (Properties.Settings.Default.IsCom)
+                {
+                    scanner = new Scanner();
+                    scanner.ScannerEvent += scanner_ScannerEvent;
+                }
+                else
+                {
+                    tscanner = new TextScanner();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -228,6 +276,7 @@ namespace tposDesktop
 
                 
             }
+            realizeSumm();
             
             
         }
@@ -236,6 +285,8 @@ namespace tposDesktop
         #region FormLoad, Init, Close
         private void FormAdmin_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetTpos.ordersview' table. You can move, or remove it, as needed.
+            
             if (isExit)
             {
                 Program.window_type = 1;
@@ -269,8 +320,8 @@ namespace tposDesktop
             dgvTovar.Columns["measureId"].Visible = false;
             dgvTovar.Columns["barcode"].HeaderText = "Штрихкод";
             dgvTovar.Columns["barcode"].Width = 150;
-            dgvTovar.Columns["expiry"].HeaderText = "Срок годности";
-            dgvTovar.Columns["expiry"].Width = 50;
+            dgvTovar.Columns["expiry"].Visible = false;
+            dgvTovar.Columns["exp"].Visible = false;
             dgvTovar.Columns["limitProd"].Visible = false;
             dgvTovar.Columns["pack"].Visible = false;
             dgvTovar.Columns["status"].Visible = false;
@@ -288,6 +339,24 @@ namespace tposDesktop
             cellBtnDel.Name = "colBtnDel";
             cellBtnDel.Width = 70;
             dgvTovar.Columns.Add(cellBtnDel);
+            //Srok godnosti
+
+            dgvExpiry.Columns["productId"].HeaderText = "№";
+            dgvExpiry.Columns["name"].HeaderText = "Товар";
+            dgvExpiry.Columns["price"].Visible = false;
+            dgvExpiry.Columns["measureId"].Visible = false;
+            dgvExpiry.Columns["barcode"].Visible = false;
+            dgvExpiry.Columns["expiry"].HeaderText = "Срок годности";
+            dgvExpiry.Columns["expiry"].Width = 50;
+            dgvExpiry.Columns["expiry"].Visible = false;
+            dgvExpiry.Columns["limitProd"].Visible = false;
+            dgvExpiry.Columns["pack"].Visible = false;
+            dgvExpiry.Columns["status"].Visible = false;
+            dgvExpiry.Columns["productId"].Width = 50;
+            dgvExpiry.Columns["name"].Width = 300;
+            dgvExpiry.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvExpiry.Columns["price"].Width = 150;
+
 
             //Tovar rasxod
             dgvTovarPrixod.Columns["productId"].HeaderText = "№";
@@ -295,6 +364,7 @@ namespace tposDesktop
             dgvTovarPrixod.Columns["price"].HeaderText = "Цена";
             dgvTovarPrixod.Columns["measureId"].Visible = false;
             dgvTovarPrixod.Columns["expiry"].Visible = false;
+            dgvTovarPrixod.Columns["exp"].Visible = false;
             //dgvTovarPrixod.Columns["barcode"].HeaderText = "Штрихкод";
             dgvTovarPrixod.Columns["barcode"].Visible = false;
             dgvTovarPrixod.Columns["pack"].Visible = false;
@@ -332,18 +402,22 @@ namespace tposDesktop
 
             realizeGrid.Columns["count"].HeaderText = "Кол-во";
             realizeGrid.Columns["count"].DisplayIndex = 2;
-            realizeGrid.Columns["price"].HeaderText = "Цена";
-            realizeGrid.Columns["price"].DisplayIndex = 3;
+            realizeGrid.Columns["price"].Visible = false;
+            realizeGrid.Columns["fakturaPrice"].DisplayIndex = 3;
+            realizeGrid.Columns["fakturaPrice"].HeaderText = "Ц/Фактуры";
             //realizeGrid.Columns["name"].Width = 200;
             realizeGrid.Columns["fakturaId"].DisplayIndex = 0;
             realizeGrid.Columns["fakturaId"].HeaderText = "№ Фактуры";
             realizeGrid.Columns["fakturaId"].Width = 70;
             realizeGrid.Columns["colBtnDel"].DisplayIndex = 5;
-            realizeGrid.Columns["soldPrice"].HeaderText = "Цена на продажу";
+            realizeGrid.Columns["soldPrice"].HeaderText = "Ц/продажу";
             realizeGrid.Columns["soldPrice"].DisplayIndex = 6;
             realizeGrid.Columns["soldPrice"].Width = 100;
             realizeGrid.Columns["productId"].Visible = false;
             realizeGrid.Columns["expiryDate"].HeaderText = "Срок годности";
+            realizeGrid.Columns["barcode"].Visible = false;
+            realizeGrid.Columns["providerId"].Visible = false;
+            
             //cellBtn2.DisplayIndex = 5;
             //Expense grid
             expenseGrid.Columns["name"].HeaderText = "Наименование";
@@ -380,6 +454,10 @@ namespace tposDesktop
             dgvFakturaTovar.Columns["fakturaDate"].HeaderText = "Дата";
             dgvFakturaTovar.Columns["realizeId"].Visible = false;
             dgvFakturaTovar.Columns["productId"].Visible = false;
+            dgvFakturaTovar.Columns["providerId"].Visible = false;
+            dgvFakturaTovar.Columns["barcode"].Visible = false;
+            dgvFakturaTovar.Columns["fakturaPrice"].HeaderText = "Ц/Фактуры";
+            dgvFakturaTovar.Columns["soldPrice"].HeaderText = "Ц/Продажи";
             dgvFakturaTovar.Columns["price"].HeaderText = "Цена";
             dgvFakturaTovar.Columns["count"].HeaderText = "Кол.";
             dgvFakturaTovar.Columns["name"].Width = 250;
@@ -392,8 +470,8 @@ namespace tposDesktop
             dgvFaktura.Columns["fakturaDate"].HeaderText = "Дата";
             
             
-            dgvFaktura.Columns["phone"].HeaderText = "Тел.";
-            dgvFaktura.Columns["phone"].Width = 150;
+            //dgvFaktura.Columns["fakturaDate"].HeaderText = "Тел.";
+            dgvFaktura.Columns["phone"].Visible = false;
             dgvFaktura.Columns["orgName"].Width = 250;
             dgvFaktura.Columns["fakturaDate"].Width = 150;
 
@@ -403,7 +481,6 @@ namespace tposDesktop
             dgvSpisaniye.Columns["price"].HeaderText = "Цена";
             dgvSpisaniye.Columns["endCount"].HeaderText = "Кол.";
             dgvSpisaniye.Columns["balanceDate"].Visible = false;
-            dgvSpisaniye.Columns["expiry"].Visible = false;
             dgvSpisaniye.Columns["barcode"].HeaderText = "штрих-код";
             dgvSpisaniye.Columns["barcode"].Width = 200;
 
@@ -419,6 +496,33 @@ namespace tposDesktop
             dgvSpisaniye.Columns.Add(cellBtnSp);
             ///Change end!
 
+            dgvExpense.Columns["expenseId"].Width = 50;
+            dgvExpense.Columns["expenseId"].HeaderText = "№";
+            dgvExpense.Columns["expenseDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvExpense.Columns["expenseDate"].HeaderText = "Время";
+            dgvExpense.Columns["Debt"].Visible = false;
+            dgvExpense.Columns["Comment"].Visible = false;
+            dgvExpense.Columns["off"].Visible = false;
+            dgvExpense.Columns["expType"].Visible = false;
+            dgvExpense.Columns["terminal"].Visible = false;
+            dgvExpense.Columns["expsum"].Width = 100;
+            dgvExpense.Columns["expsum"].HeaderText = "Сумма";
+            dgvExpense.Columns["status"].Visible = false;
+            DataGridViewTextBoxColumn dtbx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dtbx.HeaderText = "Тип";
+            dtbx.Name = "expTypeStr";
+            dtbx.Width = 120;
+            dtbx.DisplayIndex = 2;
+            dgvExpense.Columns.Add(dtbx);
+
+            dgvOrders.Columns["expenseId"].Visible = false;
+            dgvOrders.Columns["expenseDate"].Visible = false;
+            dgvOrders.Columns["name"].HeaderText = "Наименование";
+            dgvOrders.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvOrders.Columns["cnt"].HeaderText = "Кол-во";
+            dgvOrders.Columns["cnt"].Width = 100;
+            dgvOrders.Columns["orderSumm"].HeaderText = "Сумма";
+            dgvOrders.Columns["orderSumm"].Width = 150;
 
 
         }
@@ -451,11 +555,19 @@ namespace tposDesktop
             int sum = 0;
             try
             {
-                for (int i = 0; i < balanceGrid.Rows.Count; ++i)
+                //for (int i = 0; i < balanceGrid.Rows.Count; ++i)
+                //{
+                //    if (balanceGrid.Rows[i].Cells["curEndCount"].Value != DBNull.Value)
+                //    sum += Convert.ToInt32(balanceGrid.Rows[i].Cells["curEndCount"].Value);
+                //}
+                getPriceTableAdapter getprDa = new getPriceTableAdapter();
+                object summa = getprDa.OstatokSum();
+                if (summa != null)
                 {
-                    if(balanceGrid.Rows[i].Cells[4].Value!=DBNull.Value)
-                    sum += Convert.ToInt32(balanceGrid.Rows[i].Cells[4].Value);
+                    sum = Convert.ToInt32(summa);
                 }
+                
+                    
                 lblBalanceSum.Text = "Итого остаток : " +sum.ToString() + " сум";
             }
             catch (Exception ex)
@@ -502,7 +614,33 @@ namespace tposDesktop
                 Console.WriteLine(ex.ToString());
             }
         }
+        private void loadBtn()
+        {
+            this.hotkeysTableAdapter1.Fill(DBclass.DS.hotkeys);
 
+            DataView htk = new DataView(DBclass.DS.hotkeys);
+            foreach (DataRowView temp in htk)
+            {
+                string[] hkeys = temp["btnId"].ToString().Split(new char[] { '$' });
+                string bkey = "";
+                string idh = "";
+                if (hkeys.Length > 0 && hkeys.Length == 2)
+                {
+                    bkey = hkeys[0];
+                    idh = hkeys[1];
+                }
+                else
+                {
+                    bkey = hkeys[0];
+                }
+
+                Button btn = this.Controls.Find("hot_" + bkey, true).FirstOrDefault() as Button;
+                btn.Tag = idh;
+                btn.Text = temp["prodId"].ToString();
+            }
+
+
+        }
         private void liveChartLoad()
         {
             Chart1.AxisX.Clear();
@@ -596,17 +734,39 @@ namespace tposDesktop
 
             Chart1.LegendLocation = LegendLocation.Right;
 
-            //modifying the series collection will animate and update the chart
-
-
-            //modifying any series values will also animate and update the chart
-            //Chart1.Series[2].Values.Add(5d);
-
-
 
         }
 
+        private void pieChartLoad()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                   string.Format("{1:P}", chartPoint.Y, chartPoint.Participation);
 
+            int i = 0;
+            DataView ExpV = (expenseGrid.DataSource) as DataView;
+            SeriesCollection pS = new SeriesCollection();
+            foreach (DataRow val in ExpV.ToTable().Rows)
+            {
+                if (Convert.ToDouble(val["count"]) > 1)
+                    pS.Add( new PieSeries
+                    {
+                        Title = val["name"].ToString(),
+                        Values = new ChartValues<double> { Convert.ToDouble(val["count"]) },
+                        PushOut = Convert.ToDouble(val["count"]),
+                        DataLabels = true,
+                        LabelPoint = labelPoint
+                    });
+                i++;
+            }
+
+
+
+            pieChart1.Series = pS;
+
+            pieChart1.LegendLocation = LegendLocation.Bottom;
+
+
+        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -684,13 +844,33 @@ namespace tposDesktop
                     break;
                 case "tabRasxod":
                     this.expenseviewTableAdapter1.Fill(DBclass.DS.expenseview);
-            DataView expense = expenseGrid.DataSource as DataView;
-            expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    DataView expense = expenseGrid.DataSource as DataView;
+                    expense.RowFilter = "expenseDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                    pieChartLoad();
                     break;
-                case "tabOstatok":
-                    this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-30));
-                    DataView balance = balanceGrid.DataSource as DataView;
-                    balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                case "tabFaktura":
+                    fakturaviewTableAdapter fak = new fakturaviewTableAdapter();
+                    fak.Fill(DBclass.DS.fakturaview);
+                    DataView dvf = dgvFaktura.DataSource as DataView;
+                    dvf.RowFilter = "fakturaDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+
+                    break;
+                //case "tabOstatok":
+                //    this.balanceviewTableAdapter1.Fill(DBclass.DS.balanceview, DateTime.Now.AddDays(-30));
+                //    DataView balance = balanceGrid.DataSource as DataView;
+                //    balance.RowFilter = "balanceDate = '" + reportDate.Value.ToString("yyyy-MM-dd") + "'";
+                //    break;
+                case "tabExpense":
+                    this.expenseTableAdapter1.Fill(DBclass.DS.expense);
+                    DataView expenseView = new DataView(DBclass.DS.expense);
+                    expenseView.RowFilter = "expenseDate <= '" + Convert.ToDateTime(reportDate.Value.ToString("yyyy-MM-dd") + " 23:59:59") + "' and expenseDate >= '" + Convert.ToDateTime(reportDate.Value.ToString("yyyy-MM-dd") + " 00:00:00") + "'";
+                    dgvExpense.DataSource = expenseView;
+
+                    this.ordersviewTableAdapter1.Fill(DBclass.DS.ordersview);
+                    DataView ordersView = new DataView(DBclass.DS.ordersview);
+                    ordersView.RowFilter = "expenseDate <= '" + Convert.ToDateTime(reportDate.Value.ToString("yyyy-MM-dd") + " 23:59:59") + "' and expenseDate >= '" + Convert.ToDateTime(reportDate.Value.ToString("yyyy-MM-dd") + " 00:00:00") + "'";
+                    dgvOrders.DataSource = ordersView;
+
                     break;
             }
                         
@@ -751,6 +931,11 @@ namespace tposDesktop
             {
                 limit = false;
             }
+            DataView dv = dgvTovar.DataSource as DataView;
+            if (limit == true)
+                dv.RowFilter = "name like '%" + tbxFilter.Text + "%' and limitProd = 1";
+            else
+                dv.RowFilter = "name like '%" + tbxFilter.Text + "%' ";
         }
         #endregion
 
@@ -768,9 +953,34 @@ namespace tposDesktop
             switch (grid.Name)
             {
                 case "dgvTovar":
+                    if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+                    else
+                        style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+                    grid.Rows[e.RowIndex].DefaultCellStyle = style;
+                    
+                    break;
+                case "dgvExpense":
+                    if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
+                    else
+                        style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
+                    string some = grid.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    if (grid.Rows[e.RowIndex].Cells[7].Value.ToString() == "0")
+                    {
+                        grid.Rows[e.RowIndex].Cells["expTypeStr"].Value = "Продажа";
+                    }
+                    else if (grid.Rows[e.RowIndex].Cells[7].Value.ToString() == "3")
+                    {
+                        grid.Rows[e.RowIndex].Cells["expTypeStr"].Value = "Списание";
+                    }
+                    else
+                    {
+                        grid.Rows[e.RowIndex].Cells["expTypeStr"].Value = "Возврат";
+                    }
+                    break;
+                case "dgvExpiry":
 
                     String expiryDate = grid.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    if (expiryDate != "" && Convert.ToDateTime(expiryDate) > DateTime.Now)
+                    if (expiryDate != "" )
                     {
                         DateTime month1 = DateTime.Now.AddDays(30);
                         DateTime month2 = DateTime.Now.AddDays(60);
@@ -779,26 +989,17 @@ namespace tposDesktop
                         {
                             grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
                         }
-                        if (expires < month1 && expires > DateTime.Now)
+                        else if (expires < month1)
                         {
                             grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                         }
-                        else
+                        else 
                         {
-                            if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
-                            else
-                                style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
-                            grid.Rows[e.RowIndex].DefaultCellStyle = style;
+                            grid.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Green;
                         }
                     }
-                    else
-                    {
-                        if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
-                        else
-                            style.BackColor = System.Drawing.Color.FromArgb(232, 232, 232);
-                        grid.Rows[e.RowIndex].DefaultCellStyle = style;
-                    }
-                break;
+                    break;
+
                 default:
                     
                     if (e.RowIndex % 2 == 1) style.BackColor = System.Drawing.Color.FromArgb(192, 230, 214);
@@ -863,6 +1064,8 @@ namespace tposDesktop
                                 DataRow[] drProduct = DBclass.DS.product.Select("productId = " + id);
                                 db.AddProduct(drProduct, false, "");
                                 db.Debt();
+                                productviewTableAdapter prVda = new productviewTableAdapter();
+                                prVda.Fill(DBclass.DS.productview);
                             }
                         }
                         break;
@@ -878,6 +1081,10 @@ namespace tposDesktop
                     case "dgvFaktura":
                         DataView dv = dgvFakturaTovar.DataSource as DataView;
                         dv.RowFilter = "fakturaId =" + dgv.Rows[e.RowIndex].Cells["fakturaId"].Value.ToString();
+                        break;
+                    case "dgvExpense":
+                        DataView dvExp = dgvOrders.DataSource as DataView;
+                        dvExp.RowFilter = "expenseId =" + dgv.Rows[e.RowIndex].Cells["expenseId"].Value.ToString();
                         break;
                 }
             }
@@ -983,7 +1190,7 @@ namespace tposDesktop
                                 
             }
             tbxFilter.Focus();
-            
+            balanceSumm();
 
         }
 
@@ -1056,7 +1263,27 @@ namespace tposDesktop
             var ds = new DataSet();
             var dt = new DataTable();
             //Получаем из  
-            dt = ExportExcel.ToDataTable(dgvTovar, "PC");
+            MySqlCommand command = new MySqlCommand();
+            command.Connection = productTableAdapter1.Connection;
+            command.CommandText = "select p.productId as `#`, p.name as `Имя`, p.price as `Цена`, p.barcode as `Штрих`, "+
+                                    "CASE WHEN pack != 0 THEN  CONCAT(FLOOR(endCount/pack) ,'/',(endCount - FLOOR(endCount/pack)*pack) ) "+
+                                    "else endCount END as `Кол. общ` , "+
+                                    "CASE WHEN pack != 0 THEN  FLOOR(endCount/pack) "+
+                                    "else endCount END as `Кол.`, "+
+                                    "CASE WHEN pack != 0 THEN  (endCount - FLOOR(endCount/pack)*pack) "+
+                                    "else endCount END as `Остаток`  "+
+                                    "from product as p left join balance as b "+
+                                    "on p.productId = b.prodId "+
+                                    "where b.balanceDate = '2000-01-01'";
+            //prDa.Fill(dataSetTpos.productview);
+            MySqlDataAdapter myDa = new MySqlDataAdapter(command);
+            //if (dt.Columns.CanRemove(dt.Columns["balanceDate"]))
+            //{
+            //    dt.Columns.Remove(dt.Columns["balanceDate"]);
+            //}
+            myDa.Fill(dt);
+            
+            
             //Записываем в Dataset нашу полученную таблицу 
             ds.Tables.Add(dt);
             var save = new SaveFileDialog();
@@ -1065,8 +1292,10 @@ namespace tposDesktop
             {
                 //Собсвенно вот тут и передаем DataSet в наш метод который формирует Excel-документ
                 ExportExcel.CreateWorkbook(save.FileName, ds);
+                
             }
         }
+
 
         private void btnExportBalance_Click(object sender, EventArgs e)
         {
@@ -1085,5 +1314,175 @@ namespace tposDesktop
             }
         }
 
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsform = new SettingsForm(null);
+            settingsform.ShowDialog();
+        }
+
+        private void парольToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            passForm passform = new passForm();
+            if (passform.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        private Bitmap encodingZxing(string barcode)
+        {
+            Bitmap img = null;
+            //Renderer = typeof(Bitmap);
+            try
+            {
+                BarcodeFormat frmt = new BarcodeFormat() ;
+                if (barcode.Length == 12)
+                {
+                    frmt = BarcodeFormat.UPC_A;
+                }
+                else if (barcode.Length == 13)
+                {
+                    frmt = BarcodeFormat.EAN_13;
+                }
+                
+                var writer = new BarcodeWriter
+                {
+                    Format = frmt,
+                    Options = EncodingOptions ?? new EncodingOptions
+                    {
+                        Height = 100,
+                        Width = 800
+                    },
+                    Renderer = (IBarcodeRenderer<Bitmap>)Activator.CreateInstance(Renderer)
+                };
+                img = writer.Write(barcode);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(this, exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return img;
+
+        }
+
+        public void saveBmp(string barcode)
+        {
+            Bitmap img = encodingZxing(barcode);
+            var fileName = String.Empty;
+            fileName = Directory.GetCurrentDirectory() + "\\barcode.png";
+            var extension = Path.GetExtension(fileName).ToLower();
+            var bmp = (Bitmap)img;
+
+            bmp.Save(fileName, ImageFormat.Png);
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tabControl1.TabPages.Remove(tabControl1.TabPages[1]);
+           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tabControl1.TabPages.Add(tabControl1.TabPages[1]);
+        }
+
+        private void menuEksportFilial_Click(object sender, EventArgs e)
+        {
+            FormToFilial formFilial = new FormToFilial();
+            formFilial.ShowDialog();
+        }
+
+        private void ExportradioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void libraBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGetFaktura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void realizeSearchTxt_valueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void backSearchTxt_valueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void providerCmbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void provCmbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxUsersSchet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void libraCmx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hotKey_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            string[] temp = btn.Name.Split('_');
+
+            using (ProdList prodList = new ProdList(temp[1], btn.Text, (btn.Tag == null ? "" : btn.Tag.ToString())))
+            {
+                prodList.ShowDialog();
+                string result = prodList.prodName;
+                btn.Text = result;
+                btn.Tag = prodList.id;
+            }
+
+        }
+
+        private void menuUpdate_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
+
+        private void realizeGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (UserValues.role == "admin" && e.RowIndex >= 0)
+            {
+                int realizeId = (int)realizeGrid.Rows[e.RowIndex].Cells["realizeId"].Value;
+                int fakturaId = (int)realizeGrid.Rows[e.RowIndex].Cells["fakturaId"].Value;
+                DataSetTposTableAdapters.realizeTableAdapter rlDa = new realizeTableAdapter();
+                rlDa.FillByID(DBclass.DS.realize, realizeId);
+                DataSetTpos.realizeRow rlRow = DBclass.DS.realize.FindByrealizeId(realizeId);
+                DataSetTpos.productRow prRow = DBclass.DS.product.Single<DataSetTpos.productRow>(rl => rl.productId == rlRow.prodId);
+                DataSetTpos.realizeviewRow rlvRow = DBclass.DS.realizeview.Single<DataSetTpos.realizeviewRow>(rl => rl.realizeId == realizeId);
+                AddRealize adReal = new AddRealize(rlRow, rlvRow, prRow);
+                adReal.ShowDialog();
+                productTableAdapter prDa = new productTableAdapter();
+                prDa.Update(prRow);
+                realizeSumm();
+            }
+        }
     }
 }
