@@ -11,12 +11,27 @@ namespace Classes.Forms
     public class DesignedForm : Form
     {
 
+
         protected bool _dragging = false;
         protected Point _offset;
         public PictureBox pbCaption;
         public Button btnCancel;
         public Label lblCaption;
         protected Point _start_point = new Point(0, 0);
+
+
+        public bool ShowCloseButton
+        {
+            set { btnCancel.Visible = value; }
+            get { return btnCancel.Visible; }
+        }
+
+        public bool ShowCaption
+        {
+            set { lblCaption.Visible = value; }
+            get { return lblCaption.Visible; }
+        }
+
 
         public DesignedForm()
         {
@@ -30,6 +45,7 @@ namespace Classes.Forms
             pbCaption.MouseUp += Form_MouseUp;
             
         }
+        
         protected void Form_MouseDown(object sender, MouseEventArgs e)
         {
             _dragging = true;
@@ -108,6 +124,7 @@ namespace Classes.Forms
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblCaption);
             this.Controls.Add(this.pbCaption);
+            
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DesignedForm";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DesignedForm_Paint);

@@ -2476,5 +2476,25 @@ namespace tposDesktop
             ProdListDiscount pd = new ProdListDiscount();
             pd.ShowDialog();
         }
+
+        private void menuClients_Click(object sender, EventArgs e)
+        {
+            Debts.ClientsForm clients = new Debts.ClientsForm(false);
+            clients.ShowDialog();
+        }
+
+        private void menuDebtType_Click(object sender, EventArgs e)
+        {
+            Debts.DebtTypeForm debttype = new Debts.DebtTypeForm();
+            debttype.ShowDialog();
+        }
+
+        private void menuDebt_Click(object sender, EventArgs e)
+        {
+            Debts.DebtForm debtForm = new Debts.DebtForm();
+            debtForm.ShowDialog();
+            
+
+        }
     }
 }

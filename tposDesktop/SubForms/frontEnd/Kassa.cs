@@ -52,10 +52,10 @@ namespace tposDesktop
             {
                 expenseId = row.expenseId;
             }
-            sumTerm = table.Compute("Sum(terminal)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and debt = 0 and expType = 0");
-            sumExp = table.Compute("Sum(expSum)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and debt = 0 and expType = 0");
+            sumTerm = table.Compute("Sum(terminal)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and expType = 0");
+            sumExp = table.Compute("Sum(expSum)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and expType = 0");
             sumBack = table.Compute("Sum(expSum)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and debt = 0 and expType = 1");
-            sumDebt = table.Compute("Sum(expSum)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and debt = 1 and expType = 0");
+            sumDebt = table.Compute("Sum(debt)", "userId = " + UserValues.CurrentUserID + " and expenseId > " + expenseId + " and debt > 0 and expType = 0");
             int sumE;
             int sumT;
             int sumB;
@@ -96,7 +96,7 @@ namespace tposDesktop
                 sumD = Convert.ToInt32(sumDebt);
             }
 
-            nal.Text = (sumE - sumT).ToString();
+            nal.Text = (sumE - sumT - sumD).ToString();
             terminal.Text = sumT.ToString();
             debt.Text = sumD.ToString();
             back.Text = sumB.ToString();

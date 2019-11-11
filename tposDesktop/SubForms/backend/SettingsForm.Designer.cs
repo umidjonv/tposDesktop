@@ -47,6 +47,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbxDiscount = new System.Windows.Forms.ComboBox();
             this.chbDiscount = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbxKredit = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +57,7 @@
             // 
             this.pbCaption.Location = new System.Drawing.Point(-2, 0);
             this.pbCaption.Margin = new System.Windows.Forms.Padding(2);
-            this.pbCaption.Size = new System.Drawing.Size(411, 54);
+            this.pbCaption.Size = new System.Drawing.Size(509, 54);
             // 
             // btnCancel
             // 
@@ -62,7 +65,7 @@
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(357, 0);
+            this.btnCancel.Location = new System.Drawing.Point(455, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Size = new System.Drawing.Size(52, 54);
             // 
@@ -80,7 +83,7 @@
             this.btnOK.FlatAppearance.BorderSize = 0;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnOK.Location = new System.Drawing.Point(291, 452);
+            this.btnOK.Location = new System.Drawing.Point(377, 521);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(97, 46);
@@ -106,7 +109,7 @@
             this.tbxOrgName.Location = new System.Drawing.Point(133, 84);
             this.tbxOrgName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxOrgName.Name = "tbxOrgName";
-            this.tbxOrgName.Size = new System.Drawing.Size(256, 26);
+            this.tbxOrgName.Size = new System.Drawing.Size(341, 26);
             this.tbxOrgName.TabIndex = 13;
             // 
             // chbPrinter
@@ -150,7 +153,7 @@
             this.tbxSN.Location = new System.Drawing.Point(133, 298);
             this.tbxSN.Margin = new System.Windows.Forms.Padding(2);
             this.tbxSN.Name = "tbxSN";
-            this.tbxSN.Size = new System.Drawing.Size(256, 26);
+            this.tbxSN.Size = new System.Drawing.Size(341, 26);
             this.tbxSN.TabIndex = 13;
             // 
             // label4
@@ -209,7 +212,7 @@
             this.tbxDB.Location = new System.Drawing.Point(133, 346);
             this.tbxDB.Margin = new System.Windows.Forms.Padding(2);
             this.tbxDB.Name = "tbxDB";
-            this.tbxDB.Size = new System.Drawing.Size(256, 26);
+            this.tbxDB.Size = new System.Drawing.Size(341, 26);
             this.tbxDB.TabIndex = 13;
             this.tbxDB.Visible = false;
             // 
@@ -219,7 +222,7 @@
             this.kassaTbx.Location = new System.Drawing.Point(132, 126);
             this.kassaTbx.Margin = new System.Windows.Forms.Padding(2);
             this.kassaTbx.Name = "kassaTbx";
-            this.kassaTbx.Size = new System.Drawing.Size(256, 26);
+            this.kassaTbx.Size = new System.Drawing.Size(341, 26);
             this.kassaTbx.TabIndex = 19;
             // 
             // label2
@@ -237,7 +240,7 @@
             // 
             this.chbRebate.AutoSize = true;
             this.chbRebate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.chbRebate.Location = new System.Drawing.Point(23, 452);
+            this.chbRebate.Location = new System.Drawing.Point(337, 397);
             this.chbRebate.Name = "chbRebate";
             this.chbRebate.Size = new System.Drawing.Size(137, 24);
             this.chbRebate.TabIndex = 20;
@@ -249,7 +252,7 @@
             // 
             this.tbxPercent.Enabled = false;
             this.tbxPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tbxPercent.Location = new System.Drawing.Point(48, 482);
+            this.tbxPercent.Location = new System.Drawing.Point(362, 427);
             this.tbxPercent.MaxLength = 2;
             this.tbxPercent.Name = "tbxPercent";
             this.tbxPercent.Size = new System.Drawing.Size(46, 26);
@@ -260,7 +263,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label5.Location = new System.Drawing.Point(100, 485);
+            this.label5.Location = new System.Drawing.Point(413, 430);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 20);
             this.label5.TabIndex = 22;
@@ -270,28 +273,60 @@
             // 
             this.cbxDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbxDiscount.FormattingEnabled = true;
-            this.cbxDiscount.Location = new System.Drawing.Point(133, 393);
+            this.cbxDiscount.Location = new System.Drawing.Point(132, 427);
             this.cbxDiscount.Name = "cbxDiscount";
-            this.cbxDiscount.Size = new System.Drawing.Size(255, 28);
+            this.cbxDiscount.Size = new System.Drawing.Size(197, 28);
             this.cbxDiscount.TabIndex = 23;
             // 
             // chbDiscount
             // 
             this.chbDiscount.AutoSize = true;
             this.chbDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.chbDiscount.Location = new System.Drawing.Point(23, 397);
+            this.chbDiscount.Location = new System.Drawing.Point(133, 397);
             this.chbDiscount.Name = "chbDiscount";
-            this.chbDiscount.Size = new System.Drawing.Size(84, 24);
+            this.chbDiscount.Size = new System.Drawing.Size(139, 24);
             this.chbDiscount.TabIndex = 20;
-            this.chbDiscount.Text = "Cкидки";
+            this.chbDiscount.Text = "Группы скидок";
             this.chbDiscount.UseVisualStyleBackColor = true;
             this.chbDiscount.CheckedChanged += new System.EventHandler(this.chbDiscount_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(18, 467);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 50);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Тип рассрочки:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(19, 401);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Ключ:";
+            // 
+            // cbxKredit
+            // 
+            this.cbxKredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbxKredit.FormattingEnabled = true;
+            this.cbxKredit.Location = new System.Drawing.Point(132, 479);
+            this.cbxKredit.Name = "cbxKredit";
+            this.cbxKredit.Size = new System.Drawing.Size(198, 28);
+            this.cbxKredit.TabIndex = 23;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 518);
+            this.ClientSize = new System.Drawing.Size(504, 578);
+            this.Controls.Add(this.cbxKredit);
             this.Controls.Add(this.cbxDiscount);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbxPercent);
@@ -302,8 +337,10 @@
             this.Controls.Add(this.dtpExpDate);
             this.Controls.Add(this.chbCOM);
             this.Controls.Add(this.chbPrinter);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbxSN);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbxCom);
             this.Controls.Add(this.tbxDB);
@@ -325,8 +362,10 @@
             this.Controls.SetChildIndex(this.tbxDB, 0);
             this.Controls.SetChildIndex(this.tbxCom, 0);
             this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.tbxSN, 0);
             this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.chbPrinter, 0);
             this.Controls.SetChildIndex(this.chbCOM, 0);
             this.Controls.SetChildIndex(this.dtpExpDate, 0);
@@ -337,6 +376,7 @@
             this.Controls.SetChildIndex(this.tbxPercent, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.cbxDiscount, 0);
+            this.Controls.SetChildIndex(this.cbxKredit, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -364,5 +404,8 @@
         internal System.Windows.Forms.CheckBox chbRebate;
         private System.Windows.Forms.ComboBox cbxDiscount;
         internal System.Windows.Forms.CheckBox chbDiscount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbxKredit;
     }
 }

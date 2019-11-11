@@ -343,6 +343,16 @@ namespace tposDesktop.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shopping__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("shopping (1)2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap show_dolg {
             get {
                 object obj = ResourceManager.GetObject("show_dolg", resourceCulture);

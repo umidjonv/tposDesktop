@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tposDesktop</RootNamespace>
     <AssemblyName>tposDesktop</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -27,6 +28,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -90,6 +93,12 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ExcelLibrary.dll</HintPath>
@@ -110,18 +119,18 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Debug\MySql.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.15.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.AddIn" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
@@ -151,6 +160,7 @@
     <Compile Include="Classes\GodexPrinter.cs" />
     <Compile Include="Classes\ImageCell.cs" />
     <Compile Include="Classes\Logs.cs" />
+    <Compile Include="Classes\Model\MainHandler.cs" />
     <Compile Include="Classes\NumericTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -160,6 +170,11 @@
     <Compile Include="Classes\VisualEffects.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DataSetDebt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetDebt.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetTpos.cs">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </Compile>
@@ -167,6 +182,43 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\ClientsForm.Designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\DBDebt.cs" />
+    <Compile Include="Debts\DebtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\DebtForm.Designer.cs">
+      <DependentUpon>DebtForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\DebtTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\DebtTypeForm.Designer.cs">
+      <DependentUpon>DebtTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\DebtSaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\DebtSaleForm.Designer.cs">
+      <DependentUpon>DebtSaleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\IndirectSaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\IndirectSaleForm.Designer.cs">
+      <DependentUpon>IndirectSaleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\PayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Debts\PayForm.Designer.cs">
+      <DependentUpon>PayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
@@ -420,6 +472,24 @@
     <EmbeddedResource Include="Classes\VisualEffects.resx">
       <DependentUpon>VisualEffects.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Debts\ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debts\DebtForm.resx">
+      <DependentUpon>DebtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debts\DebtTypeForm.resx">
+      <DependentUpon>DebtTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debts\DebtSaleForm.resx">
+      <DependentUpon>DebtSaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debts\IndirectSaleForm.resx">
+      <DependentUpon>IndirectSaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debts\PayForm.resx">
+      <DependentUpon>PayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -536,6 +606,17 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataSetDebt.xsc">
+      <DependentUpon>DataSetDebt.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetDebt.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetDebt.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetDebt.xss">
+      <DependentUpon>DataSetDebt.xsd</DependentUpon>
+    </None>
     <None Include="DataSetTpos.xsc">
       <DependentUpon>DataSetTpos.xsd</DependentUpon>
     </None>
@@ -607,6 +688,7 @@
     <Content Include="icon.ico" />
     <Content Include="icon_hF6_icon.ico" />
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\shopping %281%292.png" />
     <None Include="Resources\checked.png" />
     <None Include="Resources\discount.png" />
     <None Include="Resources\Package-Add-icon.png" />
@@ -640,10 +722,19 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Debts\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

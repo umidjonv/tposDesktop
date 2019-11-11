@@ -53,13 +53,13 @@ namespace tposDesktop
             productviewTableAdapter prVda = new productviewTableAdapter();
             prVda.Fill(DBclass.DS.productview);
             /////Initializ LOGS
-            Logs logs = new Logs();
+            //Logs logs = new Logs();
             ///initialize config table and class
             configsTableAdapter cfgDa = new configsTableAdapter();
             cfgDa.Fill(DBclass.DS.configs);
             Configs cfgs = new Configs();
 
-            if(chbDiscount.Checked)GetDiscountConfig();
+            GetDiscountConfig();
 
             if (!(DBclass.DS.orders.Columns["sumProduct"] is DataColumn))
                 DBclass.DS.orders.Columns.Add("sumProduct", typeof(int));
@@ -130,13 +130,18 @@ namespace tposDesktop
 
         private void GetDiscountConfig()
         {
-            string discount_val = Configs.GetConfig("discount");
+            
+            string discount_val = Configs.GetConfig("discountVal");
             if (discount_val != "" && discount_val != "0")
             {
                 discountId = Convert.ToInt32(discount_val);
                 v_discountTableAdapter discountpDa = new v_discountTableAdapter();
                 discountpDa.Fill(DBclass.DS.v_discount, discountId);
-
+            }
+            else
+            {
+                chbDiscount.Checked = false;
+                chbDiscount.Visible = false;
             }
         }
         private void loadBtn()
@@ -261,7 +266,7 @@ namespace tposDesktop
             //int expId = (int)((object[])e.Argument)[1];
             dbC.triggerExecute(triggerName, expId);
 
-            Logs.SetLog("------End Trigger------", Logs.LogStatus.Warning);
+            //Logs.SetLog("------End Trigger------", Logs.LogStatus.Warning);
         }
 
 
@@ -291,7 +296,7 @@ namespace tposDesktop
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            btnDolg.BackgroundImage = Properties.Resources.qarz;
+            //btnDolg.BackgroundImage = Properties.Resources.qarz;
             timer.Start();
             // TODO: This line of code loads data into the 'dataSetTpos.orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.dataSetTpos.orders);
@@ -501,7 +506,7 @@ namespace tposDesktop
         {
             DataSetTpos.v_discountRow[] discRows = FindDiscountByproductId(productId);
 
-            if (discRows.Length > 0)
+            if (discRows.Length > 0 && chbDiscount.Checked)
             {
                 return discRows[0].discount;
             }
@@ -568,12 +573,12 @@ namespace tposDesktop
                         MessageBox.Show("Товара нет на складе. Обратитесь к администратору");
                         return;
                     }
-                    KolForm kolform = new KolForm(drP);
-                    if (kolform.ShowDialog() == DialogResult.OK)
-                    {
-                        drP.pack = kolform.count;
-                    }
-                    else { return; }
+                    //KolForm kolform = new KolForm(drP);
+                    //if (kolform.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    drP.pack = kolform.count;
+                    //}
+                    //else { return; }
 
                     DataRow[] existRows = DBclass.DS.orders.Select("expenseId=" + tempExpeId + " and prodId = " + drP.productId);
                     if (existRows.Length > 0)
@@ -744,178 +749,202 @@ namespace tposDesktop
 
         private void btnOplata_Click(object sender, EventArgs e)
         {
+            Oplata();
+        }
+
+        public void Oplata(int charge, double debtsum, int debttypeId, double beginSum)
+        {
+            
+            //Logs.SetLog("_____________", Logs.LogStatus.Info);
+            drPrintCol = new List<string[]>();
+
+            //Logs.SetLog("Begin expense", Logs.LogStatus.Info);
+            expenseTableAdapter expDa = new expenseTableAdapter();
+            expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
+            DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
+            DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
+            double sum = 0;
+            int num = 1;
+            foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
+            {
+                forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString(), dgvRow.Cells["orderSumm"].Value.ToString());
+                num++;
+
+                sum += Math.Round(Double.Parse(dgvRow.Cells["orderSumm"].Value.ToString()));//Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse((Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString()));
+
+            }
+
+            if (debtsum != 0)
+            {
+                sum = debtsum;
+                this.chbReb.Checked = false;
+            }
+            var percentPens = Double.Parse(((100 - Double.Parse(Configs.GetConfig("PercentAll"))) / 100).ToString());
+            if (this.chbReb.Checked)
+            {
+
+                sum = sum * percentPens;
+                expRow.charge = int.Parse(Configs.GetConfig("PercentAll")) * -1;
+            }
+            else if(charge!=0)
+            {
+                expRow.charge = charge;
+            }
+            else 
+            {
+                expRow.charge = 0;
+            }
+
+            expRow.expenseDate = DateTime.Now;
+            expRow.debt = (contId != 0) ? (int)(debtsum - beginSum) : 0;
+            expRow.status = (contId != 0) ? 1 : 0;
+            expRow.comment = (contId != 0) ? commentDebt : "";
+            expRow.expType = vozvrat ? 1 : 0;
+            expRow.contragentId = contId;
+            expRow.userID = UserValues.CurrentUserID;
+
+            expRow.expSum = (int)Math.Round(sum);
+            if (isTerminal && !vozvrat)
+            {
+                if (debtsum == 0)
+                {
+                    expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
+                }
+                else
+                {
+                    expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
+                }
+            }
+            else expRow.terminal = 0;
+            terminalSum = 0;
+            expTable.Rows.Add(expRow);
+
+
+            expDa.Update(expTable);
+            expDa.FillLast(expTable);
+            DataSetTpos.expenseRow exRow = expTable.Rows[0] as DataSetTpos.expenseRow;
+            if (Properties.Settings.Default.isPrinter == true)
+            {
+                EndHtml(exRow.expenseId, exRow.expSum, exRow.terminal, exRow.expType, exRow.debt, exRow.expSum, int.Parse(Configs.GetConfig("PercentAll")));
+                //forPrinting(drPrintCol, expTable);
+
+            }
+            //swa.Stop();
+            //Logs.Write("update expense", Logs.LogStatus.Info);
+            if (contId != 0)
+            {
+                Classes.Model.MainHandlerADO mainHandler = new Classes.Model.MainHandlerADO();
+                DataSetDebt.debtsDataTable debtsTable = mainHandler.RefreshDebts();
+                mainHandler.AddDebts(exRow.expenseId, contId, debttypeId, (int)(debtsum - beginSum));
+                
+            }
+
+            //Logs.SetLog("TIME:" + swa.Elapsed, Logs.LogStatus.Info);
+
+
+
+            //Logs.Write("Triggeting executed", Logs.LogStatus.Info);
+
+            DataView dv = dgvExpense.DataSource as DataView;
+            //Logs.SetLog("Временный:"+tempExpeId, Logs.LogStatus.Info);
+            //Logs.SetLog("Сумма:"+lblSum.Text, Logs.LogStatus.Info);
+
+            lblSum.Text = "0";
+            chbReb.Checked = false;
+
+
+            //Logs.SetLog("--------------------", Logs.LogStatus.Info);
+            //DataSetTpos.expenseDataTable expTable = (DataSetTpos.expenseDataTable)((object[])e.Argument)[1];
+            int expId;
+            DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = " + tempExpeId);
+            //DataSetTpos.ordersRow[] orderRows = new DataSetTpos.ordersRow[orRows.Length];
+            //orRows.CopyTo(orderRows, 0);
+
+            db.updateThread.haveCheck = false;
+            foreach (DataSetTpos.ordersRow oneRow in orRows)
+            {
+                oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId;
+                //Logs.SetLog("exp:" + oneRow.expenseId + " orders:prodId:" + oneRow.prodId + ", orderSum:" + oneRow.orderSumm + ", cnt:" + oneRow.packCount, Logs.LogStatus.Info);
+            }
+            db.updateThread.AddToExpenseList((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId, orRows, (vozvrat ? 1 : 0));
+            db.updateThread.haveCheck = true;
+            expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
+            ExpenseId = expId;
+            //Logs.SetLog("updating orders,exp:" + expId, Logs.LogStatus.Info);
+
+
+            //ordersTableAdapter prDa = new ordersTableAdapter();
+            //prDa.Update(DBclass.DS.orders);
+            //Logs.SetLog("end update orders,exp:" + expId, Logs.LogStatus.Warning);
+            //getPriceTableAdapter getPriceda = new getPriceTableAdapter();
+
+            //if (contId != 1)
+            //{
+            //    if (vozvrat)
+            //    {
+            //        //dbC.triggerExecute("BackTrigger", expId);
+            //        Triggering("BackTrigger", expTable);
+            //    }
+            //    else
+            //    {
+            //        //dbC.triggerExecute("ExpenseTrigger", expId);
+            //        Triggering("ExpenseTrigger", expTable);
+            //    }
+            //}
+
+
+            foreach (DataSetTpos.ordersRow oneRow in orRows)
+            {
+                DBclass.DS.orders.RemoveordersRow(oneRow);
+            }
+            //this.Invoke(new delDgvRefresh(dgvRefresh));
+            //Logs.Write("Printing", Logs.LogStatus.Info);
+
+            //dgvExpense.Columns["productName"].Visible = false;
+            //dgvExpense.Columns["productPrice"].Visible = false;
+            string key = "";
+            switch (tempExpeId)
+            {
+                case -2:
+                    key = "btnS_2";
+                    break;
+                case -3:
+                    key = "btnS_3";
+                    break;
+                case -4:
+                    key = "btnS_4";
+                    break;
+                case -5:
+                    key = "btnS_5";
+                    break;
+            }
+            btnSPanel.Controls.RemoveByKey(key);
+            btnS_Click(btnS_1, null);
+            key_clear_Click(null, null);
+            isTerminal = false;
+            isNewExpense = true;
+
+            commentDebt = "";
+            contId = 0;
+            if (vozvrat)
+            {
+                btnVozvrat_Click(btnVozvrat, new EventArgs());
+            }
+            menuUpdate_Click(menuUpdate, new EventArgs());
+            dgvTovar.Focus();
+
+
+                
+           
+        }
+
+        public void Oplata()
+        {
             try
             {
-                //Stopwatch swa = new Stopwatch();
-
-                //swa.Start();
                 if (dgvExpense.Rows.Count != 0 && MessageBox.Show("Произвести оплату?", "Оплата", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    Logs.SetLog("_____________", Logs.LogStatus.Info);
-                    drPrintCol = new List<string[]>();
-
-                    Logs.SetLog("Begin expense", Logs.LogStatus.Info);
-                    expenseTableAdapter expDa = new expenseTableAdapter();
-                    expDa.Adapter.SelectCommand = new MySql.Data.MySqlClient.MySqlCommand("select * from expense order by expenseId desc limit 1", expDa.Connection);
-                    DataSetTpos.expenseDataTable expTable = new DataSetTpos.expenseDataTable();
-                    DataSetTpos.expenseRow expRow = expTable.NewexpenseRow();
-                    double sum = 0;
-                    int num = 1;
-                    foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
-                    {
-                        forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (Convert.ToDouble(dgvRow.Cells["productPrice"].Value)-(discountId!=-1? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) :0)).ToString());
-                        num++;
-                        //drPrintCol.Add(new string[] { dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (dgvRow.Cells["productPrice"].Value).ToString() });
-                        sum += Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse((Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString()));
-                        
-                    }
-                    var percentPens = Double.Parse(((100 - Double.Parse(Configs.GetConfig("PercentAll"))) / 100).ToString());
-                    if (this.chbReb.Checked)
-                    {
-
-                        sum = sum * percentPens;
-                        expRow.charge = int.Parse(Configs.GetConfig("PercentAll")) * -1;
-                    }
-                    else
-                    {
-                        expRow.charge = 0; 
-                    }
-                    
-
-                    expRow.expenseDate = DateTime.Now;
-                    expRow.debt = (contId != 0) ? 1 : 0;
-                    expRow.status = (contId != 0) ? 1 : 0;
-                    expRow.comment = (contId != 0) ? commentDebt : "";
-                    expRow.expType = vozvrat ? 1 : 0;
-                    expRow.contragentId = contId;
-                    expRow.userID = UserValues.CurrentUserID;
-
-                    expRow.expSum = (int)Math.Round(sum);
-                    if (isTerminal && !vozvrat)
-                    {
-                        expRow.terminal = terminalSum != 0 ? terminalSum : expRow.expSum;
-                    }
-                    else expRow.terminal = 0;
-                    terminalSum = 0;
-                    expTable.Rows.Add(expRow);
-
-                    //swa.Stop();
-                    //Logs.SetLog("TIME:" + swa.Elapsed, Logs.LogStatus.Info);
-                    //swa.Start();
-                    expDa.Update(expTable);
-                    expDa.FillLast(expTable);
-                    DataSetTpos.expenseRow exRow = expTable.Rows[0] as DataSetTpos.expenseRow;
-                    if (Properties.Settings.Default.isPrinter == true)
-                    {
-                        EndHtml(exRow.expenseId, exRow.expSum, exRow.terminal, exRow.expType, exRow.debt, exRow.expSum, int.Parse(Configs.GetConfig("PercentAll")));
-                        //forPrinting(drPrintCol, expTable);
-
-                    }
-                    //swa.Stop();
-                    //Logs.Write("update expense", Logs.LogStatus.Info);
-                    if (contId != 0)
-                    {
-                        contragentTableAdapter ctba = new contragentTableAdapter();
-                        DataSetTpos.contragentRow[] ctrRow = (DataSetTpos.contragentRow[])DBclass.DS.contragent.Select("contragentId = " + contId);
-                        ctrRow[0].sums = ctrRow[0].sums + (int)Math.Round(sum);
-                        ctba.Update(ctrRow[0]);
-                    }
-
-                    //Logs.SetLog("TIME:" + swa.Elapsed, Logs.LogStatus.Info);
-
-
-
-                    //Logs.Write("Triggeting executed", Logs.LogStatus.Info);
-
-                    DataView dv = dgvExpense.DataSource as DataView;
-                    //Logs.SetLog("Временный:"+tempExpeId, Logs.LogStatus.Info);
-                    //Logs.SetLog("Сумма:"+lblSum.Text, Logs.LogStatus.Info);
-
-                    lblSum.Text = "0";
-                    chbReb.Checked = false;
-
-
-                    Logs.SetLog("--------------------", Logs.LogStatus.Info);
-                    //DataSetTpos.expenseDataTable expTable = (DataSetTpos.expenseDataTable)((object[])e.Argument)[1];
-                    int expId;
-                    DataSetTpos.ordersRow[] orRows = (DataSetTpos.ordersRow[])DBclass.DS.orders.Select("expenseId = " + tempExpeId);
-                    //DataSetTpos.ordersRow[] orderRows = new DataSetTpos.ordersRow[orRows.Length];
-                    //orRows.CopyTo(orderRows, 0);
-
-                    db.updateThread.haveCheck = false;
-                    foreach (DataSetTpos.ordersRow oneRow in orRows)
-                    {
-                        oneRow.expenseId = (expTable.Rows[0] as DataSetTpos.expenseRow).expenseId;
-                        //Logs.SetLog("exp:" + oneRow.expenseId + " orders:prodId:" + oneRow.prodId + ", orderSum:" + oneRow.orderSumm + ", cnt:" + oneRow.packCount, Logs.LogStatus.Info);
-                    }
-                    db.updateThread.AddToExpenseList((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId, orRows, (vozvrat ? 1 : 0));
-                    db.updateThread.haveCheck = true;
-                    expId = Convert.ToInt32((expTable.Rows[0] as DataSetTpos.expenseRow).expenseId);
-                    ExpenseId = expId;
-                    //Logs.SetLog("updating orders,exp:" + expId, Logs.LogStatus.Info);
-
-
-                    //ordersTableAdapter prDa = new ordersTableAdapter();
-                    //prDa.Update(DBclass.DS.orders);
-                    Logs.SetLog("end update orders,exp:" + expId, Logs.LogStatus.Warning);
-                    //getPriceTableAdapter getPriceda = new getPriceTableAdapter();
-
-                    //if (contId != 1)
-                    //{
-                    //    if (vozvrat)
-                    //    {
-                    //        //dbC.triggerExecute("BackTrigger", expId);
-                    //        Triggering("BackTrigger", expTable);
-                    //    }
-                    //    else
-                    //    {
-                    //        //dbC.triggerExecute("ExpenseTrigger", expId);
-                    //        Triggering("ExpenseTrigger", expTable);
-                    //    }
-                    //}
-
-
-                    foreach (DataSetTpos.ordersRow oneRow in orRows)
-                    {
-                        DBclass.DS.orders.RemoveordersRow(oneRow);
-                    }
-                    //this.Invoke(new delDgvRefresh(dgvRefresh));
-                    //Logs.Write("Printing", Logs.LogStatus.Info);
-
-                    //dgvExpense.Columns["productName"].Visible = false;
-                    //dgvExpense.Columns["productPrice"].Visible = false;
-                    string key = "";
-                    switch (tempExpeId)
-                    {
-                        case -2:
-                            key = "btnS_2";
-                            break;
-                        case -3:
-                            key = "btnS_3";
-                            break;
-                        case -4:
-                            key = "btnS_4";
-                            break;
-                        case -5:
-                            key = "btnS_5";
-                            break;
-                    }
-                    btnSPanel.Controls.RemoveByKey(key);
-                    btnS_Click(btnS_1, null);
-                    key_clear_Click(null, null);
-                    isTerminal = false;
-                    isNewExpense = true;
-
-                    commentDebt = "";
-                    contId = 0;
-                    if (vozvrat)
-                    {
-                        btnVozvrat_Click(btnVozvrat, new EventArgs());
-                    }
-                    menuUpdate_Click(menuUpdate, new EventArgs());
-                    dgvTovar.Focus();
-
-
+                    Oplata(0, 0, 0, 0);
                 }
             }
             catch (Exception ex)
@@ -958,8 +987,10 @@ namespace tposDesktop
             if ((grid.Columns[e.ColumnIndex].Name == "packCount" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["packCount"].Value != DBNull.Value)
             {
                 double pck;
+                
                 if (Double.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
                 {
+
                     grid.Rows[e.RowIndex].Cells["discount"].Value = (chbDiscount.Checked?CheckDiscount((int)grid.Rows[e.RowIndex].Cells["prodId"].Value):0);
                     grid.Rows[e.RowIndex].Cells["sumProduct"].Value = Math.Round((pck) * (Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value) - GetDiscountSum((int)grid.Rows[e.RowIndex].Cells["prodId"].Value, Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value)))).ToString();
                     sumTable();
@@ -968,10 +999,20 @@ namespace tposDesktop
                 {
                     grid.Rows[e.RowIndex].Cells["packCount"].Value = packCount;
                 }
+
+                
             }
-            
-             
-        }
+            if ((grid.Columns[e.ColumnIndex].Name == "sumProduct" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["sumProduct"].Value != DBNull.Value)
+            {
+                double sumpr;
+                if (Double.TryParse(grid.Rows[e.RowIndex].Cells["sumProduct"].Value.ToString(), out sumpr))
+                {
+                    grid.Rows[e.RowIndex].Cells["orderSumm"].Value = Double.Parse(grid.Rows[e.RowIndex].Cells["sumProduct"].Value.ToString());
+                    sumTable();
+                }
+            }
+
+            }
         delegate void SetLabel(string str);
         private void SetTBX(string str)
         {
@@ -1021,7 +1062,7 @@ namespace tposDesktop
             {
                 db.updateThread.StopThread();
             }
-            Logs.StopLog();
+            //Logs.StopLog();
             Program.window_type = 0;
             this.Close();
         }
@@ -1034,8 +1075,8 @@ namespace tposDesktop
 
         private void btnDolg_Click(object sender, EventArgs e)
         {
-            FormDolgi dolgi = new FormDolgi();
-            dolgi.ShowDialog();
+            //FormDolgi dolgi = new FormDolgi();
+            //dolgi.ShowDialog();
         }
         bool vozvrat = false;
         private void btnVozvrat_Click(object sender, EventArgs e)
@@ -1166,9 +1207,9 @@ namespace tposDesktop
         }
 
         string dataHtml = "";
-        private void forPrintingNew(string sNum, string s0, string s1, string s2)
+        private void forPrintingNew(string sNum, string s0, string s1, string s2, string s3)
         {
-            dataHtml += "<tr><td>" + sNum + "</td><td>" + s0 + "</td><td>" + s1 + "</td> <td>" + s2 + "</td> <td>" + (Math.Round(Double.Parse(s1) * Double.Parse(s2))).ToString() + "</td></tr>";
+            dataHtml += "<tr><td>" + sNum + "</td><td>" + s0 + "</td><td>" + s1 + "</td> <td>" + s2 + "</td> <td>" + s3 + "</td></tr>";
 
  
         }
@@ -1258,7 +1299,7 @@ namespace tposDesktop
                 }
             }
             swa.Stop();
-            Logs.SetLog("PrintTime:"+swa.Elapsed.ToString(), Logs.LogStatus.Info);
+            //Logs.SetLog("PrintTime:"+swa.Elapsed.ToString(), Logs.LogStatus.Info);
             //PrintClass cl = new PrintClass();
             //cl.Printing();
         }
@@ -1431,11 +1472,38 @@ namespace tposDesktop
 
                 terminalSum = terminalF.sum != "" ? Convert.ToInt32(terminalF.sum) : 0;
                 isTerminal = true;
-                btnOplata_Click(btnOplata, new EventArgs());
+                //btnOplata_Click(btnOplata, new EventArgs());
+
+                
+                Oplata();
                 dgvTovar.Focus();
             }
             else dgvTovar.Focus();
             
+        }
+
+        private void btnDebt_click(object sender, EventArgs e)
+        {
+            if (lblSum.Text != "")
+            {
+                tposDesktop.Debts.DebtSaleForm saleForm = new Debts.DebtSaleForm(Convert.ToDouble(lblSum.Text));
+                if (saleForm.ShowDialog() == DialogResult.OK)
+                {
+                    int percent = saleForm.percent;
+                    double percentSum = saleForm.percentSum;
+                    double beginSum = saleForm.beginSum;
+                    double terminalsum = saleForm.terminalSum;
+                    if (terminalsum > 0)
+                    {
+                        terminalSum = (int)terminalsum;
+                        isTerminal = true;
+                    }
+                    contId = saleForm.currentClient.clientId;
+                    Oplata(percent, percentSum, saleForm.typeId, beginSum);
+                    dgvTovar.Focus();
+                }
+            }
+
         }
         #region Search TBX
         private void tbxEnter(object sender, EventArgs e)
@@ -1669,7 +1737,7 @@ namespace tposDesktop
 
         private void btnS_Click(object sender, EventArgs e)
         {
-            Logs.SetLog("Переход c вр-го счёта:" + tempExpeId, Logs.LogStatus.Info);
+            //Logs.SetLog("Переход c вр-го счёта:" + tempExpeId, Logs.LogStatus.Info);
             activeBtn = sender as Button;
             if (activeBtn.Name == "btnS_1")
             {
@@ -1696,7 +1764,7 @@ namespace tposDesktop
                 tempExpeId = -5;
                 closeBtnS.Visible = true;
             }
-            Logs.SetLog("на вр-ного счёта:" + tempExpeId, Logs.LogStatus.Info);
+            //Logs.SetLog("на вр-ного счёта:" + tempExpeId, Logs.LogStatus.Info);
             DataView dvOr = new DataView(DBclass.DS.orders);
             dvOr.RowFilter = "expenseId = " + tempExpeId;
             dvOr.Sort = "orderId desc";
@@ -1717,7 +1785,7 @@ namespace tposDesktop
 
             activeBtn.BackColor = Color.FromArgb(255, 128, 128);
             dgvTovar.Focus();
-            Logs.SetLog(lblSum.Text, Logs.LogStatus.Info);
+            //Logs.SetLog(lblSum.Text, Logs.LogStatus.Info);
         }
 
         private void closeBtnS_Click(object sender, EventArgs e)
@@ -1810,6 +1878,19 @@ namespace tposDesktop
                     }
                     break;
             }
+        }
+
+        private void chbDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+            GetDiscountConfig();
+            if (chbDiscount.Checked)
+            { chbReb.Checked = false; }
+        }
+
+        private void chbReb_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (chbReb.Checked)
+            { chbDiscount.Checked = false; }
         }
     }
 }

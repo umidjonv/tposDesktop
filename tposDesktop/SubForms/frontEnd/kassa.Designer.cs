@@ -89,7 +89,6 @@
             this.label2.Size = new System.Drawing.Size(93, 24);
             this.label2.TabIndex = 22;
             this.label2.Text = "Наличка :";
-            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -100,7 +99,6 @@
             this.label3.Size = new System.Drawing.Size(109, 24);
             this.label3.TabIndex = 23;
             this.label3.Text = "Терминал :";
-            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -111,7 +109,6 @@
             this.label4.Size = new System.Drawing.Size(95, 24);
             this.label4.TabIndex = 24;
             this.label4.Text = "Возврат :";
-            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -122,7 +119,6 @@
             this.label5.Size = new System.Drawing.Size(75, 24);
             this.label5.TabIndex = 25;
             this.label5.Text = "Долги :";
-            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -133,7 +129,6 @@
             this.label6.Size = new System.Drawing.Size(74, 24);
             this.label6.TabIndex = 26;
             this.label6.Text = "Итого :";
-            this.label6.Visible = false;
             // 
             // all
             // 
@@ -144,7 +139,6 @@
             this.all.Size = new System.Drawing.Size(20, 24);
             this.all.TabIndex = 32;
             this.all.Text = "0";
-            this.all.Visible = false;
             // 
             // debt
             // 
@@ -155,7 +149,6 @@
             this.debt.Size = new System.Drawing.Size(20, 24);
             this.debt.TabIndex = 31;
             this.debt.Text = "0";
-            this.debt.Visible = false;
             // 
             // back
             // 
@@ -166,7 +159,6 @@
             this.back.Size = new System.Drawing.Size(20, 24);
             this.back.TabIndex = 30;
             this.back.Text = "0";
-            this.back.Visible = false;
             // 
             // terminal
             // 
@@ -177,7 +169,6 @@
             this.terminal.Size = new System.Drawing.Size(20, 24);
             this.terminal.TabIndex = 29;
             this.terminal.Text = "0";
-            this.terminal.Visible = false;
             // 
             // nal
             // 
@@ -188,7 +179,6 @@
             this.nal.Size = new System.Drawing.Size(20, 24);
             this.nal.TabIndex = 28;
             this.nal.Text = "0";
-            this.nal.Visible = false;
             // 
             // Smena
             // 
@@ -219,6 +209,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Name = "Kassa";
+            this.ShowCaption = true;
+            this.ShowCloseButton = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "kassa";
             this.Controls.SetChildIndex(this.pbCaption, 0);

@@ -41,6 +41,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.tbxDiscount = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tbxSearch = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscount)).BeginInit();
@@ -145,7 +147,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDiscount.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDiscount.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvDiscount.Location = new System.Drawing.Point(434, 138);
+            this.dgvDiscount.Location = new System.Drawing.Point(434, 175);
             this.dgvDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDiscount.MultiSelect = false;
             this.dgvDiscount.Name = "dgvDiscount";
@@ -154,7 +156,7 @@
             this.dgvDiscount.RowTemplate.Height = 40;
             this.dgvDiscount.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvDiscount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDiscount.Size = new System.Drawing.Size(512, 358);
+            this.dgvDiscount.Size = new System.Drawing.Size(512, 321);
             this.dgvDiscount.TabIndex = 12;
             this.dgvDiscount.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiscount_CellEndEdit);
             // 
@@ -222,24 +224,48 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tbxSearch
+            // 
+            this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxSearch.Location = new System.Drawing.Point(516, 141);
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(430, 29);
+            this.tbxSearch.TabIndex = 16;
+            this.tbxSearch.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(435, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 24);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Поиск";
+            // 
             // ProdListDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 507);
+            this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.tbxDiscount);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDiscount);
             this.Controls.Add(this.dgvGroup);
             this.Name = "ProdListDiscount";
+            this.ShowCaption = true;
+            this.ShowCloseButton = true;
             this.Text = "ProdList";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Controls.SetChildIndex(this.dgvGroup, 0);
             this.Controls.SetChildIndex(this.dgvDiscount, 0);
             this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.pbCaption, 0);
             this.Controls.SetChildIndex(this.lblCaption, 0);
@@ -247,6 +273,7 @@
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.tbxDiscount, 0);
+            this.Controls.SetChildIndex(this.tbxSearch, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscount)).EndInit();
@@ -265,5 +292,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox tbxDiscount;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox tbxSearch;
+        private System.Windows.Forms.Label label3;
     }
 }

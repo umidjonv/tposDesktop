@@ -160,10 +160,11 @@ namespace tposDesktop
                                 ProdList prodlist = new ProdList();
                                 if (prodlist.ShowDialog() == DialogResult.OK)
                                 {
-                                    DataSetTpos.v_discountRow[] vDisRow = (DataSetTpos.v_discountRow[])DBclass.DS.v_discount.Select("productId" + prodlist.id);
-                                    if (vDisRow.Length > 0 || vDisRow[0].discountId != currentRow.discountId)
+                                    DataSetTpos.discountproductsRow dpr;
+                                    DataSetTpos.v_discountRow[] vDisRow = (DataSetTpos.v_discountRow[])DBclass.DS.v_discount.Select("productId = " + prodlist.id +" and discountId = "+ currentRow.discountId);
+                                    if (vDisRow.Length == 0 )
                                     {
-                                        DataSetTpos.discountproductsRow dpr = discountpr.NewdiscountproductsRow();
+                                        dpr = discountpr.NewdiscountproductsRow();
                                         dpr.discount = 0;
                                         dpr.productId = Convert.ToInt32(prodlist.id);
                                         dpr.discountId = currentRow.discountId;
@@ -277,6 +278,15 @@ namespace tposDesktop
                 dprRow.discount = (int)(sender as DataGridView).Rows[e.RowIndex].Cells["discount"].Value;
 
                 discountpDa.Update(dprRow);
+            }
+        }
+
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvDiscount.DataSource != null)
+            {
+                DataView dv = dgvDiscount.DataSource as DataView;
+                dv.RowFilter = "name like '%"+tbxSearch.Text+"%'";
             }
         }
     }
