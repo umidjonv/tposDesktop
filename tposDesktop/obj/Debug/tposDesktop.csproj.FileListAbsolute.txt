@@ -256,3 +256,6 @@ C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.WinForms.x
 C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\user\Documents\ydisk\apteka\tposDesktop\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\user\Documents\ydisk\apteka\tposDesktop\obj\Debug\tposDesktop.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\tposDesktop\bin\Debug\tposDesktop.exe.config
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\tposDesktop\obj\Debug\tposDesktop.exe
+C:\Users\user\Documents\ydisk\apteka\tposDesktop\tposDesktop\obj\Debug\tposDesktop.pdb
