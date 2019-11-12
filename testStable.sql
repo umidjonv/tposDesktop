@@ -125,11 +125,11 @@ CREATE TABLE IF NOT EXISTS `balance` (
   PRIMARY KEY (`balanceId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11159 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.balance: ~11 467 rows (приблизительно)
+-- Дамп данных таблицы test.balance: ~10 901 rows (приблизительно)
 /*!40000 ALTER TABLE `balance` DISABLE KEYS */;
 INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanceDate`) VALUES
-	(1, 11317, 0, NULL, '2000-01-01'),
-	(2, 11316, 0, NULL, '2000-01-01'),
+	(1, 11317, -1, NULL, '2000-01-01'),
+	(2, 11316, -1, NULL, '2000-01-01'),
 	(3, 11315, 0, NULL, '2000-01-01'),
 	(4, 11314, 0, NULL, '2000-01-01'),
 	(5, 11313, 0, NULL, '2000-01-01'),
@@ -1038,7 +1038,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(908, 10410, 0, NULL, '2000-01-01'),
 	(909, 10409, 0, NULL, '2000-01-01'),
 	(910, 10408, 0, NULL, '2000-01-01'),
-	(911, 10407, 0, NULL, '2000-01-01'),
+	(911, 10407, -2, NULL, '2000-01-01'),
 	(912, 10406, 0, NULL, '2000-01-01'),
 	(913, 10405, 0, NULL, '2000-01-01'),
 	(914, 10404, 0, NULL, '2000-01-01'),
@@ -1058,7 +1058,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(928, 10390, 0, NULL, '2000-01-01'),
 	(929, 10389, 0, NULL, '2000-01-01'),
 	(930, 10388, 0, NULL, '2000-01-01'),
-	(931, 10387, 0, NULL, '2000-01-01'),
+	(931, 10387, -2, NULL, '2000-01-01'),
 	(932, 10386, 0, NULL, '2000-01-01'),
 	(933, 10385, 0, NULL, '2000-01-01'),
 	(934, 10384, 0, NULL, '2000-01-01'),
@@ -1448,9 +1448,9 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(1318, 10000, 0, NULL, '2000-01-01'),
 	(1319, 9999, 0, NULL, '2000-01-01'),
 	(1320, 9998, 0, NULL, '2000-01-01'),
-	(1321, 9997, 0, NULL, '2000-01-01'),
+	(1321, 9997, -2, NULL, '2000-01-01'),
 	(1322, 9996, 0, NULL, '2000-01-01'),
-	(1323, 9995, 0, NULL, '2000-01-01'),
+	(1323, 9995, -2, NULL, '2000-01-01'),
 	(1324, 9994, 0, NULL, '2000-01-01'),
 	(1325, 9993, 0, NULL, '2000-01-01'),
 	(1326, 9992, 0, NULL, '2000-01-01'),
@@ -1880,7 +1880,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(1750, 9568, 0, NULL, '2000-01-01'),
 	(1751, 9567, 0, NULL, '2000-01-01'),
 	(1752, 9566, 0, NULL, '2000-01-01'),
-	(1753, 9565, 0, NULL, '2000-01-01'),
+	(1753, 9565, -50, NULL, '2000-01-01'),
 	(1754, 9564, 0, NULL, '2000-01-01'),
 	(1755, 9563, 0, NULL, '2000-01-01'),
 	(1756, 9562, 0, NULL, '2000-01-01'),
@@ -2236,7 +2236,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(2106, 9212, 0, NULL, '2000-01-01'),
 	(2107, 9211, 0, NULL, '2000-01-01'),
 	(2108, 9210, 0, NULL, '2000-01-01'),
-	(2109, 9209, 0, NULL, '2000-01-01'),
+	(2109, 9209, -2, NULL, '2000-01-01'),
 	(2110, 9208, 0, NULL, '2000-01-01'),
 	(2111, 9207, 0, NULL, '2000-01-01'),
 	(2112, 9206, 0, NULL, '2000-01-01'),
@@ -2534,7 +2534,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(2404, 8914, 0, NULL, '2000-01-01'),
 	(2405, 8913, 0, NULL, '2000-01-01'),
 	(2406, 8912, 0, NULL, '2000-01-01'),
-	(2407, 8911, 0, NULL, '2000-01-01'),
+	(2407, 8911, -4, NULL, '2000-01-01'),
 	(2408, 8910, 0, NULL, '2000-01-01'),
 	(2409, 8909, 0, NULL, '2000-01-01'),
 	(2410, 8908, 0, NULL, '2000-01-01'),
@@ -2636,7 +2636,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(2506, 8812, 0, NULL, '2000-01-01'),
 	(2507, 8811, 0, NULL, '2000-01-01'),
 	(2508, 8810, 0, NULL, '2000-01-01'),
-	(2509, 8809, 0, NULL, '2000-01-01'),
+	(2509, 8809, -1, NULL, '2000-01-01'),
 	(2510, 8808, 0, NULL, '2000-01-01'),
 	(2511, 8807, 0, NULL, '2000-01-01'),
 	(2512, 8806, 0, NULL, '2000-01-01'),
@@ -3890,7 +3890,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(3760, 7551, 0, NULL, '2000-01-01'),
 	(3761, 7550, 0, NULL, '2000-01-01'),
 	(3762, 7549, 0, NULL, '2000-01-01'),
-	(3763, 7548, 0, NULL, '2000-01-01'),
+	(3763, 7548, -2, NULL, '2000-01-01'),
 	(3764, 7547, 0, NULL, '2000-01-01'),
 	(3765, 7546, 0, NULL, '2000-01-01'),
 	(3766, 7545, 0, NULL, '2000-01-01'),
@@ -3988,7 +3988,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(3858, 7452, 0, NULL, '2000-01-01'),
 	(3859, 7451, 0, NULL, '2000-01-01'),
 	(3860, 7450, 0, NULL, '2000-01-01'),
-	(3861, 7449, 0, NULL, '2000-01-01'),
+	(3861, 7449, -3, NULL, '2000-01-01'),
 	(3862, 7448, 0, NULL, '2000-01-01'),
 	(3863, 7447, 0, NULL, '2000-01-01'),
 	(3864, 7446, 0, NULL, '2000-01-01'),
@@ -4370,7 +4370,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(4240, 7060, 0, NULL, '2000-01-01'),
 	(4241, 7059, 0, NULL, '2000-01-01'),
 	(4242, 7058, 0, NULL, '2000-01-01'),
-	(4243, 7057, 0, NULL, '2000-01-01'),
+	(4243, 7057, -348, NULL, '2000-01-01'),
 	(4244, 7056, 0, NULL, '2000-01-01'),
 	(4245, 7055, 0, NULL, '2000-01-01'),
 	(4246, 7054, 0, NULL, '2000-01-01'),
@@ -4512,7 +4512,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(4382, 6909, 0, NULL, '2000-01-01'),
 	(4383, 6908, 0, NULL, '2000-01-01'),
 	(4384, 6907, 0, NULL, '2000-01-01'),
-	(4385, 6906, 0, NULL, '2000-01-01'),
+	(4385, 6906, -3, NULL, '2000-01-01'),
 	(4386, 6905, 0, NULL, '2000-01-01'),
 	(4387, 6904, 0, NULL, '2000-01-01'),
 	(4388, 6903, 0, NULL, '2000-01-01'),
@@ -5397,10 +5397,10 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(5267, 5997, 0, NULL, '2000-01-01'),
 	(5268, 5996, 0, NULL, '2000-01-01'),
 	(5269, 5989, 0, NULL, '2000-01-01'),
-	(5270, 5988, 0, NULL, '2000-01-01'),
+	(5270, 5988, -6, NULL, '2000-01-01'),
 	(5271, 5987, 0, NULL, '2000-01-01'),
 	(5272, 5986, 0, NULL, '2000-01-01'),
-	(5273, 5985, 0, NULL, '2000-01-01'),
+	(5273, 5985, -2, NULL, '2000-01-01'),
 	(5274, 5984, 0, NULL, '2000-01-01'),
 	(5275, 5983, 0, NULL, '2000-01-01'),
 	(5276, 5982, 0, NULL, '2000-01-01'),
@@ -6291,7 +6291,7 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(6161, 5097, 0, NULL, '2000-01-01'),
 	(6162, 5096, 0, NULL, '2000-01-01'),
 	(6163, 5095, 0, NULL, '2000-01-01'),
-	(6164, 5094, 0, NULL, '2000-01-01'),
+	(6164, 5094, -3, NULL, '2000-01-01'),
 	(6165, 5093, 0, NULL, '2000-01-01'),
 	(6166, 5092, 0, NULL, '2000-01-01'),
 	(6167, 5091, 0, NULL, '2000-01-01'),
@@ -11270,12 +11270,12 @@ INSERT INTO `balance` (`balanceId`, `prodId`, `endCount`, `curEndCount`, `balanc
 	(11140, 9, 5, NULL, '2000-01-01'),
 	(11141, 8, -1, NULL, '2000-01-01'),
 	(11142, 7, 0, NULL, '2000-01-01'),
-	(11143, 6, 0, NULL, '2000-01-01'),
+	(11143, 6, -1, NULL, '2000-01-01'),
 	(11144, 5, 0, NULL, '2000-01-01'),
 	(11145, 4, 5, NULL, '2000-01-01'),
 	(11146, 3, 5, NULL, '2000-01-01'),
 	(11147, 2, 0, NULL, '2000-01-01'),
-	(11148, 1, -1000, NULL, '2000-01-01'),
+	(11148, 1, -1403, NULL, '2000-01-01'),
 	(11149, 11319, 0, 0, '2000-01-01'),
 	(11150, 11320, 0, 0, '2000-01-01'),
 	(11151, 11321, 0, 0, '2000-01-01'),
@@ -11407,7 +11407,7 @@ CREATE TABLE IF NOT EXISTS `balancelist` (
   `endCount` float DEFAULT NULL,
   `curEndCount` float DEFAULT NULL,
   PRIMARY KEY (`balanceId`)
-) ENGINE=InnoDB AUTO_INCREMENT=89248 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11149 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы test.balancelist: ~11 467 rows (приблизительно)
 /*!40000 ALTER TABLE `balancelist` DISABLE KEYS */;
@@ -22636,13 +22636,18 @@ CREATE TABLE IF NOT EXISTS `changesel` (
   `back` int(11) DEFAULT NULL,
   `expenseId` int(11) DEFAULT '0',
   PRIMARY KEY (`changSelId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.changesel: ~2 rows (приблизительно)
+-- Дамп данных таблицы test.changesel: ~7 rows (приблизительно)
 /*!40000 ALTER TABLE `changesel` DISABLE KEYS */;
 INSERT INTO `changesel` (`changSelId`, `userId`, `startTime`, `endTime`, `summ`, `terminal`, `debt`, `back`, `expenseId`) VALUES
-	(1, 1, '2019-01-19 12:14:19', NULL, NULL, NULL, NULL, NULL, 0),
-	(2, 6, '2019-01-20 12:15:32', NULL, NULL, NULL, NULL, NULL, 0);
+	(1, 1, '2019-01-19 12:14:19', '2019-11-04 20:03:51', 19873853, 0, 639773, 13000, 63),
+	(2, 6, '2019-01-20 12:15:32', '2019-11-02 18:26:51', 70000, 0, 0, 0, 55),
+	(3, 6, '2019-11-02 18:42:24', '2019-11-03 09:43:32', 0, 0, 0, 0, 55),
+	(4, 6, '2019-11-03 09:44:42', '2019-11-03 09:55:55', 171840, 10000, 161840, 0, 58),
+	(5, 6, '2019-11-03 10:03:22', '2019-11-04 20:06:33', 268500, 10000, 102000, 0, 64),
+	(6, 6, '2019-11-04 20:07:19', '2019-11-04 20:09:57', 91200, 0, 43200, 0, 66),
+	(7, 6, '2019-11-04 20:30:51', NULL, NULL, NULL, NULL, NULL, 0);
 /*!40000 ALTER TABLE `changesel` ENABLE KEYS */;
 
 
@@ -22681,15 +22686,34 @@ END//
 DELIMITER ;
 
 
+-- Дамп структуры для таблица test.clients
+CREATE TABLE IF NOT EXISTS `clients` (
+  `clientId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `passport_sn` varchar(2) DEFAULT '0',
+  `passport_num` varchar(9) DEFAULT '0',
+  `phone` varchar(12) NOT NULL DEFAULT '0',
+  `address` varchar(255) DEFAULT '0',
+  PRIMARY KEY (`clientId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы test.clients: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
+INSERT INTO `clients` (`clientId`, `name`, `passport_sn`, `passport_num`, `phone`, `address`) VALUES
+	(1, 'Umidjon Vakhidov', NULL, '194567891', '9989366555', 'ALI kk aaaa'),
+	(2, 'Zair Karimov', NULL, '852222222', '9989545633', 'qqqqqq');
+/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
+
+
 -- Дамп структуры для таблица test.configs
 CREATE TABLE IF NOT EXISTS `configs` (
   `configId` int(11) NOT NULL AUTO_INCREMENT,
   `configName` varchar(50) NOT NULL,
   `configValue` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`configId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.configs: ~7 rows (приблизительно)
+-- Дамп данных таблицы test.configs: ~8 rows (приблизительно)
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
 INSERT INTO `configs` (`configId`, `configName`, `configValue`) VALUES
 	(1, 'openday', '0'),
@@ -22698,7 +22722,8 @@ INSERT INTO `configs` (`configId`, `configName`, `configValue`) VALUES
 	(4, 'PercentAll', '13'),
 	(5, 'BeginInventoryDate', '27.06.2018 0:00:00'),
 	(6, 'LastInventoryDate', '04.07.2018 0:00:00'),
-	(7, 'Discount', '6');
+	(7, 'Discount', '6'),
+	(8, 'discountVal', '6');
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 
 
@@ -22730,6 +22755,76 @@ CREATE TABLE IF NOT EXISTS `debt` (
 /*!40000 ALTER TABLE `debt` ENABLE KEYS */;
 
 
+-- Дамп структуры для таблица test.debts
+CREATE TABLE IF NOT EXISTS `debts` (
+  `debtId` int(11) NOT NULL AUTO_INCREMENT,
+  `expenseId` int(11) NOT NULL,
+  `clientId` int(11) NOT NULL,
+  `typeId` int(11) NOT NULL COMMENT 'debt types',
+  `sum` double NOT NULL,
+  `closed` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`debtId`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы test.debts: ~13 rows (приблизительно)
+/*!40000 ALTER TABLE `debts` DISABLE KEYS */;
+INSERT INTO `debts` (`debtId`, `expenseId`, `clientId`, `typeId`, `sum`, `closed`) VALUES
+	(1, 49, 1, 1, 3096000, 1),
+	(2, 53, 2, 1, 720000, 1),
+	(3, 54, 1, 1, 720000, 0),
+	(4, 55, 1, 1, 597000, 0),
+	(5, 56, 1, 1, 38400, 0),
+	(6, 57, 2, 1, 58800, 0),
+	(7, 58, 2, 1, 64640, 0),
+	(8, 59, 1, 1, 20800, 0),
+	(9, 63, 1, 1, 39768, 0),
+	(10, 64, 1, 1, 81200, 0),
+	(11, 65, 1, 1, 21600, 0),
+	(12, 66, 1, 1, 21600, 0),
+	(13, 69, 1, 1, 4800, 0);
+/*!40000 ALTER TABLE `debts` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица test.debtsums
+CREATE TABLE IF NOT EXISTS `debtsums` (
+  `debtsumsId` int(11) NOT NULL AUTO_INCREMENT,
+  `sum` double NOT NULL DEFAULT '0',
+  `datesum` datetime NOT NULL,
+  `debtId` int(11) NOT NULL,
+  PRIMARY KEY (`debtsumsId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы test.debtsums: ~8 rows (приблизительно)
+/*!40000 ALTER TABLE `debtsums` DISABLE KEYS */;
+INSERT INTO `debtsums` (`debtsumsId`, `sum`, `datesum`, `debtId`) VALUES
+	(1, 140000, '2019-11-02 13:39:20', 1),
+	(2, 200000, '2019-11-02 13:47:43', 1),
+	(3, 160000, '2019-11-02 14:30:15', 1),
+	(4, 600000, '2019-11-02 14:32:30', 2),
+	(5, 0, '2019-11-02 14:49:22', 1),
+	(6, 0, '2019-11-02 14:49:22', 1),
+	(7, 100000, '2019-11-02 15:02:39', 2),
+	(8, 20000, '2019-11-02 15:08:18', 2);
+/*!40000 ALTER TABLE `debtsums` ENABLE KEYS */;
+
+
+-- Дамп структуры для таблица test.debttypes
+CREATE TABLE IF NOT EXISTS `debttypes` (
+  `debttypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `typename` varchar(100) DEFAULT NULL,
+  `percent` int(11) DEFAULT '0',
+  `period` int(11) DEFAULT '-1',
+  PRIMARY KEY (`debttypeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы test.debttypes: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `debttypes` DISABLE KEYS */;
+INSERT INTO `debttypes` (`debttypeId`, `typename`, `percent`, `period`) VALUES
+	(1, 'Rassrochka', 20, 12),
+	(4, 'Dolg', 0, 2);
+/*!40000 ALTER TABLE `debttypes` ENABLE KEYS */;
+
+
 -- Дамп структуры для представление test.debtview
 -- Создание временной таблицы для обработки ошибок зависимостей представлений
 CREATE TABLE `debtview` (
@@ -22746,13 +22841,14 @@ CREATE TABLE IF NOT EXISTS `discountproducts` (
   `discountId` int(11) NOT NULL DEFAULT '0',
   `discount` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`discountproductId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.discountproducts: ~2 rows (приблизительно)
+-- Дамп данных таблицы test.discountproducts: ~3 rows (приблизительно)
 /*!40000 ALTER TABLE `discountproducts` DISABLE KEYS */;
 INSERT INTO `discountproducts` (`discountproductId`, `productId`, `discountId`, `discount`) VALUES
 	(15, 8, 6, 5),
-	(16, 7, 6, 4);
+	(16, 7, 6, 4),
+	(17, 1, 6, 5);
 /*!40000 ALTER TABLE `discountproducts` ENABLE KEYS */;
 
 
@@ -22789,9 +22885,9 @@ CREATE TABLE IF NOT EXISTS `expense` (
   `userID` int(11) DEFAULT NULL,
   `charge` int(11) DEFAULT '0',
   PRIMARY KEY (`expenseId`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.expense: ~45 rows (приблизительно)
+-- Дамп данных таблицы test.expense: ~71 rows (приблизительно)
 /*!40000 ALTER TABLE `expense` DISABLE KEYS */;
 INSERT INTO `expense` (`expenseId`, `expenseDate`, `debt`, `comment`, `contragentId`, `off`, `expType`, `terminal`, `expSum`, `status`, `userID`, `charge`) VALUES
 	(1, '2019-09-29 15:28:18', 0, '', 0, 0, 0, 0, 6000, 0, 1, 0),
@@ -22838,7 +22934,33 @@ INSERT INTO `expense` (`expenseId`, `expenseDate`, `debt`, `comment`, `contragen
 	(42, '2019-10-18 22:07:29', 0, '', 0, 0, 0, 0, 38320, 0, 1, 0),
 	(43, '2019-10-18 22:34:12', 0, '', 0, 0, 0, 0, 33445, 0, 1, 0),
 	(44, '2019-10-18 22:36:40', 0, '', 0, 0, 0, 0, 38320, 0, 1, 0),
-	(45, '2019-10-18 22:45:27', 0, '', 0, 0, 0, 0, 38320, 0, 1, 0);
+	(45, '2019-10-18 22:45:27', 0, '', 0, 0, 0, 0, 38320, 0, 1, 0),
+	(46, '2019-11-02 11:08:50', 1, '', 1, 0, 0, 0, 3168000, 1, 1, 20),
+	(47, '2019-11-02 11:44:21', 1, '', 2, 0, 0, 0, 3122400, 1, 1, 20),
+	(48, '2019-11-02 11:45:14', 1, '', 2, 0, 0, 0, 6192000, 1, 1, 20),
+	(49, '2019-11-02 11:48:32', 1, '', 1, 0, 0, 0, 3096000, 1, 1, 20),
+	(50, '2019-11-02 11:53:15', 0, '', 0, 0, 0, 0, 60000, 0, 1, 0),
+	(51, '2019-11-02 11:53:27', 0, '', 0, 0, 0, 0, 52200, 0, 1, -13),
+	(52, '2019-11-02 11:53:48', 0, '', 0, 0, 0, 0, 52200, 0, 1, -13),
+	(53, '2019-11-02 14:31:44', 1, '', 2, 0, 0, 0, 720000, 1, 1, 20),
+	(54, '2019-11-02 17:29:44', 600000, '', 1, 0, 0, 0, 720000, 1, 1, 20),
+	(55, '2019-11-02 17:56:31', 597000, '', 1, 0, 0, 100000, 720000, 1, 6, 20),
+	(56, '2019-11-03 09:45:23', 38400, '', 1, 0, 0, 0, 38400, 1, 6, 20),
+	(57, '2019-11-03 09:46:43', 58800, '', 2, 0, 0, 0, 58800, 1, 6, 20),
+	(58, '2019-11-03 09:47:17', 64640, '', 2, 0, 0, 10000, 74640, 1, 6, 20),
+	(59, '2019-11-03 10:10:07', 20800, '', 1, 0, 0, 10000, 40800, 1, 6, 20),
+	(60, '2019-11-03 10:12:52', 0, '', 0, 0, 0, 0, 136500, 0, 6, 0),
+	(61, '2019-11-04 19:18:20', 0, '123\r\n', NULL, 0, 3, 0, 0, 0, NULL, NULL),
+	(62, '2019-11-04 19:18:26', 0, '555\r\n', NULL, 0, 3, 0, 0, 0, NULL, NULL),
+	(63, '2019-11-04 20:03:22', 39768, '', 1, 0, 0, 0, 39768, 1, 1, 20),
+	(64, '2019-11-04 20:06:03', 81200, '', 1, 0, 0, 0, 91200, 1, 6, 20),
+	(65, '2019-11-04 20:08:10', 21600, '', 1, 0, 0, 0, 45600, 1, 6, 20),
+	(66, '2019-11-04 20:09:31', 21600, '', 1, 0, 0, 0, 45600, 1, 6, 20),
+	(67, '2019-11-04 20:40:54', 0, '', 0, 0, 0, 0, 6500, 0, 6, 0),
+	(68, '2019-11-04 20:45:17', 0, '', 0, 0, 0, 0, 16000, 0, 6, 0),
+	(69, '2019-11-04 20:47:16', 4800, '', 1, 0, 0, 0, 4800, 1, 6, 20),
+	(70, '2019-11-04 20:48:00', 0, '', 0, 0, 0, 5000, 5000, 0, 6, 0),
+	(71, '2019-11-10 07:48:56', 0, '', 0, 0, 0, 0, 25950, 0, 6, 0);
 /*!40000 ALTER TABLE `expense` ENABLE KEYS */;
 
 
@@ -23000,9 +23122,9 @@ CREATE TABLE IF NOT EXISTS `info` (
   `terminal` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT '0',
   PRIMARY KEY (`infoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.info: ~49 rows (приблизительно)
+-- Дамп данных таблицы test.info: ~97 rows (приблизительно)
 /*!40000 ALTER TABLE `info` DISABLE KEYS */;
 INSERT INTO `info` (`infoId`, `Dates`, `proceed`, `nal`, `back`, `terminal`, `userId`) VALUES
 	(1, '2019-01-19', 0, 0, 0, 0, 0),
@@ -23053,7 +23175,55 @@ INSERT INTO `info` (`infoId`, `Dates`, `proceed`, `nal`, `back`, `terminal`, `us
 	(46, '2019-10-18', 148405, 148405, 0, 0, 0),
 	(47, '2019-10-18', 148405, 148405, 0, 0, 0),
 	(48, '2019-10-18', 148405, 148405, 0, 0, 0),
-	(49, '2019-10-18', 110085, 110085, 0, 0, 0);
+	(49, '2019-10-18', 110085, 110085, 0, 0, 0),
+	(50, '2019-10-19', 0, 0, 0, 0, 0),
+	(51, '2019-10-19', 0, 0, 0, 0, 0),
+	(52, '2019-10-19', 0, 0, 0, 0, 0),
+	(53, '2019-10-19', 0, 0, 0, 0, 0),
+	(54, '2019-10-19', 0, 0, 0, 0, 0),
+	(55, '2019-10-19', 0, 0, 0, 0, 0),
+	(56, '2019-10-19', 0, 0, 0, 0, 0),
+	(57, '2019-10-19', 0, 0, 0, 0, 0),
+	(58, '2019-10-19', 0, 0, 0, 0, 0),
+	(59, '2019-10-19', 0, 0, 0, 0, 0),
+	(60, '2019-11-01', 0, 0, 0, 0, 0),
+	(61, '2019-11-02', 17902800, 17802800, 0, 100000, 0),
+	(62, '2019-11-02', 17902800, 17802800, 0, 100000, 0),
+	(63, '2019-11-02', 17902800, 17802800, 0, 100000, 0),
+	(64, '2019-11-02', 14734800, 14634800, 0, 100000, 0),
+	(65, '2019-11-02', 5420400, 5320400, 0, 100000, 0),
+	(66, '2019-11-02', 2324400, 2224400, 0, 100000, 0),
+	(67, '2019-11-02', 2160000, 2060000, 0, 100000, 0),
+	(68, '2019-11-02', 1440000, 1340000, 0, 100000, 0),
+	(69, '2019-11-02', 1440000, 1340000, 0, 100000, 0),
+	(70, '2019-11-02', 1440000, 1340000, 0, 100000, 0),
+	(71, '2019-11-02', 1440000, 1340000, 0, 100000, 0),
+	(72, '2019-11-02', 720000, 620000, 0, 100000, 0),
+	(73, '2019-11-02', 720000, 620000, 0, 100000, 0),
+	(74, '2019-11-02', 720000, 620000, 0, 100000, 0),
+	(75, '2019-11-02', 0, 0, 0, 0, 0),
+	(76, '2019-11-02', 0, 0, 0, 0, 0),
+	(77, '2019-11-02', 0, 0, 0, 0, 0),
+	(78, '2019-11-03', 349140, 329140, 0, 20000, 0),
+	(79, '2019-11-03', 349140, 329140, 0, 20000, 0),
+	(80, '2019-11-03', 177300, 167300, 0, 10000, 0),
+	(81, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(82, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(83, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(84, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(85, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(86, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(87, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(88, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(89, '2019-11-04', 254468, 249468, 0, 5000, 0),
+	(90, '2019-11-04', 214700, 209700, 0, 5000, 0),
+	(91, '2019-11-04', 123500, 118500, 0, 5000, 0),
+	(92, '2019-11-04', 32300, 27300, 0, 5000, 0),
+	(93, '2019-11-04', 32300, 27300, 0, 5000, 0),
+	(94, '2019-11-04', 25800, 20800, 0, 5000, 0),
+	(95, '2019-11-04', 9800, 4800, 0, 5000, 0),
+	(96, '2019-11-04', 0, 0, 0, 0, 0),
+	(97, '2019-11-10', 25950, 25950, 0, 0, 0);
 /*!40000 ALTER TABLE `info` ENABLE KEYS */;
 
 
@@ -23124,9 +23294,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `orderSumm` float DEFAULT NULL,
   `discount` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`orderId`)
-) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.orders: ~126 rows (приблизительно)
+-- Дамп данных таблицы test.orders: ~179 rows (приблизительно)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT INTO `orders` (`orderId`, `expenseId`, `prodId`, `count`, `packCount`, `orderSumm`, `discount`) VALUES
 	(1, 1, 7057, 0, 1, 6000, 0),
@@ -23254,7 +23424,60 @@ INSERT INTO `orders` (`orderId`, `expenseId`, `prodId`, `count`, `packCount`, `o
 	(123, 44, 2397, 0, 1, 22000, 0),
 	(124, 44, 7, 0, 1, 16320, 4),
 	(125, 45, 2397, 0, 1, 22000, 0),
-	(126, 45, 7, 0, 1, 16320, 4);
+	(126, 45, 7, 0, 1, 16320, 4),
+	(127, 46, 7057, 0, 10, 60000, 0),
+	(128, 46, 9565, 0, 10, 2580000, 0),
+	(129, 47, 8911, 0, 2, 22000, 0),
+	(130, 47, 9565, 0, 10, 2580000, 0),
+	(131, 48, 9565, 0, 20, 5160000, 0),
+	(132, 49, 9565, 0, 10, 2580000, 0),
+	(133, 50, 7057, 0, 10, 60000, 0),
+	(134, 51, 7057, 0, 10, 60000, 0),
+	(135, 52, 7057, 0, 10, 60000, 0),
+	(136, 53, 7057, 0, 100, 600000, 0),
+	(137, 54, 7057, 0, 100, 600000, 0),
+	(138, 55, 7057, 0, 100, 600000, 0),
+	(139, 56, 7057, 0, 1, 6000, 0),
+	(140, 56, 7548, 0, 1, 4000, 0),
+	(141, 56, 8911, 0, 1, 11000, 0),
+	(142, 56, 10407, 0, 1, 6500, 0),
+	(143, 56, 10387, 0, 1, 4500, 0),
+	(144, 57, 5094, 0, 1, 7000, 0),
+	(145, 57, 6906, 0, 1, 20500, 0),
+	(146, 57, 7548, 0, 1, 4000, 0),
+	(147, 57, 8911, 0, 1, 11000, 0),
+	(148, 57, 10407, 0, 1, 6500, 0),
+	(149, 58, 5988, 0, 1, 20000, 0),
+	(150, 58, 9209, 0, 1, 4500, 0),
+	(151, 58, 8809, 0, 1, 1200, 0),
+	(152, 58, 10387, 0, 1, 4500, 0),
+	(153, 58, 9997, 0, 1, 6000, 0),
+	(154, 58, 9995, 0, 1, 6000, 0),
+	(155, 58, 5985, 0, 1, 20000, 0),
+	(156, 59, 6906, 0, 1, 20500, 0),
+	(157, 59, 5094, 0, 1, 7000, 0),
+	(158, 59, 7449, 0, 1, 500, 0),
+	(159, 59, 7057, 0, 1, 6000, 0),
+	(160, 60, 9209, 0, 1, 4500, 0),
+	(161, 60, 5988, 0, 5, 100000, 0),
+	(162, 60, 5985, 0, 1, 20000, 0),
+	(163, 60, 9995, 0, 1, 6000, 0),
+	(164, 60, 9997, 0, 1, 6000, 0),
+	(165, 61, 11317, 0, 1, 10500, 0),
+	(166, 62, 11316, 0, 1, 9000, 0),
+	(167, 63, 1, 0, 3, 1140, 5),
+	(168, 63, 6, 0, 1, 32000, 0),
+	(169, 64, 1, 0, 200, 76000, 5),
+	(170, 65, 1, 0, 100, 38000, 5),
+	(171, 66, 1, 0, 100, 38000, 5),
+	(172, 67, 7057, 0, 1, 5000, 0),
+	(173, 67, 7449, 0, 1, 500, 0),
+	(174, 68, 7057, 0, 3, 16000, 0),
+	(175, 69, 7057, 0, 1, 4000, 0),
+	(176, 70, 7057, 0, 1, 5000, 0),
+	(177, 71, 7449, 0, 1, 450, 0),
+	(178, 71, 5094, 0, 1, 6000, 0),
+	(179, 71, 6906, 0, 1, 19500, 0);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 
@@ -23516,7 +23739,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`productId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11329 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы test.product: ~11 416 rows (приблизительно)
+-- Дамп данных таблицы test.product: ~11 106 rows (приблизительно)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`productId`, `name`, `measureId`, `barcode`, `status`, `price`, `pack`, `BalanceT`, `expiry`, `providerId`) VALUES
 	(1, 'Nestle pure life не газированная 1,5л', 2, '4780100650119', 0, 400, 0, NULL, NULL, 0),
