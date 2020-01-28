@@ -23,9 +23,6 @@
     <Setting Name="kassa" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="isAdmin" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="testConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -41,10 +38,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ExpDate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">2018-05-26</Value>
+      <Value Profile="(Default)">2050-01-01</Value>
     </Setting>
     <Setting Name="discount" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="isAdmin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

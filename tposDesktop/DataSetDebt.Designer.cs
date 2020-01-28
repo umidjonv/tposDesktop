@@ -2077,6 +2077,8 @@ namespace tposDesktop {
             
             private global::System.Data.DataColumn columnsumPrixod;
             
+            private global::System.Data.DataColumn columnostatok;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public v_debtsRepaymentDataTable() {
@@ -2152,6 +2154,14 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ostatokColumn {
+                get {
+                    return this.columnostatok;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2187,14 +2197,15 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public v_debtsRepaymentRow Addv_debtsRepaymentRow(int debtId, int expenseId, int clientId, double sum, double sumPrixod) {
+            public v_debtsRepaymentRow Addv_debtsRepaymentRow(int debtId, int expenseId, int clientId, double sum, double sumPrixod, double ostatok) {
                 v_debtsRepaymentRow rowv_debtsRepaymentRow = ((v_debtsRepaymentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         debtId,
                         expenseId,
                         clientId,
                         sum,
-                        sumPrixod};
+                        sumPrixod,
+                        ostatok};
                 rowv_debtsRepaymentRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowv_debtsRepaymentRow);
                 return rowv_debtsRepaymentRow;
@@ -2222,6 +2233,7 @@ namespace tposDesktop {
                 this.columnclientId = base.Columns["clientId"];
                 this.columnsum = base.Columns["sum"];
                 this.columnsumPrixod = base.Columns["sumPrixod"];
+                this.columnostatok = base.Columns["ostatok"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2237,6 +2249,8 @@ namespace tposDesktop {
                 base.Columns.Add(this.columnsum);
                 this.columnsumPrixod = new global::System.Data.DataColumn("sumPrixod", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsumPrixod);
+                this.columnostatok = new global::System.Data.DataColumn("ostatok", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnostatok);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3052,6 +3066,22 @@ namespace tposDesktop {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ostatok {
+                get {
+                    try {
+                        return ((double)(this[this.tablev_debtsRepayment.ostatokColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ostatok\' в таблице \'v_debtsRepayment\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablev_debtsRepayment.ostatokColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdebtIdNull() {
                 return this.IsNull(this.tablev_debtsRepayment.debtIdColumn);
             }
@@ -3108,6 +3138,18 @@ namespace tposDesktop {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsumPrixodNull() {
                 this[this.tablev_debtsRepayment.sumPrixodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsostatokNull() {
+                return this.IsNull(this.tablev_debtsRepayment.ostatokColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetostatokNull() {
+                this[this.tablev_debtsRepayment.ostatokColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5099,16 +5141,15 @@ namespace tposDesktop.DataSetDebtTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select d.debtId,  d.expenseId, concat(\'Счет:\', d.expenseId, \' - \', d.sum) as debt" +
-                "name,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d \r\nleft join " +
-                "expense e on d.expenseId = e.expenseId";
+            this._commandCollection[0].CommandText = "select d.debtId,  d.expenseId, concat(\'Счет:\', d.expenseId, \' - \', d.sum, \' - \', " +
+                "date(e.expenseDate)) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.clos" +
+                "ed from debts d \r\nleft join expense e on d.expenseId = e.expenseId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "select d.debtId,  d.expenseId, concat(\'Счет:\', d.expenseId, \' - \', d.sum) as debt" +
-                "name,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d \r\nleft join " +
-                "expense e on d.expenseId = e.expenseId\r\nwhere  d.clientId = @clientId and d.clos" +
-                "ed = 0";
+            this._commandCollection[1].CommandText = @"select d.debtId,  d.expenseId, concat('Счет:', d.expenseId, ' - ', d.sum, ' - ', date(e.expenseDate)) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d 
+left join expense e on d.expenseId = e.expenseId
+where  d.clientId = @clientId and d.closed = 0";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "clientId";
@@ -5300,18 +5341,21 @@ namespace tposDesktop.DataSetDebtTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select d.debtId,  d.expenseId, d.clientId, d.sum,\r\n(case when ds.sum is null then" +
-                " 0 else ds.sum end) as sumPrixod from debts d \r\nleft join debtsums ds on d.debtI" +
-                "d = ds.debtId";
+            this._commandCollection[0].CommandText = @"select d.debtId,  d.expenseId, d.clientId, d.sum, 
+(case when ds.sum is null then 0 else sum(ds.sum) end) as sumPrixod, (d.sum-(case when ds.sum is null then 0 else sum(ds.sum) end)) as ostatok, d.closed from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.closed = 0 group by debtId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "select d.debtId,  d.expenseId, d.clientId, d.sum,\r\n(case when ds.sum is null then" +
-                " 0 else ds.sum end) as sumPrixod from debts d \r\nleft join debtsums ds on d.debtI" +
-                "d = ds.debtId\r\nwhere d.clientId = @clientId";
+            this._commandCollection[1].CommandText = @"select d.debtId,  d.expenseId, d.clientId, d.sum, 
+(case when ds.sum is null then 0 else sum(ds.sum) end) as sumPrixod, (d.sum-(case when ds.sum is null then 0 else sum(ds.sum) end)) as ostatok, d.closed from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.clientId = @clientId and d.closed = 0
+group by d.debtId";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "clientId";
@@ -5320,6 +5364,34 @@ namespace tposDesktop.DataSetDebtTableAdapters {
             param.IsNullable = true;
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"select sum(`sumPrixod`) from (select d.debtId,  d.expenseId, d.clientId, d.sum, d.closed,
+(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.clientId = @clientId and d.closed = 0) ad";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "clientId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "select sum(`sumPrixod`) from (select d.debtId,  d.expenseId, d.clientId, d.sum, d" +
+                ".closed,\r\n(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from de" +
+                "bts d \r\nleft join debtsums ds on d.debtId = ds.debtId\r\nwhere d.clientId = @clien" +
+                "tId) ad";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "clientId";
+            param.DbType = global::System.Data.DbType.Double;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Double;
+            param.IsNullable = true;
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5370,6 +5442,64 @@ namespace tposDesktop.DataSetDebtTableAdapters {
             DataSetDebt.v_debtsRepaymentDataTable dataTable = new DataSetDebt.v_debtsRepaymentDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object SumPrixod(int clientId) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(clientId));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object SumPrixodAll(double clientId) {
+            global::MySql.Data.MySqlClient.MySqlCommand command = this.CommandCollection[3];
+            command.Parameters[0].Value = ((double)(clientId));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
         }
     }
     

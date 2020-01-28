@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblClient = new System.Windows.Forms.Label();
@@ -44,6 +44,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgvSums = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblOstatok = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSums)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +101,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(35, 142);
+            this.label2.Location = new System.Drawing.Point(28, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 24);
             this.label2.TabIndex = 21;
@@ -125,7 +127,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(35, 235);
+            this.label1.Location = new System.Drawing.Point(28, 261);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 24);
             this.label1.TabIndex = 21;
@@ -136,9 +138,9 @@
             this.lbxDebts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbxDebts.FormattingEnabled = true;
             this.lbxDebts.ItemHeight = 24;
-            this.lbxDebts.Location = new System.Drawing.Point(192, 235);
+            this.lbxDebts.Location = new System.Drawing.Point(109, 261);
             this.lbxDebts.Name = "lbxDebts";
-            this.lbxDebts.Size = new System.Drawing.Size(235, 148);
+            this.lbxDebts.Size = new System.Drawing.Size(317, 148);
             this.lbxDebts.TabIndex = 23;
             this.lbxDebts.SelectedIndexChanged += new System.EventHandler(this.lbxDebts_SelectedIndexChanged);
             // 
@@ -146,17 +148,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(35, 179);
+            this.label3.Location = new System.Drawing.Point(28, 179);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 24);
+            this.label3.Size = new System.Drawing.Size(158, 24);
             this.label3.TabIndex = 21;
-            this.label3.Text = "Общая сумма :";
+            this.label3.Text = "Остаток суммы :";
             // 
             // lblAllSum
             // 
             this.lblAllSum.AutoSize = true;
             this.lblAllSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblAllSum.Location = new System.Drawing.Point(187, 179);
+            this.lblAllSum.Location = new System.Drawing.Point(187, 220);
             this.lblAllSum.Name = "lblAllSum";
             this.lblAllSum.Size = new System.Drawing.Size(20, 24);
             this.lblAllSum.TabIndex = 21;
@@ -166,7 +168,7 @@
             // 
             this.tbxPercentSum.BackColor = System.Drawing.Color.Lime;
             this.tbxPercentSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxPercentSum.Location = new System.Drawing.Point(32, 401);
+            this.tbxPercentSum.Location = new System.Drawing.Point(32, 415);
             this.tbxPercentSum.Name = "tbxPercentSum";
             this.tbxPercentSum.Size = new System.Drawing.Size(395, 44);
             this.tbxPercentSum.TabIndex = 25;
@@ -183,7 +185,7 @@
             this.btnSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(91)))), ((int)(((byte)(139)))));
-            this.btnSale.Location = new System.Drawing.Point(32, 451);
+            this.btnSale.Location = new System.Drawing.Point(32, 465);
             this.btnSale.Name = "btnSale";
             this.btnSale.Size = new System.Drawing.Size(395, 49);
             this.btnSale.TabIndex = 24;
@@ -206,6 +208,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dgvSums
             // 
@@ -218,23 +221,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSums.BackgroundColor = System.Drawing.Color.White;
             this.dgvSums.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSums.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSums.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSums.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSums.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSums.Location = new System.Drawing.Point(459, 142);
             this.dgvSums.Margin = new System.Windows.Forms.Padding(2);
@@ -266,6 +269,26 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblOstatok
+            // 
+            this.lblOstatok.AutoSize = true;
+            this.lblOstatok.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblOstatok.Location = new System.Drawing.Point(187, 179);
+            this.lblOstatok.Name = "lblOstatok";
+            this.lblOstatok.Size = new System.Drawing.Size(20, 24);
+            this.lblOstatok.TabIndex = 21;
+            this.lblOstatok.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(28, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 24);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Всего оплачено :";
+            // 
             // DebtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +300,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSale);
             this.Controls.Add(this.lbxDebts);
+            this.Controls.Add(this.lblOstatok);
             this.Controls.Add(this.lblAllSum);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClient);
@@ -296,7 +321,9 @@
             this.Controls.SetChildIndex(this.lblClient, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.lblAllSum, 0);
+            this.Controls.SetChildIndex(this.lblOstatok, 0);
             this.Controls.SetChildIndex(this.lbxDebts, 0);
             this.Controls.SetChildIndex(this.btnSale, 0);
             this.Controls.SetChildIndex(this.btnClose, 0);
@@ -326,5 +353,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvSums;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblOstatok;
+        private System.Windows.Forms.Label label5;
     }
 }

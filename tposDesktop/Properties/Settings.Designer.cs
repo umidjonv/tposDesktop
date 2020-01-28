@@ -107,18 +107,6 @@ namespace tposDesktop.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool isAdmin {
-            get {
-                return ((bool)(this["isAdmin"]));
-            }
-            set {
-                this["isAdmin"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
@@ -155,7 +143,7 @@ namespace tposDesktop.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2018-05-26")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2050-01-01")]
         public global::System.DateTime ExpDate {
             get {
                 return ((global::System.DateTime)(this["ExpDate"]));
@@ -174,6 +162,18 @@ namespace tposDesktop.Properties {
             }
             set {
                 this["discount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool isAdmin {
+            get {
+                return ((bool)(this["isAdmin"]));
+            }
+            set {
+                this["isAdmin"] = value;
             }
         }
     }

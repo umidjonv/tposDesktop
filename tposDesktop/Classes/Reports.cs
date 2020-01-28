@@ -105,8 +105,7 @@ namespace Classes
             excel_class.ColWidth("B", 50);
 
             int i = 7;
-            //DataRow[] rBalanceSaldo = tableBalanceList.Select("balanceDate = '"+dateBegin+"'");
-            //DataRow[] rBalanceOstatok = tableBalanceList.Select("balanceDate = '" + dateEnd + "'");
+            
 
             foreach (DataRow dr in tableReport.Rows)
             {

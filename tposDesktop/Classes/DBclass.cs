@@ -167,27 +167,30 @@ namespace Classes.DB
         {
             DateTime oldTime60 = DateTime.Now.AddDays(-60);
             DateTime oldTime180 = DateTime.Now.AddMonths(-6);
-
-            MySqlCommand command = new MySqlCommand("select `prodBalance`(0)", connection);
+            DateTime begin_date = DateTime.Now.AddDays(-3);
+            string bDate = begin_date.ToString("yyyy-MM-dd 00:00:00");
+            string eDate = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
+            //MySqlCommand command = new MySqlCommand("CALL `p_prodBalance`()", connection);
+            MySqlCommand command = new MySqlCommand("CALL `_proc_update_balancelist_partly`('"+bDate+"', '"+eDate+"')", connection);
             if (connection.State == ConnectionState.Closed)
             {
                 try
                 {
                     string result;
                     connection.Open();
-                    command.CommandTimeout = 200;
-                    result = command.ExecuteScalar().ToString();
+                    command.CommandTimeout = 600;
+                    command.ExecuteNonQuery().ToString();
 
-                    command.CommandText = "delete from balancelist where balanceDate > '" + oldTime60.Year + "-" + (oldTime60.Month<10?"0"+oldTime60.Month.ToString():oldTime60.Month.ToString()) + "-" + (oldTime60.Day<10? "0"+oldTime60.Day.ToString() :oldTime60.Day.ToString())+"'";
+                    command.CommandText = "delete from balancelist where balanceDate < '" + oldTime60.Year + "-" + (oldTime60.Month<10?"0"+oldTime60.Month.ToString():oldTime60.Month.ToString()) + "-" + (oldTime60.Day<10? "0"+oldTime60.Day.ToString() :oldTime60.Day.ToString())+"'";
                     command.ExecuteNonQuery();
 
 
 
                     connection.Close();
-                    if (result == "0")
-                    {
-                        Program.backDate = true;
-                    }
+                    //if (result == "0")
+                    //{
+                    //    Program.backDate = true;
+                    //}
                     //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
                 }
                 catch (Exception ex)

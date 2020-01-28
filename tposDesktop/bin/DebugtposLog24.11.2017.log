@@ -1,7 +1,0 @@
-Info;24.11.2017 9:40:39;Message:_____________
-Info;24.11.2017 9:40:39;Message:Begin expense
-Info;24.11.2017 9:40:39;Message:--------------------
-Info;24.11.2017 9:40:39;Message:exp:4401 orders:prodId:5, orderSum:10000, cnt:1
-Info;24.11.2017 9:40:39;Message:updating orders,exp:4401
-Warning;24.11.2017 9:40:39;Message:end update orders,exp:4401
-Warning;24.11.2017 9:40:39;Message:------End Trigger------

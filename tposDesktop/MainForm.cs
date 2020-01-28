@@ -1002,6 +1002,24 @@ namespace tposDesktop
 
                 
             }
+            if ((grid.Columns[e.ColumnIndex].Name == "productPrice" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["productPrice"].Value != DBNull.Value)
+            {
+                double pck;
+
+                if (Double.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
+                {
+
+                    grid.Rows[e.RowIndex].Cells["discount"].Value = (chbDiscount.Checked ? CheckDiscount((int)grid.Rows[e.RowIndex].Cells["prodId"].Value) : 0);
+                    grid.Rows[e.RowIndex].Cells["sumProduct"].Value = Math.Round((pck) * (Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value) - GetDiscountSum((int)grid.Rows[e.RowIndex].Cells["prodId"].Value, Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value)))).ToString();
+                    sumTable();
+                }
+                else
+                {
+                    grid.Rows[e.RowIndex].Cells["packCount"].Value = packCount;
+                }
+
+
+            }
             if ((grid.Columns[e.ColumnIndex].Name == "sumProduct" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["sumProduct"].Value != DBNull.Value)
             {
                 double sumpr;

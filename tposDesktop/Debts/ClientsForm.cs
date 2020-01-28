@@ -51,6 +51,8 @@ namespace tposDesktop.Debts
                 {
                     throw mainhandler.error;
                 }
+                ClearTBX();
+
             }
 
         }
@@ -67,9 +69,27 @@ namespace tposDesktop.Debts
                     {
                         throw mainhandler.error;
                     }
+                    
                 }
             }
             
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (currentClientID != 0)
+            {
+                mainhandler.GetClient(currentClientID);
+                if (tbxFIO.Text != "")
+                {
+                    bool isSave = mainhandler.DeleteClient();
+                    if (!isSave)
+                    {
+                        throw mainhandler.error;
+                    }
+                    ClearTBX();
+                }
+            }
+
         }
 
         private void tbxSearchClient_TextChanged(object sender, EventArgs e)
@@ -143,12 +163,19 @@ namespace tposDesktop.Debts
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            ClearTBX();
+           
+        }
+
+        private void ClearTBX()
+        {
             tbxFIO.Text = "";
             tbxAdress.Text = "";
             tbxPassNumber.Text = "";
             tbxPassSN.Text = "";
             tbxPhone.Text = "";
-           
         }
+
+        
     }
 }

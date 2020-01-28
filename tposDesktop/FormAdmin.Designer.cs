@@ -253,6 +253,7 @@
             this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuClients = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDebtType = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDebt = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.hotkeysTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.hotkeysTableAdapter();
@@ -272,7 +273,6 @@
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colBtnDell = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.menuDebt = new System.Windows.Forms.ToolStripMenuItem();
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -829,7 +829,7 @@
             this.realizeGrid.RowHeadersWidth = 50;
             this.realizeGrid.RowTemplate.Height = 40;
             this.realizeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.realizeGrid.Size = new System.Drawing.Size(401, 216);
+            this.realizeGrid.Size = new System.Drawing.Size(556, 216);
             this.realizeGrid.TabIndex = 14;
             this.realizeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.realizeGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
@@ -845,7 +845,7 @@
             this.btnGetFaktura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Khaki;
             this.btnGetFaktura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetFaktura.ForeColor = System.Drawing.Color.Black;
-            this.btnGetFaktura.Location = new System.Drawing.Point(285, 2);
+            this.btnGetFaktura.Location = new System.Drawing.Point(279, 2);
             this.btnGetFaktura.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetFaktura.Name = "btnGetFaktura";
             this.btnGetFaktura.Size = new System.Drawing.Size(143, 42);
@@ -864,7 +864,7 @@
             this.btnCloseFaktura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Khaki;
             this.btnCloseFaktura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseFaktura.ForeColor = System.Drawing.Color.White;
-            this.btnCloseFaktura.Location = new System.Drawing.Point(233, 2);
+            this.btnCloseFaktura.Location = new System.Drawing.Point(227, 2);
             this.btnCloseFaktura.Margin = new System.Windows.Forms.Padding(2);
             this.btnCloseFaktura.Name = "btnCloseFaktura";
             this.btnCloseFaktura.Size = new System.Drawing.Size(40, 40);
@@ -885,7 +885,7 @@
             // 
             this.lblRealizeSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRealizeSum.AutoSize = true;
-            this.lblRealizeSum.Location = new System.Drawing.Point(-66, 12);
+            this.lblRealizeSum.Location = new System.Drawing.Point(-72, 12);
             this.lblRealizeSum.Name = "lblRealizeSum";
             this.lblRealizeSum.Size = new System.Drawing.Size(105, 20);
             this.lblRealizeSum.TabIndex = 16;
@@ -3156,6 +3156,13 @@
             this.menuDebtType.Text = "Типы рассрочек";
             this.menuDebtType.Click += new System.EventHandler(this.menuDebtType_Click);
             // 
+            // menuDebt
+            // 
+            this.menuDebt.Name = "menuDebt";
+            this.menuDebt.Size = new System.Drawing.Size(165, 22);
+            this.menuDebt.Text = "Долги";
+            this.menuDebt.Click += new System.EventHandler(this.menuDebt_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3245,13 +3252,6 @@
             this.colBtnDell.ReadOnly = true;
             this.colBtnDell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colBtnDell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // menuDebt
-            // 
-            this.menuDebt.Name = "menuDebt";
-            this.menuDebt.Size = new System.Drawing.Size(165, 22);
-            this.menuDebt.Text = "Долги";
-            this.menuDebt.Click += new System.EventHandler(this.menuDebt_Click);
             // 
             // FormAdmin
             // 

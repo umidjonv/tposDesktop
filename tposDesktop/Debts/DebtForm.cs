@@ -22,11 +22,14 @@ namespace tposDesktop.Debts
             lbxDebts.ValueMember = "debtId";
             debtsumsDT = new DataSetDebt.debtsumsDataTable();
             dgvSums.DataSource = new DataView(debtsumsDT);
+            mainHandler.RefreshDebtsOpens();
             //RefreshDebtSum();
         }
         Classes.Model.MainHandlerADO mainHandler;
         public DataSetDebt.clientsRow currentClient;
+        DataSetDebt.v_debtsDataTable debtDT;
         double currentAllSum = 0;
+        double AllSum = 0;
         int debtId = 0;
         private void btnClient_Click(object sender, EventArgs e)
         {
@@ -37,11 +40,17 @@ namespace tposDesktop.Debts
                 {
                     
                     currentClient = client.selectedClient;
-                    lblClient.Text = currentClient.name;
-                    lbxDebts.DisplayMember = "debtname";
-                    lbxDebts.ValueMember = "debtId";
-                    lbxDebts.DataSource = mainHandler.RefreshvDebtsByClient(currentClient.clientId);
-                    debtsumsDT.Clear();
+                    UpdateClientExpenses();
+                    //lblClient.Text = currentClient.name;
+                    //lbxDebts.DisplayMember = "debtname";
+                    //lbxDebts.ValueMember = "debtId";
+                    //debtDT = mainHandler.RefreshvDebtsByClient(currentClient.clientId);
+
+                    //lbxDebts.DataSource = debtDT;
+                    //debtsumsDT.Clear();
+
+                    //RefreshAllSums();
+
                     //dgvSums.DataSource = new DataView(debtsumsDT);
 
 
@@ -50,6 +59,31 @@ namespace tposDesktop.Debts
 
             }
         }
+
+        private void UpdateClientExpenses()
+        {
+            if (currentClient != null)
+            {
+
+                
+                lblClient.Text = currentClient.name;
+                lbxDebts.DisplayMember = "debtname";
+                lbxDebts.ValueMember = "debtId";
+                debtDT = mainHandler.RefreshvDebtsByClient(currentClient.clientId);
+
+                lbxDebts.DataSource = debtDT;
+                debtsumsDT.Clear();
+
+                RefreshAllSums();
+                tbxPercentSum.Text = "0";
+                //dgvSums.DataSource = new DataView(debtsumsDT);
+
+
+
+            }
+
+        }
+
         DataSetDebt.debtsumsDataTable debtsumsDT;
         
         private void lbxDebts_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +96,22 @@ namespace tposDesktop.Debts
                 RefreshDebtsums((int)lbxDebts.SelectedValue);
                 RefreshDebtSum();
             }
+        }
+
+        public void RefreshAllSums()
+        {
+            AllSum = (double)debtDT.AsEnumerable().Sum(x => x.Field<double>("sum"));
+            DataSetDebtTableAdapters.v_debtsRepaymentTableAdapter debrepayDA = new DataSetDebtTableAdapters.v_debtsRepaymentTableAdapter();
+            var sum = debrepayDA.SumPrixod(currentClient.clientId);
+            if(sum!=null)
+            {
+                double? oplata = (double)sum;
+
+                if (oplata == null) oplata = 0;
+                lblOstatok.Text = (AllSum - oplata).ToString();
+                lblAllSum.Text = oplata.ToString();
+            }
+            
         }
 
         public void RefreshDebtsums(int id)
@@ -81,34 +131,66 @@ namespace tposDesktop.Debts
                 DataSetDebt.v_debtsRepaymentRow repayRow = (DataSetDebt.v_debtsRepaymentRow)repaymentDT.Rows[0];
                 currentAllSum = repayRow.sum;
             }
-            var sum = repaymentDT.AsEnumerable().Sum(x => x.Field<double>("sumPrixod"));
+            //var sum = repaymentDT.AsEnumerable().Sum(x => x.Field<double>("sumPrixod"));
             
 
-            lblAllSum.Text = (currentAllSum -sum).ToString();
+            //lblAllSum.Text = (currentAllSum -sum).ToString();
            
         }
 
         private void btnSale_Click(object sender, EventArgs e)
         {
-            if (lbxDebts.SelectedValue != null)
+            if (lbxDebts.SelectedValue != null&&lblOstatok.Text!="0")
             {
-                double summaT = Convert.ToDouble(tbxPercentSum.Text);
-                double dolg = Convert.ToDouble(lblAllSum.Text);
+                //double summaT = Convert.ToDouble(tbxPercentSum.Text);
+                double dolg = Convert.ToDouble(lblOstatok.Text);
                 double prixodSum = Convert.ToDouble(tbxPercentSum.Text);
+                bool isFirst = true;
+                
 
-                mainHandler.AddDebtSum(prixodSum, (int)lbxDebts.SelectedValue);
 
-                if (summaT == dolg)
+                while (prixodSum != 0)
                 {
+                    bool isClose = false;
+                    double debtSum = 0;
+                    repaymentDT = mainHandler.RefreshvDebtRepaymentByID(currentClient.clientId);
+                    DataSetDebt.v_debtsRepaymentRow debtRow = null;
+                    if (isFirst)
+                        debtRow = mainHandler.GeBytDebt((int)lbxDebts.SelectedValue);
+                    else
+                        debtRow = (DataSetDebt.v_debtsRepaymentRow)repaymentDT.Rows[0];
+                    if (prixodSum < debtRow.ostatok)
+                    {
+                        // debtRow.ostatok - prixodSum;
+                        debtSum = prixodSum;
+                        prixodSum = 0;
+                        if (debtRow.ostatok == 0)
+                            isClose = true;
+                    }
+                    else if (prixodSum >= debtRow.ostatok)
+                    {
+                        prixodSum = prixodSum - debtRow.ostatok;
+                        debtSum = debtRow.ostatok;
+                        isClose = true;
+                        
+                    }
 
-                    btnClose_Click(null, null);
-                    
-                }else
-                {
-                    RefreshDebtSum();
-                    RefreshDebtsums((int)lbxDebts.SelectedValue);
+
+                    debtId = debtRow.debtId;
+
+
+                    mainHandler.AddDebtSum(debtSum, debtId);
+                    if(isClose)
+                        mainHandler.EditDebts(debtId, 1);
+                    isFirst = false;
+                    lbxDebts.SelectedValue = debtId;
 
                 }
+
+                UpdateClientExpenses();
+                //RefreshDebtSum();
+                if(lbxDebts.SelectedValue!=null)
+                RefreshDebtsums((int)lbxDebts.SelectedValue);
                 
                 //RefreshDebtsums((int)lbxDebts.SelectedValue);
                
@@ -180,8 +262,8 @@ namespace tposDesktop.Debts
             if (tbxPercentSum.Text != "")
             {
                 double summaT = Convert.ToDouble(tbxPercentSum.Text);
-                double dolg = Convert.ToDouble(lblAllSum.Text);
-                if (summaT > dolg && lblAllSum.Text != "0")
+                double dolg = Convert.ToDouble(lblOstatok.Text);
+                if (summaT > dolg)
                 {
                     tbxPercentSum.Text = dolg.ToString();
                 }
@@ -199,5 +281,10 @@ namespace tposDesktop.Debts
                 dgvCell.Value = "Удалить";
             }
         }
-            }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

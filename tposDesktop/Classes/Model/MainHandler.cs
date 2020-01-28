@@ -99,6 +99,7 @@ namespace Classes.Model
                 client.phone = phone;
                 
                 clientDA.Update(client);
+                clientDA.Fill(clients);
                 return true;
 
             }
@@ -107,6 +108,25 @@ namespace Classes.Model
                 error = ex;
                 return false;
             }
+        }
+
+        public bool DeleteClient()
+        {
+            try
+            {
+                DataSetDebt.clientsRow client = curClient;
+                client.Delete();
+                clientDA.Update(client);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                error = ex;
+                return false;
+            }
+
+
         }
 
         public DataSetDebt.clientsDataTable RefreshClients()
@@ -301,7 +321,12 @@ namespace Classes.Model
             return DB.DBDebt.DS.v_debtsRepayment;
 
         }
+        public DataSetDebt.v_debtsRepaymentRow GeBytDebt(int idDebt)
+        {
+            DataSetDebt.v_debtsRepaymentRow row = DB.DBDebt.DS.v_debtsRepayment.FirstOrDefault(x => x.debtId == idDebt);
+            return row;
 
+        }
 
         #endregion
 

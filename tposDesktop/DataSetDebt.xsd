@@ -4,9 +4,9 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="testConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.testConnectionString2" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="testConnectionString2" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.testConnectionString2" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="testConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.testConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="testConnectionString3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString3 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.testConnectionString3" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="testConnectionString3" IsAppSettingsProperty="true" Modifier="Assembly" Name="testConnectionString3 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.tposDesktop.Properties.Settings.GlobalReference.Default.testConnectionString3" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="clientsTableAdapter" GeneratorDataComponentClassName="clientsTableAdapter" Name="clients" UserDataComponentName="clientsTableAdapter">
@@ -255,7 +255,7 @@ where debtId = @debtId</CommandText>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select d.debtId,  d.expenseId, concat('Счет:', d.expenseId, ' - ', d.sum) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d 
+                    <CommandText>select d.debtId,  d.expenseId, concat('Счет:', d.expenseId, ' - ', d.sum, ' - ', date(e.expenseDate)) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d 
 left join expense e on d.expenseId = e.expenseId</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -267,7 +267,7 @@ left join expense e on d.expenseId = e.expenseId</CommandText>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByClientID" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByClientID" GeneratorSourceName="FillByClientID" GetMethodModifier="Public" GetMethodName="GetDataByClientID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByClientID" UserSourceName="FillByClientID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select d.debtId,  d.expenseId, concat('Счет:', d.expenseId, ' - ', d.sum) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d 
+                    <CommandText>select d.debtId,  d.expenseId, concat('Счет:', d.expenseId, ' - ', d.sum, ' - ', date(e.expenseDate)) as debtname,  d.clientId, d.typeId, d.sum, e.charge, d.closed from debts d 
 left join expense e on d.expenseId = e.expenseId
 where  d.clientId = @clientId and d.closed = 0</CommandText>
                     <Parameters>
@@ -280,12 +280,13 @@ where  d.clientId = @clientId and d.closed = 0</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_debtsRepaymentTableAdapter" GeneratorDataComponentClassName="v_debtsRepaymentTableAdapter" Name="v_debtsRepayment" UserDataComponentName="v_debtsRepaymentTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select d.debtId,  d.expenseId, d.clientId, d.sum,
-(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from debts d 
-left join debtsums ds on d.debtId = ds.debtId</CommandText>
+                    <CommandText>select d.debtId,  d.expenseId, d.clientId, d.sum, 
+(case when ds.sum is null then 0 else sum(ds.sum) end) as sumPrixod, (d.sum-(case when ds.sum is null then 0 else sum(ds.sum) end)) as ostatok, d.closed from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.closed = 0 group by debtId</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -296,12 +297,39 @@ left join debtsums ds on d.debtId = ds.debtId</CommandText>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByClientID" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByClientID" GeneratorSourceName="FillByClientID" GetMethodModifier="Public" GetMethodName="GetDataByClientID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByClientID" UserSourceName="FillByClientID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select d.debtId,  d.expenseId, d.clientId, d.sum,
-(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from debts d 
+                    <CommandText>select d.debtId,  d.expenseId, d.clientId, d.sum, 
+(case when ds.sum is null then 0 else sum(ds.sum) end) as sumPrixod, (d.sum-(case when ds.sum is null then 0 else sum(ds.sum) end)) as ostatok, d.closed from debts d 
 left join debtsums ds on d.debtId = ds.debtId
-where d.clientId = @clientId</CommandText>
+where d.clientId = @clientId and d.closed = 0
+group by d.debtId</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="clientId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SumPrixod" Modifier="Public" Name="SumPrixod" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SumPrixod">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select sum(`sumPrixod`) from (select d.debtId,  d.expenseId, d.clientId, d.sum, d.closed,
+(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.clientId = @clientId and d.closed = 0) ad</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="clientId" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SumPrixodAll" Modifier="Public" Name="SumPrixodAll" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="SumPrixodAll">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select sum(`sumPrixod`) from (select d.debtId,  d.expenseId, d.clientId, d.sum, d.closed,
+(case when ds.sum is null then 0 else ds.sum end) as sumPrixod from debts d 
+left join debtsums ds on d.debtId = ds.debtId
+where d.clientId = @clientId) ad</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Double" Direction="Input" ParameterName="clientId" Precision="0" ProviderType="Double" Scale="0" Size="0" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -411,6 +439,7 @@ where d.clientId = @clientId</CommandText>
               <xs:element name="clientId" msprop:Generator_ColumnVarNameInTable="columnclientId" msprop:Generator_ColumnPropNameInRow="clientId" msprop:Generator_ColumnPropNameInTable="clientIdColumn" msprop:Generator_UserColumnName="clientId" type="xs:int" minOccurs="0" />
               <xs:element name="sum" msprop:Generator_ColumnVarNameInTable="columnsum" msprop:Generator_ColumnPropNameInRow="sum" msprop:Generator_ColumnPropNameInTable="sumColumn" msprop:Generator_UserColumnName="sum" type="xs:double" minOccurs="0" />
               <xs:element name="sumPrixod" msprop:Generator_ColumnVarNameInTable="columnsumPrixod" msprop:Generator_ColumnPropNameInRow="sumPrixod" msprop:Generator_ColumnPropNameInTable="sumPrixodColumn" msprop:Generator_UserColumnName="sumPrixod" type="xs:double" minOccurs="0" />
+              <xs:element name="ostatok" msprop:Generator_ColumnVarNameInTable="columnostatok" msprop:Generator_ColumnPropNameInRow="ostatok" msprop:Generator_ColumnPropNameInTable="ostatokColumn" msprop:Generator_UserColumnName="ostatok" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
