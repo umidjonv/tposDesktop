@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Classes;
 using Classes.DB;
 using Classes.Forms;
+using tposDesktop.Converters;
+
 namespace tposDesktop
 {
     public partial class AddRealize : DesignedForm
@@ -131,6 +133,10 @@ namespace tposDesktop
                     rlRow.fakturaId = fkRow.fakturaId;
                     rlRow.prodId = prRow.productId;
                     DBclass.DS.realize.AddrealizeRow(rlRow);
+                    
+                    string converted = new RealizeConverter(rlRow).Convert();
+                    RestService.RestService service = new RestService.RestService();
+                    service.AddInvoice(converted);
                     db.calcProc("plus", prRow.productId, cnt);   
                 }
                 //if(prRow.price==0)

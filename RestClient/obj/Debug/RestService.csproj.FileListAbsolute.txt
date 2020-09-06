@@ -1,0 +1,9 @@
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\bin\Debug\RestClient.dll
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\bin\Debug\RestClient.pdb
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\bin\Debug\RestSharp.dll
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\bin\Debug\RestSharp.xml
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\obj\Debug\RestService.csprojAssemblyReference.cache
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\obj\Debug\RestService.csproj.CoreCompileInputs.cache
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\obj\Debug\RestService.csproj.CopyComplete
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\obj\Debug\RestClient.dll
+E:\ydisk\YandexDisk\Проекты\market_debt\tposDesktop\RestClient\obj\Debug\RestClient.pdb

@@ -25,6 +25,7 @@ namespace tposDesktop
                 kg = true;
  
             prrow.price = getPrice(prrow.productId);
+            
             InitializeComponent();
             //lblOne.Visible = false;
                 lblOne.Text = prrow.price.ToString();

@@ -22,12 +22,17 @@ namespace tposDesktop
         {
            
             InitializeComponent();
+            DataSetTpos.productviewRow prvRow = DBclass.DS.productview.FindByproductId(prrow.productId);
+
+
             lblCaption.Text = prrow.name;
             if (prrow.measureId != 2)
             {
                 tbxCount1.isFloat = true;
                 kg = true;
             }
+            if (prvRow != null)
+                lblOstatok.Text = prvRow.endCount.ToString(); ;
             
         }
         public KolForm(DataSetTpos.productRow prrow, float kol)

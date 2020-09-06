@@ -365,6 +365,8 @@ namespace tposDesktop
         public void forPrinting(string id,string name, string price, string barcode)
         {
             string dataHtml = "";
+
+            this.saveBmp1(barcode);
             StreamWriter sw = new StreamWriter(System.IO.Path.GetTempPath() + "\\tempData.htm");
             //summa += decimal.Parse((Math.Round(Double.Parse(sr[1]) * Double.Parse(sr[2]))).ToString());
             string font = "12pt";
@@ -408,9 +410,13 @@ namespace tposDesktop
                         "<strong>"+id+"</strong><br/>"+
                         "<span style=\"font-size:6pt;\"><b>"+ tposDesktop.Properties.Settings.Default.orgName +"</b> <br/>#"+barcode+"</span>" +
                         "</td>"+
+
                         "<td ><strong> <div style=\"font-size: 30pt; font-family: 'Agency FB';float:right;margin-left:5px;\">" + String.Format("{0:n0}",int.Parse(price)) + "c</div></strong></td>"+
                         "</tr>"+
-                        "</tbody>"+
+                        "<tr>" +
+                                "<th colspan = '3'><img width ='150' height='30' src='" + Directory.GetCurrentDirectory() + "\\barcode.png '/></th>" +
+                            "</tr>" +
+                        "</tbody>" +
                         "</table>";
             sw.Write(dataHtml);
             sw.Close();
@@ -461,14 +467,7 @@ namespace tposDesktop
 
             }
         }
-
-        private void btnBarcode_Click(object sender, EventArgs e)
-        {
-            printForm pr = new printForm(tbxName.Text,tbxPrice.Text,tbxShtrix.Text);
-            pr.ShowDialog();
-        }
-
-        private Bitmap encodingZxing(string barcode)
+        private Bitmap encodingZxingPrinting(string barcode)
         {
             Bitmap img = null;
             try
@@ -477,10 +476,10 @@ namespace tposDesktop
                 {
                     Format = ZXing.BarcodeFormat.EAN_13,
                     Options = EncodingOptions ?? new EncodingOptions
-                            {
-                                Height = 100,
-                                Width = 800
-                            },
+                    {
+                        Height = 100,
+                        Width = 800
+                    },
                     Renderer = (IBarcodeRenderer<Bitmap>)Activator.CreateInstance(Renderer)
                 };
                 img = writer.Write(barcode);
@@ -490,8 +489,65 @@ namespace tposDesktop
                 MessageBox.Show(this, exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return img;
-            
+
         }
+        private Bitmap encodingZxing(string barcode)
+        {
+            Bitmap img = null;
+            //Renderer = typeof(Bitmap);
+            try
+            {
+                BarcodeFormat frmt = new BarcodeFormat();
+                if (barcode.Length == 12)
+                {
+                    frmt = BarcodeFormat.UPC_A;
+                }
+                else if (barcode.Length == 13)
+                {
+                    frmt = BarcodeFormat.EAN_13;
+                }
+
+                var writer = new BarcodeWriter
+                {
+                    Format = frmt,
+                    Options = EncodingOptions ?? new EncodingOptions
+                    {
+                        Height = 100,
+                        Width = 800
+                    },
+                    Renderer = (IBarcodeRenderer<Bitmap>)Activator.CreateInstance(Renderer)
+                };
+                img = writer.Write(barcode);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(this, exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return img;
+
+        }
+
+        public void saveBmp1(string barcode)
+        {
+            Bitmap img = encodingZxingPrinting(barcode);
+            var fileName = String.Empty;
+            fileName = Directory.GetCurrentDirectory() + "\\barcode.png";
+            var extension = Path.GetExtension(fileName).ToLower();
+            var bmp = (Bitmap)img;
+
+            bmp.Save(fileName, ImageFormat.Png);
+
+
+        }
+
+
+        private void btnBarcode_Click(object sender, EventArgs e)
+        {
+            printForm pr = new printForm(tbxName.Text,tbxPrice.Text,tbxShtrix.Text);
+            pr.ShowDialog();
+        }
+
+       
 
         private void saveBmp(string barcode)
         {

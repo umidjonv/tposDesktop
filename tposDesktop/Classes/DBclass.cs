@@ -171,36 +171,36 @@ namespace Classes.DB
             string bDate = begin_date.ToString("yyyy-MM-dd 00:00:00");
             string eDate = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
             //MySqlCommand command = new MySqlCommand("CALL `p_prodBalance`()", connection);
-            MySqlCommand command = new MySqlCommand("CALL `_proc_update_balancelist_partly`('"+bDate+"', '"+eDate+"')", connection);
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    string result;
-                    connection.Open();
-                    command.CommandTimeout = 600;
-                    command.ExecuteNonQuery().ToString();
+            //MySqlCommand command = new MySqlCommand("CALL `_proc_update_balancelist_partly`('"+bDate+"', '"+eDate+"')", connection);
+            //if (connection.State == ConnectionState.Closed)
+            //{
+            //    try
+            //    {
+            //        string result;
+            //        connection.Open();
+            //        command.CommandTimeout = 600;
+            //        command.ExecuteNonQuery().ToString();
 
-                    command.CommandText = "delete from balancelist where balanceDate < '" + oldTime60.Year + "-" + (oldTime60.Month<10?"0"+oldTime60.Month.ToString():oldTime60.Month.ToString()) + "-" + (oldTime60.Day<10? "0"+oldTime60.Day.ToString() :oldTime60.Day.ToString())+"'";
-                    command.ExecuteNonQuery();
+            //        command.CommandText = "delete from balancelist where balanceDate < '" + oldTime60.Year + "-" + (oldTime60.Month<10?"0"+oldTime60.Month.ToString():oldTime60.Month.ToString()) + "-" + (oldTime60.Day<10? "0"+oldTime60.Day.ToString() :oldTime60.Day.ToString())+"'";
+            //        command.ExecuteNonQuery();
 
 
 
-                    connection.Close();
-                    //if (result == "0")
-                    //{
-                    //    Program.backDate = true;
-                    //}
-                    //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
+            //        connection.Close();
+            //        //if (result == "0")
+            //        //{
+            //        //    Program.backDate = true;
+            //        //}
+            //        //System.Windows.Forms.MessageBox.Show("Операция выполнена успешно!");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        System.Windows.Forms.MessageBox.Show(ex.Message);
                     
-                }
-                e.Result = true;
+            //    }
+            //    e.Result = true;
                 
-            }
+            //}
         }
         void bgw_DoWork(object sender, DoWorkEventArgs e)
         {

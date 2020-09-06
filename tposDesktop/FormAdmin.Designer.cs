@@ -69,6 +69,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvTovarPrixod = new System.Windows.Forms.DataGridView();
             this.realizeGrid = new System.Windows.Forms.DataGridView();
+            this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnGetFaktura = new System.Windows.Forms.Button();
             this.btnCloseFaktura = new System.Windows.Forms.Button();
             this.lblFakturaNumber = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             this.dgvTovarBack = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.backGrid = new System.Windows.Forms.DataGridView();
+            this.colBtnDell = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblBackSum = new System.Windows.Forms.Label();
             this.backSearchTxt = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -271,8 +273,6 @@
             this.hotkeysLibraTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.hotkeysLibraTableAdapter();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colBtnDel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colBtnDell = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabRasxod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -829,12 +829,18 @@
             this.realizeGrid.RowHeadersWidth = 50;
             this.realizeGrid.RowTemplate.Height = 40;
             this.realizeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.realizeGrid.Size = new System.Drawing.Size(556, 216);
+            this.realizeGrid.Size = new System.Drawing.Size(550, 216);
             this.realizeGrid.TabIndex = 14;
             this.realizeGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.realizeGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             this.realizeGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
             this.realizeGrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.control_keyPress);
+            // 
+            // colBtnDel
+            // 
+            this.colBtnDel.HeaderText = "";
+            this.colBtnDel.Name = "colBtnDel";
+            this.colBtnDel.ReadOnly = true;
             // 
             // btnGetFaktura
             // 
@@ -845,7 +851,7 @@
             this.btnGetFaktura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Khaki;
             this.btnGetFaktura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetFaktura.ForeColor = System.Drawing.Color.Black;
-            this.btnGetFaktura.Location = new System.Drawing.Point(279, 2);
+            this.btnGetFaktura.Location = new System.Drawing.Point(273, 2);
             this.btnGetFaktura.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetFaktura.Name = "btnGetFaktura";
             this.btnGetFaktura.Size = new System.Drawing.Size(143, 42);
@@ -864,7 +870,7 @@
             this.btnCloseFaktura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Khaki;
             this.btnCloseFaktura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseFaktura.ForeColor = System.Drawing.Color.White;
-            this.btnCloseFaktura.Location = new System.Drawing.Point(227, 2);
+            this.btnCloseFaktura.Location = new System.Drawing.Point(221, 2);
             this.btnCloseFaktura.Margin = new System.Windows.Forms.Padding(2);
             this.btnCloseFaktura.Name = "btnCloseFaktura";
             this.btnCloseFaktura.Size = new System.Drawing.Size(40, 40);
@@ -885,7 +891,7 @@
             // 
             this.lblRealizeSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRealizeSum.AutoSize = true;
-            this.lblRealizeSum.Location = new System.Drawing.Point(-72, 12);
+            this.lblRealizeSum.Location = new System.Drawing.Point(-78, 12);
             this.lblRealizeSum.Name = "lblRealizeSum";
             this.lblRealizeSum.Size = new System.Drawing.Size(105, 20);
             this.lblRealizeSum.TabIndex = 16;
@@ -1045,6 +1051,14 @@
             this.backGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
             this.backGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             this.backGrid.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_postPaint);
+            // 
+            // colBtnDell
+            // 
+            this.colBtnDell.HeaderText = "";
+            this.colBtnDell.Name = "colBtnDell";
+            this.colBtnDell.ReadOnly = true;
+            this.colBtnDell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colBtnDell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // lblBackSum
             // 
@@ -3080,6 +3094,7 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(64, 39);
             this.toolStripMenuItem4.Text = "Отчеты";
+            this.toolStripMenuItem4.Visible = false;
             // 
             // menustripPeriodReport
             // 
@@ -3145,21 +3160,21 @@
             // menuClients
             // 
             this.menuClients.Name = "menuClients";
-            this.menuClients.Size = new System.Drawing.Size(165, 22);
+            this.menuClients.Size = new System.Drawing.Size(164, 22);
             this.menuClients.Text = "Клиенты";
             this.menuClients.Click += new System.EventHandler(this.menuClients_Click);
             // 
             // menuDebtType
             // 
             this.menuDebtType.Name = "menuDebtType";
-            this.menuDebtType.Size = new System.Drawing.Size(165, 22);
+            this.menuDebtType.Size = new System.Drawing.Size(164, 22);
             this.menuDebtType.Text = "Типы рассрочек";
             this.menuDebtType.Click += new System.EventHandler(this.menuDebtType_Click);
             // 
             // menuDebt
             // 
             this.menuDebt.Name = "menuDebt";
-            this.menuDebt.Size = new System.Drawing.Size(165, 22);
+            this.menuDebt.Size = new System.Drawing.Size(164, 22);
             this.menuDebt.Text = "Долги";
             this.menuDebt.Click += new System.EventHandler(this.menuDebt_Click);
             // 
@@ -3238,20 +3253,6 @@
             this.dataGridViewButtonColumn2.ReadOnly = true;
             this.dataGridViewButtonColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colBtnDel
-            // 
-            this.colBtnDel.HeaderText = "";
-            this.colBtnDel.Name = "colBtnDel";
-            this.colBtnDel.ReadOnly = true;
-            // 
-            // colBtnDell
-            // 
-            this.colBtnDell.HeaderText = "";
-            this.colBtnDell.Name = "colBtnDell";
-            this.colBtnDell.ReadOnly = true;
-            this.colBtnDell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colBtnDell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FormAdmin
             // 

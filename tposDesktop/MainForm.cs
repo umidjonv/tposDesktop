@@ -50,6 +50,9 @@ namespace tposDesktop
             db = new DBclass(true);
             db.FillExpense("");
             db.FillProduct();
+
+            isPrinter = Properties.Settings.Default.isPrinter;
+            SetIsPrinter();
             productviewTableAdapter prVda = new productviewTableAdapter();
             prVda.Fill(DBclass.DS.productview);
             /////Initializ LOGS
@@ -310,6 +313,7 @@ namespace tposDesktop
             //dgvTovar.Columns["pack"].Visible = false;
             //dgvTovar.Columns["status"].Visible = false;
             //dgvTovar.Columns["balanceT"].Visible = false;
+
             dgvTovar.Columns["productId"].Width = 40;
             dgvTovar.Columns["name"].Width = 150;
             dgvTovar.Columns["price"].Width = 50;
@@ -322,7 +326,7 @@ namespace tposDesktop
             cellBtn.SetImage(Properties.Resources.add);
 
             dgvTovar.Columns.Add(cellBtn);
-
+            dgvTovar.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvExpense.Columns["prodId"].Visible = false;
             dgvExpense.Columns["orderId"].Visible = false;
             dgvExpense.Columns["expenseId"].Visible = false;
@@ -422,6 +426,17 @@ namespace tposDesktop
 
             }
         }
+        private void dgvTovar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (e.RowIndex >= 0)
+            {
+                AddToOrders((int)grid.Rows[e.RowIndex].Cells["productid"].Value);
+
+
+            }
+        }
+
         private void dgvExpense_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
@@ -573,12 +588,12 @@ namespace tposDesktop
                         MessageBox.Show("Товара нет на складе. Обратитесь к администратору");
                         return;
                     }
-                    //KolForm kolform = new KolForm(drP);
-                    //if (kolform.ShowDialog() == DialogResult.OK)
-                    //{
-                    //    drP.pack = kolform.count;
-                    //}
-                    //else { return; }
+                    KolForm kolform = new KolForm(drP);
+                    if (kolform.ShowDialog() == DialogResult.OK)
+                    {
+                        drP.pack = kolform.count;
+                    }
+                    else { return; }
 
                     DataRow[] existRows = DBclass.DS.orders.Select("expenseId=" + tempExpeId + " and prodId = " + drP.productId);
                     if (existRows.Length > 0)
@@ -587,11 +602,14 @@ namespace tposDesktop
                        
                        
                         ordrow.packCount = ordrow.packCount + (drP.pack == 0 ? 1 : drP.pack);
+                        
                         if (ordrow.packCount <= 0) ordrow.packCount = 1;
+
                         DataRow drOrder = ordrow;
                         double summ = ordrow.packCount * drP.price;//ordrow.AcceptChanges();
                         ordrow.discount = (discountId!=-1? CheckDiscount(drP.productId):0);
                         drOrder["sumProduct"] = summ - GetDiscountSum(drP.productId, summ);
+
                         ordrow.orderSumm = Convert.ToSingle(drOrder["sumProduct"]);
                     }
                     else
@@ -663,6 +681,7 @@ namespace tposDesktop
 
                 next = true;
             } while (stBarcode.Count != 0);
+            dgvExpense.Refresh();
         }
 
 
@@ -767,7 +786,10 @@ namespace tposDesktop
             int num = 1;
             foreach (DataGridViewRow dgvRow in dgvExpense.Rows)
             {
-                forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString(), dgvRow.Cells["orderSumm"].Value.ToString());
+                if (isPrinter)
+                {
+                    forPrintingNew(num.ToString(), dgvRow.Cells["ProductName"].Value.ToString(), dgvRow.Cells["packCount"].Value.ToString(), (Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString(), dgvRow.Cells["orderSumm"].Value.ToString());
+                }
                 num++;
 
                 sum += Math.Round(Double.Parse(dgvRow.Cells["orderSumm"].Value.ToString()));//Math.Round(Double.Parse(dgvRow.Cells["packCount"].Value.ToString()) * Double.Parse((Convert.ToDouble(dgvRow.Cells["productPrice"].Value) - (discountId != -1 ? GetDiscountSum((int)dgvRow.Cells["prodId"].Value, Convert.ToDouble(dgvRow.Cells["productPrice"].Value)) : 0)).ToString()));
@@ -823,7 +845,7 @@ namespace tposDesktop
             expDa.Update(expTable);
             expDa.FillLast(expTable);
             DataSetTpos.expenseRow exRow = expTable.Rows[0] as DataSetTpos.expenseRow;
-            if (Properties.Settings.Default.isPrinter == true)
+            if (isPrinter)
             {
                 EndHtml(exRow.expenseId, exRow.expSum, exRow.terminal, exRow.expType, exRow.debt, exRow.expSum, int.Parse(Configs.GetConfig("PercentAll")));
                 //forPrinting(drPrintCol, expTable);
@@ -952,10 +974,7 @@ namespace tposDesktop
                 Logs.SetLog("Error:" + ex.Message, Logs.LogStatus.Error);
             }
         }
-        private void dgvExpense_RowsPrePaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            
-        }
+        
         private void dgvExpense_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             
@@ -983,15 +1002,16 @@ namespace tposDesktop
 
         private void dgvExpense_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            
             var grid = (DataGridView)sender;
             if ((grid.Columns[e.ColumnIndex].Name == "packCount" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["packCount"].Value != DBNull.Value)
             {
                 double pck;
-                
+
                 if (Double.TryParse(grid.Rows[e.RowIndex].Cells["packCount"].Value.ToString(), out pck))
                 {
 
-                    grid.Rows[e.RowIndex].Cells["discount"].Value = (chbDiscount.Checked?CheckDiscount((int)grid.Rows[e.RowIndex].Cells["prodId"].Value):0);
+                    grid.Rows[e.RowIndex].Cells["discount"].Value = (chbDiscount.Checked ? CheckDiscount((int)grid.Rows[e.RowIndex].Cells["prodId"].Value) : 0);
                     grid.Rows[e.RowIndex].Cells["sumProduct"].Value = Math.Round((pck) * (Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value) - GetDiscountSum((int)grid.Rows[e.RowIndex].Cells["prodId"].Value, Convert.ToDouble(grid.Rows[e.RowIndex].Cells["productPrice"].Value)))).ToString();
                     sumTable();
                 }
@@ -1000,7 +1020,7 @@ namespace tposDesktop
                     grid.Rows[e.RowIndex].Cells["packCount"].Value = packCount;
                 }
 
-                
+
             }
             if ((grid.Columns[e.ColumnIndex].Name == "productPrice" && e.RowIndex >= 0) && grid.Rows[e.RowIndex].Cells["productPrice"].Value != DBNull.Value)
             {
@@ -1029,8 +1049,9 @@ namespace tposDesktop
                     sumTable();
                 }
             }
+            
 
-            }
+        }
         delegate void SetLabel(string str);
         private void SetTBX(string str)
         {
@@ -1909,6 +1930,75 @@ namespace tposDesktop
         {
             if (chbReb.Checked)
             { chbDiscount.Checked = false; }
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+
+            isPrinter = !isPrinter;
+            Properties.Settings.Default.isPrinter = isPrinter;
+            SetIsPrinter();
+        }
+
+        bool isPrinter = false;
+        private void SetIsPrinter()
+        {
+            if (isPrinter)
+            {
+                btnReceipt.BackgroundImage = global::tposDesktop.Properties.Resources.checked1;
+            }
+            else
+            {
+                btnReceipt.BackgroundImage = global::tposDesktop.Properties.Resources.checked2;
+            }
+        }
+
+        private void tbxSearchTovar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgvTovar.SelectedRows.Count!=0)
+            {
+                DataGridViewRow dvRow = dgvTovar.SelectedRows[0];
+                if (e.KeyCode == Keys.Down)
+                {
+                    if (dvRow.Index < (dgvTovar.Rows.Count-1))
+                    {
+                        dgvTovar.CurrentCell = dgvTovar.Rows[dvRow.Index + 1].Cells[0];
+                        dgvTovar.Rows[dvRow.Index + 1].Selected = true;
+                    }
+                }
+                else if (e.KeyCode == Keys.Up)
+                {
+                    if (dvRow.Index > 0)
+                    {
+                        dgvTovar.CurrentCell = dgvTovar.Rows[dvRow.Index - 1].Cells[0];
+                        dgvTovar.Rows[dvRow.Index - 1].Selected = true;
+                    }
+                }
+            }
+        }
+
+        private void keydown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                tbxSearchTovar.Focus();
+                tbxSearchTovar.Text = "";
+            }
+        }
+        TextBox tbxEditControl;
+        private void dgvExpense_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is TextBox)
+            {
+                tbxEditControl = e.Control as TextBox;
+                tbxEditControl.KeyDown += TbxEditControl_KeyDown;
+            }
+
+        }
+
+        private void TbxEditControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            keydown(sender, e);
         }
     }
 }

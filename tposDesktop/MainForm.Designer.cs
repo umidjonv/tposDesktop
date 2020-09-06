@@ -47,28 +47,12 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnReceipt = new System.Windows.Forms.Button();
             this.lblActionResult = new System.Windows.Forms.Label();
             this.lblNumResult = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.key_1 = new System.Windows.Forms.Button();
-            this.key_2 = new System.Windows.Forms.Button();
-            this.key_3 = new System.Windows.Forms.Button();
-            this.key_4 = new System.Windows.Forms.Button();
-            this.key_5 = new System.Windows.Forms.Button();
-            this.key_6 = new System.Windows.Forms.Button();
-            this.key_7 = new System.Windows.Forms.Button();
-            this.key_8 = new System.Windows.Forms.Button();
-            this.key_9 = new System.Windows.Forms.Button();
-            this.key_plus = new System.Windows.Forms.Button();
-            this.key_0 = new System.Windows.Forms.Button();
-            this.key_dot = new System.Windows.Forms.Button();
-            this.key_minus = new System.Windows.Forms.Button();
-            this.key_multiple = new System.Windows.Forms.Button();
-            this.key_devide = new System.Windows.Forms.Button();
-            this.key_clear = new System.Windows.Forms.Button();
-            this.key_equal = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnById = new System.Windows.Forms.Button();
+            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.tbxSearchTovar = new System.Windows.Forms.TextBox();
             this.dgvTovar = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -124,12 +108,10 @@
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ordersTableAdapter = new tposDesktop.DataSetTposTableAdapters.ordersTableAdapter();
             this.hotkeysTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.hotkeysTableAdapter();
-            this.tbxSearchPrice = new Classes.NumericTextBox();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -200,7 +182,6 @@
             // 
             // btnVozvrat
             // 
-            this.btnVozvrat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnVozvrat.BackColor = System.Drawing.Color.Blue;
             this.btnVozvrat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVozvrat.BackgroundImage")));
             this.btnVozvrat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -210,12 +191,13 @@
             this.btnVozvrat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.btnVozvrat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVozvrat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnVozvrat.Location = new System.Drawing.Point(862, 6);
+            this.btnVozvrat.Location = new System.Drawing.Point(475, 134);
             this.btnVozvrat.Name = "btnVozvrat";
-            this.btnVozvrat.Size = new System.Drawing.Size(40, 40);
+            this.btnVozvrat.Size = new System.Drawing.Size(92, 61);
             this.btnVozvrat.TabIndex = 3;
             this.btnVozvrat.UseVisualStyleBackColor = false;
             this.btnVozvrat.Click += new System.EventHandler(this.btnVozvrat_Click);
+            this.btnVozvrat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // soat
             // 
@@ -253,9 +235,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panel3.Controls.Add(this.btnReceipt);
+            this.panel3.Controls.Add(this.btnVozvrat);
             this.panel3.Controls.Add(this.lblActionResult);
             this.panel3.Controls.Add(this.lblNumResult);
-            this.panel3.Controls.Add(this.flowLayoutPanel2);
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.flowLayoutPanel1);
@@ -264,6 +247,26 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1024, 680);
             this.panel3.TabIndex = 8;
+            // 
+            // btnReceipt
+            // 
+            this.btnReceipt.BackColor = System.Drawing.Color.Transparent;
+            this.btnReceipt.BackgroundImage = global::tposDesktop.Properties.Resources.checked1;
+            this.btnReceipt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnReceipt.FlatAppearance.BorderColor = System.Drawing.Color.LawnGreen;
+            this.btnReceipt.FlatAppearance.BorderSize = 0;
+            this.btnReceipt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceipt.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnReceipt.ForeColor = System.Drawing.Color.White;
+            this.btnReceipt.Location = new System.Drawing.Point(475, 68);
+            this.btnReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(92, 61);
+            this.btnReceipt.TabIndex = 11;
+            this.btnReceipt.UseVisualStyleBackColor = false;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
+            this.btnReceipt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // lblActionResult
             // 
@@ -281,279 +284,6 @@
             this.lblNumResult.Size = new System.Drawing.Size(0, 24);
             this.lblNumResult.TabIndex = 9;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.key_1);
-            this.flowLayoutPanel2.Controls.Add(this.key_2);
-            this.flowLayoutPanel2.Controls.Add(this.key_3);
-            this.flowLayoutPanel2.Controls.Add(this.key_4);
-            this.flowLayoutPanel2.Controls.Add(this.key_5);
-            this.flowLayoutPanel2.Controls.Add(this.key_6);
-            this.flowLayoutPanel2.Controls.Add(this.key_7);
-            this.flowLayoutPanel2.Controls.Add(this.key_8);
-            this.flowLayoutPanel2.Controls.Add(this.key_9);
-            this.flowLayoutPanel2.Controls.Add(this.key_plus);
-            this.flowLayoutPanel2.Controls.Add(this.key_0);
-            this.flowLayoutPanel2.Controls.Add(this.key_dot);
-            this.flowLayoutPanel2.Controls.Add(this.key_minus);
-            this.flowLayoutPanel2.Controls.Add(this.key_multiple);
-            this.flowLayoutPanel2.Controls.Add(this.key_devide);
-            this.flowLayoutPanel2.Controls.Add(this.key_clear);
-            this.flowLayoutPanel2.Controls.Add(this.key_equal);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(365, 18);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(192, 375);
-            this.flowLayoutPanel2.TabIndex = 8;
-            // 
-            // key_1
-            // 
-            this.key_1.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_1.FlatAppearance.BorderSize = 0;
-            this.key_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_1.ForeColor = System.Drawing.Color.Maroon;
-            this.key_1.Location = new System.Drawing.Point(3, 3);
-            this.key_1.Name = "key_1";
-            this.key_1.Size = new System.Drawing.Size(57, 58);
-            this.key_1.TabIndex = 0;
-            this.key_1.Text = "1";
-            this.key_1.UseVisualStyleBackColor = false;
-            this.key_1.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_2
-            // 
-            this.key_2.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_2.FlatAppearance.BorderSize = 0;
-            this.key_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_2.ForeColor = System.Drawing.Color.Maroon;
-            this.key_2.Location = new System.Drawing.Point(66, 3);
-            this.key_2.Name = "key_2";
-            this.key_2.Size = new System.Drawing.Size(57, 58);
-            this.key_2.TabIndex = 1;
-            this.key_2.Text = "2";
-            this.key_2.UseVisualStyleBackColor = false;
-            this.key_2.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_3
-            // 
-            this.key_3.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_3.FlatAppearance.BorderSize = 0;
-            this.key_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_3.ForeColor = System.Drawing.Color.Maroon;
-            this.key_3.Location = new System.Drawing.Point(129, 3);
-            this.key_3.Name = "key_3";
-            this.key_3.Size = new System.Drawing.Size(57, 58);
-            this.key_3.TabIndex = 2;
-            this.key_3.Text = "3";
-            this.key_3.UseVisualStyleBackColor = false;
-            this.key_3.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_4
-            // 
-            this.key_4.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_4.FlatAppearance.BorderSize = 0;
-            this.key_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_4.ForeColor = System.Drawing.Color.Maroon;
-            this.key_4.Location = new System.Drawing.Point(3, 67);
-            this.key_4.Name = "key_4";
-            this.key_4.Size = new System.Drawing.Size(57, 58);
-            this.key_4.TabIndex = 3;
-            this.key_4.Text = "4";
-            this.key_4.UseVisualStyleBackColor = false;
-            this.key_4.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_5
-            // 
-            this.key_5.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_5.FlatAppearance.BorderSize = 0;
-            this.key_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_5.ForeColor = System.Drawing.Color.Maroon;
-            this.key_5.Location = new System.Drawing.Point(66, 67);
-            this.key_5.Name = "key_5";
-            this.key_5.Size = new System.Drawing.Size(57, 58);
-            this.key_5.TabIndex = 4;
-            this.key_5.Text = "5";
-            this.key_5.UseVisualStyleBackColor = false;
-            this.key_5.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_6
-            // 
-            this.key_6.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_6.FlatAppearance.BorderSize = 0;
-            this.key_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_6.ForeColor = System.Drawing.Color.Maroon;
-            this.key_6.Location = new System.Drawing.Point(129, 67);
-            this.key_6.Name = "key_6";
-            this.key_6.Size = new System.Drawing.Size(57, 58);
-            this.key_6.TabIndex = 5;
-            this.key_6.Text = "6";
-            this.key_6.UseVisualStyleBackColor = false;
-            this.key_6.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_7
-            // 
-            this.key_7.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_7.FlatAppearance.BorderSize = 0;
-            this.key_7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_7.ForeColor = System.Drawing.Color.Maroon;
-            this.key_7.Location = new System.Drawing.Point(3, 131);
-            this.key_7.Name = "key_7";
-            this.key_7.Size = new System.Drawing.Size(57, 58);
-            this.key_7.TabIndex = 6;
-            this.key_7.Text = "7";
-            this.key_7.UseVisualStyleBackColor = false;
-            this.key_7.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_8
-            // 
-            this.key_8.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_8.FlatAppearance.BorderSize = 0;
-            this.key_8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_8.ForeColor = System.Drawing.Color.Maroon;
-            this.key_8.Location = new System.Drawing.Point(66, 131);
-            this.key_8.Name = "key_8";
-            this.key_8.Size = new System.Drawing.Size(57, 58);
-            this.key_8.TabIndex = 7;
-            this.key_8.Text = "8";
-            this.key_8.UseVisualStyleBackColor = false;
-            this.key_8.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_9
-            // 
-            this.key_9.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_9.FlatAppearance.BorderSize = 0;
-            this.key_9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_9.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_9.ForeColor = System.Drawing.Color.Maroon;
-            this.key_9.Location = new System.Drawing.Point(129, 131);
-            this.key_9.Name = "key_9";
-            this.key_9.Size = new System.Drawing.Size(57, 58);
-            this.key_9.TabIndex = 8;
-            this.key_9.Text = "9";
-            this.key_9.UseVisualStyleBackColor = false;
-            this.key_9.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_plus
-            // 
-            this.key_plus.BackColor = System.Drawing.Color.Khaki;
-            this.key_plus.FlatAppearance.BorderSize = 0;
-            this.key_plus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_plus.Location = new System.Drawing.Point(3, 195);
-            this.key_plus.Name = "key_plus";
-            this.key_plus.Size = new System.Drawing.Size(57, 58);
-            this.key_plus.TabIndex = 9;
-            this.key_plus.Text = "+";
-            this.key_plus.UseVisualStyleBackColor = false;
-            this.key_plus.Click += new System.EventHandler(this.mathAction_Click);
-            // 
-            // key_0
-            // 
-            this.key_0.BackColor = System.Drawing.Color.LightSalmon;
-            this.key_0.FlatAppearance.BorderSize = 0;
-            this.key_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_0.ForeColor = System.Drawing.Color.Maroon;
-            this.key_0.Location = new System.Drawing.Point(66, 195);
-            this.key_0.Name = "key_0";
-            this.key_0.Size = new System.Drawing.Size(57, 58);
-            this.key_0.TabIndex = 10;
-            this.key_0.Text = "0";
-            this.key_0.UseVisualStyleBackColor = false;
-            this.key_0.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_dot
-            // 
-            this.key_dot.BackColor = System.Drawing.Color.Khaki;
-            this.key_dot.FlatAppearance.BorderSize = 0;
-            this.key_dot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_dot.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_dot.Location = new System.Drawing.Point(129, 195);
-            this.key_dot.Name = "key_dot";
-            this.key_dot.Size = new System.Drawing.Size(57, 58);
-            this.key_dot.TabIndex = 11;
-            this.key_dot.Text = ".";
-            this.key_dot.UseVisualStyleBackColor = false;
-            this.key_dot.Click += new System.EventHandler(this.btnKeypress_Click);
-            // 
-            // key_minus
-            // 
-            this.key_minus.BackColor = System.Drawing.Color.Khaki;
-            this.key_minus.FlatAppearance.BorderSize = 0;
-            this.key_minus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_minus.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_minus.Location = new System.Drawing.Point(3, 259);
-            this.key_minus.Name = "key_minus";
-            this.key_minus.Size = new System.Drawing.Size(57, 58);
-            this.key_minus.TabIndex = 12;
-            this.key_minus.Text = "-";
-            this.key_minus.UseVisualStyleBackColor = false;
-            this.key_minus.Click += new System.EventHandler(this.mathAction_Click);
-            // 
-            // key_multiple
-            // 
-            this.key_multiple.BackColor = System.Drawing.Color.Khaki;
-            this.key_multiple.FlatAppearance.BorderSize = 0;
-            this.key_multiple.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_multiple.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_multiple.Location = new System.Drawing.Point(66, 259);
-            this.key_multiple.Name = "key_multiple";
-            this.key_multiple.Size = new System.Drawing.Size(57, 58);
-            this.key_multiple.TabIndex = 13;
-            this.key_multiple.Text = "*";
-            this.key_multiple.UseVisualStyleBackColor = false;
-            this.key_multiple.Click += new System.EventHandler(this.mathAction_Click);
-            // 
-            // key_devide
-            // 
-            this.key_devide.BackColor = System.Drawing.Color.Khaki;
-            this.key_devide.FlatAppearance.BorderSize = 0;
-            this.key_devide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_devide.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_devide.Location = new System.Drawing.Point(129, 259);
-            this.key_devide.Name = "key_devide";
-            this.key_devide.Size = new System.Drawing.Size(57, 58);
-            this.key_devide.TabIndex = 14;
-            this.key_devide.Text = "/";
-            this.key_devide.UseVisualStyleBackColor = false;
-            this.key_devide.Click += new System.EventHandler(this.mathAction_Click);
-            // 
-            // key_clear
-            // 
-            this.key_clear.BackColor = System.Drawing.Color.LightCoral;
-            this.key_clear.BackgroundImage = global::tposDesktop.Properties.Resources.delete1;
-            this.key_clear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.key_clear.FlatAppearance.BorderSize = 0;
-            this.key_clear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Brown;
-            this.key_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_clear.Location = new System.Drawing.Point(3, 323);
-            this.key_clear.Name = "key_clear";
-            this.key_clear.Size = new System.Drawing.Size(94, 48);
-            this.key_clear.TabIndex = 15;
-            this.key_clear.UseVisualStyleBackColor = false;
-            this.key_clear.Click += new System.EventHandler(this.key_clear_Click);
-            // 
-            // key_equal
-            // 
-            this.key_equal.BackColor = System.Drawing.Color.SpringGreen;
-            this.key_equal.FlatAppearance.BorderSize = 0;
-            this.key_equal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.key_equal.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_equal.Location = new System.Drawing.Point(103, 323);
-            this.key_equal.Name = "key_equal";
-            this.key_equal.Size = new System.Drawing.Size(85, 48);
-            this.key_equal.TabIndex = 16;
-            this.key_equal.Text = "=";
-            this.key_equal.UseVisualStyleBackColor = false;
-            this.key_equal.Click += new System.EventHandler(this.key_equal_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -565,7 +295,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 365);
+            this.groupBox1.Size = new System.Drawing.Size(457, 365);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -583,6 +313,18 @@
             this.btnById.UseVisualStyleBackColor = false;
             this.btnById.Click += new System.EventHandler(this.btnById_Click);
             // 
+            // tbxSearchPrice
+            // 
+            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
+            this.tbxSearchPrice.Location = new System.Drawing.Point(190, 14);
+            this.tbxSearchPrice.Name = "tbxSearchPrice";
+            this.tbxSearchPrice.Size = new System.Drawing.Size(103, 26);
+            this.tbxSearchPrice.TabIndex = 4;
+            this.tbxSearchPrice.Text = "По цене";
+            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
+            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
+            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
+            // 
             // tbxSearchTovar
             // 
             this.tbxSearchTovar.ForeColor = System.Drawing.Color.Silver;
@@ -593,6 +335,7 @@
             this.tbxSearchTovar.Text = "По имени";
             this.tbxSearchTovar.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
             this.tbxSearchTovar.Enter += new System.EventHandler(this.tbxEnter);
+            this.tbxSearchTovar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSearchTovar_KeyDown);
             this.tbxSearchTovar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_KeyPress);
             this.tbxSearchTovar.Leave += new System.EventHandler(this.tbxLeave);
             // 
@@ -639,10 +382,12 @@
             this.dgvTovar.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTovar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvTovar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTovar.Size = new System.Drawing.Size(331, 319);
+            this.dgvTovar.Size = new System.Drawing.Size(441, 319);
             this.dgvTovar.TabIndex = 3;
             this.dgvTovar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellContentClick);
+            this.dgvTovar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTovar_CellDoubleClick);
             this.dgvTovar.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
+            this.dgvTovar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             this.dgvTovar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_KeyPress);
             // 
             // groupBox2
@@ -700,9 +445,9 @@
             // btnSPanel
             // 
             this.btnSPanel.Controls.Add(this.btnS_1);
-            this.btnSPanel.Location = new System.Drawing.Point(3, 15);
+            this.btnSPanel.Location = new System.Drawing.Point(3, 16);
             this.btnSPanel.Name = "btnSPanel";
-            this.btnSPanel.Size = new System.Drawing.Size(382, 43);
+            this.btnSPanel.Size = new System.Drawing.Size(382, 42);
             this.btnSPanel.TabIndex = 11;
             // 
             // btnS_1
@@ -799,6 +544,7 @@
             this.btnDebt.TabIndex = 2;
             this.btnDebt.UseVisualStyleBackColor = false;
             this.btnDebt.Click += new System.EventHandler(this.btnDebt_click);
+            this.btnDebt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // btnTerminal
             // 
@@ -819,6 +565,7 @@
             this.btnTerminal.TabIndex = 2;
             this.btnTerminal.UseVisualStyleBackColor = false;
             this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
+            this.btnTerminal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // btnOplata
             // 
@@ -839,6 +586,7 @@
             this.btnOplata.Text = "Оплата";
             this.btnOplata.UseVisualStyleBackColor = false;
             this.btnOplata.Click += new System.EventHandler(this.btnOplata_Click);
+            this.btnOplata.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // dgvExpense
             // 
@@ -884,7 +632,9 @@
             this.dgvExpense.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellContentClick);
             this.dgvExpense.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSchet_CellPainting);
             this.dgvExpense.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpense_CellValueChanged);
+            this.dgvExpense.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvExpense_EditingControlShowing);
             this.dgvExpense.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvExpense_RowsAdded);
+            this.dgvExpense.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             this.dgvExpense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgv_KeyPress);
             // 
             // ProductName
@@ -1323,18 +1073,6 @@
             // 
             this.hotkeysTableAdapter1.ClearBeforeFill = true;
             // 
-            // tbxSearchPrice
-            // 
-            this.tbxSearchPrice.ForeColor = System.Drawing.Color.Silver;
-            this.tbxSearchPrice.Location = new System.Drawing.Point(190, 14);
-            this.tbxSearchPrice.Name = "tbxSearchPrice";
-            this.tbxSearchPrice.Size = new System.Drawing.Size(103, 26);
-            this.tbxSearchPrice.TabIndex = 4;
-            this.tbxSearchPrice.Text = "По цене";
-            this.tbxSearchPrice.TextChanged += new System.EventHandler(this.tbxSearchTovar_TextChanged);
-            this.tbxSearchPrice.Enter += new System.EventHandler(this.tbxEnter);
-            this.tbxSearchPrice.Leave += new System.EventHandler(this.tbxLeave);
-            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -1348,7 +1086,6 @@
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1024, 732);
             this.Controls.Add(this.btnKassa);
-            this.Controls.Add(this.btnVozvrat);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.soat);
             this.Controls.Add(this.panel2);
@@ -1368,7 +1105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTovar)).EndInit();
@@ -1400,23 +1136,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private DataSetTposTableAdapters.hotkeysTableAdapter hotkeysTableAdapter1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button key_1;
-        private System.Windows.Forms.Button key_2;
-        private System.Windows.Forms.Button key_3;
-        private System.Windows.Forms.Button key_4;
-        private System.Windows.Forms.Button key_5;
-        private System.Windows.Forms.Button key_6;
-        private System.Windows.Forms.Button key_7;
-        private System.Windows.Forms.Button key_8;
-        private System.Windows.Forms.Button key_9;
-        private System.Windows.Forms.Button key_plus;
-        private System.Windows.Forms.Button key_0;
-        private System.Windows.Forms.Button key_dot;
-        private System.Windows.Forms.Button key_minus;
-        private System.Windows.Forms.Button key_multiple;
-        private System.Windows.Forms.Button key_devide;
-        private System.Windows.Forms.Button key_clear;
         private System.Windows.Forms.GroupBox groupBox1;
         private Classes.NumericTextBox tbxSearchPrice;
         private System.Windows.Forms.TextBox tbxSearchTovar;
@@ -1458,7 +1177,6 @@
         private System.Windows.Forms.Button hot_26;
         private System.Windows.Forms.Button hot_27;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button key_equal;
         private System.Windows.Forms.Label lblNumResult;
         private System.Windows.Forms.Label lblActionResult;
         private System.Windows.Forms.Button hot_28;
@@ -1482,6 +1200,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Button btnDebt;
-        
+        private System.Windows.Forms.Button btnReceipt;
     }
 }

@@ -38,6 +38,7 @@ namespace tposDesktop
             DateTime expDate = Properties.Settings.Default.ExpDate;
             Cryptapp.Check ch = new Check(Properties.Settings.Default.SN, expDate);
             string hash = ch.CreateHash();
+            
             if (ch.CheckExist(hash))
             {
                 if (expDate >= DateTime.Now.Date)
@@ -57,7 +58,7 @@ namespace tposDesktop
                                 break;
                             case 2:
                                 
-                                Application.Run(new MainForm());
+                                Application.Run(new MainFormTouch());
                                 break;
                             case 3:
                                 

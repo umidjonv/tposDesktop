@@ -883,54 +883,56 @@ namespace tposDesktop
 
         private void liveChartLoad()
         {
-            Chart1.AxisX.Clear();
-            Chart1.AxisY.Clear();
-            DataTable table = DBclass.DS.Tables["info"];
-            DataRow[] rows = table.Select();
-            double[] tempproc = new double[rows.Count()];
-            double[] tempnal = new double[rows.Count()];
-            double[] tempterm = new double[rows.Count()];
-            double[] tempback = new double[rows.Count()];
-            ChartValues<double> proc = new ChartValues<double>();
-            ChartValues<double> nal = new ChartValues<double>();
-            ChartValues<double> term = new ChartValues<double>();
-            ChartValues<double> back = new ChartValues<double>();
-            string[] dates = new string[rows.Count()];
-            int i = 0;
             try
             {
-                foreach (var val in rows)
+                Chart1.AxisX.Clear();
+                Chart1.AxisY.Clear();
+                DataTable table = DBclass.DS.Tables["info"];
+                DataRow[] rows = table.Select();
+                double[] tempproc = new double[rows.Count()];
+                double[] tempnal = new double[rows.Count()];
+                double[] tempterm = new double[rows.Count()];
+                double[] tempback = new double[rows.Count()];
+                ChartValues<double> proc = new ChartValues<double>();
+                ChartValues<double> nal = new ChartValues<double>();
+                ChartValues<double> term = new ChartValues<double>();
+                ChartValues<double> back = new ChartValues<double>();
+                string[] dates = new string[rows.Count()];
+                int i = 0;
+                try
                 {
-                    tempproc[i] = (val["proceed"].ToString() == "") ? 0 : Convert.ToInt32(val["proceed"]);
-                    tempnal[i] = (val["nal"].ToString() == "") ? 0 : Convert.ToInt32(val["nal"]);
-                    tempterm[i] = (val["terminal"].ToString() == "") ? 0 : Convert.ToInt32(val["terminal"]);
-                    tempback[i] = (val["back"].ToString() == "") ? 0 : Convert.ToInt32(val["back"]);
-                    dates[i] = Convert.ToDateTime(val["Dates"]).ToString("dd.MM");
-                    i++;
+                    foreach (var val in rows)
+                    {
+                        tempproc[i] = (val["proceed"].ToString() == "") ? 0 : Convert.ToInt32(val["proceed"]);
+                        tempnal[i] = (val["nal"].ToString() == "") ? 0 : Convert.ToInt32(val["nal"]);
+                        tempterm[i] = (val["terminal"].ToString() == "") ? 0 : Convert.ToInt32(val["terminal"]);
+                        tempback[i] = (val["back"].ToString() == "") ? 0 : Convert.ToInt32(val["back"]);
+                        dates[i] = Convert.ToDateTime(val["Dates"]).ToString("dd.MM");
+                        i++;
+                    }
+                    if (tproc == true)
+                    {
+                        proc.AddRange(tempproc);
+                    }
+                    if (tnal == true)
+                    {
+                        nal.AddRange(tempnal);
+                    }
+                    if (tterm == true)
+                    {
+                        term.AddRange(tempterm);
+                    }
+                    if (tback == true)
+                    {
+                        back.AddRange(tempback);
+                    }
                 }
-                if (tproc == true)
+                catch (ArgumentException ex)
                 {
-                    proc.AddRange(tempproc);
+                    Console.WriteLine(ex.ToString());
                 }
-                if (tnal == true)
-                {
-                    nal.AddRange(tempnal);
-                }
-                if (tterm == true)
-                {
-                    term.AddRange(tempterm);
-                }
-                if (tback == true)
-                {
-                    back.AddRange(tempback);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
 
-            Chart1.Series = new SeriesCollection
+                Chart1.Series = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -960,27 +962,31 @@ namespace tposDesktop
                 }
             };
 
-            Chart1.AxisX.Add(new Axis
+                Chart1.AxisX.Add(new Axis
+                {
+                    Title = "month",
+                    Labels = dates
+                });
+
+                Chart1.AxisY.Add(new Axis
+                {
+                    Title = "",
+                    //LabelFormatter = value => value.ToString("C")
+                });
+
+                Chart1.LegendLocation = LegendLocation.Right;
+
+                //modifying the series collection will animate and update the chart
+
+
+                //modifying any series values will also animate and update the chart
+                //Chart1.Series[2].Values.Add(5d);
+
+            }
+            catch (Exception ex)
             {
-                Title = "month",
-                Labels = dates
-            });
-
-            Chart1.AxisY.Add(new Axis
-            {
-                Title = "",
-                //LabelFormatter = value => value.ToString("C")
-            });
-
-            Chart1.LegendLocation = LegendLocation.Right;
-
-            //modifying the series collection will animate and update the chart
-
-
-            //modifying any series values will also animate and update the chart
-            //Chart1.Series[2].Values.Add(5d);
-
-
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

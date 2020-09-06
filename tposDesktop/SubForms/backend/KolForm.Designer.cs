@@ -34,6 +34,8 @@
             this.balanceTableAdapter1 = new tposDesktop.DataSetTposTableAdapters.balanceTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.lblKol = new System.Windows.Forms.Label();
+            this.lblOstatok = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +86,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gold;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(350, 186);
+            this.button1.Location = new System.Drawing.Point(350, 199);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 49);
             this.button1.TabIndex = 2;
@@ -115,12 +117,31 @@
             this.lblKol.Size = new System.Drawing.Size(0, 24);
             this.lblKol.TabIndex = 0;
             // 
+            // lblOstatok
+            // 
+            this.lblOstatok.AutoSize = true;
+            this.lblOstatok.Location = new System.Drawing.Point(452, 152);
+            this.lblOstatok.Name = "lblOstatok";
+            this.lblOstatok.Size = new System.Drawing.Size(0, 24);
+            this.lblOstatok.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(346, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 24);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Остаток:";
+            // 
             // KolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(219)))), ((int)(((byte)(179)))));
             this.ClientSize = new System.Drawing.Size(632, 274);
+            this.Controls.Add(this.lblOstatok);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxCount1);
             this.Controls.Add(this.lblKol);
@@ -129,6 +150,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "KolForm";
+            this.ShowCaption = true;
+            this.ShowCloseButton = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "На заказ";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OrderForm_KeyPress);
@@ -140,6 +163,8 @@
             this.Controls.SetChildIndex(this.pbCaption, 0);
             this.Controls.SetChildIndex(this.lblCaption, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.lblOstatok, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pbCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -154,5 +179,7 @@
         private DataSetTposTableAdapters.balanceTableAdapter balanceTableAdapter1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblKol;
+        private System.Windows.Forms.Label lblOstatok;
+        private System.Windows.Forms.Label label4;
     }
 }
