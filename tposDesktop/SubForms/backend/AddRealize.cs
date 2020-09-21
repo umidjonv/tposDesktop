@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Classes;
 using Classes.DB;
 using Classes.Forms;
+using MySql.Data.MySqlClient;
 using tposDesktop.Converters;
 
 namespace tposDesktop
@@ -22,6 +23,9 @@ namespace tposDesktop
         {
 
             InitializeComponent();
+
+            GetLastId();
+
             tbxPack.isFloat = true;
             if (barcode != null)
                 tbxShtrix.Text = barcode;
@@ -34,6 +38,9 @@ namespace tposDesktop
             fkRow = faktRow;
             
             InitializeComponent();
+
+            GetLastId();
+
             string sum  ="0";
 
 
@@ -84,9 +91,10 @@ namespace tposDesktop
         DataSetTpos.realizeRow rlRow;
         private void AddOrEdit(object sender, EventArgs e)
         {
+            RestService.RestService service = new RestService.RestService();
             if (!string.IsNullOrEmpty(tbxName.Text))
             {
-
+                
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 
                 DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
@@ -106,13 +114,21 @@ namespace tposDesktop
                         System.Globalization.NumberFormatInfo format = new System.Globalization.NumberFormatInfo();
                         cnt = Convert.ToSingle(tbxPack.Text.Replace(",", format.CurrencyDecimalSeparator).Replace(".", format.CurrencyDecimalSeparator), format);
                     }
+
                     rlRow.count += cnt;
                     rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
 
                     //db.triggerExecute()
-                    db.calcProc("plus", prRow.productId, cnt);   
+                    db.calcProc("plus", prRow.productId, cnt);
 
+                    string converted = new RealizeConverter(rlRow).Convert();
+                    
+                    daReal.Update(rlRow);
+
+                    service.EditIncome(rlRow.realizeId, converted);
+
+                    
                 }
                 else
                 {
@@ -128,25 +144,53 @@ namespace tposDesktop
                         cnt = Convert.ToSingle(tbxPack.Text.Replace(",", format.CurrencyDecimalSeparator).Replace(".", format.CurrencyDecimalSeparator), format);
                     }
                     rlRow.count = cnt;
-                    rlRow.price = Convert.ToInt32(tbxPricePrixod.Text);
+                    rlRow.price = Convert.ToInt32(tbxPricePrixod.Text); 
                     rlRow.soldPrice = Convert.ToInt32(tbxSoldPrice.Text);
                     rlRow.fakturaId = fkRow.fakturaId;
                     rlRow.prodId = prRow.productId;
                     DBclass.DS.realize.AddrealizeRow(rlRow);
                     
+                    
+                    db.calcProc("plus", prRow.productId, cnt);
                     string converted = new RealizeConverter(rlRow).Convert();
-                    RestService.RestService service = new RestService.RestService();
-                    service.AddInvoice(converted);
-                    db.calcProc("plus", prRow.productId, cnt);   
+                    
+                    daReal.Update(rlRow);
+                       
+                    service.AddIncome(converted);
+
+
                 }
                 //if(prRow.price==0)
                 prRow.price = rlRow.soldPrice;
+                
 
 
-                daReal.Update(DBclass.DS.realize);
+                
                 daReal.Fill(DBclass.DS.realize);
 
+                
+
             }
+        }
+
+        private void GetLastId()
+        {
+            DataSetTposTableAdapters.realizeTableAdapter daReal = new DataSetTposTableAdapters.realizeTableAdapter();
+            MySqlCommand selectCommand = new MySqlCommand("select * from Realize order by realizeId desc limit 0,1", daReal.Connection);
+            daReal.Adapter.SelectCommand = selectCommand;
+            daReal.Adapter.Fill(DBclass.DS.realize);
+            //int realizeId = 0;
+            //if (selectCommand.Connection.State == ConnectionState.Closed)
+            //{
+            //    selectCommand.Connection.Open();
+            //    selectCommand.CommandText = "select * from Realize order by realizeId limit 0,1";
+            //    realizeId = (int)selectCommand.ExecuteScalar();
+            //    selectCommand.Connection.Close();
+
+            //}
+
+            
+
         }
 
         private void AddRealize_Load(object sender, EventArgs e)

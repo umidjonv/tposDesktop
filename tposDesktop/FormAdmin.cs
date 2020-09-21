@@ -15,6 +15,7 @@ using LiveCharts.Wpf;
 using System.Windows.Media;
 using System.IO;
 using AddIn;
+using tposDesktop.Converters;
 
 namespace tposDesktop
 {
@@ -1301,9 +1302,13 @@ namespace tposDesktop
                         DataSetTpos.realizeRow[] rls = (DataSetTpos.realizeRow[])DBclass.DS.realize.Select("realizeId=" + dgv.Rows[e.RowIndex].Cells["realizeId"].Value.ToString());
                         DBclass dbC = new DBclass();
                         dbC.calcProc("minus", rls[0].prodId, rls[0].count);
-                        
+                        int realizeId = rls[0].realizeId;
                         rls[0].Delete();
-                        
+
+                        //string converted = new RealizeConverter(rls[0]).Convert();
+                        RestService.RestService service = new RestService.RestService();
+                        service.DeleteIncome(realizeId);
+
                         this.realizeTableAdapter1.Update(DBclass.DS.realize);
                         this.realizeviewTableAdapter1.Fill(DBclass.DS.realizeview, DateTime.Parse(reportDate.Value.ToString("yyyy-MM-dd")));
                         break;

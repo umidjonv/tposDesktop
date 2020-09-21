@@ -40,17 +40,45 @@ namespace RestService
 
         }
 
-        public async void AddInvoice(string row)
+        public async void AddIncome(string row)
         {
-            var request = new RestRequest("api/invoice", Method.POST);
+            var request = new RestRequest("api/income/add", Method.POST);
 
-            //request.AddJsonBody(new { category = new { budgeted = 120000 } });
             request.AddParameter("text/json", row, ParameterType.RequestBody);
 
             IRestResponse response = await _client.ExecuteAsync(request);
             var content = response.Content;
             
-           
+        }
+
+        public async void EditIncome(int id, string row)
+        {
+            var request = new RestRequest("api/income/edit", Method.POST);
+
+            //request.AddJsonBody(new { category = new { budgeted = 120000 } });
+            request.AddParameter("id", id, ParameterType.UrlSegment);
+            request.AddParameter("text/json", row, ParameterType.RequestBody);
+            
+
+            IRestResponse response = await _client.ExecuteAsync(request);
+            var content = response.Content;
+
+
+
+        }
+
+        public async void DeleteIncome(int id)
+        {
+            var request = new RestRequest("api/income/delete/{id}", Method.GET);
+
+            //request.RequestFormat = DataFormat.Json;
+            //request.AddJsonBody(new { category = new { budgeted = 120000 } });
+            request.AddParameter("id", id, ParameterType.UrlSegment);
+            
+            IRestResponse response = await _client.ExecuteAsync(request);
+            var content = response.Content;
+
+
 
         }
     }

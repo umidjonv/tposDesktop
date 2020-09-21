@@ -12,18 +12,19 @@ namespace tposDesktop.Converters
 {
     class RealizeConverter:Converter<DataSetTpos.realizeRow>
     {
-        DataSetTpos.realizeRow _realizeRow;
+        readonly DataSetTpos.realizeRow _realizeRow;
         public RealizeConverter(DataSetTpos.realizeRow realizeRow):base(realizeRow)
         {
             _realizeRow = realizeRow;
         }
 
-        public string Convert()
+        public new string Convert()
         {
             DateTime? expDate = null;
             if (!_realizeRow.IsexpiryDateNull()) expDate = _realizeRow.expiryDate;
-            var realize = new Realize()
+            var realize = new Income
             {
+                mainId = _realizeRow.realizeId,
                 fakturaId = _realizeRow.fakturaId,
                 count = _realizeRow.count,
                 productId = _realizeRow.prodId,

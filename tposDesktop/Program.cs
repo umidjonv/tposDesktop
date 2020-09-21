@@ -90,6 +90,7 @@ namespace tposDesktop
         public static int CurrentTable;
         public static int expense_id;
         public static string role;
+        public static int? stockId;
         
 
     }

@@ -169,7 +169,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Converters\Converter.cs" />
-    <Compile Include="Converters\Models\Realize.cs" />
+    <Compile Include="Converters\Models\Expense.cs" />
+    <Compile Include="Converters\Models\Income.cs" />
+    <Compile Include="Converters\ExpenseConverter.cs" />
     <Compile Include="Converters\RealizeConverter.cs" />
     <Compile Include="DataSetDebt.Designer.cs">
       <AutoGen>True</AutoGen>
